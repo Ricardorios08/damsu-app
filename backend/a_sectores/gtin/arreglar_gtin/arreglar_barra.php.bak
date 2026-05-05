@@ -1,0 +1,49 @@
+<?php
+include ("../../../conexiones/config_pro.php");
+
+$gtin= $_REQUEST['gtin'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$contra= $_REQUEST['contra'];
+
+ $sql="select * from `monodrogas` where cod_barra =  '$anio'";
+$result = $db->Execute($sql);
+
+$grupo=$result->fields["grupo"];
+$cod_droga=$result->fields["cod_droga"];
+echo "NOMBRE COMERCIAL: ".$nombre_comercial=$result->fields["nombre_comercial"];
+echo "PRECIO: ".$precio_unitario=$result->fields["precio_actualizado"];
+echo "<br>";
+echo "LABORATORIO: ".$laboratorio=$result->fields["laboratorio"];
+ $sql="select * from drogas where cod_droga =  '$cod_droga'";
+$result = $db->Execute($sql);
+echo "<br>";
+echo "DROGA: ".$drogas=$result->fields["droga"];
+
+if ($contra == "papo2012"){
+
+
+
+echo   $sql = "UPDATE tr_stock SET `cod_mercaderia` = '$anio' , `grupo` = '$grupo' , `cod_droga` = '$cod_droga' , `drogas` = '$drogas'  , `precio_unitario` = '$precio_unitario'    WHERE gtin = '$gtin'"; //cod_droga drogas grupo
+mysql_query($sql);
+
+ echo $sql = "UPDATE tr_existencias SET  `cod_mercaderia` = '$anio' , `cod_droga` = '$cod_droga'  , `grupo` = '$grupo'  , `laboratorio` = '$laboratorio'   , `precio_unitario` = '$precio_unitario'    WHERE gtin = '$gtin'"; //cod_droga
+mysql_query($sql);
+
+echo  $sql = "UPDATE tr_compras_detalle SET `cod_mercaderia` = '$anio'  WHERE gtin = '$gtin'";
+mysql_query($sql);
+
+$leyenda = "SE MODIFICO CORRECTAMENTE";
+include ("../../../alertas/campo_informacion.php");
+
+
+}
+else
+{
+$leyenda = "CONTRASEÑA DE SEGURIDAD INCORRECTA";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+

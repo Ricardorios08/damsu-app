@@ -1,0 +1,111 @@
+<?php
+
+include ("../../../conexiones/config_pro.php");
+$documento = $_REQUEST['documento'];
+$documento_incorrecto = $_REQUEST['documento_incorrecto'];
+$seguridad= $_REQUEST['seguridad'];
+
+$sql="select * from pacientes where documento =  '$documento'";
+$result = $db->Execute($sql);
+
+$apellido=strtoupper($result->fields["apellido"]);
+$nombre=strtoupper($result->fields["nombre"]);
+
+
+$sql="select * from pacientes where documento =  '$documento_incorrecto'";
+$result = $db->Execute($sql);
+
+$apellido_i=strtoupper($result->fields["apellido"]);
+$nombre_i=strtoupper($result->fields["nombre"]);
+
+
+if ($documento == ""){
+$leyenda = "NO INGRESO DOCUMENTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+if ($documento_incorrecto == ""){
+$leyenda = "NO INGRESO DOCUMENTO INCORRECTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+if (($documento == "") AND ($documento_incorrecto == "")){
+$leyenda = "NO INGRESO DOCUMENTOS";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+if (($documento != "") AND ($documento_incorrecto == "")){
+$leyenda = "NO INGRESO DOCUMENTO INCORRECTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+if (($documento == "") AND ($documento_incorrecto != "")){
+$leyenda = "NO INGRESO DOCUMENTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+if ($apellido == ""){
+$leyenda = "NO EXISTE PACIENTE CON ESE DOCUMENTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+
+if ($apellido_i == ""){
+$leyenda = "NO EXISTE PACIENTE INCORRECTO CON ESE DOCUMENTO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+if ($seguridad == 'KARINNA'){
+
+$sql = "UPDATE `tr_ventas_encabezado` SET `documento` = '$documento'  WHERE documento = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE `tr_ventas_detalle` SET `documento` = '$documento'  WHERE documento = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE `tr_stock` SET `documento` = '$documento'  WHERE documento = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE `receta` SET nro_paciente = '$documento'  WHERE nro_paciente = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE receta_detalle SET nro_paciente = '$documento'  WHERE nro_paciente = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE paciente_diagnostico SET `documento` = '$documento'  WHERE `documento` = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE paciente_autorizados SET `documento` = '$documento'  WHERE `documento` = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE prestaciones_pacientes SET `documento` = '$documento'  WHERE `documento` = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "UPDATE afiliaciones SET `documento` = '$documento'  WHERE `documento` = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$sql = "DELETE FROM pacientes  WHERE `documento` = $documento_incorrecto";
+$result = $db->Execute($sql);
+
+$leyenda = "SE UNIFICO PACIENTE";
+include ("../../../alertas/campo_informacion.php");
+
+
+}ELSE{
+
+$leyenda = "CONTRASEÑA INCORRECTA";
+include ("../../../alertas/campo_informacion2.php");
+EXIT;
+}
+
+include ("unificar.php");

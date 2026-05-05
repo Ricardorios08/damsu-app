@@ -1,0 +1,37 @@
+<?php 
+
+
+include ("../../../conexiones/config_usu.php");
+
+
+
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'CIUDAD' GROUP BY documento";
+  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'GODOY CRUZ' GROUP BY documento";
+  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'GRAL ALVEAR' GROUP BY documento";
+  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'GUAYMALLEN' GROUP BY documento";
+  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'JUNIN' GROUP BY documento";
+  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'LA PAZ' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'LAS HERAS' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'LAVALLE' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'LUJAN' GROUP BY documento";  echo "<br>";
+
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'MAIPU' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'MALARGUE' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'SAN CARLOS' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'SAN MARTIN' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'SAN RAFAEL' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'SANTA ROSA' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'SIN DPTO' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'TUNUYAN' GROUP BY documento";  echo "<br>";
+echo $sql1 = " SELECT * FROM `tr_ventas_encabezado` WHERE fecha between '2013-01-01' and '2013-12-31' and departamento = 'TUPUNGATO' GROUP BY documento";  echo "<br>";
+ 
+
+
+
+
+

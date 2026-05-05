@@ -1,0 +1,73 @@
+<style type="text/css">
+<!--
+.Estilo11 {font-family: "Trebuchet MS"; font-size: 12; }
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+
+
+ 
+<table width="800" border="1" cellspacing="0">
+<?php 
+ 
+
+
+ echo  $sql1 = "select * from prestaciones_pacientes where fecha_prestacion between '$fecha_desde' and '$fecha_hasta' and cod_prestacion like '$cod_prestacion%' group by documento";
+$result1 = $db->Execute($sql1);
+
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+  $nro_paciente=$result1->fields["documento"];
+  $tipo_doc=$result1->fields["tipo_doc"]; 
+ 
+
+	$sql = "SELECT * FROM `paciente_diagnostico` WHERE `cod_diagnostico` LIKE '$cod_diag%' and documento = $nro_paciente and tipo_doc like '$tipo_doc'";
+$result = $db->Execute($sql);
+ 
+   $nro_ficha=$result->fields["nro_ficha"];
+
+if ($nro_ficha != ""){
+$cont_radio = $cont_radio + 1;
+}
+
+   $result1->MoveNext();
+	}
+?>
+
+<tr>
+    <td width="387"><div align="center" class="Estilo14"><?php echo "20".$anio;?></div></td>
+    <td width="403"><div align="center" class="Estilo14"><?php echo $cont_radio;?></div></td>
+ 
+  </tr>
+</table>
+
+<?php 
+ $cont = "";
+ $cont_radio = "";
+ $cont_quimio = "";
+
+
+
+
+
+
+
+/*
+
+echo $sql = "SELECT * FROM `paciente_diagnostico` WHERE `cod_diagnostico` LIKE 'C56%'";
+$result1 = $db->Execute($sql);
+if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+echo $nro_documento=$result1->fields["nro_documento"];
+echo "<br>";
+ $result1->MoveNext();
+	}
+
+*/
+
+?>
+
+

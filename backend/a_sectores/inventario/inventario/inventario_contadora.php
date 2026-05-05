@@ -1,0 +1,466 @@
+<?php 
+
+require('../../../drivers/fpdf/fpdf.php');
+include ("../../../conexiones/config_pro.php");
+
+
+$hoy=date("d/m/y");
+
+class PDF2 extends FPDF
+{
+
+    var $nroPac;
+
+function setFecha($nrofec) {
+    $this->nroFec = $nrofec;
+}
+function getFecha() {
+    return $this->nroFec;
+}
+
+
+function setFactura($nrofac) {
+    $this->nroFac = $nrofac;
+}
+function getFactura() {
+    return $this->nroFac;
+}
+
+
+function setNeto($nronet) {
+    $this->nroNet = $nronet;
+}
+function getNeto() {
+    return $this->nroNet;
+}
+
+
+
+
+var $widths;
+var $aligns;
+
+function SetWidths($w)
+{
+	//Set the array of column widths
+	$this->widths=$w;
+}
+
+function SetAligns($a)
+{
+	//Set the array of column alignments
+	$this->aligns=$a;
+}
+
+function Row($data)
+{
+	//Calculate the height of the row
+	$nb=0;
+	for($i=0;$i<count($data);$i++)
+		$nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
+	$h=5*$nb;
+	//Issue a page break first if needed
+	$this->CheckPageBreak($h);
+	//Draw the cells of the row
+	for($i=0;$i<count($data);$i++)
+	{
+		$w=$this->widths[$i];
+		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'R';
+		//Save the current position
+		$x=$this->GetX();
+		$y=$this->GetY();
+		//Draw the border
+//		$this->Rect($x,$y,$w,$h);
+		//Print the text
+		$this->MultiCell($w,5,$data[$i],0,$a);
+		//Put the position to the right of the cell
+		$this->SetXY($x+$w,$y);
+	}
+	//Go to the next line
+	$this->Ln($h);
+}
+
+function CheckPageBreak($h)
+{
+	//If the height h would cause an overflow, add a new page immediately
+	if($this->GetY()+$h>$this->PageBreakTrigger)
+		$this->AddPage($this->CurOrientation);
+}
+
+function NbLines($w,$txt)
+{
+	//Computes the number of lines a MultiCell of width w will take
+	$cw=&$this->CurrentFont['cw'];
+	if($w==0)
+		$w=$this->w-$this->rMargin-$this->x;
+	$wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s=str_replace("\r",'',$txt);
+	$nb=strlen($s);
+	if($nb>0 and $s[$nb-1]=="\n")
+		$nb--;
+	$sep=-1;
+	$i=0;
+	$j=0;
+	$l=0;
+	$nl=1;
+	while($i<$nb)
+	{
+		$c=$s[$i];
+		if($c=="\n")
+		{
+			$i++;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+			continue;
+		}
+		if($c==' ')
+			$sep=$i;
+		$l+=$cw[$c];
+		if($l>$wmax)
+		{
+			if($sep==-1)
+			{
+				if($i==$j)
+					$i++;
+			}
+			else
+				$i=$sep+1;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+		}
+		else
+			$i++;
+	}
+	return $nl;
+}
+
+}
+
+
+
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$a");
+
+
+$hoja = "A4";
+
+$pdf=new PDF2('L','mm',$hoja); 
+$pdf->SetDisplayMode(80,'default'); 
+
+//$pdftest=new PDF2();
+$pdf->AliasNbPages();
+//$pdf->AddPage();
+$pdf->SetFont('ARIAL','',8);
+
+if ($provee == 1){
+$titulo = "ASOC. COOP. HOSPITAL CENTRAL - INVENTARIO DE MEDICAMENTOS AL 30-".$mes."-".$anio. " (ACE)";
+}else{
+$titulo = "ASOC. COOP. HOSPITAL CENTRAL - INVENTARIO DE MEDICAMENTOS AL 30-".$mes."-".$anio. "(PROGRAMA)";
+}
+$pdf->AddPage();
+$pdf->Cell(70,5,$titulo,0);
+
+$pdf->ln();
+
+
+
+IF ($por == 1){
+$pdf->Cell(10,5,'DROGA',0); 
+}else{
+$pdf->Cell(10,5,'NOMBRE COMERCIAL',0); 
+}
+ $pdf->SetX(100);
+ 
+$pdf->Cell(100,5,'PRESENTACION',0); 
+ $pdf->SetX(150);
+$pdf->Cell(50,5,'CANT X CAJA',0); 
+ $pdf->SetX(175);
+$pdf->Cell(50,5,'LABORATORIO',0); 
+
+$pdf->SetX(220);
+
+$pdf->Cell(30,5,"EXISTENCIA",0); 
+$pdf->Cell(20,5,"UNITARIO",0); 
+$pdf->Cell(20,5,"VALOR",0); 
+
+
+
+
+$pdf->ln();
+
+
+
+switch ($mes){
+	
+case "01":{$dia = "31";break;}
+case "02":{$dia = "28";break;}
+case "03":{$dia = "31";break;}
+case "04":{$dia = "30";break;}
+case "05":{$dia = "31";break;}
+case "06":{$dia = "30";break;}
+case "07":{$dia = "31";break;}
+case "08":{$dia = "31";break;}
+case "09":{$dia = "30";break;}
+case "10":{$dia = "31";break;}
+case "11":{$dia = "30";break;}
+case "12":{$dia = "31";break;}
+}
+
+
+
+if (($mes == 10) and ($anio == 12)){
+$monodrogas = "monodrogas_30102012";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 11) and ($anio == 12)){
+$monodrogas = "monodrogas_30112012";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 12) and ($anio == 12)){
+$monodrogas = "monodrogas_31122012";
+ $tr_stock_provisorio = "tr_stock_temp_provisorio_21012013";
+ $tr_stock_provisorio1 = "tr_stock_temp_provisorio1_21012013";
+
+// Año 2013
+}elseif (($mes == 01) and ($anio == 13)){
+$monodrogas = "monodrogas_31012013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 02) and ($anio == 13)){
+$monodrogas = "monodrogas_31022013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 03) and ($anio == 13)){
+$monodrogas = "monodrogas_27032013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 04) and ($anio == 13)){
+$monodrogas = "monodrogas_31042013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 05) and ($anio == 13)){
+$monodrogas = "monodrogas_30052013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 06) and ($anio == 13)){
+$monodrogas = "monodrogas_30062013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 07) and ($anio == 13)){
+$monodrogas = "monodrogas_30072013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 08) and ($anio == 13)){
+$monodrogas = "monodrogas_30082013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 09) and ($anio == 13)){
+$monodrogas = "monodrogas_30092013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 10) and ($anio == 13)){
+$monodrogas = "monodrogas_30102013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 11) and ($anio == 13)){
+$monodrogas = "monodrogas_30112013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 12) and ($anio == 13)){
+$monodrogas = "monodrogas_30122013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 01) and ($anio == 14)){
+$monodrogas = "monodrogas_30012014";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 1) and ($anio == 14)){
+$monodrogas = "monodrogas_30012014";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}
+
+
+
+if ($provee == 1){
+echo $sql1="select * from $tr_stock_provisorio where mes = '$mes' and anio = '$anio' and cuenta = 110 order by drogas";
+}else{
+echo $sql1="select * from $tr_stock_provisorio where mes = '$mes' and anio = '$anio' and ace != 1 order by drogas";
+}
+$result1 = $db->Execute($sql1);
+ 
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ 
+$fecha=strtoupper($result1->fields["fecha"]);
+$cod_movimiento=strtoupper($result1->fields["cod_movimiento"]);
+$tipo_fact=strtoupper($result1->fields["tipo_fact"]);
+$nro_comprobante=strtoupper($result1->fields["nro_comprobante"]);
+
+$precio_unitario=strtoupper($result1->fields["precio_unitario"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cuenta=strtoupper($result1->fields["cuenta"]);
+$tipo_cuenta=strtoupper($result1->fields["tipo_cuenta"]);
+$observaciones=strtoupper($result1->fields["observaciones"]);
+$documento=strtoupper($result1->fields["documento"]);
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+$nro_os=strtoupper($result1->fields["nro_os"]);
+$gtin=strtoupper($result1->fields["gtin"]);
+$transaccion=strtoupper($result1->fields["transaccion"]);
+$nro_serie=strtoupper($result1->fields["nro_serie"]);
+$drogas=strtoupper($result1->fields["drogas"]);
+$grupo=strtoupper($result1->fields["grupo"]);
+$laboratorio=strtoupper($result1->fields["laboratorio"]);
+$anterior=strtoupper($result1->fields["anterior"]);
+$cantidad=strtoupper($result1->fields["cantidad"]);
+$salida=strtoupper($result1->fields["salida"]);
+$cod_barra=strtoupper($result1->fields["cod_mercaderia"]);
+
+$precio_anterior =strtoupper($result1->fields["precio_anterior"]);
+$precio_ingreso=strtoupper($result1->fields["precio_ingreso"]);
+$precio_egreso=strtoupper($result1->fields["precio_egreso"]);
+
+$saldo = $precio_anterior + $precio_ingreso - $precio_egreso;
+
+$suma_saldo = $suma_saldo + $saldo;
+$suma_ingresos = $suma_ingresos + $precio_ingreso;
+$suma_ingresos = $suma_ingresos + $precio_ingreso;
+$suma_egresos = $suma_egresos + $precio_egreso;
+
+$todo = $anterior + $cantidad - $salida;
+
+
+
+  $sql="select * from laboratorios where cod_laboratorio = $laboratorio";
+$result = $db->Execute($sql);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+
+$sql="select * from $monodrogas where cod_barra = $cod_barra";
+$result = $db->Execute($sql);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$troquel=strtoupper($result->fields["troquel"]);
+$cant_caja=strtoupper($result->fields["cant_caja"]);
+$precio_actualizado=strtoupper($result->fields["precio_actualizado"]);
+
+$sql="select * from inventario_agrupado where cod_mercaderia = $cod_barra";
+$result = $db->Execute($sql);
+$cantidad_agrupado=strtoupper($result->fields["saldo"]);
+
+  $sql="select * from drogas where cod_droga = $cod_droga and tipo = 1";
+$result = $db->Execute($sql);
+$drogas=strtoupper($result->fields["droga"]);
+
+
+
+if ($laboratorio == ""){
+$laboratorio = "UNICO";
+}
+
+if ($por == 1){
+$nombre_comercial = $nombre_comercial;
+}else
+	  {
+$nombre_comercial = $drogas;
+	  }
+
+
+
+if ($todo > 0){
+$precio_uni = round($saldo / $todo,2);
+
+$total_precio = $todo * $precio_actualizado;
+
+//$precio_uni = round($saldo,2);
+$pdf->Cell(20,5,$troquel,1,0,'L'); 	  
+
+
+$pdf->Cell(70,5,$nombre_comercial,1,0,'L'); 
+ $pdf->SetX(100);
+$pdf->Cell(55,5,$presentacion,1,0,'L'); 
+
+ $pdf->SetX(155);
+$pdf->Cell(10,5,$cant_caja,1,0,'C'); 
+
+ 
+ 
+ $pdf->SetX(165);
+
+IF ($laboratorio == "UNICO"){
+ $pdf->SetTextColor(5,0,255);
+$pdf->Cell(50,5,$laboratorio,1,0,'C'); 
+ $pdf->SetTextColor(0);
+}
+else
+	  {
+ $pdf->SetTextColor(0);
+$pdf->Cell(50,5,$laboratorio,1,0,'C'); 
+ $pdf->SetTextColor(0);
+	  }
+
+//$total_precio = $todo * $precio_actualizado;
+$suma_saldo1 = $suma_saldo1 + $total_precio;
+
+$pdf->SetX(215);
+//$pdf->Cell(30,5,$anterior,1,0,'C'); 
+$pdf->Cell(30,5,$todo,1,0,'C'); 
+$pdf->Cell(20,5,$precio_actualizado,1,0,'R'); 
+//$pdf->Cell(20,5,number_format($saldo,2),0); 
+$pdf->Cell(20,5,number_format($total_precio,2),1,0,'R'); 
+
+$pdf->ln();
+
+$cant = $cant+ $todo;
+$contame = $contame + 1;
+}
+
+
+$suma_todo = $suma_todo + $todo;
+$todo = "";
+$total_precio = "";
+$precio_actualizado = "";
+
+
+
+
+
+
+$result1->MoveNext();
+	}
+
+ 
+
+
+
+
+$pdf->ln();
+
+
+$pdf->SetX(100);
+$pdf->Cell(100,5,"TOTAL: ",0); 
+$pdf->Cell(50,5,number_format($suma_saldo1,2),0);  
+
+$pdf->ln();
+
+$pdf->SetX(100);
+$pdf->Cell(100,5,"CANT DE ARTICULOS EXISTENTES PO: ",0); 
+$pdf->Cell(50,5,$suma_todo,0);  
+
+
+/*
+$pdf->SetX(100);
+$pdf->Cell(50,5,"CANT: ",0); 
+$pdf->Cell(50,5,$cant,0); */
+
+
+$pdf->Output();
+
+
+// 428-7755

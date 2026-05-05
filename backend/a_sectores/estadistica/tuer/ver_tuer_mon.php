@@ -1,0 +1,343 @@
+<?php 
+$dia1 = date("d");
+$mes1 = date("m");
+$anio1 = date("Y");
+
+
+SWITCH ($mes){
+	case "01":{$mes22 = "ENERO";break;}
+	case "02":{$mes22 = "FEBRERO";break;}
+	case "03":{$mes22 = "MARZO";break;}
+	case "04":{$mes22 = "ABRIL";break;}
+	case "05":{$mes22 = "MAYO";break;}
+	case "06":{$mes22 = "JUNIO";break;}
+	case "07":{$mes22 = "JULIO";break;}
+	case "08":{$mes22 = "AGOSTO";break;}
+	case "09":{$mes22 = "SETIEMBRE";break;}
+	case "10":{$mes22 = "OCTUBRE";break;}
+	case "11":{$mes22 = "NOVIEMBRE";break;}
+	case "12":{$mes22 = "DICIEMBRE";break;}
+}
+
+SWITCH ($mes1){
+	case "01":{$mes222 = "ENERO";break;}
+	case "02":{$mes222 = "FEBRERO";break;}
+	case "03":{$mes222 = "MARZO";break;}
+	case "04":{$mes222 = "ABRIL";break;}
+	case "05":{$mes222 = "MAYO";break;}
+	case "06":{$mes222 = "JUNIO";break;}
+	case "07":{$mes222 = "JULIO";break;}
+	case "08":{$mes222 = "AGOSTO";break;}
+	case "09":{$mes222 = "SETIEMBRE";break;}
+	case "10":{$mes222 = "OCTUBRE";break;}
+	case "11":{$mes222 = "NOVIEMBRE";break;}
+	case "12":{$mes222 = "DICIEMBRE";break;}
+}
+
+
+include ("../../../conexiones/config_usu.php");
+
+$sql2="select COUNT(nro_receta) as total from receta where fecha_factura between '$desde' and '$hasta' order by hora_ingreso desc";
+$result2 = $db->Execute($sql2);
+$total =strtoupper($result2->fields["total"]);
+
+ $sql2="select COUNT(nro_receta) as total from receta where fecha_factura between '$desde' and '$hasta' and hora_entrega = '00:00:00' order by hora_ingreso desc";
+$result2 = $db->Execute($sql2);
+$recibidas =strtoupper($result2->fields["total"]);
+
+$sql2="select COUNT(nro_receta) as total from receta where fecha_factura between '$desde' and '$hasta' and hora_entrega != '00:00:00' order by hora_ingreso desc";
+$result2 = $db->Execute($sql2);
+$entregadas=strtoupper($result2->fields["total"]);
+
+ 
+
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo76 {font-family: "Trebuchet MS"}
+.Estilo78 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo80 {font-family: "Trebuchet MS"; font-size: 14px; font-weight: bold; }
+.Estilo83 {
+	color: #0000FF;
+	font-weight: bold;
+	font-family: "Trebuchet MS";
+	font-style: italic;
+}
+.Estilo84 {font-size: 14px}
+.Estilo86 {font-family: "Trebuchet MS"; font-size: 14px; }
+.Estilo87 {font-family: "Trebuchet MS"; font-size: 12px; color: #FFFFFF; }
+-->
+</style>
+
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close(); cerrar()"> 
+
+
+<table width="800" border="0">
+  <tr>
+    <td height="54"><div align="center"><strong>PROGRAMA ONCOLOGICO PROVINCIAL </strong></div></td>
+  </tr>
+  <tr>
+    <td><div align="right" class="Estilo78">Mendoza a los <?php echo $dia1;?> dias de <?php echo $mes222;?> de <?php echo $anio1;?></div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="center" class="Estilo76">TUER</div></td>
+  </tr>
+  <tr>
+    <td height="21">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="center"><span class="Estilo80">Cantidad de Recetas: <?php echo $total;?>  </span></div></td>
+  </tr>
+   <tr>
+    <td><div align="center"><span class="Estilo80">Cantidad Sin entregar <?php echo $recibidas;?>  </span></div></td>
+  </tr>
+   <tr>
+    <td><div align="center"><span class="Estilo80">Cantidad Entregadas: <?php echo $entregadas;?>  </span></div></td>
+  </tr>
+ 
+
+  <tr>
+    <td><span class="Estilo83">PERIODO: <span class="Estilo84"><?php echo $mes22;?> - 20<?php echo $anio;?></span></span></td>
+  </tr>
+</table>
+
+
+<?php
+
+
+
+ 
+
+
+
+ $sql1="select * from receta where fecha between '$desde' and '$hasta' and hora_facturacion != '00:00:00' order by fecha_factura, fecha_factura desc";
+
+
+//echo $sql1="select * from receta where fecha between '$desde' and '$hasta' and hora_facturacion != '00:00:00' and fecha_entrega != '0000-00-00' order by fecha, hora_entrega desc";
+$result1 = $db->Execute($sql1);
+
+
+?>
+<table width="800" border="1" cellspacing="0">
+  <!--DWLayoutTable-->
+  
+  <tr bordercolor="#FFFFFF" bgcolor="#C9C9C9">
+    <td colspan="11" valign="top" bgcolor="#E6E6E6"><div align="center">RECETAS NORMALES <font color="#000000" size="2" face="Trebuchet MS"> </font><font size="2" face="Trebuchet MS"><?php echo $mes22;?></font><strong><font color="#000000" size="2" face="Trebuchet MS"> - 20</font><font size="2" face="Trebuchet MS"><?php echo $anio;?></font> </strong></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td colspan="2" bgcolor="#6699FF" class="Estilo78"><div align="center" class="Estilo76">
+      <div align="center">ENTREGADO</div>
+    </div></td>
+    <td colspan="2" bgcolor="#66CC99" class="Estilo78"><div align="center"><span class="Estilo76">INGRESADO</span></div></td>
+    <td colspan="6" bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td width="40" bgcolor="#C9C9C9"><font size="2" face="Trebuchet MS">Receta</font></td>
+    <td width="45" bgcolor="#6699FF"><div align="center"><font size="2" face="Trebuchet MS">Fecha</font></div></td>
+    <td width="67" bgcolor="#6699FF"><div align="center"><font size="2" face="Trebuchet MS">Hora</font></div></td>
+    <td width="44" bgcolor="#66CC99"><div align="center"><font size="2" face="Trebuchet MS">Fecha</font></div></td>
+    <td width="45" bgcolor="#66CC99"><div align="center"><font size="2" face="Trebuchet MS">Hora</font></div></td>
+    <td width="345" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Paciente</font></div></td>
+    <td width="36" bgcolor="#C9C9C9"><div align="center"> <font size="2" face="Trebuchet MS">Meses</font></div></td>
+      <td width="34" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">dias</font></div></td>
+      <td width="28" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">hs</font></div></td>
+      <td width="35" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">min</font></div></td>
+      <td width="35" bgcolor="#C9C9C9"><div align="center"> <font size="2" face="Trebuchet MS">Grupo</font></div></td>
+  </tr>
+  <?php 
+  
+   if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+
+
+$nro_receta=strtoupper($result1->fields["nro_receta"]);
+
+
+ $sql3="select * from receta_detalle where nro_receta = $nro_receta";
+$result3 = $db->Execute($sql3);
+   if (!$result3) die("fallo".$db->ErrorMsg());
+  while (!$result3->EOF) {
+
+$cod_droga=strtoupper($result3->fields["cod_droga"]);
+
+  $sql4="select * from monodrogas where cod_droga = $cod_droga";
+$result4 = $db->Execute($sql4);
+
+ $grupo=strtoupper($result4->fields["grupo"]);
+
+if ($grupo == 3){	$monoclonal == "SI";}
+
+
+ $result3->MoveNext();
+	}
+
+
+$nombre_paciente=strtoupper($result1->fields["nombre_paciente"]);
+$nro_paciente=strtoupper($result1->fields["nro_paciente"]);
+$fecha=$result1->fields["fecha"];
+$fecha_entrega=$result1->fields["fecha_factura"];
+$hora_ingreso=strtoupper($result1->fields["hora_ingreso"]);
+$hora_facturacion=strtoupper($result1->fields["hora_facturacion"]);
+$hora_entrega=strtoupper($result1->fields["hora_facturacion"]);
+
+
+
+$fecha_0 = $fecha." ".$hora_ingreso;
+$fecha_1 = $fecha_entrega." ".$hora_entrega;
+
+$date1 = $fecha;
+$date2 = $fecha_entrega;
+
+
+$dia = substr($fecha, 8,2);
+$mes= substr($fecha, 5,2);
+$anio = substr($fecha, 0,4);
+
+$fecha = $dia."/".$mes."/".$anio;
+
+
+$fecha_entrega=$result1->fields["fecha_factura"];
+
+$dia = substr($fecha_entrega, 8,2);
+$mes= substr($fecha_entrega, 5,2);
+$anio = substr($fecha_entrega, 0,4);
+
+$fecha_entrega = $dia."/".$mes."/".$anio;
+
+
+
+
+$tiempo = RestarHoras($hora_ingreso,$hora_entrega);
+
+
+SWITCH ($grupo){
+
+	case "3":{
+		$grupo1 = "";
+$horas = substr($tiempo,0,2);
+$minutos= substr($tiempo,3,2);
+$sum_horas = $sum_horas + $horas;
+$sum_minutos = $sum_minutos + $minutos;
+$cant = $cant + 1;
+
+$fecha1 = new DateTime($fecha_0);
+$fecha2 = new DateTime($fecha_1);
+$fecha_fin = $fecha1->diff($fecha2);
+
+
+$total_m = $total_m + $fecha_fin->m;
+$total_d = $total_d + $fecha_fin->d;
+
+
+$total_h = $total_h + $fecha_fin->h;
+$total_i = $total_i + $fecha_fin->i;
+
+
+?>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $nro_receta;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $fecha_entrega;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $hora_facturacion;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $fecha;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $hora_ingreso;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="left"><font size="2" face="Trebuchet MS"><?php echo $nombre_paciente;?> (<?php echo $nro_paciente;?>)</font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo  $fecha_fin->m;?></font></div></td>
+	    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo  $fecha_fin->d;?></font></div></td>
+	    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo  $fecha_fin->h;?></font></div></td>
+	    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo  $fecha_fin->i;?></font></div></td>
+	    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $grupo1;?></font></div></td>
+  </tr>
+  <?php
+	
+$contame = $contame + 1;
+$monoclonal == "";
+
+break;
+	}
+
+	
+
+}
+
+
+
+
+$diff = abs(strtotime($date2) - strtotime($date1));
+$years = floor($diff / (365*60*60*24));
+$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+
+
+echo $todo_minino = $fecha_fin->h;
+
+//$promedio_minimo = round(*60);
+
+
+
+$a_min = array($fecha_fin->i);
+$a_hs = array($fecha_fin->h);
+
+$result1->MoveNext();
+	}
+
+
+$hor_i = $total_i/60;
+
+/*echo $a = min($a_min);
+echo "<br>";
+echo $b = min($a_hs);
+echo "<br>";
+echo $c = max($a_min);
+echo "<br>";
+echo $d = max($a_hs);
+
+*/
+
+$todo = $hor_i + $total_h;
+$promedio = round($todo / $cant);
+$promedio_min = round(($todo / $cant)*60);
+
+?>
+
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td colspan="6" bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td colspan="5" bgcolor="#E6E6E6"><hr noshade></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td colspan="6" bgcolor="#C9C9C9"><div align="center">TOTAL TIEMPO MES</div></td>
+    <td bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $total_m;?></font></div></td>
+	    <td bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $total_d;?></font></div></td>
+	    <td bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $total_h;?></font></div></td>
+	    <td bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $total_i;?></font></div></td>
+	    <td bgcolor="#C9C9C9"><div align="center"></div></td>
+  </tr>
+   
+   <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+     <td colspan="11" bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+   </tr>
+   <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td colspan="11" bgcolor="#330099"><div align="center" class="Estilo87">PROMEDIO X <?php echo $contame;?> DE RECETAS </div>      <div align="center"></div>      <div align="center"></div></td>
+  </tr>
+   <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+     <td colspan="5" bgcolor="#A6D2FF"><div align="right" class="Estilo76">En horas: </div></td>
+     <td colspan="6" bgcolor="#A6D2FF" class="Estilo76"><span class="Estilo86"><?php echo $promedio;?></span></td>
+   </tr>
+   <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+     <td colspan="5" bgcolor="#A6D2FF"><div align="right" class="Estilo76">En minutos: </div></td>
+     <td colspan="6" bgcolor="#A6D2FF" class="Estilo76"><span class="Estilo86"><?php echo $promedio_min;?></span></td>
+   </tr>
+</table>
+
+
+<?php 
+
+
+?>

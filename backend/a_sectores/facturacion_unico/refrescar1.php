@@ -1,0 +1,36 @@
+
+
+
+<table width="800" border="1" cellspacing="0">
+  <tr bgcolor="#E6E6E6">
+    <td width="7%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo1 Estilo39 Estilo42 Estilo45 Estilo16 Estilo60 Estilo67 Estilo69 Estilo86">Cod.</div></td>
+    <td width="27%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo16 Estilo60 Estilo67 Estilo69 Estilo86">Descripcion</div></td>
+    <td width="26%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo16 Estilo60 Estilo67 Estilo69 Estilo86">Presentaci&oacute;n</div></td>
+    <td width="13%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo87"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Lote</span></div></td>
+    <td width="10%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo87"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Vto</div></td>
+    <td width="6%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo87"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Exis.</span></div></td>
+    <td width="6%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo87"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Precio</span></div></td>
+    
+	<td width="5%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo87"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">ND</span></div></td>
+  </tr>
+
+
+<?php 
+	
+
+
+
+$matricula= $_REQUEST['matricula'];
+$nro_cliente= $_REQUEST['nro_cliente'];
+$operador= $_REQUEST['operador'];
+$cod_mercaderia= $_REQUEST['cod_barra'];
+
+
+if (is_numeric ($cod_mercaderia)) { 
+include ("refrescar_numerico.php");
+}
+else
+{
+
+include ("refrescar_texto.php");
+}

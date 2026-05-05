@@ -1,0 +1,115 @@
+<?php 
+
+include("../../../conexiones/config_pro.php");
+
+if ($nro_factura != ""){
+$sql = "SELECT * FROM `compras1_deta_temp`  WHERE  `nro_factura` = $nro_factura and operador = $id";
+}
+
+$result = $db->Execute($sql);
+
+
+
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo6 {font-family: Arial, Helvetica, sans-serif}
+.Estilo7 {font-size: 12px}
+.Estilo13 {font-family: "Trebuchet MS"}
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo16 {font-family: "Trebuchet MS"; font-size: 12px; font-weight: bold; }
+-->
+</style>
+
+<table width="800" border="1" cellspacing="0">
+  <tr bgcolor="#FFBC79">
+    <td width="32%"  bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo26 Estilo13 Estilo7">Descripcion / Mercaderia</div></td>
+    <td width="32%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo26 Estilo13 Estilo7">Presentacion</span></div></td>
+    <td width="7%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7">Cantidad</div></td>
+    <td width="6%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> Lote</div></td>
+    <td width="13%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> Vto </div></td>
+    <td width="7%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> C/U</div></td>
+    <td width="6%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7">Total</div></td>
+    <td width="5%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14">Borrar</div></td>
+  </tr><?php 
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]);
+$cantidad=strtoupper($result->fields["cantidad"]);
+$lote=strtoupper($result->fields["lote"]);
+$mes_lote=strtoupper($result->fields["mes_lote"]);
+$anio_lote=strtoupper($result->fields["anio_lote"]);
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+$total=strtoupper($result->fields["total"]);
+$cod_detalle=strtoupper($result->fields["cod_detalle"]);
+
+$vto_lote = $mes_lote." / ".$anio_lote;
+
+
+$sql2 = "SELECT * FROM `monodrogas`  WHERE  (`cod_barra` = $cod_mercaderia or troquel = $cod_mercaderia )";
+$result2 = $db->Execute($sql2);
+ $descripcion=strtoupper($result2->fields["nombre_comercial"]);
+ $presentacion=strtoupper($result2->fields["presentacion"]);
+ $grupo =$result2->fields["grupo"];
+/*
+
+
+$sql3 = "SELECT * FROM existencias  WHERE  `cod_merca` = $cod_mercaderia";
+$result3 = $db->Execute($sql3);
+$cod_lote=strtoupper($result3->fields["cod_lote"]);
+$vencimiento_lote=strtoupper($result3->fields["vencimiento_lote"]);
+$precio_unitario=strtoupper($result3->fields["precio_unitario"]);
+
+
+$neto = $neto + $total;
+$iva = ($neto * 21) /100;
+$total_factura = round($neto,2) + round($iva,2);
+
+
+*/
+?><tr bgcolor="#FFFFFF">
+    <td bgcolor="#FFFFFF" scope="col"><div align="left" class="Estilo13 Estilo7"><span class="Estilo28"><?php echo $cod_mercaderia. " - ".$descripcion;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><span class="Estilo14"><span class="Estilo28"><?php echo $presentacion;?></span></span></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo14"><span class="Estilo28"><?php echo $cantidad;?></span></div></td>
+	    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo14"><span class="Estilo26"><?php echo $lote;?></span></div></td>
+		    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo14"><span class="Estilo28"><?php echo $vto_lote;?></span></div></td>
+
+    <td bgcolor="#FFFFFF" scope="col"><div align="right" class="Estilo14"><span class="Estilo28"><?php echo $precio_unitario;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="right" class="Estilo14"><span class="Estilo28"><?php echo $total;?></span></div></td>
+
+   <td width="5%" bgcolor="#FFFFFF" class="Estilo6"><div align="center" class="Estilo14">   <a href="borrar_item.php?cod_detalle=<?php print("$cod_detalle");?>&&id=<?php print("$id");?>"><IMG SRC="../../../imagenes/botones/btn_anular.gif" alt="Anular" border = "0"></a></div></td>
+  </tr>
+<?php 
+
+
+	        $total_cantidad = $total_cantidad + $cantidad;
+	        $total_unitario = $precio_unitario + $cantidad;
+	        $total_neto = $total_neto + $total;
+
+			$descuento = ($total_neto * $porcentaje_dto) /100;
+$total_gral = $total_neto - $descuento;
+									
+$total_item = $total_item + 1;
+	 $result->MoveNext();
+				}
+
+?>
+
+<tr bgcolor="#E6E6E6">
+  <td bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo16"><strong><?php echo $total_cantidad;?></strong></span></div></td>
+  <td bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td colspan="2" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo14">
+    <div align="right">Sub Total  </div>
+  </div></td>
+  <td colspan="2" bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo16"><strong><?php echo number_format($total_gral,2);?></strong></span></div></td>
+  </tr>
+</table>
+
+

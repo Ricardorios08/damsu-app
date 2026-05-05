@@ -1,0 +1,19 @@
+<?php 
+
+include ("../../../conexiones/config_usu.php");
+
+
+$cod_renglon=$_REQUEST["cod_renglon"];
+$mes=$_POST["mes"];
+$anio=$_POST["anio"];
+
+
+ $sql1="delete from encuesta1 where cod_renglon = $cod_renglon";
+$result1 = $db->Execute($sql1);
+
+$band = 1;
+
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+
+include ("buscar_encuesta.php");

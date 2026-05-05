@@ -1,0 +1,172 @@
+<?php global $band;
+
+include("../../../conexiones/config_pro.php");
+include ("../../../conexiones/usuario_compra.php");
+include("../../../funciones/funciones.php");
+
+$id = $_REQUEST["id"];
+$operador = $_REQUEST["id"];
+
+$dia= $_REQUEST['dia'];
+if ($dia == ""){$dia = date("d");}
+$mes= $_REQUEST['mes'];
+if ($mes == ""){$mes = date("m");}
+$anio= $_REQUEST['anio'];
+if ($anio == ""){$anio = date("y");}
+
+
+ $sql = "DELETE from `nota_ajuste`";
+$result = $db->Execute($sql);
+
+ $sql = "DELETE from `nota_ajuste_encab`";
+$result = $db->Execute($sql);
+
+
+ $sql = "DELETE from `nota_ajuste_detalle`";
+$result = $db->Execute($sql);
+
+
+ 
+$fecha = $anio."-".$mes."-".$dia;
+
+
+$fecha1 =$dia."-".$mes."-".$anio;
+
+if(datecheck($fecha1)===false){
+   $leyenda = "LA FECHA NO ES CORRECTA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+
+ 
+
+
+$dia= $_REQUEST['dia'];
+if ($dia == ""){$dia = date("d");}
+$mes= $_REQUEST['mes'];
+if ($mes == ""){$mes = date("m");}
+$anio= $_REQUEST['anio'];
+if ($anio == ""){$anio = date("y");}
+
+
+
+$fecha = "20".$anio."-".$mes."-".$dia;
+
+
+$fecha1 =$dia."-".$mes."-20".$anio;
+
+if(datecheck($fecha1)===false){
+   $leyenda = "LA FECHA NO ES CORRECTA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+$operador= $_REQUEST['id'];
+
+
+$cod_movimient=$_REQUEST["cod_movimiento"];
+	for ($i=0;$i<count($cod_movimient);$i++)    
+	{     
+	$cod_movimiento = $cod_movimient[$i];    
+	}
+
+$observaciones= $_REQUEST['observaciones'];
+$importe= $_REQUEST['importe'];
+
+$nro_factura_afectada= $_REQUEST['nro_factura_afectada'];
+
+if ($nro_factura_afectada == ""){
+
+	$leyenda = "NO INGRESO N° ENTREGA AFECTADA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}else{
+
+ $sql="select * from tr_ventas_encabezado where nro_factura = $nro_factura_afectada and tipo_fact = '001'";
+$result = $db->Execute($sql);
+$nro_fac=strtoupper($result->fields["nro_factura"]);
+$neto=strtoupper($result->fields["neto"]);
+
+	if ($nro_fac == ""){
+	$leyenda = "NO EXISTE ESA NOTA DE ENTREGA INGRESADA AL PO";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+	} 
+
+
+}
+
+
+
+$sql3 = "SELECT * FROM tr_ventas_encabezado  WHERE  nro_factura = $nro_factura_afectada";
+$result3 = $db->Execute($sql3);
+
+$tipo_fact=strtoupper($result3->fields["tipo_fact"]);
+$nro_factura=strtoupper($result3->fields["nro_factura"]);
+$nro_receta=strtoupper($result3->fields["nro_receta"]);
+$documento=strtoupper($result3->fields["documento"]);
+$tipo_doc=strtoupper($result3->fields["tipo_doc"]);
+$plan=strtoupper($result3->fields["plan"]);
+$denominacion=strtoupper($result3->fields["denominacion"]);
+//$fecha=strtoupper($result3->fields["fecha"]);
+$forma_pago=strtoupper($result3->fields["forma_pago"]);
+$porc_dto=strtoupper($result3->fields["porc_dto"]);
+$nro_os=strtoupper($result3->fields["nro_os"]);
+$nombre_os=strtoupper($result3->fields["nombre_os"]);
+$neto=strtoupper($result3->fields["neto"]);
+
+$cod_movimiento=3;
+$tipo_factura=strtoupper($result3->fields["tipo_factura"]);
+
+
+//$sql = "INSERT INTO `nota_ajuste` (`operador`, `fecha`, `nro_factura_afectada`, `importe`, `observaciones`) VALUES ('$operador', '$fecha', '$nro_factura_afectada', '$neto', '$observaciones')";
+
+
+ $sql = "INSERT INTO nota_ajuste_encab (`tipo_fact`, `nro_factura`, `nro_receta`, `documento`, `tipo_doc`, `plan`, `operador`, `denominacion`, `fecha`, `forma_pago`, `porc_dto`, `nombre_operador`, `nro_os`, `nombre_os`, `neto`, `cod_movimiento`, `tipo_factura`, `observaciones`) VALUES ('$tipo_fact', '$nro_factura', '$nro_receta', '$documento', '$tipo_doc', '$plan', '$operador', '$denominacion', '$fecha', '$forma_pago', '$porc_dto', '$nombre_operador', '$nro_os', '$nombre_os', '$neto', '$cod_movimiento', '$tipo_factura', '$observaciones')";
+$result = $db->Execute($sql);
+
+
+$sql3 = "SELECT * FROM `tr_ventas_detalle`  WHERE  nro_factura = $nro_factura_afectada order by cod_detalle desc";
+$result3 = $db->Execute($sql3);
+
+
+if (!$result3) die("fallo".$db->ErrorMsg());
+
+ while (!$result3->EOF) {
+$renglon = $renglon + 1;
+
+
+$tipo_fact=strtoupper($result3->fields["tipo_fact"]);
+$nro_factura=strtoupper($result3->fields["nro_factura"]);
+$cod_mercaderia=strtoupper($result3->fields["cod_mercaderia"]);
+$descripcion=strtoupper($result3->fields["descripcion"]);
+$presentacion=strtoupper($result3->fields["presentacion"]);
+$lote=strtoupper($result3->fields["lote"]);
+$mes_lote=strtoupper($result3->fields["mes_lote"]);
+$anio_lote=strtoupper($result3->fields["anio_lote"]);
+$cantidad=strtoupper($result3->fields["cantidad"]);
+$precio_unitario=strtoupper($result3->fields["precio_unitario"]);
+$total=strtoupper($result3->fields["total"]);
+$proveedor=strtoupper($result3->fields["proveedor"]);
+$gtin=strtoupper($result3->fields["gtin"]);
+$nro_serie=strtoupper($result3->fields["nro_serie"]);
+$programa=strtoupper($result3->fields["programa"]);
+ $grupo=strtoupper($result3->fields["grupo"]);
+
+ 
+
+ $sql = "INSERT INTO  nota_ajuste_detalle  (`tipo_fact`, `nro_factura`, `cod_detalle`, `cod_mercaderia`, `descripcion`, `presentacion`, `lote`, `mes_lote`, `anio_lote`, `cantidad`, `precio_unitario`, `total`, `proveedor`, `operador`, `gtin`, `resultado`, `transaccion`, `nro_serie`, `programa`, `grupo`, `fecha`, `afectada`) VALUES ('$tipo_fact', '$nro_factura', '', '$cod_mercaderia', '$descripcion', '$presentacion', '$lote', '$mes_lote', '$anio_lote', '$cantidad', '$precio_unitario', '$total', '$proveedor', '$operador', '$gtin', '', '', '$nro_serie', '$programa', '$grupo', '$fecha', '')";
+$result = $db->Execute($sql);
+
+	 $result3->MoveNext();
+				}
+
+
+
+include ("mostrar_detalle.php");
+
+
+?>

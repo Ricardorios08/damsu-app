@@ -1,0 +1,74 @@
+<?php
+
+/*$sql1 = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta'";
+$result1 = $db->Execute($sql1);
+
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+
+  $nro_factura=$result1->fields["nro_factura"];
+  $tipo_fact=$result1->fields["tipo_fact"];
+$cod_movimiento=$result1->fields["cod_movimiento"];
+
+  $sql = "UPDATE tr_ventas_detalle SET cod_movimiento = '$cod_movimiento' WHERE nro_factura = '$nro_factura' and tipo_fact = '$tipo_fact'";
+$result = $db->Execute($sql);
+
+$cont = $cont + 1;
+
+   $result1->MoveNext();
+	}
+
+*/
+
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3  group by documento ";
+$result = $db->Execute($sql);
+$recetas = $result->RecordCount(); 
+
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and  cod_movimiento = 3  group by documento ";
+$result = $db->Execute($sql);
+$recetas_nc = $result->RecordCount(); 
+
+
+
+///////////////////
+$sql = "SELECT COUNT(nro_factura)  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta'  and cod_movimiento != 6  and cod_movimiento != 3 and grupo = 3 group by documento ";
+$result = $db->Execute($sql);
+$recetas_mon = $result->RecordCount(); 
+
+
+$sql = "SELECT COUNT(nro_factura)  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta'    and cod_movimiento = 3 and grupo = 3  group by documento ";
+$result = $db->Execute($sql);
+$recetas_mon_nc = $result->RecordCount(); 
+
+
+
+//////////////////////
+
+$sql = "SELECT sum(neto)  as total FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta'  and cod_movimiento != 6  and cod_movimiento != 3 and grupo = 3 group by documento ";
+$result = $db->Execute($sql);
+$total=$result->fields["total"];
+
+$sql = "SELECT sum(neto)  as total FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta'  and cod_movimiento != 6  and cod_movimiento != 3 and grupo = 3 group by documento ";
+$result = $db->Execute($sql);
+$total_nc=$result->fields["total"];
+
+
+
+
+ $sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 ";
+$result = $db->Execute($sql);
+$facturas=$result->fields["total"];
+$neto=$result->fields["neto"];
+
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento = 3 ";
+$result = $db->Execute($sql);
+$facturas_nc=$result->fields["total"];
+$neto_nc=$result->fields["neto"];
+
+
+$neto = $neto - $neto_nc;
+$recetas = $recetas - $recetas_nc;
+$recetas_mon = $recetas_mon - $recetas_mon_nc;
+?>

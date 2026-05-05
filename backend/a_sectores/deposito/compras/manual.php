@@ -1,0 +1,32 @@
+<table width="103%" border="0">
+  <tr bgcolor="#C4D7E6">
+    <td colspan="5"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif">CARGA MANUAL </font></div></td>
+  </tr>
+  <tr bgcolor="#8080FF">
+    <td width="21%"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Operador</font><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">: <?php echo $operador;?></font> </td>
+    <td width="26%"><div align="left"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif"> Proveedor: <?php echo $nro_proveedor." - ".$denominacion;?></font> </div></td>
+    <td width="16%"><div align="center"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">Fecha: </font><font color="#FFFFFF" size="2"><?php echo $fecha;?></font> </div></td>
+    <td colspan="2"><div align="center"><font color="#FFFFFF" size="2" face="Arial, Helvetica, sans-serif">N&ordm; Comprobante: <?php echo $nro_factura;?></font>
+    </div></td>
+  </tr>
+  <tr bgcolor="#E8DCFC">
+    <td height="31" colspan="5"><div align="left"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Nro Troquel: <strong><font color="#006600">
+        <input type = "text" name = "cod_barra" id="cod_barra" size = "15" onKeyPress="return verif_caracter(this,event)">
+<a href="javascript:abrirVentan()"><img src="../../../imagenes/office/005.ico" alt="Buscar" width="18" height="18" border = "0"></a></font></strong> Cantidad: </font><font color="#000000" size="2">
+<input type = "text" name = "cantidad" id="cantidad" size = "4" onKeyPress="return verif_caracter(this,event)">
+
+ <input type = "hidden" name = "operador" value = "<?php echo $operador;?>">
+  <input type = "hidden" name = "modo_carga" value = "<?php echo $modo_carga;?>">
+  <input type = "hidden" name = "nro_proveedor" value = "<?php echo $nro_proveedor;?>">
+  <input type = "hidden" name = "dia" value = "<?php echo $dia;?>">
+  <input type = "hidden" name = "mes" value = "<?php echo $mes;?>">
+  <input type = "hidden" name = "anio" value = "<?php echo $anio;?>">
+  <input type = "hidden" name = "nro_factura" value = "<?php echo $nro_factura;?>">
+
+</font><font size="2" face="Arial, Helvetica, sans-serif">Precio Unitario</font>: $<font color="#000000" size="2">
+<input type = "text" name = "precio_unitario" id="precio_unitario" size = "6" >
+</font>  <font color="#000000" size="2">
+  <input name="Alta" type="submit" value="OK" id ="Alta" size = "10" onclick = "enter()" >
+  </font></div></td>
+  </tr>
+</table>

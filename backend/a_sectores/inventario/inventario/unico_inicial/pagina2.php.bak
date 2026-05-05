@@ -1,0 +1,251 @@
+<?php global $band;
+
+
+include("../../../../conexiones/config_pro.php");
+include ("../../../../conexiones/usuario_compra.php");
+
+include("../../../../funciones/funciones.php");
+
+$id = $_REQUEST['id'];
+$usuario = $_REQUEST['id'];
+
+$dia = date("d");
+$mes = date("m");
+$anio = date("y");
+
+
+
+
+$id = $_REQUEST["id"];
+$operador = $_REQUEST["id"];
+$bande_buscar= $_REQUEST["bande_buscar"];
+
+$band_pri= $_REQUEST["band_pri"];
+
+if ($band_pri == "SI"){
+
+
+
+$nro_proveedor = $_REQUEST['proveedor'];
+$informar = $_REQUEST['informar'];
+include ("../../../../conexiones/config_usu.php");
+
+
+
+
+$dia= $_REQUEST['dia'];
+if ($dia == ""){$dia = date("d");}
+$mes= $_REQUEST['mes'];
+if ($mes == ""){$mes = date("m");}
+$anio= $_REQUEST['anio'];
+if ($anio == ""){$anio = date("y");}
+
+
+
+$fecha = $anio."-".$mes."-".$dia;
+
+
+$fecha1 =$dia."-".$mes."-".$anio;
+
+if(datecheck($fecha1)===false){
+   $leyenda = "LA FECHA NO ES CORRECTA";
+	INCLUDE ("../../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+$operador= $_REQUEST['id'];
+
+
+$cod_movimient=$_REQUEST["cod_movimiento"];
+	for ($i=0;$i<count($cod_movimient);$i++)    
+	{     
+	$cod_movimiento = $cod_movimient[$i];    
+	}
+
+
+
+$nro_factura= $_REQUEST['nro_factura'];
+$porcentaje_boni= $_REQUEST['porcentaje_boni'];
+$porcentaje_dto= $_REQUEST['porcentaje_dto'];
+
+
+
+ 
+
+//include ("../comprobar_fechas.php");
+
+$periodo = date("m"); 
+$anio1 = date("y"); 
+
+
+
+}
+
+
+
+$a = $_REQUEST["cod_mercaderia"];
+$b = $_REQUEST["cod_mercaderia1"];
+
+if ($a != ''){
+$cod_mercaderia = $a;
+}
+else
+{
+$cod_mercaderia = $b;
+}
+
+
+
+
+//////////////
+
+
+$sql="select * from proveedores where cod_proveedor = $nro_proveedor";
+$result8 = $db->Execute($sql);
+$denominacion=strtoupper($result8->fields["denominacion"]);
+//////////////
+
+//include ("variables_temp.php");
+
+$periodo = date("m"); 
+$anio1 = date("y"); 
+
+
+
+?>
+<script>
+function on_load()
+{
+document.getElementById("gtin").focus();
+document.getElementById("gtin").select();
+}
+
+
+
+function verif_caracter(obj,evt)
+
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	
+	{
+		switch(obj.id)
+		{
+				case "gtin":
+				document.getElementById("cantidad").focus();
+				break;
+			
+
+	
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+function cambiar_color_over(celda){
+   celda.style.backgroundColor="#66ff33"
+}
+function cambiar_color_out(celda){
+   celda.style.backgroundColor="#FFFFFF"
+} 
+
+function abrirVentan() {
+	var cod_detalle = <?php echo $cod_detalle;?> 
+    open("buscador_rapido_mercaderia.php","miVentana", "width=300,height=600,toolbar=no,directories=no,menubar=no,status=no, scrollbars=01, top = 35");
+}
+
+</script>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+
+
+<body onload = "on_load()">
+
+
+
+<FORM name="form" ACTION="<?php  echo $_SERVER["PHP_SELF"];?>" METHOD = "POST">
+
+<?php include ("../../../../conexiones/usuario_compra.php");?>
+
+<table width="800" border="0" cellspacing="0">
+  <tr bgcolor="#000099">
+    <td height="27" colspan="4" bgcolor="#990000"><div align="center"><font color="#FFFFFF" face="Trebuchet MS">CARGA INVENTARIO UNICO </font></div></td>
+    <td width="45%" height="27" bgcolor="#990000"><div align="right"><font color="#FFFFFF" face="Trebuchet MS"> <?php echo $nombre_usuario;?></font></div></td>
+  </tr>
+  
+  
+  <tr bgcolor="#E8DCFC">
+    <td width="100%" colspan="5" bgcolor="#CCCCCC"><div align="center"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">
+      <input name="id" type="hidden" value ="<?php echo $id;?>">
+	    <input name="bande_buscar" type="hidden" value ="SI">
+      <input name="cod_mercaderia1" type="hidden" value ="<?php $cod_mercaderia;?>">
+</font></div>      <div align="center"></div>      <div align="center"></div>      <div align="center"></div>      <div align="center"></div></td>
+  </tr>
+  <tr bgcolor="#E8DCFC">
+    <td colspan="5" bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS">Codigo Unico 
+        <input type = "text" name = "gtin" id="gtin"  onKeyPress="return verif_caracter(this,event)" tabindex = "2" size = "10">
+        Cantidad
+        <input type = "text" name = "cantidad" id="cantidad" onKeyPress="return verif_caracter(this,event)"  tabindex = "2" size = "10">
+        Unitario
+        <input type = "text" name = "precio_unitario" id="precio_unitario"  tabindex = "2" size = "10">
+    </font>
+        <input name="Alta" type="submit" value="SI" id ="SI" size = "10" >
+      <input name="Alta" type="submit" value="VER" id ="Alta" size = "10" >
+    </div></td>
+  </tr>
+  <tr bgcolor="#E8DCFC">
+    <td colspan="5" bgcolor="#E6E6E6">&nbsp;</td>
+  </tr>
+</table>
+
+
+
+<?php 
+if(isset($_REQUEST['Alta'])) {
+
+	switch ($_REQUEST['Alta'])
+					{
+						
+			case "SI":
+				{
+
+
+$id= $_REQUEST['id'];
+$gtin= $_REQUEST['gtin'];
+
+ include ("refrescar.php");
+
+
+ break;	}
+
+case "VER":
+				{
+
+
+$id= $_REQUEST['id'];
+ 
+
+ include ("refrescar_detalle.php");
+
+
+ break;	}
+ 
+
+					}
+}
+?>

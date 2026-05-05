@@ -1,0 +1,383 @@
+<style type="text/css">
+<!--
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo5 {font-size: 14px}
+.Estilo7 {font-family: "Trebuchet MS"}
+.Estilo8 {font-size: 24px}
+.Estilo12 {color: #FFFFFF}
+.Estilo13 {font-family: "Trebuchet MS"; font-size: 12px; color: #FFFFFF; }
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 14px; }
+.Estilo16 {font-family: "Trebuchet MS"; font-weight: bold; }
+.Estilo19 {font-size: 14}
+-->
+</style>
+
+
+<?php 
+
+
+
+
+include ("../../../conexiones/config_pro.php");
+
+$anio = $_REQUEST['anio'];
+
+//header("Content-type: application/vnd.ms-excel");
+//header("Content-Disposition: attachment; filename=$anio");
+
+
+
+$desde1 = $anio."-01-01";
+$hasta1 = $anio."-12-31";
+
+$sql1 = "SELECT *  FROM tr_ventas_detalle WHERE `fecha` between '$desde1' and '$hasta1' and tratamiento = '' group by cod_droga";
+
+//$sql1 = "SELECT *  FROM tr_ventas_detalle WHERE `fecha` between '$desde1' and '$hasta1' and cod_droga = '184' group by cod_droga";
+$result1 = $db->Execute($sql1);
+
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+
+  $nro_factura=$result1->fields["nro_factura"];
+  $tipo_fact=$result1->fields["tipo_fact"];
+$cod_movimiento=$result1->fields["cod_movimiento"];
+$cod_droga=$result1->fields["cod_droga"];
+
+$sql="select * from drogas where cod_droga like '$cod_droga' ";
+$result2 = $db->Execute($sql);
+$tratamiento=$result2->fields["cod_droga_nuevo"];
+
+  $sql = "UPDATE tr_ventas_detalle SET tratamiento = '$tratamiento' WHERE cod_droga = $cod_droga";
+$result3 = $db->Execute($sql);
+
+$cont = $cont + 1;
+
+   $result1->MoveNext();
+	}
+
+
+
+
+
+
+
+////////////////////////////////
+$mes = "01";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$ene_hormonales = $total_hormonales;
+$ene_biologicos  = $total_biologicos;
+$ene_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+
+$mes = "02";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$feb_hormonales = $total_hormonales;
+$feb_biologicos  = $total_biologicos;
+$feb_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "03";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$mar_hormonales = $total_hormonales;
+$mar_biologicos  = $total_biologicos;
+$mar_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "04";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$abr_hormonales = $total_hormonales;
+$abr_biologicos  = $total_biologicos;
+$abr_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "05";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$may_hormonales = $total_hormonales;
+$may_biologicos  = $total_biologicos;
+$may_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "06";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$jun_hormonales = $total_hormonales;
+$jun_biologicos  = $total_biologicos;
+$jun_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+
+////////////////////////
+
+
+////////////////////////////////
+$mes = "07";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$jul_hormonales = $total_hormonales;
+$jul_biologicos  = $total_biologicos;
+$jul_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+
+$mes = "08";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$ago_hormonales = $total_hormonales;
+$ago_biologicos  = $total_biologicos;
+$ago_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "09";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$set_hormonales = $total_hormonales;
+$set_biologicos  = $total_biologicos;
+$set_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "10";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$oct_hormonales = $total_hormonales;
+$oct_biologicos  = $total_biologicos;
+$oct_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "11";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$nov_hormonales = $total_hormonales;
+$nov_biologicos  = $total_biologicos;
+$nov_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+$mes = "12";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("hormonales1.php");
+$dic_hormonales = $total_hormonales;
+$dic_biologicos  = $total_biologicos;
+$dic_quimioterapia  = $total_quimioterapia;
+$total_hormonales = "";
+$total_biologicos = "";
+$total_quimioterapia = "";
+
+
+ 
+$total_hormonales_1sem = $ene_hormonales + $feb_hormonales + $mar_hormonales +  $abr_hormonales + $may_hormonales + $jun_hormonales;
+$total_biologicos_1sem = $ene_biologicos + $feb_biologicos + $mar_biologicos +  $abr_biologicos + $may_biologicos +  $jun_biologicos;
+$total_quimioterapia_1sem = $ene_quimioterapia + $feb_quimioterapia + $mar_quimioterapia +  $abr_quimioterapia +  $may_quimioterapia + $jun_quimioterapia ;
+
+$total_hormonales_2sem = $jul_hormonales + $ago_hormonales +   $set_hormonales + $oct_hormonales + $nov_hormonales + $dic_hormonales;
+$total_biologicos_2sem = $jul_biologicos + $ago_biologicos + $set_biologicos + $oct_biologicos +  $nov_biologicos + $dic_biologicos + $jul_biologicos;
+$total_quimioterapia_2sem = $jul_quimioterapia + $ago_quimioterapia + $set_quimioterapia + $oct_quimioterapia +  $nov_quimioterapia + $dic_quimioterapia;
+
+
+$total_hormonales_anual = $total_hormonales_1sem + $total_hormonales_2sem;
+$total_biologicos_anual = $total_biologicos_1sem + $total_biologicos_2sem;
+$total_quimioterapia_anual = $total_quimioterapia_1sem + $total_quimioterapia_2sem;
+
+
+
+   ?>
+
+ 
+
+
+
+ <table width="850" border="0" cellspacing="0">
+  <tr bgcolor="#CCCCCC">
+    <td colspan="4"><div align="center" class="Estilo2 Estilo8">CONSUMO POR TRATAMIENTO PROGRAMA ONCOLOGICO  </div></td>
+  </tr>
+  <tr bgcolor="#0000FF">
+    <td width="214"><div align="center" class="Estilo12 Estilo2"><strong><span class="Estilo5"><span class="Estilo7"><span class="Estilo2"><?PHP echo $anio;?></span></span></span></strong></div></td>
+    <td width="251"><div align="center" class="Estilo13"><strong>HORMONALES<span class="Estilo2"></span></strong></div>    </td>
+    <td width="209"><div align="center" class="Estilo13"><strong>BIOLOGICOS</strong></div></td>
+    <td width="168"><div align="center" class="Estilo12"><strong><span class="Estilo2">QUIMIOTERAPIA</span></strong></div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">ENERO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ene_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7">
+      <?PHP echo $ene_biologicos;?>
+    </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $ene_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">FEBRERO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $feb_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $feb_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $feb_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">MARZO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $mar_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $mar_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $mar_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">ABRIL </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $abr_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $abr_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $abr_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">MAYO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $may_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $may_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $may_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">JUNIO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jun_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jun_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $jun_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr bgcolor="#66CCCC">
+    <td><div align="center"><span class="Estilo14">1&deg; SEMESTRE </span></div></td>
+ <td><div align="right"><?PHP echo $total_hormonales_1sem;?></div></td>
+	<td><div align="right"><?PHP echo $total_biologicos_1sem;?></div></td>
+	<td><div align="right"><?PHP echo $total_quimioterapia_1sem;?></div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">JULIO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jul_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jul_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $jul_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">AGOSTO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ago_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ago_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $ago_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">SETIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $set_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $set_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $set_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">OCTUBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $oct_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $oct_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $oct_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">NOVIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $nov_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $nov_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $nov_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">DICIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $dic_hormonales;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $dic_biologicos;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="center"><span class="Estilo7"><?PHP echo $dic_quimioterapia;?></span></div>
+    </div></td>
+   </tr>
+
+
+
+  <tr bgcolor="#66CCCC">
+    <td><div align="center"><span class="Estilo14">2&deg; SEMESTRE </span></div></td>
+ <td><div align="right"><?PHP echo $total_hormonales_2sem;?></div></td>
+	<td><div align="right"><?PHP echo $total_biologicos_2sem;?></div></td>
+	<td><div align="right"><?PHP echo $total_quimioterapia_2sem;?></div></td>
+   </tr>
+  <tr bgcolor="#FF9966">
+    <td><div align="center"><span class="Estilo14">ANUAL</span></div></td>
+    <td><div align="right"><?PHP echo $total_hormonales_anual;?></div></td>
+	<td><div align="right"><?PHP echo $total_biologicos_anual;?></div></td>
+	<td><div align="right"><?PHP echo $total_quimioterapia_anual;?></div></td>
+   </tr>
+</table>
+

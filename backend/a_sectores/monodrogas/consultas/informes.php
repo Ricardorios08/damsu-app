@@ -1,0 +1,106 @@
+<script type="text/javascript">
+function ocultamenu(){
+  var menu = document.getElementById("Atributos");
+  menu.style.display = "none";
+}
+function despliega(){
+  var menu = document.getElementById("Atributos");
+    if(menu.style.display == "none"){
+      menu.style.display = "block";
+    }
+    else{
+      menu.style.display = "none";
+    }
+}
+</script>
+<script LANGUAGE="JavaScript">
+function multicarga(documento1,documento2)
+{
+parent.izquierda.location.href=documento1;
+parent.central1.location.href=documento2;
+}
+</script>
+<style type="text/css">
+<!--
+.Estilo4 {font-size: xx-small}
+.Estilo5 {
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.Estilo6 {color: #FFFFFF}
+.Estilo7 {font-family: Arial, Helvetica, sans-serif}
+.Estilo12 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.Estilo13 {color: #FFFFFF; font-family: Arial, Helvetica, sans-serif; }
+.Estilo2 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #0000FF; }
+-->
+</style>
+<BODY background="../../../IMAGENES/fondo.png" class="Estilo4" onload ="ocultamenu()">
+
+<FORM ACTION="separar_busqueda.php" method="post" TARGET = "central1">
+<table width="140" border="0">
+  <tr>
+    <th bgcolor="#000099" scope="col"><span class="Estilo6">INFORMES</span></th>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo7" scope="row">      <div align="center"><a href="stock/consultas.php" target = "central1" ><span class="Estilo2"> FICHA STOCK </span></a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><span class="Estilo7"><a href="informes/consultas.php?opciones=Existencias" target = "central1" > <span class="Estilo2"> EXISTENCIAS</span></a></span></div></td>
+  </tr>
+  <!-- <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><span class="Estilo7"><a href="clientes/entrada_dato.php" target = "central1" ><span class="Estilo2">VENCIMIENTO LOTES</span></a></span></div></td>
+  </tr> -->
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row">     <font color="#0000FF">
+      <div align="center"><a href="CTACTE/consultas.php" target = "central1" > MAYOR CTA-CTE </a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="ana_saldos/consultas.php" target = "central1" > AN&Aacute;LISIS.DE SALDOS</a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="balance/consultas.php" target = "central1" > BALANCE CTA-CTE </a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="diario_vta/consultas.php" target = "central1" > DIARIO DE VENTAS </a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="informes/fact_vencidas.php?opciones=Facturas Vencidas" target = "central1" >FACTURAS VENCIDAS</a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="proveedores/entrada_dato.php" target = "central1" >LIBRO IVA VENTAS </a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="informes/consultas.php?opciones=Lista de Precios" target = "central1" >LISTA DE PRECIOS </a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="informes/consultas.php?opciones=Vencimiento de Lotes" target = "central1" >LISTAR VTO - LOTES</a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="informes/consultas.php?opciones=Lotes Vencidos" target = "central1" >LOTES VENCIDOS</a></div></td>
+  </tr>
+  <tr>
+    <td valign="middle" class="Estilo12" scope="row"><div align="center"><a href="../tabla codigos.php" target = "central1" >TABLA AJUSTES</a></div></td>
+  </tr>
+  <tr>
+    <!-- <td class="Estilo4" scope="row">      <p align="left" class="Estilo12"><font color="#0000FF"><a href="facturacion/facturapro1.php" target = "central1" >Ventas</a></font></p></td> -->
+  </tr>
+  <tr>
+   <!--  <td scope="row">      <p align="left"><span class="Estilo5"><font color="#0000FF"><a href="facturacion/facturapro.php" target = "central1" >Pre-facturaci&oacute;n</a></font><font color="#0000FF"></font></span></p></td> -->
+  </tr>
+</table>
+
+<div align="center"></div>
+
+<table width="140" border="0">
+    <tr>
+      <td width="132" bgcolor="#000099" scope="col"><div align="center" class="Estilo6">Ir a...</div></td>
+    </tr>
+
+	<tr>
+    <td><p align="center" class="Estilo10"><a href="../facturacion.php" target ="izquierda"><font color="#0000FF">Atras</font></a> </p>      </td>
+  </tr>
+
+  </table>
+
+
+</form>

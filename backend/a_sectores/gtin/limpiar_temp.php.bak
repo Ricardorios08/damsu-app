@@ -1,0 +1,30 @@
+<?php
+
+include ("../../conexiones/config_pro.php");
+
+$nro_comprobante = $_REQUEST['nro_comprobante'];
+$seguridad= $_REQUEST['seguridad'];
+
+
+
+if ($seguridad == 'papo2012'){
+
+
+echo $sql = "delete FROM `tr_ventas1_deta_temp`";
+$result = $db->Execute($sql);
+
+echo $sql = "delete FROM `tr_ventas1_encab_temp`";
+$result = $db->Execute($sql);
+
+$leyenda = "SE LIMPIO TEMPORAL";
+include ("../../alertas/campo_informacion.php");
+
+
+}ELSE{
+
+$leyenda = "CONTRASEÑA INCORRECTA";
+include ("../../alertas/campo_informacion2.php");
+EXIT;
+}
+
+include ("limpiar_temporal.php");

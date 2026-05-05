@@ -1,0 +1,138 @@
+<script type="text/javascript">
+function ocultamenu(){
+  var menu = document.getElementById("Atributos");
+  menu.style.display = "none";
+}
+function despliega(){
+  var menu = document.getElementById("Atributos");
+    if(menu.style.display == "none"){
+      menu.style.display = "block";
+    }
+    else{
+      menu.style.display = "none";
+    }
+}
+</script>
+<script LANGUAGE="JavaScript">
+function multicarga(documento1,documento2)
+{
+parent.izquierda.location.href=documento1;
+parent.central.location.href=documento2;
+}
+</script>
+<style type="text/css">
+<!--
+.Estilo13 {
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.Estilo78 {font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
+.Estilo79 {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+}
+-->
+</style>
+
+<?php 
+$dia = date("d");
+$mes= date("m");
+$anio = date("y");
+
+?>
+
+<BODY>
+<FORM ACTION="separar_busqueda.php" method="post" TARGET = "central1">
+<table width="800" border="0">
+  <tr>
+    <td colspan="2" align="center" bgcolor="#000099" scope="row"><div align="center"><span class="Estilo13">PLANILLA PROFE </span></div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td width="23%" height="31" align="center" scope="row"><div align="right" class="Estilo78">Fecha: </div></td>
+    <td width="77%" align="center" scope="row"><div align="left">
+      <input name = "mes" type = "text" id="mes_d" value = "<?php echo $mes;?>" maxlength = "2" size = "2">
+  / 20
+  <input name = "anio" type = "text" id="anio_d" value = "<?php echo $anio;?>" size = "2" maxlength = "2">
+    </div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row"><div align="right" class="Estilo78">Seleccione: </div></td>
+    <td align="center" scope="row"><div align="left">
+     
+      <input name="seleccione" type="radio" value="1" checked>
+      <span class="Estilo79"> TODO </span>
+
+
+      </div>
+	      <div align="left">
+      </div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="2">
+        <span class="Estilo79"> ENTREGAS</span></div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left"><span class="Estilo79"> </span>
+          <input name="seleccione" type="radio" value="6">
+          <span class="Estilo79"> ENTREGAS s/MONO </span> </div></td>
+  </tr>
+
+    <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left"><span class="Estilo79"> </span>
+          <input name="seleccione" type="radio" value="11">
+          <span class="Estilo79"> ENTREGAS s/MONO ANUAL </span> </div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="7">
+      <span class="Estilo79"> ENTREGAS MONO </span> </div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="3">
+      <span class="Estilo79"> DEVOLUCIONES </span></div></td>
+  </tr>
+
+
+    <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="8">
+      <span class="Estilo79"> POR DROGAS AUTORIZADAS Y PACIENTES AUTORIZADOS PROFE x HOJA</span></div></td>
+  </tr>
+
+    <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="9">
+      <span class="Estilo79"> POR DROGAS AUTORIZADAS Y PACIENTES AUTORIZADOS PROFE </span></div></td>
+  </tr>
+
+    <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+      <input name="seleccione" type="radio" value="10">
+      <span class="Estilo79"> POR DROGAS AUTORIZADAS PROFE </span></div></td>
+  </tr>
+ 
+  <!-- <tr bgcolor="#E1F2EF">
+    <td align="center" scope="row">&nbsp;</td>
+    <td align="center" scope="row"><div align="left">
+       <input name="seleccione" type="radio" value="4">
+        <span class="Estilo79"> CONVENCIONALES PROFE </span> 
+        <input name="seleccione" type="radio" value="5">
+      <span class="Estilo79"> MONOCLONALES PROFE </span> </div></td>
+  </tr> -->
+  <tr bgcolor="#E1F2EF">
+    <td colspan="2" align="center" bgcolor="#B8B8B8" scope="row"><input type="submit" name="Submit" value="CONSULTAR"></td>
+    </tr>
+</table>
+
+</form>

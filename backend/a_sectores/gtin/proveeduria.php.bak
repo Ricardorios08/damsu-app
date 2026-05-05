@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+
+<style type="text/css">
+<!--
+.Estilo3 {
+	font-family: "Trebuchet MS";
+	color: #FFFFFF;
+}
+-->
+</style>
+<link href="../../menus.css" rel="stylesheet" type="text/css" />
+<link href="../../css/botonera.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+<!--
+.Estilo22 {font-family: "Trebuchet MS"}
+.Estilo24 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+</head>
+
+<body>
+
+<?PHP $id = $_REQUEST['id'];
+$anio = date("y");
+
+
+
+?>
+
+
+<table width="166"  border="0">
+  <tr bgcolor="#990033"> </tr>
+  <tr>
+    <td bgcolor="#666666"><div align="center" class="titulo">DEPOSITO</div></td>
+  </tr>
+</table>
+<div id="menuv">
+		 
+<ul><li><a href="../gtin/compras/pagina1.php?id=<?php print("$id");?>" target = "central1"> 1. INGRESO (GTIN) </a> </li> 
+ <!-- <li><a href="../inventario/inventario/carga_inventario/pagina1.php?id=<?php print("$id");?>" target = "central1"> 2. CARGA INVENTARIO </a>  </li>  
+<ul><li><a href="../inventario/inventario/carga_inventario_unico/pagina1.php?id=<?php print("$id");?>" target = "central1"> 3. CARGA INV. UNICO </a> </li>  -->
+
+<ul>
+<li><a href="../gtin/nota_ajuste/entrada_nota.php?id=<?php print("$id");?>" target = "central1"> 2. N/Ajus(Precio</a></li>
+<ul><li><a href="../gtin/libros.php?id=<?php print("$id");?>" target = "izquierda"> 3. Libros</a> </li>
+<li><a href="../gtin/arreglar_gtin/arreglar_gtin.php?id=<?php print("$id");?>" target = "central1">4. Arreglar GTIN</a> </li>
+<li><a href="../gtin/arreglar_gtin/arreglar_gtin_vto.php?id=<?php print("$id");?>" target = "central1">5. Arreglar VTO</a> </li>
+
+
+
+<li><a href="../inventario/inventario/cambio_precio/arreglar_precio.php?id=<?php print("$id");?>" target = "central1">6. Camb. Precio ACE.</a> </li>
+<li><a href="../inventario/inventario/cambio_precio/arreglar_precio_otros.php?id=<?php print("$id");?>" target = "central1">7. Camb. Precio</a> </li>
+
+<li><a href="duplicada.php?id=<?php print("$id");?>" target = "central1">8. Duplicada</a> </li>
+<li><a href="limpiar_temporal.php?id=<?php print("$id");?>" target = "central1">9. Limpiar TEMPORAL</a> </li>
+<li><a href="../gtin/arreglar_gtin/arreglar_gtin_prov.php?id=<?php print("$id");?>" target = "central1">10. Arreglar PROVEEDOR</a> </li>
+<li><a href="../gtin/arreglar_gtin/arreglar_gtin_barra.php?id=<?php print("$id");?>" target = "central1">11. Arreglar COD BARRA</a> </li>
+
+<li><a href="../web/web_menu.php?id=<?php print("$id");?>" target = "central1">12. WEB</a> </li>
+</ul>
+
+
+<FORM ACTION="../monodrogas/mercaderia/buscar_monodrogas.php" method="post" TARGET = "central1">
+
+<table width="166"  border="0">
+  <tr bgcolor="#990033"> </tr>
+  <tr>
+    <td bgcolor="#666666"><div align="center" class="titulo">MERCADERIA</div></td>
+  </tr>
+</table>
+
+    <table width="160" border="0">
+      
+      <tr>
+        <td width="150" colspan="2"><div align="right" class="Estilo22">
+          <div align="left"><font size="2"></font><font size="2">
+            <input name = "cod_mercaderia" type = "text" id="cod_mercaderia" size = "20" / class="ctxt">
+          </font></div>
+        </div>          </td>
+      </tr>
+      <tr>
+        <td colspan="2"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">
+            <input type = "submit" name = "ok" value = "BUSCAR" / class="bot1">
+        </font></div></td>
+      </tr>
+      <tr>
+        <td colspan="2"><label>
+          <div align="center"><span class="Estilo24">
+          <input name="unico" type="checkbox" id="unico" value="1" />
+          UNICO</span></div>
+        </label></td>
+      </tr>
+  </table>
+</FORM>
+  
+</body>
+</html>
+

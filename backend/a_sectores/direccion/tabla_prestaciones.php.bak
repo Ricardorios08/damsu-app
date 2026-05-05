@@ -1,0 +1,83 @@
+<?php 
+
+	include ("../../conexiones/config_usu.php");
+
+
+$sql="select * from prestaciones_pacientes where documento = $documento";
+	$result = $db->Execute($sql);
+?>
+<table width="800" border="1" cellpadding="0" cellspacing="0">
+  
+  <tr bordercolor="#0066FF" bgcolor="#0000FF"> 
+
+
+    <td width="3%" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Fecha</font></div></td>
+    <td width="3%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">N&ordm;</font></font></div></td>
+    <td width="39%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Nombre y Descripcion </font></font></div></td>
+    <td width="9%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Precio</font></font></div></td>
+    <td width="7%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Cant. </font></font></div></td>
+    <td width="7%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Pres. </font></font></div></td>
+    <td width="7%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Fuente</font></font></div></td>
+    <td width="4%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Mod </font></font></div></td>
+    <td width="4%" bgcolor="#C9C9C9"><div align="center"><font color="#000000" face="Trebuchet MS"><font size="2">Borrar </font></font></div></td>
+  </tr>
+  <?php 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$cod_prestacion=strtoupper($result->fields["cod_prestacion"]);
+
+$sql3 = "SELECT * FROM `prestaciones` where cod_prestacion = '$cod_prestacion'";
+$result3 = $db->Execute($sql3);
+
+$descripcion=strtoupper($result3->fields["descripcion"]);
+$caracteristica=strtoupper($result3->fields["caracteristica"]);
+
+
+$precio=strtoupper($result->fields["precio"]);
+$cupo_mensual=strtoupper($result->fields["nombre_reducido_fuente"]);
+$cant_realizado=strtoupper($result->fields["cant_realizado"]);
+$observaciones=strtoupper($result->fields["observaciones"]);
+
+
+$nombre_prestador=strtoupper($result->fields["nombre_prestador"]);
+$nombre_fuente=strtoupper($result->fields["nombre_fuente"]);
+
+
+$cod_operacion=strtoupper($result->fields["cod_operacion"]);
+$fecha_prestacion=strtoupper($result->fields["fecha_prestacion"]);
+$documento=strtoupper($result->fields["documento"]);
+
+$dia = substr($fecha_prestacion,8,2);
+$mes = substr($fecha_prestacion,5,2);
+$anio = substr($fecha_prestacion,0,4);
+$fecha_prestacion = $dia."-".$mes."-".$anio;
+
+
+?>
+
+<tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+
+   
+	<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$fecha_prestacion");?></font></div></td>
+    <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cod_prestacion");?></font></div></td>
+    <td><font size="2" face="Trebuchet MS"><?php print("$descripcion");?> <?php print("$caracteristica");?></font></td>
+	    <td><div align="center">
+	      <font size="2" face="Trebuchet MS">$ <?php print("$precio");?></font>
+	    </div></td>
+		<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cant_realizado");?></font></div></td>
+        <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$nombre_prestador");?></font></div></td>
+        <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$nombre_fuente");?></font></div></td>
+        <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="../a_pacientes/modificar_des_prestaciones.php?cod_operacion=<?php print("$cod_operacion");?>"><IMG SRC="../../imagenes/office//027.ico" alt="Modificar" border = "0"></a> </font></div></td>
+        <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"> <a href="borra_prest_paciente.php?cod_operacion=<?php print("$cod_operacion");?>&&documento=<?php print("$documento");?>" onClick="return confirm('&iquest;Est&aacute; seguro de borrar esta PRESTACION DEL PACIENET');"><IMG SRC="../../imagenes/office//1047.ico" alt="Modificar" border = "0"></a> </font></div></td>
+</tr>
+  <?php 
+
+$result->MoveNext();
+	}
+
+?>
+</table>
+
+

@@ -1,0 +1,21 @@
+<?php 
+include ("../../../../conexiones/config_pro.php");
+
+
+require_once("wsFunctions.php");
+
+
+$cod_mercaderia = $_REQUEST['cod_mercaderia'];
+
+echo  $sql = "DELETE FROM existencias where cod_mercaderia = '$cod_mercaderia'";
+mysql_query($sql);
+
+ echo $sql = "DELETE FROM stock where where cod_mercaderia = '$cod_mercaderia'";
+mysql_query($sql);
+
+
+include ("pagina2.php");
+include_once("refrescar_detalle.php");
+
+?>
+

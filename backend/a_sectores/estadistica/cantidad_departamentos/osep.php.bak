@@ -1,0 +1,63 @@
+<?php 
+ 
+include ("../../../conexiones/config_usu.php");
+
+$sql1 = "SELECT *   FROM `tr_ventas_encabezado` group by documento";
+ $result1 = $db->Execute($sql1);
+
+
+if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ 
+$documento=$result1->fields["documento"];
+
+ 
+
+$sql = "SELECT * FROM pacientes where documento = $documento";
+$result = $db->Execute($sql);
+
+$departamento=$result->fields["departamento"];
+ 
+ 
+echo $sql2 = "UPDATE `tr_ventas_encabezado` SET departamento = '$departamento'  WHERE documento = '$documento'";
+//$result2 = $db->Execute($sql2);
+ 
+ echo "<br>";
+
+ 
+
+  $result1->MoveNext();
+	}
+
+
+/*
+include ("../../../conexiones/config_usu.php");
+
+$sql1 = "SELECT *   FROM `cantidad_dptos`";
+ $result1 = $db->Execute($sql1);
+
+
+if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ 
+$documento=$result1->fields["documento"];
+
+ 
+
+$sql = "SELECT *   FROM afiliaciones where documento = $documento";
+ $result = $db->Execute($sql);
+$nro_os=$result->fields["nro_os"];
+ 
+ 
+echo $sql2 = "UPDATE `cantidad_dptos` SET radio = '$nro_os'  WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+ 
+ echo "<br>";
+
+ 
+
+  $result1->MoveNext();
+	}
+*/

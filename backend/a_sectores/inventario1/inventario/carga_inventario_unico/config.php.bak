@@ -1,0 +1,12 @@
+<?php	
+	//ENTRENAMIENTO
+	$wsdl = "https://186.153.145.2:9050/trazamed.WebService";
+	$XmlSeguridad =  "Seguridad.xml";
+	
+	//PRODUCCION
+	$wsdl = "https://trazabilidad.pami.org.ar:9050/trazamed.WebService";
+	$XmlSeguridad =  "Seguridad.xml";
+
+//	$wsdl = "https://treebeo.dyndns.org:9050/trazamed.WebService";
+	//$XmlSeguridad =  "./Seguridad.xml";
+?>

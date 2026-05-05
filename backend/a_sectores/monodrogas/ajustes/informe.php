@@ -1,0 +1,184 @@
+    <style type="text/css">
+<!--
+.Estilo6 {font-family: Arial, Helvetica, sans-serif}
+.Estilo7 {font-size: 12px}
+.Estilo9 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.Estilo11 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+.Estilo13 {color: #000000}
+-->
+      </style>
+
+<?php global $band;
+
+
+include("../../../conexiones/config_pro.php");
+
+$id = $_REQUEST['id'];
+
+
+$sql1 = "SELECT * FROM `compras1_encab_temp` where operador = '$id' ";
+$result1 = $db->Execute($sql1);
+$nro_factura=strtoupper($result1->fields["nro_factura"]);
+$nro_proveedor=strtoupper($result1->fields["nro_proveedor"]);
+
+$porcentaje_boni=strtoupper($result1->fields["bonificacion"]);
+$porcentaje_dto=strtoupper($result1->fields["descuento"]);
+
+$fecha=strtoupper($result1->fields["fecha"]);
+
+$sql1="select * from proveedores where cod_proveedor like '$nro_proveedor'";
+$result1 = $db->Execute($sql1);
+$denominacion=strtoupper($result1->fields["denominacion"]);
+$direccion=strtoupper($result1->fields["domicilio"]);
+$cod_area=strtoupper($result1->fields["cod_area"]);
+$telefono=strtoupper($result1->fields["telefono"]);
+
+
+
+
+
+$dia = substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio = substr($fecha,0,4);
+
+$fecha = $dia."/".$mes."/".$anio;
+
+
+
+?>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close();">
+<FORM name="form" ACTION="<?php echo $_SERVER["PHP_SELF"];?>" METHOD = "POST">
+
+<table width="800" border="0">
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif">INFORME DE COMPRA . Emitido el <?php echo $hoy=date("d/m/Y");?></font></div></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2"><HR noshade></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="62%"><div align="left"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Proveedor: </font> <font size="3"><span class="Estilo13"><?php echo $denominacion;?></span></font></div></td>
+    <td width="38%"><div align="center"></div>      <div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Fecha/Compra: </font><font color="#000000" size="2"><?php echo $fecha;?></font><font color="#000000" size="2"></font></div></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Domicilio: </font> <font size="3"><span class="Estilo13"><?php echo $direccion ;?></span></font> - <font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Telefono: </font><font size="3"><span class="Estilo13"><?php echo $cod_area;?> - <?php echo $telefono;?></span></font><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">: </font> <font size="3">&nbsp;</font></td>
+    <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">N&ordm; Comprobante: <?php echo $nro_factura;?></font> </div></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td><div align="center"></div>      
+      <div align="left"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Email: </font> <font size="3"><span class="Estilo13"><?php echo $email;?></span></font><font color="#000000" size="2">
+      </font></div>      <div align="center">
+      </div></td>
+    <td><div align="center"><font color="#000000" size="2">
+          </font></div>      <div align="right"></div></td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">&nbsp;</td>
+  </tr>
+</table>
+
+<table width="800" border="0">
+  <tr bgcolor="#FFFFFF">
+    <td width="41%" scope="col"><div align="center" class="Estilo26"><font size="2" face="Arial, Helvetica, sans-serif">
+      <?php include("../../../conexiones/config_pro.php");
+$nro_factura;
+if ($nro_factura != ""){
+$sql = "SELECT * FROM `compras1_deta_temp`  WHERE  `nro_factura` = $nro_factura";
+}
+
+$result = $db->Execute($sql);
+
+
+
+
+
+?>
+  
+    Descripcion / Mercaderia</font></div></td>
+    <td width="15%" scope="col"><div align="center" class="Estilo26"><font size="2" face="Arial, Helvetica, sans-serif">Presentacion</font></div></td>
+    <td width="7%" scope="col"><div align="center" class="Estilo28"><font size="2" face="Arial, Helvetica, sans-serif">Lote</font></div></td>
+    <td width="4%" scope="col"><div align="center" class="Estilo28"><font size="2" face="Arial, Helvetica, sans-serif"> Vencimiento</font></div></td>
+    <td width="9%" scope="col"><div align="center" class="Estilo28"><font size="2" face="Arial, Helvetica, sans-serif"> Cantidad</font></div></td>
+    <td width="9%" scope="col"><div align="center"><span class="Estilo28"><font size="2" face="Arial, Helvetica, sans-serif">Precio Unit. </font></span></div></td>
+    <td width="9%" scope="col"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">Total</font></div></td>
+  </tr>
+    <tr bgcolor="#FFFFFF">
+    <td height="20" colspan="7" scope="col"><hr noshade></td>
+  </tr><?php 
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]);
+$cantidad=strtoupper($result->fields["cantidad"]);
+$lote=strtoupper($result->fields["lote"]);
+$mes_lote=strtoupper($result->fields["mes_lote"]);
+$anio_lote=strtoupper($result->fields["anio_lote"]);
+$vto_lote= $mes_lote." - ".$anio_lote;
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+$total=strtoupper($result->fields["total"]);
+$cod_detalle=strtoupper($result->fields["cod_detalle"]);
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+
+
+
+$sql2 = "SELECT * FROM `monodrogas`  WHERE  `troquel` = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$descripcion=strtoupper($result2->fields["nombre_comercial"]);
+$presentacion=strtoupper($result2->fields["presentacion"]);
+
+$total = $precio_unitario * $cantidad;
+
+ $total_cantidad = $total_cantidad + $cantidad;
+	        $total_unitario = $total_unitario + $precio_unitario;
+
+	        $total_total = $total_total + $total;
+
+
+?>
+  <tr bgcolor="#FFFFFF">
+    <td height="20" scope="col"><div align="left" class="Estilo6 Estilo7"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo $cod_mercaderia. " - ".$descripcion;?></span></font></div></td>
+    <td scope="col"><div align="center" class="Estilo9"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo26"><?php echo $presentacion;?></span></font></div></td>
+    <td scope="col"><div align="center" class="Estilo9"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo26"><?php echo $lote;?></span></font></div></td>
+	    <td scope="col"><div align="center" class="Estilo9"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo $vto_lote;?></span></font></div></td>
+		    <td scope="col"><div align="center" class="Estilo9"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo $cantidad;?></span></font></div></td>
+            <td scope="col"><div align="right"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo number_format($precio_unitario,2);?></span></font></div></td>
+            <td scope="col"><div align="right"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo number_format($total,2);?></span></font></div></td>
+  </tr>
+<?php 
+
+
+	       
+									
+
+	 $result->MoveNext();
+				}
+
+?>
+
+<tr bgcolor="#FFFFFF">
+  <td height="21" colspan="7" scope="col"><hr noshade></td>
+  </tr>
+<tr bgcolor="#E6E6E6">
+  <td height="21" colspan="2" bgcolor="#FFFFFF" scope="col"><div align="right"><span class="Estilo11">Cantidad de Mercaderia Ingresada </span></div></td>
+  <td bgcolor="#FFFFFF" scope="col"><div align="center"><span class="Estilo6 Estilo7 Estilo28"><strong><?php echo $total_cantidad;?>
+  </strong></span></div></td>
+  <td bgcolor="#FFFFFF" scope="col">&nbsp;</td>
+  <td bgcolor="#FFFFFF" scope="col">&nbsp;</td>
+  <td bgcolor="#FFFFFF" scope="col"><div align="right"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php  $total_unitario;?></span></font></div></td>
+  <td bgcolor="#FFFFFF" scope="col"><div align="right"><font size="2" face="Arial, Helvetica, sans-serif"><span class="Estilo28"><?php echo number_format($total_total,2);?></span></font></div></td>
+</tr>
+</table>
+
+
+

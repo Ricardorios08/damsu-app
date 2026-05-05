@@ -1,0 +1,191 @@
+<?php 
+
+global $band;
+
+?>
+<script>
+function on_load()
+{
+document.getElementById("cod_barra").focus();
+}
+
+function enter()
+{
+document.getElementById("cod_mercaderia").focus();
+}
+
+
+function verif_caracter(obj,evt)
+
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	
+	{
+		switch(obj.id)
+		{
+				case "cod_barra":
+				document.getElementById("cantidad").focus();
+				break;
+				
+				case "cantidad":
+				document.getElementById("precio_unitario").focus();
+				break;
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+<?php 
+if ($band != "SI"){
+$nro_proveedor = $_REQUEST['nro_proveedor'];
+$dia= $_REQUEST['dia'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$borrar_item= $_REQUEST['borrar_item'];
+$cod_detalle= $_REQUEST['cod_detalle'];
+
+if ($borrar_item == "si"){
+	include ("borrar_item.php");
+}
+
+
+$modo_carga= $_REQUEST['modo_carga'];
+$nombre_comercial= $_REQUEST['nombre_comercial'];
+$cod_barra= $_REQUEST['cod_barra'];
+$no_hacer_nada= $_REQUEST['no_hacer_nada'];
+$nro_factura= $_REQUEST['nro_factura'];
+$operador= $_REQUEST['operador'];
+$fecha = $dia."/".$mes."/".$anio;
+$fecha_guardar = $anio."/".$mes."/".$dia;
+}
+
+if ($nro_proveedor == ""){
+	$leyenda = "NO INGRESO PROVEEDOR";
+	include ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+include ("../../../conexiones/config_usu.php");
+$sql="select * from proveedores where cod_proveedor = $nro_proveedor";
+$result = $db->Execute($sql);
+$denominacion=strtoupper($result->fields["denominacion"]);
+
+if ($denominacion == ""){
+	$leyenda = "NO EXISTE PROVEEDOR";
+	include ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+if ($operador == ""){
+	$leyenda = "NO INGRESO OPERADOR";
+	include ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+if ($nro_factura == ""){
+	$leyenda = "NO INGRESO NUMERO DE COMPROBANTE";
+	include ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+/* else{
+include ("../../../conexiones/config_usu.php");
+ECHO $sql="select * from encabezado_compra where nro_comprobante = $nro_factura and nro_proveedor = $nro_proveedor";
+$result = $db->Execute($sql);
+$nro_comprobante_temp=$result->fields["nro_comprobante"];
+
+
+if ($nro_comprobante_temp != ""){
+$leyenda = "EL NRO COMPROBANTE  (".$nro_factura.") DEL PROVEEDOR: ".$denominacion." YA EXISTE.";
+	include ("../../../alertas/campo_vacio.php");
+	exit;
+}
+}
+*/
+
+
+$sql = "INSERT INTO `encabezado_compra` ( `nro_comprobante` , `operador` , `fecha` , `nro_proveedor` )  VALUES ('$nro_factura' , '$operador' , '$fecha_guardar' , '$nro_proveedor' )";
+mysql_query($sql);
+
+
+?>
+
+<script>
+function abrirVentan() {
+	var cod_detalle = <?php echo $cod_detalle;?> 
+    open("buscador_rapido_mercaderia.php?nro_proveedor=<?php echo $nro_proveedor;?>&&operador=<?php echo $operador;?>&&modo_carga=<?php echo $modo_carga;?>&&nro_factura=<?php echo $nro_factura;?>&&dia=<?php echo $dia;?>&&mes=<?php echo $mes;?>&&anio=<?php echo $anio;?>","Buscar", "width=600,height=600,toolbar=no,directories=no,menubar=no,status=no, scrollbars=01, top = 35");
+}
+</script>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body onload = "on_load ()">
+<FORM name="form" ACTION="<?php php echo $_SERVER["PHP_SELF"];?>" METHOD = "POST">
+
+
+<?php 
+switch ($modo_carga) {
+	
+	case  "lector":{
+include ("lector.php");
+break;
+}
+	case  "manual":{
+include ("manual.php");
+break;
+}
+
+}
+
+
+
+
+if(isset($_REQUEST['Alta'])) {
+
+	switch ($_REQUEST['Alta'])
+					{
+						
+			case "OK":
+				{
+ $band = "SI";
+ $grabar= $_REQUEST['grabar'];
+$operador= $_REQUEST['operador'];
+$nro_factura= $_REQUEST['nro_factura'];
+$grabar= $_REQUEST['grabar'];
+
+
+ if ($grabar == "SI"){
+include ("refrescar.php");
+ }
+
+
+ break;	}
+
+			case "BUSCAR":
+				{
+ $band = "SI";
+include ("refrescar1.php");
+
+ break;	}
+
+
+					}
+}
+?>

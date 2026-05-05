@@ -1,0 +1,68 @@
+<?php 
+
+include ("../../conexiones/config_usu.php");
+$B = 1;
+
+$sql="select * from prestaciones";
+$result = $db->Execute($sql);
+?>
+<table width="800" border="1" cellspacing="0">
+  <tr bordercolor="#0066FF" bgcolor="#C9C9C9">
+    <td height="37" colspan="7" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">LISTADO DE PRESTACIONES DEL PROGRAMA ONCOLOGICO </font></div></td>
+  </tr>
+  <tr bordercolor="#0066FF" bgcolor="#0000FF"> 
+
+
+    <td width="9%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Nº </font></font></div></td>
+    <td width="44%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Nombre y Descripcion </font></font></div></td>
+    <td width="9%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Precio</font></font></div></td>
+    <td width="9%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Realizadas</font></font></div></td>
+    <td width="18%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Observaciones</font></font></div></td>
+    <td width="5%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Mod</font></font></div></td>
+    <td width="6%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">Borrar</font></font></div></td>
+  </tr>
+  <?php 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$cod_prestacion=strtoupper($result->fields["cod_prestacion"]);
+
+
+
+$descripcion=strtoupper($result->fields["descripcion"]);
+$caracteristica=strtoupper($result->fields["caracteristica"]);
+
+
+$precio=strtoupper($result->fields["precio"]);
+$cupo_mensual=strtoupper($result->fields["cupo_mensual"]);
+$cant_realizado=strtoupper($result->fields["cant_realizado"]);
+$observaciones=strtoupper($result->fields["observaciones"]);
+$cod_operacion=strtoupper($result->fields["cod_operacion"]);
+
+
+
+?>
+
+<tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+
+   
+	<td bgcolor="#EDEDED"><div align="left"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cod_prestacion");?></font></div></td>
+    <td bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$descripcion");?> <?php print("$caracteristica");?></font></td>
+	    <td bgcolor="#EDEDED"><div align="center">
+	     <font size="2" face="Arial, Helvetica, sans-serif">$ <?php print("$precio");?></font>
+	    </div></td>
+		<td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cant_realizado");?></font></div></td>
+		<td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$observaciones");?></font></div></td>
+        <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="../direccion/modificar_prestacion.php?cod_operacion=<?php print("$cod_operacion");?>"><IMG SRC="../../imagenes/office//027.ico" alt="Modificar" border = "0"></a> </font></div></td>
+        <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"> <a href="a_pacientes/borra_diagnostico.php?cod_operacion=<?php print("$cod_operacion");?>" onClick="return confirm('&iquest;Est&aacute; seguro de borrar esta PRESTACION');"><IMG SRC="../../imagenes/office//1047.ico" alt="Modificar" border = "0"></a> </font></div></td>
+</tr>
+  <?php 
+
+$result->MoveNext();
+	}
+
+?>
+</table>
+
+

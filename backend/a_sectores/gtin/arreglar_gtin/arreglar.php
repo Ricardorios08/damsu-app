@@ -1,0 +1,30 @@
+<?php
+include ("../../../conexiones/config_pro.php");
+$gtin_mal= $_REQUEST['mes'];
+$gtin= $_REQUEST['anio'];
+$contra= $_REQUEST['contra'];
+$mes_actual = date("m");
+$anio_actual = date("y");
+
+
+if ($contra == "coir"){
+ $sql = "UPDATE tr_stock SET `gtin` = '$gtin'  WHERE gtin = '$gtin_mal'";
+//mysql_query($sql);
+
+ $sql = "UPDATE tr_existencias SET `gtin` = '$gtin'  WHERE gtin = '$gtin_mal'";
+////mysql_query($sql);
+
+ echo $sql = "UPDATE tr_ventas_detalle SET `gtin` = '$gtin'  WHERE gtin = '$gtin_mal'";
+mysql_query($sql);
+
+$leyenda = "SE MODIFICO CORRECTAMENTE";
+include ("../../../alertas/campo_informacion.php");
+
+
+}
+else
+{
+$leyenda = "CONTRASEÑA DE SEGURIDAD INCORRECTA";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}

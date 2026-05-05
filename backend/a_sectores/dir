@@ -1,0 +1,3216 @@
+ El volumen de la unidad C no tiene etiqueta.
+ El n£mero de serie del volumen es: 5065-CE42
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores
+
+08/10/2013  03:50 p.m.    <DIR>          .
+08/10/2013  03:50 p.m.    <DIR>          ..
+22/02/2013  10:50 a.m.             1.024 arregla_afiliado.php
+22/02/2013  10:50 a.m.             1.022 arregla_afiliado.php.bak
+27/02/2013  09:37 a.m.               718 arregla_carga_inventario.php
+27/02/2013  09:37 a.m.               716 arregla_carga_inventario.php.bak
+11/11/2012  08:57 p.m.               905 arregla_compra.php
+11/11/2012  08:57 p.m.               893 arregla_compra.php.bak
+17/12/2012  02:13 p.m.             1.146 arregla_deta.php
+17/12/2012  02:13 p.m.             1.148 arregla_deta.php.bak
+19/12/2012  07:30 p.m.             1.046 arregla_devoluciones.php
+19/12/2012  07:29 p.m.             1.223 arregla_devoluciones.php.bak
+08/04/2013  09:15 a.m.               558 arregla_droga.php
+02/01/2013  09:28 a.m.               556 arregla_droga.php.bak
+08/04/2013  09:10 a.m.             1.032 arregla_drogas.php
+08/04/2013  09:10 a.m.             1.020 arregla_drogas.php.bak
+06/12/2012  12:23 p.m.             2.481 arregla_droga_stock.php
+06/12/2012  12:22 p.m.             2.459 arregla_droga_stock.php.bak
+02/01/2013  09:55 a.m.               699 arregla_exis.php
+02/01/2013  09:55 a.m.               701 arregla_exis.php.bak
+10/04/2013  11:22 a.m.             3.259 arregla_existencia.php
+10/04/2013  11:22 a.m.             3.285 arregla_existencia.php.bak
+18/12/2012  12:18 p.m.               640 arregla_grupo.php
+18/12/2012  12:18 p.m.               642 arregla_grupo.php.bak
+27/12/2012  04:06 p.m.             3.076 arregla_grupo_detalle.php
+27/12/2012  04:05 p.m.             3.057 arregla_grupo_detalle.php.bak
+07/12/2012  11:29 a.m.               810 arregla_grupo_unico.php
+07/12/2012  11:28 a.m.               812 arregla_grupo_unico.php.bak
+06/12/2012  01:53 p.m.               760 arregla_inv.php
+06/12/2012  12:56 p.m.               782 arregla_inv.php.bak
+02/01/2013  02:21 p.m.             1.251 arregla_inventario.php
+02/01/2013  02:21 p.m.             1.253 arregla_inventario.php.bak
+07/06/2013  09:21 a.m.               718 arregla_lab.php
+07/06/2013  09:20 a.m.               714 arregla_lab.php.bak
+12/11/2012  06:46 p.m.               726 arregla_laboratorio.php
+12/11/2012  06:32 p.m.               728 arregla_laboratorio.php.bak
+08/04/2013  09:19 a.m.             1.012 arregla_labos.php
+08/04/2013  09:19 a.m.             1.016 arregla_labos.php.bak
+06/12/2012  12:04 p.m.             2.185 arregla_precio.php
+06/12/2012  12:03 p.m.               925 arregla_precio.php.bak
+13/02/2013  12:22 p.m.             1.018 arregla_precio_stock.php
+25/03/2013  09:14 a.m.               747 arregla_prestaciones.php
+25/03/2013  09:11 a.m.               749 arregla_prestaciones.php.bak
+07/12/2012  10:07 a.m.               687 arregla_proveedor.php
+07/12/2012  10:07 a.m.               685 arregla_proveedor.php.bak
+16/11/2012  07:33 p.m.             1.080 arregla_salida.php
+16/11/2012  07:32 p.m.             1.076 arregla_salida.php.bak
+19/11/2012  07:26 p.m.             5.708 arregla_stock.php
+19/11/2012  07:26 p.m.             5.710 arregla_stock.php.bak
+07/12/2012  10:42 a.m.             1.018 arregla_stock1.php
+07/12/2012  10:40 a.m.             1.020 arregla_stock1.php.bak
+24/11/2012  12:58 p.m.             5.309 arregla_stock_unico.php
+06/11/2012  10:41 a.m.    <DIR>          codigo128
+29/12/2012  09:51 a.m.               760 compara_stock.php
+30/10/2012  07:35 p.m.    <DIR>          compras_unico
+12/03/2013  08:48 a.m.    <DIR>          deposito
+22/11/2012  01:21 p.m.               512 detecta_ip.php
+22/11/2012  01:21 p.m.               511 detecta_ip.php.bak
+08/10/2013  03:50 p.m.                 0 dir
+25/10/2012  09:55 a.m.    <DIR>          direccion
+11/04/2013  02:36 p.m.            11.809 encuestra_atendidos.php
+11/04/2013  01:25 p.m.            11.801 encuestra_atendidos.php.bak
+23/08/2013  04:10 p.m.    <DIR>          estadistica
+12/03/2013  09:35 a.m.    <DIR>          facturacion
+27/06/2013  10:40 a.m.    <DIR>          facturacion_unico
+29/08/2013  12:07 p.m.    <DIR>          gtin
+11/07/2012  09:29 a.m.    <DIR>          informes
+29/08/2013  10:04 a.m.    <DIR>          inventario
+31/10/2012  01:44 p.m.               982 limpia_todo.php
+30/10/2012  10:40 p.m.               956 limpia_todo.php.bak
+11/07/2012  09:29 a.m.    <DIR>          mesa_entrada
+30/04/2013  11:16 a.m.    <DIR>          meta
+15/02/2013  11:23 a.m.    <DIR>          monodrogas
+11/07/2012  09:29 a.m.    <DIR>          preparacion
+15/11/2012  07:34 p.m.            15.899 varios
+19/12/2012  05:56 p.m.             3.000 ver_asiento_detalle.php
+19/12/2012  05:56 p.m.             3.002 ver_asiento_detalle.php.bak
+19/12/2012  07:25 p.m.             3.628 ver_asiento_detalle_entrada.php
+19/12/2012  07:24 p.m.             3.635 ver_asiento_detalle_entrada.php.bak
+19/12/2012  07:32 p.m.             3.600 ver_asiento_detalle_unico.php
+19/12/2012  06:50 p.m.             3.602 ver_asiento_detalle_unico.php.bak
+06/12/2012  05:35 p.m.             4.719 ver_asiento_gtin.php
+06/12/2012  05:34 p.m.             4.635 ver_asiento_gtin.php.bak
+01/02/2013  09:39 a.m.               452 ver_duplicado_stock.php
+01/02/2013  09:36 a.m.               440 ver_duplicado_stock.php.bak
+03/01/2013  10:44 a.m.               699 ver_entradas.php
+04/01/2013  01:10 p.m.             1.650 ver_inventario.php
+04/01/2013  01:10 p.m.             1.650 ver_inventario.php.bak
+07/01/2013  10:50 a.m.             1.652 ver_inventario1.php
+07/01/2013  10:49 a.m.             1.657 ver_inventario1.php.bak
+09/05/2013  11:06 a.m.             5.044 ver_mama.php
+09/05/2013  11:04 a.m.             5.066 ver_mama.php.bak
+07/05/2013  02:25 p.m.             4.334 ver_ovario.php
+07/05/2013  01:56 p.m.             4.413 ver_ovario.php.bak
+25/03/2013  10:21 a.m.               432 ver_repetido.php
+25/03/2013  10:18 a.m.               432 ver_repetido.php.bak
+              80 archivos        172.777 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\codigo128
+
+06/11/2012  10:41 a.m.    <DIR>          .
+06/11/2012  10:41 a.m.    <DIR>          ..
+06/11/2012  10:34 a.m.    <DIR>          barcode
+10/11/2011  08:00 a.m.            51.637 Barcode.php
+03/09/2012  06:31 p.m.            14.506 code128.php
+27/08/2012  03:05 p.m.            12.985 code128a.php
+08/10/2009  02:16 p.m.             1.942 ex.pdf
+31/08/2012  04:59 p.m.             4.311 ex.php
+08/10/2009  02:20 p.m.             1.156 info.htm
+06/11/2012  10:43 a.m.             1.546 menu.php
+06/11/2012  10:41 a.m.             1.537 menu.php.bak
+06/11/2012  10:41 a.m.             9.007 prueba.php
+06/11/2012  10:40 a.m.             9.024 prueba.php.bak
+14/10/2012  12:12 p.m.             1.208 prueba2.php
+04/10/2012  03:12 p.m.             4.687 prueba3.php
+31/08/2012  05:27 p.m.             1.532 rota.php
+06/11/2012  10:34 a.m.    <DIR>          rotation
+27/08/2012  03:19 p.m.               645 rotation.php
+31/08/2012  08:36 p.m.             2.485 sample-fpdf.php
+04/10/2012  07:18 p.m.             2.634 verticales_3_codigos.pdf
+              16 archivos        120.842 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\codigo128\barcode
+
+06/11/2012  10:34 a.m.    <DIR>          .
+06/11/2012  10:34 a.m.    <DIR>          ..
+27/09/2010  07:41 a.m.            51.637 Barcode.php
+27/09/2010  07:41 a.m.             2.505 sample-fpdf.php
+27/09/2010  07:41 a.m.             4.899 sample-gd.php
+               3 archivos         59.041 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\codigo128\rotation
+
+06/11/2012  10:34 a.m.    <DIR>          .
+06/11/2012  10:34 a.m.    <DIR>          ..
+26/10/2002  04:12 p.m.               562 circle.png
+26/10/2002  08:12 p.m.             1.755 ex.pdf
+27/04/2008  11:34 a.m.               600 ex.php
+28/03/2009  10:48 a.m.             1.414 info.htm
+27/04/2008  11:35 a.m.               626 rotation.php
+               5 archivos          4.957 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+05/10/2011  03:31 p.m.             1.885 actu_stockA.php
+05/10/2011  03:31 p.m.             1.324 actu_stockB.php
+05/10/2011  03:31 p.m.             1.302 actu_stock_compras.php
+15/11/2007  02:16 p.m.             2.947 buscar.php
+05/10/2011  03:31 p.m.               895 busqueda.php
+30/10/2012  07:35 p.m.    <DIR>          compras
+05/10/2011  03:31 p.m.               495 comprobar_fechas.php
+02/02/2012  01:02 p.m.             4.360 consultas.PHP
+17/05/2012  05:20 p.m.             3.033 facturacion.php
+09/02/2012  11:00 a.m.             3.601 informes.php
+31/01/2012  10:39 p.m.             3.009 informes_proveeduria.php
+27/06/2008  09:52 a.m.             4.078 pla_tas_inf.php
+30/10/2012  07:29 p.m.             5.235 proveeduria.php
+30/10/2012  07:28 p.m.             5.238 proveeduria.php.bak
+09/02/2012  11:01 a.m.             1.042 separar_busqueda.php
+31/01/2012  02:35 p.m.               401 separar_compras.php
+21/09/2010  11:55 a.m.             2.031 tabla codigos.php
+              16 archivos         40.876 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+11/09/2012  12:25 p.m.             4.246 actualizar_stock.php
+11/09/2012  12:25 p.m.             4.272 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+23/05/2012  08:51 p.m.               681 borrar_item.PHP
+23/05/2012  08:50 p.m.               679 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+19/10/2012  10:39 a.m.               362 config.php
+19/10/2012  10:37 a.m.               358 config.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+30/10/2012  07:35 p.m.    <DIR>          includes
+17/05/2012  04:22 p.m.             8.377 informe.php
+17/05/2012  04:21 p.m.             8.199 informe.php.bak
+25/10/2012  12:20 p.m.             5.673 pagina1.php
+19/10/2012  11:55 a.m.             5.675 pagina1.php.bak
+06/05/2012  11:55 p.m.             8.480 pagina11.php
+06/05/2012  09:20 p.m.             8.476 pagina11.php.bak
+26/10/2012  07:36 p.m.            18.123 pagina2.php
+26/10/2012  07:35 p.m.            18.126 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+19/10/2012  12:17 p.m.             2.262 refrescar.php
+19/10/2012  12:17 p.m.             2.270 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+06/05/2012  10:32 p.m.             2.548 refrescar1.php.bak
+11/09/2012  12:19 p.m.             6.149 refrescar_detalle.php
+11/09/2012  12:19 p.m.             6.153 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+19/10/2012  12:18 p.m.             5.380 test1.php.bak
+06/05/2012  09:39 p.m.               633 variables_temp.php
+06/05/2012  09:36 p.m.               637 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              56 archivos        246.569 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+30/10/2012  07:35 p.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+30/10/2012  07:35 p.m.    <DIR>          prop-base
+30/10/2012  07:35 p.m.    <DIR>          props
+30/10/2012  07:35 p.m.    <DIR>          text-base
+30/10/2012  07:35 p.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\prop-base
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\props
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\text-base
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\tmp
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+30/10/2012  07:35 p.m.    <DIR>          prop-base
+30/10/2012  07:35 p.m.    <DIR>          props
+30/10/2012  07:35 p.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\tmp\prop-base
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\tmp\props
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\compras_unico\compras\includes\.svn\tmp\text-base
+
+30/10/2012  07:35 p.m.    <DIR>          .
+30/10/2012  07:35 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito
+
+12/03/2013  08:48 a.m.    <DIR>          .
+12/03/2013  08:48 a.m.    <DIR>          ..
+15/11/2007  01:16 p.m.             2.947 buscar.php
+12/03/2013  08:54 a.m.    <DIR>          buscar_compras
+11/07/2012  09:29 a.m.    <DIR>          clientes
+11/07/2012  09:29 a.m.    <DIR>          compras
+15/07/2008  11:25 a.m.             5.797 deposito.php
+11/07/2012  09:29 a.m.    <DIR>          facturacion
+11/07/2012  09:29 a.m.    <DIR>          planes
+11/07/2012  09:29 a.m.    <DIR>          proveedores
+05/10/2011  03:14 p.m.               588 separar_busqueda.php
+18/03/2008  03:55 p.m.               584 separar_busqueda.php.bak
+               4 archivos          9.916 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\buscar_compras
+
+12/03/2013  08:54 a.m.    <DIR>          .
+12/03/2013  08:54 a.m.    <DIR>          ..
+12/03/2013  08:54 a.m.             5.905 buscar_compras.php
+               1 archivos          5.905 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\clientes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+16/11/2007  10:19 a.m.               243 borra.php
+05/10/2011  03:14 p.m.             6.221 buscar_clientes.php
+16/11/2007  10:49 a.m.             6.140 buscar_clientes.php.bak
+05/10/2011  03:14 p.m.            21.087 entrada_dato.php
+06/12/2007  10:38 a.m.            21.075 entrada_dato.php.bak
+16/11/2007  11:19 a.m.             2.669 guardar_clientes.php
+05/10/2011  03:14 p.m.            22.888 modificar.php
+16/11/2007  11:21 a.m.            22.768 modificar.php.bak
+05/10/2011  03:14 p.m.             1.479 variables.php
+16/11/2007  11:16 a.m.             1.480 variables.php.bak
+              10 archivos        106.050 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\compras
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:14 p.m.               210 borrar_item.PHP
+18/04/2008  12:10 p.m.               206 borrar_item.PHP.bak
+05/10/2011  03:14 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:14 p.m.             1.045 buscador_rapido_mercaderia.php
+10/04/2008  11:56 a.m.             1.033 buscador_rapido_mercaderia.php.bak
+05/10/2011  03:14 p.m.             5.384 buscar_proveedor.php
+10/04/2008  11:31 a.m.             5.308 buscar_proveedor.php.bak
+05/10/2011  03:14 p.m.             2.249 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:14 p.m.             2.299 detalle_buscador_mercaderia.php
+10/04/2008  11:59 a.m.             2.243 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:14 p.m.             3.350 lector.php
+18/04/2008  12:50 p.m.             3.282 lector.php.bak
+05/10/2011  03:14 p.m.             2.544 manual.php
+10/04/2008  10:47 a.m.             2.500 manual.php.bak
+05/10/2011  03:14 p.m.             5.167 mostrar_detalle.php
+18/04/2008  12:40 p.m.             5.067 mostrar_detalle.php.bak
+21/10/2011  07:36 p.m.             5.002 pagina1.php
+05/10/2011  03:14 p.m.             4.990 pagina1.php.bak
+21/10/2011  07:36 p.m.             4.145 pagina2.php
+21/10/2011  07:36 p.m.             4.148 pagina2.php.bak
+05/10/2011  03:14 p.m.             5.161 refrescar.php
+15/07/2008  11:39 a.m.             5.061 refrescar.php.bak
+05/10/2011  03:14 p.m.             4.083 refrescar1.php
+18/04/2008  11:50 a.m.             4.011 refrescar1.php.bak
+              26 archivos         82.251 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\facturacion
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+14/11/2007  02:20 p.m.               610 borrar_item.php
+15/11/2007  09:18 a.m.             2.400 buscador_rapido.php
+14/11/2007  02:09 p.m.             4.035 detalle_factura_papel.php
+03/12/2007  10:03 a.m.             6.934 entrada_factura.php
+15/11/2007  11:17 a.m.             6.028 entrada_factura_2.php
+09/12/2007  08:04 p.m.             9.526 entrada_factura_3.php
+14/11/2007  11:53 a.m.             9.211 entrada_factura_4.php
+14/11/2007  02:43 p.m.             1.253 factura_papel.php
+15/11/2007  10:32 a.m.             4.492 refrescar.php
+               9 archivos         44.489 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\planes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+16/11/2007  10:19 a.m.               243 borra.php
+05/10/2011  03:16 p.m.             6.221 buscar_clientes.php
+16/11/2007  10:49 a.m.             6.140 buscar_clientes.php.bak
+05/10/2011  03:16 p.m.             7.624 entrada_dato.php
+27/11/2007  09:03 a.m.             7.612 entrada_dato.php.bak
+05/10/2011  03:16 p.m.             2.669 guardar_clientes.php
+16/11/2007  11:19 a.m.             2.669 guardar_clientes.php.bak
+05/10/2011  03:16 p.m.            22.888 modificar.php
+16/11/2007  11:21 a.m.            22.768 modificar.php.bak
+05/10/2011  03:16 p.m.             1.480 variables.php
+16/11/2007  11:16 a.m.             1.480 variables.php.bak
+              11 archivos         81.794 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\proveedores
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:16 p.m.             2.707 borra.php
+21/07/2006  05:45 p.m.             2.666 borra.php.bak
+05/10/2011  03:16 p.m.             3.468 buscar_laboratorios.php
+18/03/2008  03:58 p.m.             3.411 buscar_laboratorios.php.bak
+05/10/2011  03:16 p.m.             6.236 buscar_proveedores.php
+18/03/2008  03:30 p.m.             6.147 buscar_proveedores.php.bak
+11/07/2012  09:29 a.m.    <DIR>          compra_proveedores
+18/03/2008  03:30 p.m.             4.516 entrada_dato.php
+12/03/2008  11:52 a.m.               922 guardar_proveedores.php
+               8 archivos         30.073 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\deposito\proveedores\compra_proveedores
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:16 p.m.            16.702 123.php3
+16/05/2007  09:03 p.m.            16.578 123.php3.bak
+04/06/2007  08:51 p.m.               688 borra.php
+30/03/2007  04:11 p.m.               312 borra.php3
+05/10/2011  03:16 p.m.            18.150 borra_despues.php
+06/08/2007  01:21 p.m.            17.966 borra_despues.php.bak
+05/10/2011  03:16 p.m.            17.645 borra_despues.php3
+01/06/2007  06:02 p.m.            17.505 borra_despues.php3.bak
+05/10/2011  03:16 p.m.             5.023 carga_merca_stock.php
+22/08/2007  10:30 a.m.             4.991 carga_merca_stock.php.bak
+05/10/2011  03:16 p.m.             5.620 carga_merca_stock_pruba.php
+27/08/2007  11:06 a.m.             5.596 carga_merca_stock_pruba.php.bak
+05/10/2011  03:16 p.m.             7.113 carga_merca_stock_pruba1.php
+27/08/2007  09:54 p.m.             7.061 carga_merca_stock_pruba1.php.bak
+05/10/2011  03:16 p.m.            19.535 compras_con_if_pro.php
+20/09/2007  07:15 p.m.            19.415 compras_con_if_pro.php.bak
+05/10/2011  03:16 p.m.            19.447 compras_pro.php
+24/09/2007  04:29 p.m.            19.335 compras_pro.php.bak
+05/10/2011  03:16 p.m.            15.725 compras_pro1.php
+07/06/2007  07:54 p.m.            15.609 compras_pro1.php.bak
+05/10/2011  03:16 p.m.            19.814 compras_profede.php
+20/09/2007  07:02 p.m.            19.694 compras_profede.php.bak
+05/10/2011  03:16 p.m.            19.419 compras_pro_seg.php
+21/09/2007  06:22 p.m.            19.299 compras_pro_seg.php.bak
+05/10/2011  03:16 p.m.            17.959 compras_pro_seguridad.php
+07/06/2007  08:00 p.m.            17.827 compras_pro_seguridad.php.bak
+05/10/2011  03:16 p.m.             3.100 compra_pro_bioqui.php
+07/06/2007  08:13 p.m.             3.076 compra_pro_bioqui.php.bak
+05/10/2011  03:16 p.m.             5.243 DATOS.php3
+29/03/2007  05:02 p.m.             5.179 DATOS.php3.bak
+05/10/2011  03:16 p.m.               917 guardar_vtas_pro.php
+04/09/2007  06:07 p.m.               913 guardar_vtas_pro.php.bak
+05/10/2011  03:16 p.m.               925 imprimir-seccion.txt
+28/03/2007  12:13 p.m.               909 imprimir-seccion.txt.bak
+05/10/2011  03:16 p.m.             3.362 imprimir.php
+29/03/2007  03:30 p.m.             3.330 imprimir.php.bak
+05/10/2011  03:16 p.m.             1.747 pro.php
+28/03/2007  10:23 a.m.             1.719 pro.php.bak
+05/10/2011  03:16 p.m.             1.511 recuperar.php
+04/04/2007  10:21 p.m.             1.482 recuperar.php.bak
+05/10/2011  03:16 p.m.            13.108 vtas_pro123.php
+03/04/2007  05:02 p.m.            12.996 vtas_pro123.php.bak
+              42 archivos        423.545 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\direccion
+
+25/10/2012  09:55 a.m.    <DIR>          .
+25/10/2012  09:55 a.m.    <DIR>          ..
+25/10/2012  10:09 a.m.               432 borra_prest_paciente.php
+25/10/2012  10:09 a.m.               430 borra_prest_paciente.php.bak
+05/10/2011  03:18 p.m.             2.276 buscar_diagnostico.php
+13/06/2008  09:59 a.m.             2.231 buscar_diagnostico.php.bak
+25/10/2012  02:32 p.m.             3.790 buscar_prestaciones.php
+25/10/2012  02:26 p.m.             3.788 buscar_prestaciones.php.bak
+25/10/2012  02:29 p.m.             2.813 buscar_prestaciones_paciente.php
+25/10/2012  02:29 p.m.             2.818 buscar_prestaciones_paciente.php.bak
+25/10/2012  09:36 a.m.             1.254 busquedas.php
+05/10/2011  03:18 p.m.             4.425 cargar_droga.php
+13/06/2008  11:25 a.m.             4.393 cargar_droga.php.bak
+05/10/2011  03:18 p.m.             4.838 cargar_droga2.php
+13/06/2008  11:01 a.m.             4.802 cargar_droga2.php.bak
+05/10/2011  03:18 p.m.             6.223 cargar_protocolo1.php
+13/06/2008  11:22 a.m.             6.215 cargar_protocolo1.php.bak
+05/10/2011  03:18 p.m.             9.431 cargar_protocolo2.php
+13/06/2008  11:22 a.m.             9.407 cargar_protocolo2.php.bak
+05/10/2011  03:18 p.m.               796 detalle_protocolo.php
+13/06/2008  10:56 a.m.               776 detalle_protocolo.php.bak
+25/10/2012  09:37 a.m.             2.900 direccion.php
+25/10/2012  09:35 a.m.             2.907 direccion.php.bak
+25/10/2012  02:28 p.m.             1.325 guardar_prestaciones.php
+25/10/2012  02:27 p.m.             1.321 guardar_prestaciones.php.bak
+21/07/2011  12:42 p.m.             1.138 guardar_prestaciones.php.bak.bak
+05/10/2011  03:19 p.m.             5.628 hc_paciente.php
+05/10/2011  03:19 p.m.             6.071 hc_paciente.php.bak
+21/07/2011  01:32 p.m.             5.571 hc_paciente.php.bak.bak
+18/12/2012  01:32 p.m.             2.323 modificar_des_prestaciones.php
+18/12/2012  01:31 p.m.             2.208 modificar_des_prestaciones.php.bak
+25/10/2012  09:19 a.m.             7.161 modificar_prestacion.php
+25/10/2012  09:17 a.m.             7.071 modificar_prestacion.php.bak
+02/11/2012  01:57 p.m.             6.795 registrar_prestaciones.PHP
+02/11/2012  01:57 p.m.             6.794 registrar_prestaciones.PHP.bak
+02/11/2012  01:54 p.m.             6.296 registrar_prestaciones2.PHP
+25/10/2012  09:55 a.m.             6.296 registrar_prestaciones2.PHP.bak
+05/10/2011  03:19 p.m.             9.767 registrar_prestaciones3.PHP
+02/09/2008  10:54 p.m.             9.727 registrar_prestaciones3.PHP.bak
+25/10/2012  02:29 p.m.             3.570 tabla_prestaciones.php
+25/10/2012  10:09 a.m.             3.568 tabla_prestaciones.php.bak
+              39 archivos        169.575 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica
+
+23/08/2013  04:10 p.m.    <DIR>          .
+23/08/2013  04:10 p.m.    <DIR>          ..
+12/07/2013  11:38 a.m.    <DIR>          atendidos_ninos
+26/08/2013  11:16 a.m.    <DIR>          cantidad_departamentos
+12/07/2013  12:27 p.m.    <DIR>          consumo
+22/08/2013  02:18 p.m.             5.537 consumo_droga.php
+22/08/2013  02:18 p.m.             5.516 consumo_droga.php.bak
+22/08/2013  02:38 p.m.             8.458 consumo_droga2.php
+22/08/2013  02:36 p.m.             8.098 consumo_droga2.php.bak
+16/11/2012  05:29 p.m.             5.530 consumo_laboratorios.php
+16/11/2012  05:27 p.m.             5.535 consumo_laboratorios.php.bak
+22/08/2013  02:39 p.m.             6.705 consumo_laboratorios2.php
+22/08/2013  01:37 p.m.             6.381 consumo_laboratorios2.php.bak
+07/06/2013  08:32 a.m.             4.768 consumo_proveedores.php
+16/11/2012  03:58 p.m.             4.768 consumo_proveedores.php.bak
+16/11/2012  06:18 p.m.             4.175 consumo_proveedores2.php
+16/11/2012  03:58 p.m.             4.159 consumo_proveedores2.php.bak
+28/06/2013  12:31 p.m.    <DIR>          departamentos
+08/05/2013  01:03 p.m.    <DIR>          diagnosticos
+26/12/2012  10:36 a.m.    <DIR>          direccion
+21/03/2013  10:25 a.m.    <DIR>          encuesta
+29/07/2013  11:38 a.m.    <DIR>          entregas
+03/01/2013  11:26 a.m.    <DIR>          entregas_control
+04/01/2013  09:34 a.m.    <DIR>          entregas_excel
+23/08/2013  04:29 p.m.             5.652 estadistica.php
+23/08/2013  04:29 p.m.             5.643 estadistica.php.bak
+12/12/2012  06:23 p.m.    <DIR>          existencia
+18/12/2012  04:46 p.m.             1.203 grafico1.php
+18/12/2012  04:46 p.m.             1.193 grafico1.php.bak
+18/12/2012  01:35 p.m.             2.885 monoclonales.php
+18/12/2012  01:33 p.m.             2.880 monoclonales.php.bak
+03/12/2012  11:00 a.m.             3.874 monoclonales2.php
+03/12/2012  10:59 a.m.             3.872 monoclonales2.php.bak
+20/12/2012  03:41 p.m.             7.210 monoclonales_cuadro.php
+19/12/2012  08:04 p.m.             7.240 monoclonales_cuadro.php.bak
+20/12/2012  01:24 p.m.             8.792 monoclonales_cuadro1.php
+20/12/2012  01:04 p.m.             8.722 monoclonales_cuadro1.php.bak
+20/12/2012  01:54 p.m.             7.450 monoclonales_cuadro_excel.php
+18/12/2012  01:44 p.m.             7.465 monoclonales_cuadro_excel.php.bak
+05/10/2012  11:23 a.m.             3.311 recetas_x_dia.php
+05/10/2012  11:20 a.m.             3.316 recetas_x_dia.php.bak
+05/10/2012  11:06 a.m.             2.807 recetas_x_dia2.php
+05/10/2012  11:06 a.m.             2.808 recetas_x_dia2.php.bak
+19/12/2012  08:05 p.m.               583 sep_monoclonales.php
+18/12/2012  01:36 p.m.               582 sep_monoclonales.php.bak
+27/12/2012  05:26 p.m.    <DIR>          tiempo_expedicion
+08/04/2013  02:23 p.m.    <DIR>          tuer
+05/02/2013  01:53 p.m.    <DIR>          vto
+              32 archivos        157.118 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\atendidos_ninos
+
+12/07/2013  11:38 a.m.    <DIR>          .
+12/07/2013  11:38 a.m.    <DIR>          ..
+18/06/2013  09:42 a.m.            10.689 buscar_tuer.php
+17/06/2013  02:49 p.m.            10.693 buscar_tuer.php.bak
+12/07/2013  11:52 a.m.            10.731 buscar_tuer_mes.php
+12/07/2013  11:51 a.m.            10.731 buscar_tuer_mes.php.bak
+13/06/2013  11:36 a.m.             9.878 ESTA_ANT.PHP
+08/04/2013  12:37 p.m.             9.763 resultado_encuesta2.php
+08/04/2013  12:34 p.m.            20.826 resultado_encuesta2.php.bak
+08/04/2013  12:35 p.m.             9.776 res_tuer.php
+08/04/2013  11:20 a.m.             3.001 tuer.php
+08/04/2013  11:20 a.m.             3.006 tuer.php.bak
+11/04/2013  02:25 p.m.            14.503 ver_tuer.php
+11/04/2013  02:13 p.m.            14.495 ver_tuer.php.bak
+11/04/2013  02:25 p.m.            12.436 ver_tuer_mon.php
+11/04/2013  02:25 p.m.            12.432 ver_tuer_mon.php.bak
+              14 archivos        152.960 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\cantidad_departamentos
+
+26/08/2013  11:16 a.m.    <DIR>          .
+26/08/2013  11:16 a.m.    <DIR>          ..
+28/06/2013  10:50 a.m.             1.889 arreglar_dptos
+29/07/2013  12:09 p.m.             1.068 buscar_dpto.php
+29/07/2013  10:25 a.m.             1.070 buscar_dpto.php.bak
+23/08/2013  04:47 p.m.             4.069 buscar_tuer.php
+23/08/2013  04:29 p.m.             4.069 buscar_tuer.php.bak
+26/08/2013  11:38 a.m.             3.118 deptos.php
+26/08/2013  11:21 a.m.             3.118 deptos.php.bak
+13/06/2013  11:36 a.m.             9.878 ESTA_ANT.PHP
+26/08/2013  11:04 a.m.             1.248 osep.php
+26/08/2013  11:04 a.m.             1.250 osep.php.bak
+08/04/2013  12:37 p.m.             9.763 resultado_encuesta2.php
+08/04/2013  12:34 p.m.            20.826 resultado_encuesta2.php.bak
+08/04/2013  12:35 p.m.             9.776 res_tuer.php
+08/04/2013  11:20 a.m.             3.001 tuer.php
+08/04/2013  11:20 a.m.             3.006 tuer.php.bak
+26/08/2013  08:52 a.m.             3.306 ver_dptos.php
+26/08/2013  08:52 a.m.             3.308 ver_dptos.php.bak
+11/04/2013  02:25 p.m.            14.503 ver_tuer.php
+11/04/2013  02:13 p.m.            14.495 ver_tuer.php.bak
+11/04/2013  02:25 p.m.            12.436 ver_tuer_mon.php
+11/04/2013  02:25 p.m.            12.432 ver_tuer_mon.php.bak
+              21 archivos        137.629 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\consumo
+
+12/07/2013  12:27 p.m.    <DIR>          .
+12/07/2013  12:27 p.m.    <DIR>          ..
+17/07/2013  01:43 p.m.            21.794 consumo.php
+12/07/2013  02:24 p.m.            21.794 consumo.php.bak
+               2 archivos         43.588 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\departamentos
+
+28/06/2013  12:31 p.m.    <DIR>          .
+28/06/2013  12:31 p.m.    <DIR>          ..
+28/06/2013  10:50 a.m.             1.889 arreglar_dptos
+29/07/2013  12:09 p.m.             1.068 buscar_dpto.php
+29/07/2013  10:25 a.m.             1.070 buscar_dpto.php.bak
+30/07/2013  02:06 p.m.             6.177 buscar_tuer.php
+30/07/2013  01:55 p.m.             6.172 buscar_tuer.php.bak
+13/06/2013  11:36 a.m.             9.878 ESTA_ANT.PHP
+08/04/2013  12:37 p.m.             9.763 resultado_encuesta2.php
+08/04/2013  12:34 p.m.            20.826 resultado_encuesta2.php.bak
+08/04/2013  12:35 p.m.             9.776 res_tuer.php
+08/04/2013  11:20 a.m.             3.001 tuer.php
+08/04/2013  11:20 a.m.             3.006 tuer.php.bak
+30/07/2013  02:17 p.m.             4.660 ver_dptos.php
+30/07/2013  02:10 p.m.             4.632 ver_dptos.php.bak
+11/04/2013  02:25 p.m.            14.503 ver_tuer.php
+11/04/2013  02:13 p.m.            14.495 ver_tuer.php.bak
+11/04/2013  02:25 p.m.            12.436 ver_tuer_mon.php
+11/04/2013  02:25 p.m.            12.432 ver_tuer_mon.php.bak
+              17 archivos        135.784 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\diagnosticos
+
+08/05/2013  01:03 p.m.    <DIR>          .
+08/05/2013  01:03 p.m.    <DIR>          ..
+08/05/2013  01:26 p.m.             4.025 diagnostico.php
+08/05/2013  01:06 p.m.             3.977 diagnostico.php.bak
+08/05/2013  02:04 p.m.             2.847 separar_diagnostico.php
+08/05/2013  01:57 p.m.             2.865 separar_diagnostico.php.bak
+09/05/2013  12:34 p.m.             2.183 ver_diagnosticos.php
+09/05/2013  12:34 p.m.             2.162 ver_diagnosticos.php.bak
+08/05/2013  01:22 p.m.             1.567 ver_diagnosticos_radio.php
+08/05/2013  01:21 p.m.             1.551 ver_diagnosticos_radio.php.bak
+               8 archivos         21.177 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\direccion
+
+26/12/2012  10:36 a.m.    <DIR>          .
+26/12/2012  10:36 a.m.    <DIR>          ..
+20/12/2012  09:19 a.m.           107.702 APDF
+14/12/2012  12:42 p.m.             5.530 consumo_laboratorios.php
+14/12/2012  12:42 p.m.             2.514 consumo_laboratorios.php.bak
+26/12/2012  09:59 a.m.    <DIR>          diag
+18/12/2012  05:05 p.m.             1.486 grafico1.php
+18/12/2012  05:04 p.m.             1.485 grafico1.php.bak
+18/12/2012  05:20 p.m.             2.363 grafico2.php
+18/12/2012  05:20 p.m.             2.371 grafico2.php.bak
+18/12/2012  04:38 p.m.             2.805 graficos.php
+18/12/2012  04:38 p.m.             2.809 graficos.php.bak
+26/12/2012  09:32 a.m.            14.999 meses.php
+26/12/2012  09:19 a.m.            11.483 meses.php.bak
+26/12/2012  01:22 p.m.             3.371 meses_cantidad.php
+26/12/2012  01:22 p.m.             3.376 meses_cantidad.php.bak
+26/12/2012  09:50 a.m.             2.077 pacientes_atendidos.php
+26/12/2012  09:32 a.m.             1.793 pacientes_atendidos.php.bak
+11/04/2013  11:16 a.m.             3.985 pacientes_atendidos_departamento.php
+11/04/2013  11:16 a.m.             3.979 pacientes_atendidos_departamento.php.bak
+26/12/2012  09:57 a.m.             2.073 pacientes_atendidos_entrega.php
+26/12/2012  09:57 a.m.             2.077 pacientes_atendidos_entrega.php.bak
+26/12/2012  09:59 a.m.             3.791 pacientes_atendidos_entregas.php
+26/12/2012  09:58 a.m.             3.785 pacientes_atendidos_entregas.php.bak
+21/01/2004  06:13 p.m.           342.016 precarga.fla
+21/01/2004  06:13 p.m.             1.086 precarga.html
+21/01/2004  06:13 p.m.           287.704 precarga.swf
+              24 archivos        816.660 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\direccion\diag
+
+26/12/2012  09:59 a.m.    <DIR>          .
+26/12/2012  09:59 a.m.    <DIR>          ..
+11/04/2013  11:16 a.m.             3.754 diag.php
+11/04/2013  11:12 a.m.             3.758 diag.php.bak
+26/12/2012  09:59 a.m.             6.634 entregas.php
+26/12/2012  09:59 a.m.             6.630 entregas.php.bak
+21/05/2009  10:43 a.m.             1.957 ex.pdf
+11/04/2013  11:18 a.m.             7.006 ex.php
+26/12/2012  01:35 p.m.             7.006 ex.php.bak
+21/05/2009  10:48 a.m.             2.232 info.htm
+18/12/2012  07:59 p.m.            48.000 mapa.jpg
+18/12/2012  08:58 p.m.             3.441 meses_cantidad.php
+18/12/2012  06:56 p.m.             3.445 meses_cantidad.php.bak
+26/12/2012  01:29 p.m.             3.790 meses_cantidad1.php
+26/12/2012  01:24 p.m.             3.792 meses_cantidad1.php.bak
+18/12/2012  07:57 p.m.                82 meses_cantidad2.php
+18/12/2012  07:49 p.m.             3.791 meses_cantidad2.php.bak
+27/09/2011  12:27 p.m.            54.180 programa.jpg
+18/12/2012  08:58 p.m.             3.768 sector.php
+18/12/2012  07:15 p.m.             3.771 sector.php.bak
+              18 archivos        167.037 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\encuesta
+
+21/03/2013  10:25 a.m.    <DIR>          .
+21/03/2013  10:25 a.m.    <DIR>          ..
+06/03/2013  10:59 a.m.               299 barra_azul.jpg
+06/03/2013  10:59 a.m.               299 barra_naranja.jpg
+06/03/2013  10:59 a.m.               297 barra_roja.jpg
+06/03/2013  11:00 a.m.               298 barra_verde.jpg
+14/03/2013  12:43 p.m.               369 borrar_encuesta.php
+14/03/2013  12:43 p.m.               363 borrar_encuesta.php.bak
+21/03/2013  10:47 a.m.             6.643 buscar_encuesta.php
+21/03/2013  10:46 a.m.             6.643 buscar_encuesta.php.bak
+18/03/2013  10:16 a.m.             9.150 carga_datos.php
+14/03/2013  12:47 p.m.             9.150 carga_datos.php.bak
+14/03/2013  12:44 p.m.             1.483 cuadros.php
+06/03/2013  12:35 p.m.             3.754 diag.php
+06/03/2013  10:49 a.m.    <DIR>          encuesta
+21/03/2013  10:48 a.m.             3.006 encuesta.php
+21/03/2013  10:18 a.m.             2.997 encuesta.php.bak
+06/03/2013  10:55 a.m.    <DIR>          encuesta2.0
+06/03/2013  11:03 a.m.    <DIR>          encuesta3.0
+14/03/2013  12:46 p.m.               565 guardar_encuesta.php
+14/03/2013  12:43 p.m.               570 guardar_encuesta.php.bak
+21/03/2013  10:26 a.m.             3.168 resultado1.php
+14/03/2013  01:08 p.m.             3.147 resultado1.php.bak
+21/03/2013  10:25 a.m.             3.634 resultado11.php
+21/03/2013  10:22 a.m.             3.611 resultado11.php.bak
+21/03/2013  10:26 a.m.             2.706 resultado2.php
+14/03/2013  01:08 p.m.             2.683 resultado2.php.bak
+21/03/2013  10:25 a.m.             3.172 resultado22.php
+21/03/2013  10:23 a.m.             3.147 resultado22.php.bak
+21/03/2013  10:26 a.m.             2.878 resultado3.php
+14/03/2013  01:08 p.m.             2.857 resultado3.php.bak
+21/03/2013  10:26 a.m.             3.346 resultado33.php
+21/03/2013  10:24 a.m.             3.321 resultado33.php.bak
+06/03/2013  12:58 p.m.             3.267 resultado_encuesta1.php
+06/03/2013  12:57 p.m.             3.112 resultado_encuesta1.php.bak
+21/03/2013  10:48 a.m.             4.203 resultado_encuesta2.php
+21/03/2013  10:32 a.m.             4.097 resultado_encuesta2.php.bak
+06/03/2013  12:35 p.m.             3.768 sector.php
+06/03/2013  11:23 a.m.    <DIR>          varios
+              33 archivos        102.003 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\encuesta\encuesta
+
+06/03/2013  10:49 a.m.    <DIR>          .
+06/03/2013  10:49 a.m.    <DIR>          ..
+21/06/2003  03:19 p.m.               289 barra.jpg
+06/03/2013  10:49 a.m.             2.263 encuesta.php
+21/06/2003  03:42 p.m.             2.260 encuesta.php.bak
+21/06/2003  03:49 p.m.               920 index.php
+16/10/2001  10:19 p.m.            15.515 LICENSE
+21/06/2003  03:49 p.m.                 1 op_a.txt
+21/06/2003  03:49 p.m.                 1 op_b.txt
+               7 archivos         21.249 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\encuesta\encuesta2.0
+
+06/03/2013  10:55 a.m.    <DIR>          .
+06/03/2013  10:55 a.m.    <DIR>          ..
+29/08/2003  04:32 p.m.               297 barra.jpg
+06/03/2013  10:53 a.m.             2.893 encuesta.php
+29/08/2003  04:36 p.m.             2.889 encuesta.php.bak
+29/08/2003  03:59 p.m.             1.555 index.php
+29/08/2003  04:38 p.m.                 0 ips.txt
+29/08/2003  04:12 p.m.               839 leeme.txt
+06/03/2013  10:58 a.m.               501 prueba.php
+06/03/2013  10:58 a.m.                99 prueba.php.bak
+06/03/2013  10:54 a.m.                22 votos.txt
+               9 archivos          9.095 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\encuesta\encuesta3.0
+
+06/03/2013  11:03 a.m.    <DIR>          .
+06/03/2013  11:03 a.m.    <DIR>          ..
+06/03/2013  10:59 a.m.               299 barra_azul.jpg
+06/03/2013  10:59 a.m.               299 barra_naranja.jpg
+06/03/2013  10:59 a.m.               297 barra_roja.jpg
+06/03/2013  11:00 a.m.               298 barra_verde.jpg
+06/03/2013  11:04 a.m.               671 grafica.php
+06/03/2013  11:03 a.m.               653 grafica.php.bak
+               6 archivos          2.517 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\encuesta\varios
+
+06/03/2013  11:23 a.m.    <DIR>          .
+06/03/2013  11:23 a.m.    <DIR>          ..
+06/03/2013  10:41 a.m.                91 configuracion.inc.php
+06/03/2013  10:43 a.m.             3.141 dgrafica.php
+06/03/2013  10:44 a.m.               334 enc1.php
+06/03/2013  10:40 a.m.               486 enc2.php
+06/03/2013  10:41 a.m.               984 enc3.php
+06/03/2013  10:42 a.m.             1.420 encuesta1.php
+06/03/2013  10:34 a.m.             2.100 encuesta_blt.ini.php
+06/03/2013  10:37 a.m.                70 ver.php
+06/03/2013  10:42 a.m.             1.085 votar.php
+               9 archivos          9.711 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\entregas
+
+29/07/2013  11:38 a.m.    <DIR>          .
+29/07/2013  11:38 a.m.    <DIR>          ..
+28/05/2013  12:36 p.m.            10.977 ajustes_negativos.php
+28/05/2013  12:36 p.m.            10.977 ajustes_negativos.php.bak
+28/05/2013  12:36 p.m.            10.860 ajustes_positivos.php
+28/05/2013  12:36 p.m.            10.860 ajustes_positivos.php.bak
+20/12/2012  01:37 p.m.             2.591 arregla_grupo.php
+29/07/2013  11:56 a.m.            14.771 consumo_pacientes.php
+29/07/2013  11:54 a.m.            14.866 consumo_pacientes.php.bak
+29/07/2013  11:51 a.m.             7.206 devoluciones.php
+29/07/2013  11:48 a.m.             7.248 devoluciones.php.bak
+26/08/2013  12:20 p.m.            10.924 entregas.php
+29/07/2013  11:51 a.m.            10.924 entregas.php.bak
+28/06/2013  11:20 a.m.            14.289 imprimir_pdf.php
+28/06/2013  11:20 a.m.            14.289 imprimir_pdf.php.bak
+27/06/2013  11:16 a.m.            14.221 imprimir_pdf_provi.php
+27/06/2013  11:14 a.m.            14.221 imprimir_pdf_provi.php.bak
+07/10/2013  12:20 p.m.            28.893 imprimir_pdf_todos.php
+30/09/2013  01:42 p.m.            28.897 imprimir_pdf_todos.php.bak
+26/12/2012  10:41 a.m.             2.722 seleccion.php
+20/12/2012  01:57 p.m.             1.950 seleccion.php.bak
+              19 archivos        231.686 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\entregas_control
+
+03/01/2013  11:26 a.m.    <DIR>          .
+03/01/2013  11:26 a.m.    <DIR>          ..
+30/12/2012  04:20 p.m.            10.238 ajustes_negativos.php
+30/12/2012  04:13 p.m.            10.222 ajustes_negativos.php.bak
+30/12/2012  04:07 p.m.            10.131 ajustes_positivos.php
+30/12/2012  03:57 p.m.            10.125 ajustes_positivos.php.bak
+20/12/2012  01:37 p.m.             2.591 arregla_grupo.php
+26/12/2012  10:31 a.m.             7.021 devoluciones.php
+26/12/2012  10:20 a.m.             7.021 devoluciones.php.bak
+03/01/2013  11:28 a.m.            10.318 entregas.php
+03/01/2013  11:28 a.m.            10.248 entregas.php.bak
+12/12/2012  06:40 p.m.            12.458 imprimir_pdf.php
+12/12/2012  06:40 p.m.            12.459 imprimir_pdf.php.bak
+03/01/2013  12:19 p.m.            10.446 imprimir_pdf_todos.php
+03/01/2013  12:19 p.m.            10.419 imprimir_pdf_todos.php.bak
+26/12/2012  10:41 a.m.             2.722 seleccion.php
+20/12/2012  01:57 p.m.             1.950 seleccion.php.bak
+              15 archivos        128.369 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\entregas_excel
+
+04/01/2013  09:34 a.m.    <DIR>          .
+04/01/2013  09:34 a.m.    <DIR>          ..
+04/01/2013  10:03 a.m.             9.889 ajustes_negativos.php
+04/01/2013  10:03 a.m.             9.633 ajustes_negativos.php.bak
+04/01/2013  10:02 a.m.             9.681 ajustes_positivos.php
+30/12/2012  04:07 p.m.            10.131 ajustes_positivos.php.bak
+20/12/2012  01:37 p.m.             2.591 arregla_grupo.php
+04/01/2013  10:05 a.m.             8.933 devoluciones.php
+04/01/2013  10:04 a.m.             8.041 devoluciones.php.bak
+04/01/2013  10:29 a.m.            10.176 entregas.php
+04/01/2013  10:29 a.m.             9.969 entregas.php.bak
+12/12/2012  06:40 p.m.            12.458 imprimir_pdf.php
+12/12/2012  06:40 p.m.            12.459 imprimir_pdf.php.bak
+04/01/2013  10:30 a.m.            15.829 imprimir_pdf_todos.php
+04/01/2013  10:29 a.m.            15.721 imprimir_pdf_todos.php.bak
+26/12/2012  10:41 a.m.             2.722 seleccion.php
+20/12/2012  01:57 p.m.             1.950 seleccion.php.bak
+              15 archivos        140.183 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\existencia
+
+12/12/2012  06:23 p.m.    <DIR>          .
+12/12/2012  06:23 p.m.    <DIR>          ..
+12/12/2012  06:17 p.m.             5.160 consulta.php
+12/12/2012  06:17 p.m.             5.163 consulta.php.bak
+12/12/2012  06:25 p.m.             5.746 genera_cierre.php
+12/12/2012  06:24 p.m.             5.801 genera_cierre.php.bak
+06/12/2012  01:46 p.m.             5.440 genera_unico.php
+12/12/2012  06:46 p.m.             7.862 inventario_contadora.php
+12/12/2012  06:46 p.m.             7.886 inventario_contadora.php.bak
+12/12/2012  06:42 p.m.               313 separar.php
+12/12/2012  06:19 p.m.               311 separar.php.bak
+               9 archivos         43.682 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\tiempo_expedicion
+
+27/12/2012  05:26 p.m.    <DIR>          .
+27/12/2012  05:26 p.m.    <DIR>          ..
+28/12/2012  08:52 a.m.             7.508 tiempo_expedicion.php
+27/12/2012  05:26 p.m.               288 tiempo_expedicion.php.bak
+               2 archivos          7.796 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\tuer
+
+08/04/2013  02:23 p.m.    <DIR>          .
+08/04/2013  02:23 p.m.    <DIR>          ..
+08/04/2013  02:37 p.m.             6.661 buscar_tuer.php
+08/04/2013  02:37 p.m.             6.663 buscar_tuer.php.bak
+08/04/2013  12:37 p.m.             9.763 resultado_encuesta2.php
+08/04/2013  12:34 p.m.            20.826 resultado_encuesta2.php.bak
+08/04/2013  12:35 p.m.             9.776 res_tuer.php
+08/04/2013  11:20 a.m.             3.001 tuer.php
+08/04/2013  11:20 a.m.             3.006 tuer.php.bak
+11/04/2013  02:25 p.m.            14.503 ver_tuer.php
+11/04/2013  02:13 p.m.            14.495 ver_tuer.php.bak
+11/04/2013  02:25 p.m.            12.436 ver_tuer_mon.php
+11/04/2013  02:25 p.m.            12.432 ver_tuer_mon.php.bak
+              11 archivos        113.562 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\estadistica\vto
+
+05/02/2013  01:53 p.m.    <DIR>          .
+05/02/2013  01:53 p.m.    <DIR>          ..
+17/04/2013  10:39 a.m.            21.679 vto.php
+27/02/2013  10:01 a.m.            15.531 vto.php.bak
+05/02/2013  01:54 p.m.             6.428 vto_actual.php
+05/02/2013  01:53 p.m.             6.416 vto_actual.php.bak
+05/02/2013  01:54 p.m.             6.426 vto_vencer.php
+05/02/2013  01:53 p.m.             6.418 vto_vencer.php.bak
+               6 archivos         62.898 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion
+
+12/03/2013  09:35 a.m.    <DIR>          .
+12/03/2013  09:35 a.m.    <DIR>          ..
+29/05/2013  03:21 p.m.             7.307 actualiza_B.PHP
+17/01/2012  02:57 p.m.             7.311 actualiza_B.PHP.bak
+27/05/2013  11:34 a.m.             4.812 anula_devolucion.php
+08/04/2013  08:44 a.m.             4.812 anula_devolucion.php.bak
+27/06/2013  10:39 a.m.            11.333 anula_entrega.php
+08/04/2013  08:42 a.m.            11.331 anula_entrega.php.bak
+05/02/2013  11:01 a.m.             8.844 anula_nc_pdf
+08/04/2013  08:46 a.m.             8.166 anula_nc_pdf.php
+08/04/2013  08:45 a.m.             8.165 anula_nc_pdf.php.bak
+11/09/2012  01:29 p.m.               468 borrar_base.php
+11/09/2012  01:28 p.m.               463 borrar_base.php.bak
+11/09/2012  11:31 a.m.               716 borrar_item.php
+11/09/2012  11:31 a.m.               720 borrar_item.php.bak
+14/02/2013  12:42 p.m.            11.985 buscar_paciente_general_facturacion.php
+14/02/2013  12:42 p.m.            11.997 buscar_paciente_general_facturacion.php.bak
+19/10/2012  01:00 p.m.               362 config.php
+19/10/2012  12:45 p.m.               367 config.php.bak
+28/06/2012  06:50 p.m.             7.036 control_nro_factura.php
+09/02/2012  11:18 a.m.             7.039 control_nro_factura.php.bak
+05/10/2011  03:47 p.m.             1.704 cuentas.php
+21/09/2010  08:52 a.m.             1.700 cuentas.php.bak
+05/10/2011  03:47 p.m.             2.338 cuentas_bucle.php
+21/09/2010  08:52 a.m.             2.334 cuentas_bucle.php.bak
+05/10/2011  03:47 p.m.             7.494 detalle_factura_papel.php
+08/01/2008  01:01 p.m.             7.418 detalle_factura_papel.php.bak
+05/10/2011  03:47 p.m.            10.031 detalle_ventas.php
+28/08/2008  11:33 a.m.             9.923 detalle_ventas.php.bak
+11/07/2012  09:29 a.m.    <DIR>          deterioro
+11/07/2012  09:29 a.m.    <DIR>          diario_vta
+18/06/2012  04:26 p.m.            23.827 emision_reducidal.php
+02/07/2012  09:05 a.m.             7.257 entrada_factura.php
+02/07/2012  09:05 a.m.             7.258 entrada_factura.php.bak
+28/05/2012  11:13 p.m.            14.895 entrada_factura_2.php
+28/05/2012  11:13 p.m.            14.892 entrada_factura_2.php.bak
+28/05/2012  11:15 p.m.            20.696 entrada_factura_3.php
+28/05/2012  11:14 p.m.            20.675 entrada_factura_3.php.bak
+04/07/2013  10:13 a.m.            21.469 entrada_factura_4.php
+04/07/2013  09:54 a.m.            21.472 entrada_factura_4.php.bak
+04/11/2012  12:58 p.m.             7.167 entrada_factura_tabla.php
+04/11/2012  12:52 p.m.             7.167 entrada_factura_tabla.php.bak
+05/10/2011  03:47 p.m.            20.597 espacios_en_blancos.php
+02/09/2008  07:37 p.m.            20.037 espacios_en_blancos.php.bak
+05/10/2011  03:47 p.m.            21.758 espacios_en_blancos_detalle.php
+22/05/2008  01:57 p.m.            21.166 espacios_en_blancos_detalle.php.bak
+28/06/2013  10:39 a.m.             6.511 facturacion.php
+27/06/2013  11:16 a.m.             6.387 facturacion.php.bak
+17/01/2012  02:47 p.m.            20.723 factura_pap.php
+17/01/2012  02:36 p.m.            20.704 factura_pap.php.bak
+09/02/2012  11:22 a.m.             6.784 factura_pap1.php
+09/02/2012  11:20 a.m.             6.749 factura_pap1.php.bak
+05/10/2011  03:47 p.m.               169 factura_papel.php
+04/07/2008  01:59 p.m.               165 factura_papel.php.bak
+17/01/2012  02:26 p.m.            20.899 factura_papel_A.PHP
+17/01/2012  02:25 p.m.            20.924 factura_papel_A.PHP.bak
+11/09/2012  11:12 a.m.            23.678 ficha.php
+11/09/2012  11:12 a.m.            23.559 ficha.php.bak
+11/04/2013  11:54 a.m.             8.218 guardar_factura.php
+25/03/2013  09:00 a.m.             8.184 guardar_factura.php.bak
+29/05/2013  03:25 p.m.             8.361 guardar_nc.php
+29/05/2013  03:24 p.m.             8.309 guardar_nc.php.bak
+27/05/2013  12:31 p.m.            10.591 imprimir_nc_pdf.php
+27/05/2013  12:30 p.m.            10.330 imprimir_nc_pdf.php.bak
+23/09/2013  11:35 a.m.            14.759 imprimir_pdf.php
+07/04/2013  09:12 p.m.            12.614 imprimir_pdf.php.bak
+09/11/2012  09:09 a.m.            11.626 imprimir_pdf_previa.php
+09/11/2012  09:08 a.m.            11.626 imprimir_pdf_previa.php.bak
+23/09/2013  11:35 a.m.            14.765 imprimir_pdf_sub.php
+23/09/2013  11:34 a.m.            14.759 imprimir_pdf_sub.php.bak
+27/05/2013  12:30 p.m.            13.440 imprimir_pdf_todos.php
+12/11/2012  07:02 p.m.            11.956 imprimir_pdf_todos.php.bak
+11/07/2012  09:29 a.m.    <DIR>          includes
+12/03/2013  09:03 a.m.    <DIR>          libro_iva
+06/03/2013  11:17 a.m.    <DIR>          mes
+02/01/2013  09:04 a.m.             8.111 mostrar_detalle.php
+02/01/2013  09:04 a.m.             8.116 mostrar_detalle.php.bak
+19/10/2012  09:19 a.m.             3.451 mostrar_temp.php
+19/10/2012  09:18 a.m.             3.176 mostrar_temp.php.bak
+19/10/2012  09:28 a.m.             2.429 mostrar_temp_mod.php
+19/10/2012  09:22 a.m.             2.413 mostrar_temp_mod.php.bak
+12/03/2013  09:35 a.m.    <DIR>          nota_devolucion
+28/02/2013  09:57 a.m.             3.622 primera_vez.php
+06/11/2012  01:50 p.m.             3.630 primera_vez.php.bak
+16/11/2012  12:05 p.m.    <DIR>          profe
+25/06/2008  01:45 p.m.             6.850 prue.txt
+25/03/2013  12:28 p.m.             5.958 refrescar1.php
+02/01/2013  09:03 a.m.             5.970 refrescar1.php.bak
+27/06/2012  04:51 p.m.             3.567 refrescar_prov.php
+05/10/2011  03:47 p.m.             3.570 refrescar_prov.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+07/04/2013  09:15 p.m.             4.884 tablas_entrega.php
+25/03/2013  12:19 p.m.             4.884 tablas_entrega.php.bak
+07/04/2013  09:13 p.m.             2.312 tablas_entrega_unico.php
+07/04/2013  09:13 p.m.             2.313 tablas_entrega_unico.php.bak
+05/11/2012  01:46 p.m.             4.709 tabla_receta_facturacion.php
+05/11/2012  01:45 p.m.             4.700 tabla_receta_facturacion.php.bak
+27/02/2013  09:18 a.m.             6.171 test1.php
+19/10/2012  01:05 p.m.             6.180 test1.php.bak
+11/09/2012  10:09 a.m.             3.177 variables.php
+11/09/2012  10:09 a.m.             3.180 variables.php.bak
+19/10/2012  09:27 a.m.             7.272 ver_detalle.php
+19/10/2012  09:26 a.m.             7.014 ver_detalle.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              95 archivos        845.138 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+23/05/2012  05:22 p.m.               369 config.php
+16/08/2012  11:32 a.m.             7.750 control_nro_factura.php
+16/08/2012  11:30 a.m.             7.748 control_nro_factura.php.bak
+16/08/2012  11:33 a.m.             6.564 entrada_deterioro.php
+16/08/2012  11:24 a.m.             6.492 entrada_deterioro.php.bak
+16/08/2012  11:34 a.m.            11.379 entrada_factura_4.php
+16/08/2012  11:33 a.m.            11.267 entrada_factura_4.php.bak
+11/07/2012  09:29 a.m.    <DIR>          includes
+29/05/2012  09:16 p.m.             5.273 mostrar_detalle.php
+29/05/2012  09:16 p.m.             5.268 mostrar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+30/10/2012  08:04 p.m.             5.644 test1.php
+16/08/2012  11:29 a.m.             5.647 test1.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              13 archivos         77.581 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+11/07/2012  09:29 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\tmp
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\tmp\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\tmp\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\deterioro\includes\.svn\tmp\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\diario_vta
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+09/11/2012  10:41 a.m.             2.678 consultas.php
+09/11/2012  10:41 a.m.             2.682 consultas.php.bak
+04/11/2012  02:40 p.m.             6.242 devoluciones.php
+04/11/2012  02:38 p.m.             6.126 devoluciones.php.bak
+22/02/2013  10:51 a.m.             6.213 diario_vta.php
+22/02/2013  10:42 a.m.             6.218 diario_vta.php.bak
+04/11/2012  02:41 p.m.               260 separar_busqueda.php
+10/07/2012  11:28 a.m.               247 separar_busqueda.php.bak
+               8 archivos         30.666 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+11/07/2012  09:29 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\tmp
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\tmp\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\tmp\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\includes\.svn\tmp\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\libro_iva
+
+12/03/2013  09:03 a.m.    <DIR>          .
+12/03/2013  09:03 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          ARREGLOS
+12/03/2013  09:23 a.m.             1.932 buscar_facturas.php
+12/03/2013  09:23 a.m.             1.937 buscar_facturas.php.bak
+17/12/2008  10:34 a.m.            20.997 buscar_facturas_borrador.php
+16/07/2009  12:24 p.m.            22.569 buscar_facturas_error.php
+26/12/2008  09:38 a.m.            15.837 buscar_facturas_os.php
+12/03/2013  09:24 a.m.            10.656 compras.php
+12/03/2013  09:22 a.m.            10.647 compras.php.bak
+30/10/2012  09:03 p.m.            10.475 compras_unico.php
+30/10/2012  09:02 p.m.            10.479 compras_unico.php.bak
+08/05/2009  09:37 a.m.             7.587 errores.php
+12/03/2013  09:22 a.m.             3.850 libro_iva.php
+12/03/2013  09:20 a.m.             3.649 libro_iva.php.bak
+08/06/2009  09:21 a.m.             5.074 libro_iva_os.php
+12/03/2013  09:28 a.m.             9.598 recibos_compra.php
+12/03/2013  09:17 a.m.             9.568 recibos_compra.php.bak
+22/09/2008  08:48 a.m.             6.359 totales.php
+22/09/2008  12:23 p.m.             6.768 totales_os.php
+04/11/2012  02:18 p.m.             9.975 ventas.php
+04/11/2012  02:17 p.m.             9.917 ventas.php.bak
+30/10/2012  10:27 p.m.             9.699 ventas_unico.php
+30/10/2012  09:22 p.m.             9.694 ventas_unico.php.bak
+              21 archivos        197.267 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\libro_iva\ARREGLOS
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+13/08/2008  07:47 p.m.             1.481 arreglar_enca_prov.php
+13/08/2008  07:46 p.m.             1.480 arreglar_enca_prov.php.bak
+13/08/2008  07:54 p.m.               780 arreglar_enca_prov_iva.php
+13/08/2008  07:53 p.m.               782 arreglar_enca_prov_iva.php.bak
+               4 archivos          4.523 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\mes
+
+06/03/2013  11:17 a.m.    <DIR>          .
+06/03/2013  11:17 a.m.    <DIR>          ..
+18/06/2013  09:43 a.m.             1.612 consultas.php
+16/11/2012  12:06 p.m.             1.610 consultas.php.bak
+06/03/2013  11:17 a.m.             6.207 devoluciones.php
+06/03/2013  10:34 a.m.             6.271 devoluciones.php.bak
+18/06/2013  09:44 a.m.             5.378 diario_vta.php
+06/03/2013  11:18 a.m.             5.376 diario_vta.php.bak
+06/03/2013  10:15 a.m.               799 separar_busqueda.php
+06/03/2013  10:15 a.m.               797 separar_busqueda.php.bak
+               8 archivos         28.050 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\nota_devolucion
+
+12/03/2013  09:35 a.m.    <DIR>          .
+12/03/2013  09:35 a.m.    <DIR>          ..
+13/08/2013  12:45 p.m.             6.311 actualizar.php
+13/08/2013  12:44 p.m.             6.311 actualizar.php.bak
+25/03/2013  12:18 p.m.             5.170 entrada_nota.php
+20/12/2012  09:39 a.m.             5.465 entrada_nota.php.bak
+27/05/2013  11:56 a.m.             5.697 entrada_nota_2.php
+27/05/2013  11:55 a.m.             5.715 entrada_nota_2.php.bak
+20/12/2012  10:19 a.m.            12.224 imprimir.php
+20/12/2012  10:52 a.m.            11.182 imprimir.php.bak
+21/03/2013  02:22 p.m.            10.586 mostrar_detalle.php
+12/03/2013  10:22 a.m.            10.588 mostrar_detalle.php.bak
+              10 archivos         79.249 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion\profe
+
+16/11/2012  12:05 p.m.    <DIR>          .
+16/11/2012  12:05 p.m.    <DIR>          ..
+26/08/2013  09:04 a.m.             2.347 consultas.php
+26/08/2013  09:01 a.m.             2.362 consultas.php.bak
+26/08/2013  09:04 a.m.             6.196 devoluciones.php
+06/03/2013  11:18 a.m.             6.297 devoluciones.php.bak
+26/08/2013  08:58 a.m.             5.408 diario_vta.php
+26/08/2013  08:58 a.m.             5.391 diario_vta.php.bak
+26/08/2013  09:03 a.m.             1.001 separar_busqueda.php
+06/03/2013  10:15 a.m.               799 separar_busqueda.php.bak
+               8 archivos         29.801 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico
+
+27/06/2013  10:40 a.m.    <DIR>          .
+27/06/2013  10:40 a.m.    <DIR>          ..
+02/11/2012  10:11 a.m.             7.349 actualiza_B.PHP
+02/11/2012  10:10 a.m.             7.335 actualiza_B.PHP.bak
+29/10/2012  10:54 a.m.               715 borrar_item.php
+29/10/2012  09:48 a.m.               712 borrar_item.php.bak
+29/06/2012  10:00 a.m.            10.857 buscar_paciente_general_facturacion.php
+29/06/2012  10:00 a.m.            10.863 buscar_paciente_general_facturacion.php.bak
+27/06/2013  10:40 a.m.             5.659 cartel_anulada.php
+27/06/2013  10:40 a.m.             5.652 cartel_anulada.php.bak
+23/05/2012  05:22 p.m.               369 config.php
+28/06/2012  06:50 p.m.             7.036 control_nro_factura.php
+09/02/2012  11:18 a.m.             7.039 control_nro_factura.php.bak
+19/02/2013  11:06 a.m.             3.626 cuentas.php
+19/02/2013  11:04 a.m.             3.626 cuentas.php.bak
+05/10/2011  03:47 p.m.             2.338 cuentas_bucle.php
+21/09/2010  08:52 a.m.             2.334 cuentas_bucle.php.bak
+05/10/2011  03:47 p.m.             7.494 detalle_factura_papel.php
+08/01/2008  01:01 p.m.             7.418 detalle_factura_papel.php.bak
+05/10/2011  03:47 p.m.            10.031 detalle_ventas.php
+28/08/2008  11:33 a.m.             9.923 detalle_ventas.php.bak
+11/07/2012  09:29 a.m.    <DIR>          deterioro
+18/06/2012  04:26 p.m.            23.827 emision_reducidal.php
+26/10/2012  06:40 p.m.               924 enter_buscar.php
+26/10/2012  06:38 p.m.             1.382 enter_buscar.php.bak
+26/10/2012  06:38 p.m.             1.382 enter_cargar.php
+12/11/2012  07:07 p.m.             6.774 entrada_factura.php
+12/11/2012  07:03 p.m.             6.391 entrada_factura.php.bak
+28/05/2012  11:13 p.m.            14.895 entrada_factura_2.php
+28/05/2012  11:13 p.m.            14.892 entrada_factura_2.php.bak
+28/05/2012  11:15 p.m.            20.696 entrada_factura_3.php
+28/05/2012  11:14 p.m.            20.675 entrada_factura_3.php.bak
+19/02/2013  11:04 a.m.            23.028 entrada_factura_4.php
+19/02/2013  11:03 a.m.            23.007 entrada_factura_4.php.bak
+28/06/2012  05:11 p.m.             6.401 entrada_factura_tabla.php
+28/06/2012  05:11 p.m.             6.320 entrada_factura_tabla.php.bak
+05/10/2011  03:47 p.m.            20.597 espacios_en_blancos.php
+02/09/2008  07:37 p.m.            20.037 espacios_en_blancos.php.bak
+05/10/2011  03:47 p.m.            21.758 espacios_en_blancos_detalle.php
+22/05/2008  01:57 p.m.            21.166 espacios_en_blancos_detalle.php.bak
+28/06/2012  04:51 p.m.             3.560 facturacion.php
+28/06/2012  04:50 p.m.             3.587 facturacion.php.bak
+17/01/2012  02:47 p.m.            20.723 factura_pap.php
+17/01/2012  02:36 p.m.            20.704 factura_pap.php.bak
+09/02/2012  11:22 a.m.             6.784 factura_pap1.php
+09/02/2012  11:20 a.m.             6.749 factura_pap1.php.bak
+05/10/2011  03:47 p.m.               169 factura_papel.php
+04/07/2008  01:59 p.m.               165 factura_papel.php.bak
+17/01/2012  02:26 p.m.            20.899 factura_papel_A.PHP
+17/01/2012  02:25 p.m.            20.924 factura_papel_A.PHP.bak
+11/04/2013  11:56 a.m.             8.771 guardar_factura.php
+19/02/2013  11:07 a.m.             8.736 guardar_factura.php.bak
+02/07/2012  04:05 p.m.             8.045 guardar_nc.php
+02/07/2012  04:03 p.m.             8.090 guardar_nc.php.bak
+08/11/2012  12:14 p.m.             8.430 imprimir_nc_anula
+27/05/2013  11:40 a.m.             5.652 imprimir_nc_anula.php
+27/05/2013  11:40 a.m.             5.652 imprimir_nc_anula.php.bak
+02/11/2012  02:09 p.m.             8.430 imprimir_nc_pdf.php
+16/11/2012  09:22 a.m.             8.430 imprimir_nc_pdf.php.bak
+16/11/2012  09:21 a.m.             8.431 imprimir_nc_pdf.php.bak.bak
+26/09/2013  11:21 a.m.            12.057 imprimir_pdf.php
+26/09/2013  11:12 a.m.            12.061 imprimir_pdf.php.bak
+11/07/2012  09:29 a.m.    <DIR>          includes
+12/11/2012  07:37 p.m.             5.835 mostrar_detalle.php
+12/11/2012  07:35 p.m.             5.788 mostrar_detalle.php.bak
+12/11/2012  07:11 p.m.             3.617 primera_vez.php
+12/11/2012  07:09 p.m.             3.580 primera_vez.php.bak
+25/06/2008  01:45 p.m.             6.850 prue.txt
+14/02/2013  12:58 p.m.             1.827 refrescar1.php
+14/02/2013  12:57 p.m.             1.759 refrescar1.php.bak
+19/02/2013  10:37 a.m.             6.033 refrescar_numerico.php
+19/02/2013  10:37 a.m.             6.033 refrescar_numerico.php.bak
+27/06/2012  04:51 p.m.             3.567 refrescar_prov.php
+05/10/2011  03:47 p.m.             3.570 refrescar_prov.php.bak
+14/02/2013  12:56 p.m.             6.409 refrescar_texto.php
+14/02/2013  12:53 p.m.             6.511 refrescar_texto.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+02/07/2012  12:36 p.m.             2.874 tablas_entrega.php
+02/07/2012  12:33 p.m.             2.876 tablas_entrega.php.bak
+02/07/2012  04:16 p.m.             3.712 tabla_receta_facturacion.php
+28/06/2012  11:43 p.m.             3.697 tabla_receta_facturacion.php.bak
+27/06/2012  04:52 p.m.             6.128 test1.php
+13/06/2012  11:11 a.m.             6.123 test1.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              80 archivos        662.546 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+23/05/2012  05:22 p.m.               369 config.php
+03/06/2012  11:24 a.m.             7.503 control_nro_factura.php
+29/05/2012  09:47 p.m.             7.499 control_nro_factura.php.bak
+29/05/2012  09:47 p.m.             6.427 entrada_deterioro.php
+29/05/2012  09:44 p.m.             6.428 entrada_deterioro.php.bak
+29/05/2012  09:47 p.m.            11.197 entrada_factura_4.php
+29/05/2012  09:44 p.m.            11.199 entrada_factura_4.php.bak
+11/07/2012  09:29 a.m.    <DIR>          includes
+29/05/2012  09:16 p.m.             5.273 mostrar_detalle.php
+29/05/2012  09:16 p.m.             5.268 mostrar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+03/06/2012  11:25 a.m.             5.609 test1.php
+29/05/2012  09:14 p.m.             5.643 test1.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              13 archivos         76.595 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+11/07/2012  09:29 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\tmp
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\tmp\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\tmp\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\deterioro\includes\.svn\tmp\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+11/07/2012  09:29 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\tmp
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\tmp\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\tmp\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\facturacion_unico\includes\.svn\tmp\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin
+
+29/08/2013  12:07 p.m.    <DIR>          .
+29/08/2013  12:07 p.m.    <DIR>          ..
+05/10/2011  03:31 p.m.             1.885 actu_stockA.php
+05/10/2011  03:31 p.m.             1.324 actu_stockB.php
+05/10/2011  03:31 p.m.             1.302 actu_stock_compras.php
+29/08/2013  12:15 p.m.    <DIR>          arreglar_gtin
+15/11/2007  02:16 p.m.             2.947 buscar.php
+05/10/2011  03:31 p.m.               895 busqueda.php
+11/07/2012  09:29 a.m.    <DIR>          compras
+05/10/2011  03:31 p.m.               495 comprobar_fechas.php
+02/02/2012  01:02 p.m.             4.360 consultas.PHP
+17/05/2012  05:20 p.m.             3.033 facturacion.php
+09/02/2012  11:00 a.m.             3.601 informes.php
+31/01/2012  10:39 p.m.             3.009 informes_proveeduria.php
+08/05/2013  01:48 p.m.             5.091 libros.php
+08/05/2013  01:48 p.m.             5.958 libros.php.bak
+20/12/2012  10:19 a.m.    <DIR>          nota_ajuste
+20/12/2012  10:44 a.m.    <DIR>          nota_devolucion
+27/06/2008  09:52 a.m.             4.078 pla_tas_inf.php
+02/09/2013  10:57 a.m.             3.000 proveeduria.php
+02/09/2013  10:57 a.m.             3.003 proveeduria.php.bak
+09/02/2012  11:01 a.m.             1.042 separar_busqueda.php
+31/01/2012  02:35 p.m.               401 separar_compras.php
+21/09/2010  11:55 a.m.             2.031 tabla codigos.php
+              18 archivos         47.455 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\arreglar_gtin
+
+29/08/2013  12:15 p.m.    <DIR>          .
+29/08/2013  12:15 p.m.    <DIR>          ..
+29/08/2013  12:22 p.m.               767 arreglar.php
+29/08/2013  12:18 p.m.               779 arreglar.php.bak
+29/08/2013  12:09 p.m.             3.236 arreglar_gtin.php
+29/08/2013  12:09 p.m.             3.238 arreglar_gtin.php.bak
+               4 archivos          8.020 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+02/01/2013  10:06 a.m.             5.693 actualizar_stock.php
+18/12/2012  01:21 p.m.             5.686 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+30/10/2012  10:16 p.m.               679 borrar_item.PHP
+23/05/2012  08:51 p.m.               681 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+19/10/2012  10:39 a.m.               362 config.php
+19/10/2012  10:37 a.m.               358 config.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+11/07/2012  09:29 a.m.    <DIR>          includes
+17/05/2012  04:22 p.m.             8.377 informe.php
+17/05/2012  04:21 p.m.             8.199 informe.php.bak
+25/10/2012  12:20 p.m.             5.673 pagina1.php
+19/10/2012  11:55 a.m.             5.675 pagina1.php.bak
+06/05/2012  11:55 p.m.             8.480 pagina11.php
+06/05/2012  09:20 p.m.             8.476 pagina11.php.bak
+07/11/2012  10:49 a.m.            18.133 pagina2.php
+26/10/2012  07:36 p.m.            18.123 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+20/05/2013  09:45 a.m.             2.841 refrescar.php
+16/05/2013  11:21 a.m.             2.849 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+06/05/2012  10:32 p.m.             2.548 refrescar1.php.bak
+11/09/2012  12:19 p.m.             6.149 refrescar_detalle.php
+11/09/2012  12:19 p.m.             6.153 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+19/10/2012  12:18 p.m.             5.380 test1.php.bak
+06/05/2012  09:39 p.m.               633 variables_temp.php
+06/05/2012  09:36 p.m.               637 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              56 archivos        250.595 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+11/07/2012  09:29 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\tmp
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          prop-base
+11/07/2012  09:29 a.m.    <DIR>          props
+11/07/2012  09:29 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\tmp\prop-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\tmp\props
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\compras\includes\.svn\tmp\text-base
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\nota_ajuste
+
+20/12/2012  10:19 a.m.    <DIR>          .
+20/12/2012  10:19 a.m.    <DIR>          ..
+20/12/2012  10:20 a.m.             2.032 actualizar.php
+20/12/2012  10:20 a.m.             2.048 actualizar.php.bak
+28/06/2013  10:44 a.m.             5.144 entrada_nota.php
+28/06/2013  10:32 a.m.             5.478 entrada_nota.php.bak
+29/08/2013  02:02 p.m.             3.536 entrada_nota_2.php
+29/08/2013  01:32 p.m.             3.550 entrada_nota_2.php.bak
+20/12/2012  10:19 a.m.            12.224 imprimir.php
+20/12/2012  10:13 a.m.             3.558 mostrar_detalle.php
+20/12/2012  10:13 a.m.             3.557 mostrar_detalle.php.bak
+               9 archivos         41.127 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\gtin\nota_devolucion
+
+20/12/2012  10:44 a.m.    <DIR>          .
+20/12/2012  10:44 a.m.    <DIR>          ..
+20/12/2012  10:46 a.m.             1.829 actualizar.php
+20/12/2012  10:45 a.m.             1.829 actualizar.php.bak
+20/12/2012  10:49 a.m.             5.089 entrada_nota.php
+20/12/2012  10:28 a.m.             5.267 entrada_nota.php.bak
+20/12/2012  10:32 a.m.             2.286 entrada_nota_2.php
+20/12/2012  10:32 a.m.             2.282 entrada_nota_2.php.bak
+20/12/2012  10:53 a.m.            11.169 imprimir.php
+20/12/2012  10:52 a.m.            11.182 imprimir.php.bak
+20/12/2012  10:32 a.m.             3.562 mostrar_detalle.php
+20/12/2012  10:13 a.m.             3.558 mostrar_detalle.php.bak
+              10 archivos         48.053 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\informes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+08/06/2011  06:13 p.m.             2.219 informes.php
+               1 archivos          2.219 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario
+
+29/08/2013  10:04 a.m.    <DIR>          .
+29/08/2013  10:04 a.m.    <DIR>          ..
+29/08/2013  10:17 a.m.    <DIR>          inventario
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario
+
+29/08/2013  10:17 a.m.    <DIR>          .
+29/08/2013  10:17 a.m.    <DIR>          ..
+05/10/2011  03:47 p.m.             3.657 actualizacion.php
+05/10/2011  03:47 p.m.             4.803 backup.php
+05/10/2011  03:47 p.m.               626 borrar.php
+29/08/2013  12:11 p.m.    <DIR>          borrar_inventario
+02/09/2013  10:54 a.m.    <DIR>          cambio_precio
+30/10/2012  07:25 p.m.    <DIR>          carga_inventario
+31/10/2012  03:02 p.m.    <DIR>          carga_inventario_unico
+04/01/2013  11:57 a.m.    <DIR>          cierre
+29/11/2012  11:25 a.m.    <DIR>          controla
+05/10/2011  03:47 p.m.             2.208 espacios_blancos.php
+31/10/2012  01:35 p.m.             6.001 existencia_actual.php
+31/10/2012  01:35 p.m.             6.001 existencia_actual.php.bak
+27/02/2013  11:47 a.m.             7.806 existencia_actual_po.php
+27/02/2013  11:43 a.m.             7.754 existencia_actual_po.php.bak
+24/01/2013  11:32 a.m.             6.158 existencia_actual_po_dif
+24/01/2013  11:36 a.m.             6.173 existencia_actual_po_dif.php
+24/01/2013  11:36 a.m.             6.176 existencia_actual_po_dif.php.bak
+29/01/2013  08:56 a.m.             6.249 existencia_actual_unico.php
+29/01/2013  08:56 a.m.             6.246 existencia_actual_unico.php.bak
+24/01/2013  11:22 a.m.             6.158 existencia_actual_unico_dif.php
+24/01/2013  11:21 a.m.             6.111 existencia_actual_unico_dif.php.bak
+20/05/2013  08:15 a.m.             8.173 existencia_droga.php
+20/05/2013  08:14 a.m.             8.174 existencia_droga.php.bak
+29/08/2013  10:33 a.m.            14.045 existencia_droga_final.php
+29/08/2013  10:33 a.m.            14.046 existencia_droga_final.php.bak
+27/09/2013  02:33 p.m.             9.975 existencia_droga_final_valor.php
+29/08/2013  11:18 a.m.             9.975 existencia_droga_final_valor.php.bak
+30/09/2013  08:35 a.m.            11.860 existencia_droga_final_valor_unico.php
+30/09/2013  08:35 a.m.            11.864 existencia_droga_final_valor_unico.php.bak
+12/11/2012  08:20 a.m.             5.967 existencia_droga_ordenado.php
+12/11/2012  08:19 a.m.             5.959 existencia_droga_ordenado.php.bak
+29/08/2013  01:18 p.m.             8.344 existencia_droga_unico.php
+29/08/2013  01:18 p.m.             8.349 existencia_droga_unico.php.bak
+29/11/2012  06:14 p.m.             8.021 existencia_droga_unico2.php
+29/11/2012  06:13 p.m.             7.862 existencia_droga_unico2.php.bak
+24/01/2013  11:21 a.m.             8.344 existencia_droga_unico_dif.php
+27/12/2012  02:07 p.m.             8.611 existencia_inicial.php
+27/12/2012  02:07 p.m.             8.616 existencia_inicial.php.bak
+02/12/2012  12:36 a.m.             8.433 existencia_inicial_unico.php
+02/12/2012  12:36 a.m.             8.436 existencia_inicial_unico.php.bak
+22/11/2012  01:47 p.m.             6.247 existencia_laboratorio.php
+22/11/2012  01:46 p.m.             6.251 existencia_laboratorio.php.bak
+22/11/2012  01:29 p.m.             6.428 existencia_laboratorio1.php
+22/11/2012  01:24 p.m.             6.466 existencia_laboratorio1.php.bak
+12/11/2012  08:45 a.m.             3.745 existencia_monodroga.php
+12/11/2012  08:18 a.m.             3.740 existencia_monodroga.php.bak
+11/11/2012  07:44 p.m.             9.128 existencia_programa.php
+11/11/2012  07:40 p.m.             8.884 existencia_programa.php.bak
+21/10/2011  07:30 p.m.             3.267 existencia_proveedor.php
+31/01/2012  04:15 p.m.             6.153 existencia_todo.php
+27/02/2013  11:01 a.m.    <DIR>          gtin
+29/08/2013  10:19 a.m.             3.886 inventario.php
+29/08/2013  10:16 a.m.             3.875 inventario.php.bak
+29/08/2013  10:34 a.m.            11.489 inventario_contadora.php
+29/08/2013  10:34 a.m.            11.490 inventario_contadora.php.bak
+02/01/2013  02:09 p.m.             6.454 inventario_contadora_excel.php
+02/01/2013  01:17 p.m.             6.454 inventario_contadora_excel.php.bak
+02/01/2013  02:11 p.m.             6.456 inventario_contadora_excel_unico.php
+02/01/2013  02:11 p.m.             6.454 inventario_contadora_excel_unico.php.bak
+20/05/2013  08:21 a.m.            10.699 inventario_contadora_unico.php
+20/05/2013  08:20 a.m.             7.455 inventario_contadora_unico.php.bak
+30/09/2013  07:26 a.m.            11.334 inventario_contadora_unido.php
+29/08/2013  11:35 a.m.            11.301 inventario_contadora_unido.php.bak
+20/05/2013  10:19 a.m.            12.094 inventario_contadora_unido_excel.php
+20/05/2013  10:16 a.m.            12.008 inventario_contadora_unido_excel.php.bak
+28/02/2013  11:47 a.m.             7.306 listado_existencia_laboratorio.php
+28/02/2013  11:47 a.m.             7.310 listado_existencia_laboratorio.php.bak
+05/10/2011  03:47 p.m.             3.614 realizar_actualizacion.php
+05/10/2011  03:47 p.m.             3.231 realizar_backup.php
+29/08/2013  01:19 p.m.             1.454 separar.php
+29/08/2013  10:35 a.m.             1.420 separar.php.bak
+05/10/2011  03:47 p.m.             6.929 separar_busqueda.php
+30/10/2012  07:25 p.m.    <DIR>          toma_inventario
+29/11/2012  04:59 p.m.    <DIR>          unico
+01/12/2012  07:56 p.m.    <DIR>          unico_inicial
+              65 archivos        470.203 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\borrar_inventario
+
+29/08/2013  12:11 p.m.    <DIR>          .
+29/08/2013  12:11 p.m.    <DIR>          ..
+29/08/2013  12:10 p.m.               940 arreglar.php.bak
+27/09/2013  02:32 p.m.               934 borrar.php
+29/08/2013  12:04 p.m.               935 borrar.php.bak
+29/08/2013  10:19 a.m.             3.335 borrar_inventario.php
+29/08/2013  10:19 a.m.             3.339 borrar_inventario.php.bak
+               5 archivos          9.483 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\cambio_precio
+
+02/09/2013  10:54 a.m.    <DIR>          .
+02/09/2013  10:54 a.m.    <DIR>          ..
+02/09/2013  10:59 a.m.             3.257 arreglar_precio.php
+02/09/2013  10:54 a.m.             3.239 arreglar_precio.php.bak
+02/09/2013  10:58 a.m.               802 cambiar_existencia.php
+02/09/2013  10:58 a.m.               806 cambiar_existencia.php.bak
+28/02/2013  09:51 a.m.             1.754 cambio_precio.php
+03/01/2013  05:50 p.m.             1.756 cambio_precio.php.bak
+12/09/2013  01:37 p.m.             6.376 ver_cambio.php
+12/09/2013  01:36 p.m.             6.371 ver_cambio.php.bak
+               8 archivos         24.361 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+12/11/2012  08:44 a.m.             4.719 actualizar_stock.php
+11/11/2012  03:27 p.m.             4.351 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+07/11/2012  10:02 a.m.               368 borrar_item.PHP
+07/11/2012  10:02 a.m.               396 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+19/10/2012  10:39 a.m.               362 config.php
+19/10/2012  10:37 a.m.               358 config.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+30/10/2012  07:25 p.m.    <DIR>          includes
+17/05/2012  04:22 p.m.             8.377 informe.php
+17/05/2012  04:21 p.m.             8.199 informe.php.bak
+29/10/2012  09:52 p.m.             3.795 pagina1.php
+29/10/2012  09:43 p.m.             3.990 pagina1.php.bak
+06/05/2012  11:55 p.m.             8.480 pagina11.php
+06/05/2012  09:20 p.m.             8.476 pagina11.php.bak
+07/11/2012  10:51 a.m.            17.114 pagina2.php
+05/11/2012  11:13 a.m.            17.104 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+11/11/2012  03:31 p.m.             3.351 refrescar.php
+11/11/2012  03:29 p.m.             3.304 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+06/05/2012  10:32 p.m.             2.548 refrescar1.php.bak
+22/11/2012  11:18 a.m.             5.417 refrescar_detalle.php
+31/10/2012  04:37 p.m.             5.426 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+19/10/2012  12:18 p.m.             5.380 test1.php.bak
+29/10/2012  10:07 p.m.               239 variables_temp.php
+06/05/2012  09:39 p.m.               633 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              56 archivos        241.197 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+30/10/2012  07:25 p.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+30/10/2012  07:25 p.m.    <DIR>          prop-base
+30/10/2012  07:25 p.m.    <DIR>          props
+30/10/2012  07:25 p.m.    <DIR>          text-base
+30/10/2012  07:25 p.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\prop-base
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\props
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\text-base
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\tmp
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+30/10/2012  07:25 p.m.    <DIR>          prop-base
+30/10/2012  07:25 p.m.    <DIR>          props
+30/10/2012  07:25 p.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\tmp\prop-base
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\tmp\props
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario\includes\.svn\tmp\text-base
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+11/09/2012  12:25 p.m.             4.246 actualizar_stock.php
+11/09/2012  12:25 p.m.             4.272 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+31/10/2012  03:22 p.m.               428 borrar_item.PHP
+31/10/2012  03:16 p.m.               436 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+19/10/2012  10:39 a.m.               362 config.php
+19/10/2012  10:37 a.m.               358 config.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+31/10/2012  03:02 p.m.    <DIR>          includes
+17/05/2012  04:22 p.m.             8.377 informe.php
+17/05/2012  04:21 p.m.             8.199 informe.php.bak
+29/10/2012  09:52 p.m.             3.795 pagina1.php
+29/10/2012  09:43 p.m.             3.990 pagina1.php.bak
+06/05/2012  11:55 p.m.             8.480 pagina11.php
+06/05/2012  09:20 p.m.             8.476 pagina11.php.bak
+05/11/2012  08:41 a.m.            16.867 pagina2.php
+31/10/2012  03:21 p.m.            16.871 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+31/10/2012  03:22 p.m.             2.898 refrescar.php
+31/10/2012  03:18 p.m.             2.881 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+06/05/2012  10:32 p.m.             2.548 refrescar1.php.bak
+31/10/2012  03:16 p.m.             5.409 refrescar_detalle.php
+31/10/2012  03:14 p.m.             5.389 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+19/10/2012  12:18 p.m.             5.380 test1.php.bak
+29/10/2012  10:07 p.m.               239 variables_temp.php
+06/05/2012  09:39 p.m.               633 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              56 archivos        239.344 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+31/10/2012  03:02 p.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+31/10/2012  03:02 p.m.    <DIR>          prop-base
+31/10/2012  03:02 p.m.    <DIR>          props
+31/10/2012  03:02 p.m.    <DIR>          text-base
+31/10/2012  03:02 p.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\prop-base
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\props
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\text-base
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\tmp
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+31/10/2012  03:02 p.m.    <DIR>          prop-base
+31/10/2012  03:02 p.m.    <DIR>          props
+31/10/2012  03:02 p.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\tmp\prop-base
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\tmp\props
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\carga_inventario_unico\includes\.svn\tmp\text-base
+
+31/10/2012  03:02 p.m.    <DIR>          .
+31/10/2012  03:02 p.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\cierre
+
+04/01/2013  11:57 a.m.    <DIR>          .
+04/01/2013  11:57 a.m.    <DIR>          ..
+24/11/2012  10:21 a.m.             2.734 cierre.php
+24/11/2012  09:49 a.m.             3.054 cierre.php.bak
+20/05/2013  10:30 a.m.             5.313 consulta.php
+20/05/2013  09:59 a.m.             5.307 consulta.php.bak
+29/08/2013  01:06 p.m.             8.626 genera_cierre.php
+29/08/2013  01:04 p.m.             8.627 genera_cierre.php.bak
+24/01/2013  12:06 p.m.             4.733 genera_cierre1.php
+06/12/2012  08:49 a.m.             4.732 genera_cierre1.php.bak
+24/01/2013  12:06 p.m.             5.142 genera_cierre2.php
+06/12/2012  01:23 p.m.             5.141 genera_cierre2.php.bak
+04/01/2013  11:57 a.m.             5.986 genera_cierre_ultimousado.php
+20/05/2013  12:01 p.m.             7.819 genera_unico.php
+20/05/2013  11:33 a.m.             7.775 genera_unico.php.bak
+28/12/2012  02:17 p.m.             5.453 genera_unico_anterior.php
+              14 archivos         80.442 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\controla
+
+29/11/2012  11:25 a.m.    <DIR>          .
+29/11/2012  11:25 a.m.    <DIR>          ..
+27/02/2013  02:21 p.m.             2.937 agrupa.php
+29/01/2013  12:03 p.m.             2.941 agrupa.php.bak
+27/12/2012  09:56 a.m.             2.528 controla.php
+27/12/2012  09:55 a.m.             2.554 controla.php.bak
+27/12/2012  09:54 a.m.             3.817 detalle_agrupa.php
+29/11/2012  11:33 a.m.             3.816 detalle_agrupa.php.bak
+29/11/2012  11:18 a.m.             4.362 detalle_inventario.php
+29/11/2012  11:18 a.m.             4.346 detalle_inventario.php.bak
+29/11/2012  10:43 a.m.                19 Noname1
+29/11/2012  10:43 a.m.                 9 Noname1.bak
+              10 archivos         27.329 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin
+
+27/02/2013  11:01 a.m.    <DIR>          .
+27/02/2013  11:01 a.m.    <DIR>          ..
+27/02/2013  10:56 a.m.               321 borrar_item.PHP
+27/02/2013  10:55 a.m.               309 borrar_item.PHP.bak
+27/02/2013  10:59 a.m.             7.177 cari.php
+27/02/2013  10:58 a.m.             7.181 cari.php.bak
+27/02/2013  11:07 a.m.               677 contar.php
+27/02/2013  11:07 a.m.               661 contar.php.bak
+22/11/2012  09:44 a.m.    <DIR>          includes
+27/12/2012  01:47 p.m.             8.320 inventario_gtin.php
+22/11/2012  10:53 a.m.             8.310 inventario_gtin.php.bak
+29/10/2012  09:52 p.m.             3.795 pagina1.php
+27/02/2013  09:23 a.m.             5.372 pagina2.php
+27/02/2013  09:23 a.m.             5.386 pagina2.php.bak
+27/02/2013  10:04 a.m.             2.571 refrescar.php
+27/02/2013  09:50 a.m.             2.575 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+27/02/2013  11:04 a.m.             6.770 refrescar_detalle.php
+27/02/2013  10:54 a.m.             6.728 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+22/11/2012  10:11 a.m.               234 variables_temp.php
+29/10/2012  10:07 p.m.               239 variables_temp.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              21 archivos         78.721 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+22/11/2012  09:44 a.m.    <DIR>          .svn
+06/05/2009  01:30 p.m.            26.343 changelog
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php
+06/05/2009  01:30 p.m.           261.702 nusoap.php
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.             1.966 all-wcprops
+06/05/2009  01:30 p.m.             2.242 entries
+22/11/2012  09:44 a.m.    <DIR>          prop-base
+22/11/2012  09:44 a.m.    <DIR>          props
+22/11/2012  09:44 a.m.    <DIR>          text-base
+22/11/2012  09:44 a.m.    <DIR>          tmp
+               2 archivos          4.208 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\prop-base
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\props
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\text-base
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+06/05/2009  01:30 p.m.            26.343 changelog.svn-base
+06/05/2009  01:30 p.m.            26.696 class.nusoap_base.php.svn-base
+06/05/2009  01:30 p.m.            28.499 class.soapclient.php.svn-base
+06/05/2009  01:30 p.m.             2.208 class.soap_fault.php.svn-base
+06/05/2009  01:30 p.m.            24.261 class.soap_parser.php.svn-base
+06/05/2009  01:30 p.m.            36.568 class.soap_server.php.svn-base
+06/05/2009  01:30 p.m.            37.123 class.soap_transport_http.php.svn-base
+06/05/2009  01:30 p.m.             2.393 class.soap_val.php.svn-base
+06/05/2009  01:30 p.m.            70.349 class.wsdl.php.svn-base
+06/05/2009  01:30 p.m.             4.874 class.wsdlcache.php.svn-base
+06/05/2009  01:30 p.m.            33.539 class.xmlschema.php.svn-base
+06/05/2009  01:30 p.m.           261.702 nusoap.php.svn-base
+06/05/2009  01:30 p.m.            14.877 nusoapmime.php.svn-base
+              13 archivos        569.432 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\tmp
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+22/11/2012  09:44 a.m.    <DIR>          prop-base
+22/11/2012  09:44 a.m.    <DIR>          props
+22/11/2012  09:44 a.m.    <DIR>          text-base
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\tmp\prop-base
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\tmp\props
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\gtin\includes\.svn\tmp\text-base
+
+22/11/2012  09:44 a.m.    <DIR>          .
+22/11/2012  09:44 a.m.    <DIR>          ..
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\toma_inventario
+
+30/10/2012  07:25 p.m.    <DIR>          .
+30/10/2012  07:25 p.m.    <DIR>          ..
+05/10/2011  03:47 p.m.             6.557 actualizar_stock.php
+19/08/2008  08:58 a.m.             6.553 actualizar_stock.php.bak
+05/10/2011  03:47 p.m.             4.108 buscar_existencia.php
+22/08/2008  11:22 a.m.             4.063 buscar_existencia.php.bak
+05/10/2011  03:47 p.m.             1.064 guardar_modificacion.php
+22/08/2008  02:06 p.m.             1.060 guardar_modificacion.php.bak
+05/10/2011  03:47 p.m.             9.539 informe.php
+16/07/2008  10:56 a.m.             9.443 informe.php.bak
+05/10/2011  03:47 p.m.             7.053 modificar2.php
+22/08/2008  01:45 p.m.             6.965 modificar2.php.bak
+05/10/2011  03:47 p.m.             6.382 modificar3.php
+22/08/2008  01:04 p.m.             6.318 modificar3.php.bak
+29/10/2012  09:37 p.m.             7.271 pagina2.php
+29/10/2012  09:37 p.m.             7.266 pagina2.php.bak
+05/10/2011  03:47 p.m.             3.316 pagina3.php
+22/08/2008  11:24 a.m.             3.256 pagina3.php.bak
+              16 archivos         90.214 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\unico
+
+29/11/2012  04:59 p.m.    <DIR>          .
+29/11/2012  04:59 p.m.    <DIR>          ..
+22/11/2012  10:20 a.m.               279 borrar_item.PHP
+22/11/2012  10:20 a.m.               270 borrar_item.PHP.bak
+22/11/2012  10:53 a.m.             8.310 inventario_gtin.php
+22/11/2012  10:46 a.m.             8.302 inventario_gtin.php.bak
+29/10/2012  09:52 p.m.             3.795 pagina1.php
+29/11/2012  05:05 p.m.             5.197 pagina2.php
+29/11/2012  05:05 p.m.             5.530 pagina2.php.bak
+27/02/2013  09:19 a.m.             2.609 refrescar.php
+29/11/2012  05:01 p.m.             2.529 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+29/11/2012  05:08 p.m.             4.513 refrescar_detalle.php
+29/11/2012  05:08 p.m.             4.517 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+22/11/2012  10:11 a.m.               234 variables_temp.php
+29/10/2012  10:07 p.m.               239 variables_temp.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              17 archivos         58.419 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\inventario\inventario\unico_inicial
+
+01/12/2012  07:56 p.m.    <DIR>          .
+01/12/2012  07:56 p.m.    <DIR>          ..
+01/12/2012  08:06 p.m.               287 borrar_item.PHP
+01/12/2012  08:06 p.m.               291 borrar_item.PHP.bak
+22/11/2012  10:53 a.m.             8.310 inventario_gtin.php
+22/11/2012  10:46 a.m.             8.302 inventario_gtin.php.bak
+29/10/2012  09:52 p.m.             3.795 pagina1.php
+01/12/2012  08:03 p.m.             5.454 pagina2.php
+01/12/2012  08:03 p.m.             5.367 pagina2.php.bak
+01/12/2012  08:05 p.m.             2.765 refrescar.php
+01/12/2012  07:58 p.m.             2.530 refrescar.php.bak
+06/05/2012  10:32 p.m.             2.544 refrescar1.php
+02/12/2012  10:22 a.m.             5.575 refrescar_detalle.php
+02/12/2012  12:33 a.m.             5.573 refrescar_detalle.php.bak
+14/06/2011  08:05 p.m.               367 Seguridad.xml
+22/10/2012  01:46 p.m.             5.371 test1.php
+22/11/2012  10:11 a.m.               234 variables_temp.php
+29/10/2012  10:07 p.m.               239 variables_temp.php.bak
+29/11/2011  08:07 p.m.             3.813 wsFunctions.php
+              17 archivos         60.817 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+27/12/2012  10:24 a.m.             4.818 actualizaciones.php
+27/11/2012  10:52 a.m.             4.730 actualizaciones.php.bak
+25/10/2012  08:27 a.m.    <DIR>          a_obras sociales
+28/05/2013  12:45 p.m.    <DIR>          a_pacientes
+27/12/2012  10:27 a.m.             1.909 busquedas.php
+27/11/2012  10:50 a.m.             1.794 busquedas.php.bak
+11/07/2012  09:29 a.m.    <DIR>          impresiones
+12/07/2013  02:47 p.m.             2.666 mesa_entrada.php
+12/07/2013  02:47 p.m.             2.667 mesa_entrada.php.bak
+07/07/2006  10:53 p.m.               147 print.php
+11/07/2012  09:29 a.m.    <DIR>          protocolo
+14/03/2013  10:29 a.m.    <DIR>          receta
+11/07/2012  09:29 a.m.    <DIR>          receta_ant
+21/03/2006  11:05 a.m.             2.229 secretaria_bloques.html
+               8 archivos         20.960 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\a_obras sociales
+
+25/10/2012  08:27 a.m.    <DIR>          .
+25/10/2012  08:27 a.m.    <DIR>          ..
+25/10/2012  08:27 a.m.               265 borra.php
+14/05/2008  07:08 p.m.               267 borra.php.bak
+25/10/2012  08:32 a.m.             5.958 buscar_os.php
+25/10/2012  08:32 a.m.             5.926 buscar_os.php.bak
+26/12/2011  09:37 p.m.             9.951 entrada_os.php
+05/10/2011  03:31 p.m.             9.315 entrada_os.php.bak
+25/10/2012  08:26 a.m.             7.837 ficha.php
+05/10/2011  03:31 p.m.             7.841 ficha.php.bak
+05/10/2011  03:31 p.m.             1.799 guardar_os.php
+14/05/2008  07:39 p.m.             1.798 guardar_os.php.bak
+25/10/2012  08:26 a.m.            10.849 modificar.php
+26/12/2011  09:37 p.m.            10.853 modificar.php.bak
+25/10/2012  08:27 a.m.             1.825 modificar_os.php
+25/10/2012  08:27 a.m.             1.827 modificar_os.php.bak
+05/10/2011  03:31 p.m.             1.060 variables.php
+14/05/2008  07:25 p.m.             1.056 variables.php.bak
+              16 archivos         78.427 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\a_pacientes
+
+28/05/2013  12:45 p.m.    <DIR>          .
+28/05/2013  12:45 p.m.    <DIR>          ..
+31/10/2012  02:49 p.m.             5.071 arreglar_pacientes.php
+31/10/2012  02:47 p.m.             5.091 arreglar_pacientes.php.bak
+02/11/2012  09:26 a.m.               605 arregla_afiliaciones.php
+02/11/2012  09:24 a.m.               597 arregla_afiliaciones.php.bak
+01/11/2012  02:43 p.m.               711 arregla_fecha.php
+01/11/2012  02:42 p.m.               713 arregla_fecha.php.bak
+25/10/2012  05:29 p.m.               801 arregla_protocolo.php
+25/10/2012  05:29 p.m.               803 arregla_protocolo.php.bak
+04/11/2012  05:43 p.m.               335 borrar_afiliacion.php
+04/11/2012  05:43 p.m.               332 borrar_afiliacion.php.bak
+21/06/2012  11:03 p.m.               291 borra_diagnostico.php
+21/06/2012  11:03 p.m.               388 borra_diagnostico.php.bak
+14/05/2008  08:09 p.m.               277 borra_fuente.php
+21/10/2011  06:44 p.m.               703 borra_paciente.php
+21/06/2012  11:06 p.m.               402 borra_paciente_diagnostico.php
+21/06/2012  11:05 p.m.               363 borra_paciente_diagnostico.php.bak
+04/11/2012  05:24 p.m.             2.454 buscar_afiliaciones.php
+01/11/2012  02:32 p.m.             2.405 buscar_afiliaciones.php.bak
+08/05/2013  12:09 p.m.             2.467 buscar_diagnostico.php
+08/05/2013  12:09 p.m.             2.125 buscar_diagnostico.php.bak
+25/10/2012  08:38 a.m.             2.824 buscar_fuentes.php
+25/10/2012  08:38 a.m.             2.726 buscar_fuentes.php.bak
+16/11/2012  12:00 p.m.            17.110 buscar_gtin.php
+16/11/2012  12:00 p.m.            17.114 buscar_gtin.php.bak
+08/05/2013  02:11 p.m.            10.290 buscar_paciente.php
+14/02/2013  12:37 p.m.            10.287 buscar_paciente.php.bak
+08/05/2013  02:12 p.m.            12.236 buscar_paciente_deposito.php
+16/11/2012  11:50 a.m.            12.233 buscar_paciente_deposito.php.bak
+29/05/2013  05:14 p.m.             6.658 buscar_paciente_excel.php
+28/05/2013  01:10 p.m.             6.576 buscar_paciente_excel.php.bak
+08/05/2013  02:12 p.m.            12.296 buscar_paciente_general.php
+25/03/2013  09:08 a.m.            12.293 buscar_paciente_general.php.bak
+14/05/2013  09:46 a.m.             9.711 buscar_paciente_general_1.php
+19/10/2012  09:44 a.m.             9.708 buscar_paciente_general_1.php.bak
+14/05/2013  09:46 a.m.            10.387 buscar_paciente_general_facturacion.php
+14/02/2013  12:39 p.m.            10.384 buscar_paciente_general_facturacion.php.bak
+08/05/2013  02:12 p.m.            12.119 buscar_paciente_general_receta.php
+14/02/2013  01:29 p.m.            12.116 buscar_paciente_general_receta.php.bak
+25/10/2012  05:56 p.m.             3.592 buscar_protocolo.php
+25/10/2012  05:55 p.m.             3.595 buscar_protocolo.php.bak
+25/03/2013  08:49 a.m.             5.239 entrada_afiliaciones.php
+25/03/2013  08:45 a.m.             6.009 entrada_afiliaciones.php.bak
+09/09/2013  10:00 a.m.            22.586 entrada_dato.php
+15/02/2013  10:39 a.m.            22.588 entrada_dato.php.bak
+26/12/2011  09:44 p.m.             3.374 entrada_des_diagnostico.php
+26/12/2011  09:41 p.m.             3.306 entrada_des_fuente.php
+26/12/2011  09:43 p.m.             5.893 entrada_des_prestaciones.php
+15/02/2013  10:39 a.m.            10.947 entrada_diagnostico.php
+14/02/2013  01:32 p.m.            10.957 entrada_diagnostico.php.bak
+10/04/2013  11:44 a.m.             4.680 entregar_receta.php
+10/04/2013  11:44 a.m.             4.636 entregar_receta.php.bak
+19/12/2012  04:38 p.m.            24.137 ficha.php
+18/12/2012  01:04 p.m.            23.662 ficha.php.bak
+11/10/2012  12:41 p.m.               548 funcion_cambiar_estados.php
+01/05/2012  11:19 a.m.               472 funcion_cambiar_estados.php.bak
+25/03/2013  08:49 a.m.             1.778 guardar_afiliaciones.php
+25/03/2013  08:46 a.m.             1.855 guardar_afiliaciones.php.bak
+14/05/2008  06:21 p.m.               613 guardar_des_diagnostico.php
+14/05/2008  06:21 p.m.               583 guardar_des_fuente.php
+15/11/2012  08:45 a.m.             1.067 guardar_des_prestaciones.php
+15/11/2012  08:44 a.m.             1.072 guardar_des_prestaciones.php.bak
+15/02/2013  10:33 a.m.             2.668 guardar_diagnostico.php
+14/02/2013  01:31 p.m.             2.679 guardar_diagnostico.php.bak
+10/04/2013  12:13 p.m.               861 guardar_entrega.php
+10/04/2013  12:12 p.m.               837 guardar_entrega.php.bak
+25/03/2013  09:06 a.m.             4.636 guardar_paciente.php
+15/02/2013  10:40 a.m.             4.600 guardar_paciente.php.bak
+04/11/2012  06:06 p.m.             6.441 modificar_afiliaciones.php
+04/11/2012  06:05 p.m.             6.447 modificar_afiliaciones.php.bak
+25/10/2012  08:43 a.m.             3.208 modificar_des_diagnostico.php
+05/06/2012  10:37 p.m.             3.128 modificar_des_diagnostico.php.bak
+25/10/2012  08:36 a.m.             3.176 modificar_des_fuente.php
+25/10/2012  08:35 a.m.             3.050 modificar_des_fuente.php.bak
+25/10/2012  09:15 a.m.             1.462 modificar_des_prestaciones.php
+25/10/2012  09:14 a.m.             1.457 modificar_des_prestaciones.php.bak
+13/06/2013  10:01 a.m.            26.097 modificar_pacientes.php
+13/06/2013  10:01 a.m.            26.111 modificar_pacientes.php.bak
+04/11/2012  06:02 p.m.             1.373 mod_afiliaciones.php
+04/11/2012  06:01 p.m.             1.367 mod_afiliaciones.php.bak
+14/05/2008  08:23 p.m.               708 mod_des_diagnostico.php
+14/05/2008  08:24 p.m.               664 mod_des_fuente.php
+12/06/2012  08:12 p.m.             9.884 mod_diagnostico_pac.php
+13/06/2013  10:14 a.m.             5.885 mod_paciente.php
+13/06/2013  10:14 a.m.             5.899 mod_paciente.php.bak
+26/12/2011  09:18 p.m.               694 prueba.php
+15/02/2013  11:16 a.m.             1.640 tablas_entrega.php
+15/02/2013  11:16 a.m.             1.666 tablas_entrega.php.bak
+01/11/2012  02:50 p.m.             2.470 tabla_diagnostico.php
+01/11/2012  02:50 p.m.             2.478 tabla_diagnostico.php.bak
+12/07/2013  01:17 p.m.             2.871 tabla_prestaciones.php
+12/07/2013  01:06 p.m.            10.241 tabla_prestaciones.php.bak
+21/01/2013  12:29 p.m.             4.637 tabla_receta.php
+21/01/2013  12:23 p.m.             4.628 tabla_receta.php.bak
+26/10/2012  05:19 p.m.             2.103 tabla_receta_facturacion.php
+11/09/2012  10:03 a.m.             2.107 tabla_receta_facturacion.php.bak
+19/12/2012  04:37 p.m.             3.153 variables.php
+02/11/2012  09:10 a.m.             3.101 variables.php.bak
+14/05/2008  08:19 p.m.               718 variables_des.php
+03/08/2012  10:44 a.m.            20.835 ver_detalle.php
+30/04/2012  05:24 p.m.             2.748 ver_detalle.php.bak
+25/10/2012  05:52 p.m.             5.447 ver_detalle1.php
+25/10/2012  05:49 p.m.             5.448 ver_detalle1.php.bak
+25/10/2012  05:48 p.m.             2.903 ver_detalle_protocolo.php
+25/10/2012  05:44 p.m.             2.869 ver_detalle_protocolo.php.bak
+             104 archivos        582.586 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\impresiones
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.             3.303 bioquimico.php
+07/02/2007  01:07 p.m.             3.262 bioquimico.php.bak
+05/10/2011  03:31 p.m.             3.014 bioquimico_dpto.php
+03/10/2006  12:17 p.m.             2.969 bioquimico_dpto.php.bak
+05/10/2011  03:31 p.m.             3.438 cuenta.php
+03/10/2006  12:10 p.m.             3.385 cuenta.php.bak
+05/10/2011  03:31 p.m.             3.457 cuenta_dpto.php
+03/10/2006  12:15 p.m.             3.404 cuenta_dpto.php.bak
+05/10/2011  03:31 p.m.             3.460 especialidad.php
+03/10/2006  12:12 p.m.             3.407 especialidad.php.bak
+05/10/2011  03:31 p.m.             4.214 facturante.php
+03/10/2006  01:47 p.m.             4.157 facturante.php.bak
+05/10/2011  03:31 p.m.               879 impresiones.php
+03/10/2006  01:31 p.m.               875 impresiones.php.bak
+05/10/2011  03:31 p.m.             3.459 orientacion.php
+03/10/2006  12:13 p.m.             3.406 orientacion.php.bak
+05/10/2011  03:31 p.m.             3.337 vitalicio.php
+03/10/2006  11:53 a.m.             3.292 vitalicio.php.bak
+              18 archivos         56.718 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\protocolo
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+30/04/2012  02:13 p.m.             2.986 buscar_drogas.php
+30/04/2012  02:07 p.m.             2.977 buscar_drogas.php.bak
+05/10/2011  03:31 p.m.             4.437 cargar_droga.php
+03/09/2008  12:20 a.m.             4.405 cargar_droga.php.bak
+05/10/2011  03:31 p.m.             4.871 entrada_prot1.php
+03/09/2008  12:22 a.m.             4.847 entrada_prot1.php.bak
+05/10/2011  03:31 p.m.             5.033 entrada_prot2.php
+03/09/2008  12:16 a.m.             5.021 entrada_prot2.php.bak
+30/04/2012  05:04 p.m.             5.970 entrada_protocolo.php
+30/04/2012  05:03 p.m.             5.967 entrada_protocolo.php.bak
+30/04/2012  05:12 p.m.             8.761 entrada_protocolo1.php
+30/04/2012  02:44 p.m.             8.728 entrada_protocolo1.php.bak
+30/04/2012  05:09 p.m.             2.284 guardar_protocolo.php
+30/04/2012  04:31 p.m.             2.279 guardar_protocolo.php.bak
+30/04/2012  02:38 p.m.             3.363 mostrar_temp.php
+30/04/2012  02:37 p.m.             3.347 mostrar_temp.php.bak
+              16 archivos         75.276 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\receta
+
+14/03/2013  10:29 a.m.    <DIR>          .
+14/03/2013  10:29 a.m.    <DIR>          ..
+25/03/2013  09:12 a.m.               688 borrar_receta.php
+14/03/2013  10:56 a.m.               684 borrar_receta.php.bak
+14/03/2013  10:33 a.m.             9.652 borrar_receta_detalle.php
+14/03/2013  10:33 a.m.             9.650 borrar_receta_detalle.php.bak
+25/10/2012  04:44 p.m.             2.317 buscar_drogas.php
+25/10/2012  04:43 p.m.             2.989 buscar_drogas.php.bak
+22/06/2012  01:41 a.m.             3.352 buscar_drogas_mod.php
+22/06/2012  01:41 a.m.             3.356 buscar_drogas_mod.php.bak
+05/10/2011  03:31 p.m.             4.437 cargar_droga.php
+03/09/2008  12:20 a.m.             4.405 cargar_droga.php.bak
+05/10/2011  03:31 p.m.             4.871 entrada_prot1.php
+03/09/2008  12:22 a.m.             4.847 entrada_prot1.php.bak
+05/10/2011  03:31 p.m.             5.033 entrada_prot2.php
+03/09/2008  12:16 a.m.             5.021 entrada_prot2.php.bak
+30/04/2012  05:03 p.m.             5.967 entrada_protocolo.php.bak
+01/05/2012  12:29 p.m.             8.766 entrada_protocolo1.php
+30/04/2012  05:12 p.m.             8.761 entrada_protocolo1.php.bak
+25/03/2013  11:42 a.m.             8.502 entrada_receta.php
+25/03/2013  11:41 a.m.             8.510 entrada_receta.php.bak
+30/04/2012  04:31 p.m.             2.279 guardar_protocolo.php.bak
+25/03/2013  11:38 a.m.             2.038 guardar_receta.php
+15/02/2013  10:33 a.m.             2.006 guardar_receta.php.bak
+14/03/2013  10:42 a.m.             1.712 guardar_receta_mod.php
+21/01/2013  12:03 p.m.             1.710 guardar_receta_mod.php.bak
+25/10/2012  05:17 p.m.             2.905 mostrar_temp.php
+25/10/2012  05:12 p.m.             2.905 mostrar_temp.php.bak
+25/10/2012  04:59 p.m.             3.405 mostrar_temp_anterior.php
+25/10/2012  04:59 p.m.                 0 mostrar_temp_anterior.php.bak
+11/10/2012  12:40 p.m.             3.451 mostrar_temp_mod.php
+11/10/2012  12:39 p.m.             3.453 mostrar_temp_mod.php.bak
+25/10/2012  05:32 p.m.             6.127 tabla_protocolo.php
+25/10/2012  05:30 p.m.             6.878 tabla_protocolo.php.bak
+14/03/2013  10:39 a.m.            13.187 ver_detalle.php
+14/03/2013  10:39 a.m.            13.192 ver_detalle.php.bak
+22/06/2012  12:46 a.m.            10.303 ver_detalle_ant.php
+01/05/2012  12:44 p.m.             2.046 ver_recetas.php
+              36 archivos        179.405 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\mesa_entrada\receta_ant
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.             4.428 cargar_droga.php
+08/06/2011  07:36 p.m.             4.396 cargar_droga.php.bak
+13/12/2011  07:44 p.m.             4.214 entrada_receta.php
+13/12/2011  07:43 p.m.             4.214 entrada_receta.php.bak
+30/04/2012  06:15 p.m.             4.214 nueva_receta.php
+30/04/2012  01:03 p.m.             3.095 ver_receta.php
+10/02/2012  11:24 a.m.             3.063 ver_receta.php.bak
+               7 archivos         27.624 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\meta
+
+30/04/2013  11:16 a.m.    <DIR>          .
+30/04/2013  11:16 a.m.    <DIR>          ..
+17/07/2013  01:56 p.m.             4.987 convierte_meta.php
+24/04/2013  12:22 p.m.             4.987 convierte_meta.php.bak
+30/04/2013  12:04 p.m.             2.534 convierte_papo.php
+30/04/2013  11:53 a.m.             2.534 convierte_papo.php.bak
+17/07/2013  01:58 p.m.            14.320 diferencias.php
+24/04/2013  12:30 p.m.            14.320 diferencias.php.bak
+30/04/2013  12:24 p.m.             6.570 diferencias_papo.php
+30/04/2013  12:24 p.m.             6.598 diferencias_papo.php.bak
+10/12/2012  09:59 a.m.            12.285 imprimir_pdf.php
+               9 archivos         69.135 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas
+
+15/02/2013  11:23 a.m.    <DIR>          .
+15/02/2013  11:23 a.m.    <DIR>          ..
+15/02/2013  11:28 a.m.    <DIR>          ajax
+16/11/2012  10:31 a.m.    <DIR>          ajustes
+31/10/2012  08:42 a.m.    <DIR>          compras
+11/07/2012  09:29 a.m.    <DIR>          consultas
+27/12/2012  10:16 a.m.    <DIR>          laboratorio
+01/02/2013  12:47 p.m.    <DIR>          mercaderia
+25/10/2012  08:11 a.m.    <DIR>          proveedores
+               0 archivos              0 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\ajax
+
+15/02/2013  11:28 a.m.    <DIR>          .
+15/02/2013  11:28 a.m.    <DIR>          ..
+15/02/2013  11:34 a.m.             1.022 buscar_monodroga.php
+15/02/2013  11:33 a.m.             1.069 buscar_monodroga.php.bak
+15/02/2013  11:34 a.m.               790 getuser.php
+15/02/2013  11:32 a.m.               800 getuser.php.bak
+               4 archivos          3.681 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\ajustes
+
+16/11/2012  10:31 a.m.    <DIR>          .
+16/11/2012  10:31 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+16/11/2012  10:30 a.m.             6.973 actualizar_stock.php
+16/11/2012  10:27 a.m.             7.290 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+24/01/2012  12:03 a.m.               297 borrar_item.PHP
+24/01/2012  12:03 a.m.               319 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+24/01/2012  12:17 a.m.             8.721 informe.php
+24/01/2012  12:16 a.m.             8.721 informe.php.bak
+16/11/2012  09:54 a.m.             6.656 pagina1.php
+16/11/2012  09:54 a.m.             6.657 pagina1.php.bak
+10/07/2012  02:20 p.m.             8.429 pagina11.php
+10/07/2012  02:20 p.m.             8.438 pagina11.php.bak
+16/11/2012  10:01 a.m.            10.073 pagina2.php
+16/11/2012  09:59 a.m.            10.077 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+23/01/2012  11:43 p.m.             1.882 refrescar.php
+23/01/2012  11:09 p.m.             1.893 refrescar.php.bak
+11/10/2012  10:56 a.m.             4.196 refrescar1.php
+10/07/2012  04:19 p.m.             4.185 refrescar1.php.bak
+11/10/2012  11:05 a.m.             2.558 refrescar_buscar.php
+11/10/2012  11:04 a.m.             2.561 refrescar_buscar.php.bak
+10/07/2012  04:38 p.m.             5.276 refrescar_detalle.php
+10/07/2012  04:15 p.m.             5.276 refrescar_detalle.php.bak
+23/01/2012  11:42 p.m.               630 variables_temp.php
+23/01/2012  11:40 p.m.               645 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+              52 archivos        228.468 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\compras
+
+31/10/2012  08:42 a.m.    <DIR>          .
+31/10/2012  08:42 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.               585 actualizar_precio.php
+16/07/2008  12:13 p.m.               581 actualizar_precio.php.bak
+21/01/2013  10:56 a.m.             7.235 actualizar_stock.php
+21/01/2013  10:56 a.m.             7.225 actualizar_stock.php.bak
+05/10/2011  03:31 p.m.             1.534 arreglar_existencia.php
+15/08/2008  12:02 p.m.             1.530 arreglar_existencia.php.bak
+15/08/2008  11:12 a.m.             1.277 arreglar_existencia1.php
+15/08/2008  11:30 a.m.               837 arreglar_existencia2.php
+15/08/2008  12:03 p.m.             1.608 arreglar_existencia3.php
+15/08/2008  12:03 p.m.             1.547 arreglar_existencia4.php
+24/01/2012  12:03 a.m.               297 borrar_item.PHP
+24/01/2012  12:03 a.m.               319 borrar_item.PHP.bak
+05/10/2011  03:31 p.m.               777 buscador_rapido.php
+14/01/2008  09:10 a.m.               769 buscador_rapido.php.bak
+05/10/2011  03:31 p.m.               778 buscador_rapido_mercaderia.php
+14/01/2008  09:09 a.m.               770 buscador_rapido_mercaderia.php.bak
+31/01/2012  02:49 p.m.             4.975 buscar_factura_compra.php
+31/01/2012  02:47 p.m.             4.804 buscar_factura_compra.php.bak
+23/01/2012  09:37 p.m.             2.564 buscar_proveedor.php
+25/08/2008  08:01 p.m.             2.431 buscar_proveedor.php.bak
+05/10/2011  03:31 p.m.             2.246 detalle_buscador.php
+10/01/2008  09:52 a.m.             2.217 detalle_buscador.php.bak
+05/10/2011  03:31 p.m.             1.865 detalle_buscador_mercaderia.php
+14/04/2008  10:43 a.m.             1.845 detalle_buscador_mercaderia.php.bak
+05/10/2011  03:31 p.m.             4.941 existencia.php
+30/06/2008  10:36 a.m.             4.893 existencia.php.bak
+05/10/2011  03:31 p.m.            11.532 factura_papel.php
+01/09/2008  06:06 p.m.            11.412 factura_papel.php.bak
+24/01/2012  12:17 a.m.             8.721 informe.php
+24/01/2012  12:16 a.m.             8.721 informe.php.bak
+16/11/2012  09:54 a.m.             6.656 pagina1.php
+16/11/2012  09:54 a.m.             6.657 pagina1.php.bak
+10/07/2012  02:20 p.m.             8.429 pagina11.php
+10/07/2012  02:20 p.m.             8.438 pagina11.php.bak
+16/11/2012  10:01 a.m.            10.073 pagina2.php
+16/11/2012  09:59 a.m.            10.077 pagina2.php.bak
+06/08/2008  12:53 p.m.            10.675 pagina2_old.php
+23/01/2012  10:39 p.m.             4.022 pagina3.php
+23/01/2012  10:39 p.m.             4.006 pagina3.php.bak
+16/07/2008  01:58 p.m.            11.005 refrescar cambios.txt
+23/01/2012  11:43 p.m.             1.882 refrescar.php
+23/01/2012  11:09 p.m.             1.893 refrescar.php.bak
+11/10/2012  10:56 a.m.             4.196 refrescar1.php
+10/07/2012  04:19 p.m.             4.185 refrescar1.php.bak
+11/10/2012  11:05 a.m.             2.558 refrescar_buscar.php
+11/10/2012  11:04 a.m.             2.561 refrescar_buscar.php.bak
+10/07/2012  04:38 p.m.             5.276 refrescar_detalle.php
+10/07/2012  04:15 p.m.             5.276 refrescar_detalle.php.bak
+23/01/2012  11:42 p.m.               630 variables_temp.php
+23/01/2012  11:40 p.m.               645 variables_temp.php.bak
+23/01/2012  11:15 p.m.             7.540 ver_compra.php
+23/01/2012  11:15 p.m.            11.149 ver_compra.php.bak
+              52 archivos        228.665 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+11/07/2012  09:29 a.m.    <DIR>          ajuste existencia
+11/07/2012  09:29 a.m.    <DIR>          ana_saldos
+11/07/2012  09:29 a.m.    <DIR>          balance
+11/07/2012  09:29 a.m.    <DIR>          CTACTE
+11/07/2012  09:29 a.m.    <DIR>          diario_vta
+11/07/2012  09:29 a.m.    <DIR>          informes
+27/09/2011  01:17 p.m.             4.810 informes.php
+08/06/2011  05:42 p.m.             4.793 informes.php.bak
+16/04/2008  10:39 a.m.             3.317 inventario.php
+28/02/2013  10:06 a.m.    <DIR>          stock
+               3 archivos         12.920 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\ajuste existencia
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+05/10/2011  03:31 p.m.             5.232 cambiar_existencia.php
+30/07/2008  11:41 a.m.             5.188 cambiar_existencia.php.bak
+05/10/2011  03:31 p.m.             1.745 consultas.php
+27/09/2011  01:29 p.m.             1.733 consultas.php.bak
+05/10/2011  03:31 p.m.             5.223 existencia.php
+30/07/2008  11:39 a.m.             5.158 existencia.php.bak
+05/10/2011  03:31 p.m.               522 modificar_existencia.php
+30/07/2008  11:34 a.m.               518 modificar_existencia.php.bak
+05/10/2011  03:31 p.m.               228 separar_busqueda.php
+30/07/2008  11:38 a.m.               224 separar_busqueda.php.bak
+              10 archivos         25.771 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\ana_saldos
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+28/06/2013  11:44 a.m.             4.995 ana_saldos.php
+28/06/2013  11:44 a.m.             4.996 ana_saldos.php.bak
+05/10/2011  03:31 p.m.             4.601 ana_saldos_todos.php
+29/06/2008  12:36 p.m.             4.548 ana_saldos_todos.php.bak
+21/10/2011  09:36 p.m.             2.490 consultas.php
+05/10/2011  03:31 p.m.               432 separar_busqueda.php
+23/07/2008  08:56 a.m.               428 separar_busqueda.php.bak
+05/10/2011  03:31 p.m.             1.723 unidad.php
+16/04/2008  12:56 p.m.             1.683 unidad.php.bak
+05/10/2011  03:31 p.m.             1.574 unidades.php
+16/04/2008  01:00 p.m.             1.538 unidades.php.bak
+05/10/2011  03:31 p.m.             1.745 valor.php
+16/04/2008  01:11 p.m.             1.705 valor.php.bak
+              13 archivos         32.458 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\balance
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+28/07/2008  10:18 a.m.             2.592 consultas.php
+05/10/2011  03:31 p.m.             7.494 cta_cte.php
+01/08/2008  12:02 p.m.             7.418 cta_cte.php.bak
+05/10/2011  03:31 p.m.               962 separar_busqueda.php
+28/07/2008  10:30 a.m.               958 separar_busqueda.php.bak
+05/10/2011  03:31 p.m.             1.723 unidad.php
+16/04/2008  12:56 p.m.             1.683 unidad.php.bak
+05/10/2011  03:31 p.m.             1.574 unidades.php
+16/04/2008  01:00 p.m.             1.538 unidades.php.bak
+05/10/2011  03:31 p.m.             1.745 valor.php
+16/04/2008  01:11 p.m.             1.705 valor.php.bak
+              11 archivos         29.392 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\CTACTE
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+23/07/2008  08:58 a.m.             2.967 consultas.php
+13/02/2013  12:23 p.m.             5.204 cta_cte.php
+13/02/2013  12:23 p.m.             5.205 cta_cte.php.bak
+05/10/2011  03:31 p.m.               481 separar_busqueda.php
+23/07/2008  08:58 a.m.               477 separar_busqueda.php.bak
+05/10/2011  03:31 p.m.             1.723 unidad.php
+16/04/2008  12:56 p.m.             1.683 unidad.php.bak
+05/10/2011  03:31 p.m.             1.574 unidades.php
+16/04/2008  01:00 p.m.             1.538 unidades.php.bak
+05/10/2011  03:31 p.m.             1.745 valor.php
+16/04/2008  01:11 p.m.             1.705 valor.php.bak
+              11 archivos         24.302 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\diario_vta
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+21/10/2011  04:55 p.m.             1.961 consultas.php
+27/06/2008  04:12 p.m.             1.944 consultas.php.bak
+21/10/2011  04:57 p.m.             6.075 diario_vta.php
+15/08/2008  09:11 a.m.             6.020 diario_vta.php.bak
+05/10/2011  03:31 p.m.               199 separar_busqueda.php
+27/06/2008  04:48 p.m.               195 separar_busqueda.php.bak
+               6 archivos         16.394 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\informes
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+31/01/2012  06:46 p.m.             2.101 consultas.php
+05/10/2011  03:31 p.m.             2.040 consultas.php.bak
+28/06/2013  11:46 a.m.            15.062 existencia.php
+28/06/2013  11:45 a.m.            15.065 existencia.php.bak
+05/10/2011  03:31 p.m.             3.294 existencia_proveedor.php
+01/09/2008  06:18 p.m.             3.257 existencia_proveedor.php.bak
+05/10/2011  03:31 p.m.             4.081 existencia_todo.php
+01/09/2008  06:20 p.m.             4.036 existencia_todo.php.bak
+05/10/2011  03:31 p.m.             5.177 fact_vencidas.php
+29/08/2008  08:14 p.m.             5.109 fact_vencidas.php.bak
+05/10/2011  03:31 p.m.             3.413 lista_precios.php
+29/06/2008  07:28 p.m.             3.373 lista_precios.php.bak
+05/10/2011  03:31 p.m.             5.277 lotes_vencidos.php
+29/06/2008  06:52 p.m.             5.197 lotes_vencidos.php.bak
+31/01/2012  06:50 p.m.               542 separar_busqueda.php
+31/01/2012  06:48 p.m.               553 separar_busqueda.php.bak
+05/10/2011  03:31 p.m.             4.053 vto_lote.php
+29/06/2008  06:49 p.m.             4.008 vto_lote.php.bak
+              18 archivos         85.638 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\consultas\stock
+
+28/02/2013  10:06 a.m.    <DIR>          .
+28/02/2013  10:06 a.m.    <DIR>          ..
+27/09/2011  01:18 p.m.             3.271 consultas.php
+16/04/2008  01:07 p.m.             3.270 consultas.php.bak
+11/10/2012  07:50 a.m.               400 separar_busqueda.php
+11/10/2012  07:50 a.m.               405 separar_busqueda.php.bak
+28/02/2013  10:55 a.m.             3.807 stock.php
+28/02/2013  10:55 a.m.             3.795 stock.php.bak
+25/03/2013  11:32 a.m.             4.819 stock_separar.php
+08/03/2013  09:24 a.m.             4.820 stock_separar.php.bak
+05/10/2011  03:31 p.m.             5.280 stock_todo.php
+01/09/2008  06:15 p.m.             5.215 stock_todo.php.bak
+30/06/2008  11:09 a.m.             2.376 TABLA.PHP
+25/03/2013  10:15 a.m.             2.535 unidad.php
+05/10/2011  03:31 p.m.             2.521 unidad.php.bak
+25/03/2013  10:50 a.m.             9.899 unidades.php
+25/03/2013  10:49 a.m.             9.845 unidades.php.bak
+28/02/2013  10:48 a.m.             9.859 valor.php
+28/02/2013  10:47 a.m.             9.860 valor.php.bak
+07/12/2012  11:35 a.m.             9.784 valor_unico.php
+07/12/2012  11:34 a.m.             9.785 valor_unico.php.bak
+              19 archivos        101.546 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\laboratorio
+
+27/12/2012  10:16 a.m.    <DIR>          .
+27/12/2012  10:16 a.m.    <DIR>          ..
+05/10/2011  03:14 p.m.             3.165 borra.php
+05/10/2011  03:14 p.m.             3.559 buscar_drogas.php
+05/10/2011  03:14 p.m.             6.545 buscar_monodrogas.php
+05/10/2011  03:14 p.m.             2.552 drogas.php
+26/09/2012  10:04 a.m.             2.845 entrada_laboratorio.php
+05/10/2011  03:14 p.m.             6.650 entrada_mercaderia.php
+12/03/2008  12:17 p.m.               417 guardar_des_droga.php
+27/12/2012  10:17 a.m.               663 guardar_des_laboratorio.php
+27/12/2012  10:17 a.m.               667 guardar_des_laboratorio.php.bak
+05/10/2011  03:14 p.m.             1.232 guardar_mercaderia.php
+              10 archivos         28.295 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\mercaderia
+
+01/02/2013  12:47 p.m.    <DIR>          .
+01/02/2013  12:47 p.m.    <DIR>          ..
+26/09/2012  10:25 a.m.               263 borra.php
+26/09/2012  10:23 a.m.               260 borra.php.bak
+26/09/2012  10:21 a.m.               323 borra_laboratorio.php
+26/09/2012  10:20 a.m.               323 borra_laboratorio.php.bak
+29/08/2013  11:00 a.m.             2.775 buscar_drogas.php
+29/08/2013  11:00 a.m.             2.771 buscar_drogas.php.bak
+29/08/2013  11:01 a.m.             2.541 buscar_laboratorios.php
+30/10/2012  07:04 p.m.             2.545 buscar_laboratorios.php.bak
+08/05/2013  01:55 p.m.             6.395 buscar_monodrogas.php
+08/05/2013  01:54 p.m.             6.342 buscar_monodrogas.php.bak
+28/02/2013  09:59 a.m.             4.709 buscar_monodrogas1.PHP
+28/02/2013  09:59 a.m.             4.710 buscar_monodrogas1.PHP.bak
+27/11/2012  10:58 a.m.             4.973 buscar_monodrogas_cant.php
+27/11/2012  10:58 a.m.             4.977 buscar_monodrogas_cant.php.bak
+27/12/2012  10:33 a.m.             7.766 buscar_monodrogas_repe.php
+27/12/2012  10:33 a.m.             8.304 buscar_monodrogas_repe.php.bak
+06/12/2012  11:56 a.m.             4.643 buscar_monodrogas_sin_dro.php
+06/12/2012  11:54 a.m.             4.649 buscar_monodrogas_sin_dro.php.bak
+16/11/2012  05:03 p.m.             4.659 buscar_monodrogas_sin_lab.php
+16/11/2012  04:54 p.m.             4.489 buscar_monodrogas_sin_lab.php.bak
+26/09/2012  10:29 a.m.             2.875 drogas.php
+31/01/2012  10:27 p.m.             2.863 drogas.php.bak
+09/02/2012  11:00 a.m.             2.685 entrada_laboratorio.php
+09/02/2012  10:59 a.m.             2.667 entrada_laboratorio.php.bak
+07/04/2013  09:24 p.m.             8.989 entrada_mercaderia.php
+31/10/2012  04:51 p.m.             8.982 entrada_mercaderia.php.bak
+04/07/2013  09:09 a.m.               430 guardar_des_droga.php
+26/09/2012  10:30 a.m.               419 guardar_des_droga.php.bak
+09/02/2012  10:59 a.m.               479 guardar_des_laboratorio.php
+09/02/2012  10:59 a.m.               449 guardar_des_laboratorio.php.bak
+04/07/2013  09:08 a.m.             2.163 guardar_mercaderia.php
+27/12/2012  10:22 a.m.             2.163 guardar_mercaderia.php.bak
+01/02/2013  12:44 p.m.               421 guardar_mod_droga
+01/02/2013  12:56 p.m.               336 guardar_mod_droga.php
+01/02/2013  12:56 p.m.               340 guardar_mod_droga.php.bak
+07/04/2013  09:27 p.m.            10.653 modificar_mercaderia.php
+07/04/2013  09:26 p.m.            10.645 modificar_mercaderia.php.bak
+01/02/2013  12:51 p.m.             3.068 mod_droga.php
+01/02/2013  12:51 p.m.             3.069 mod_droga.php.bak
+29/08/2013  10:40 a.m.             3.745 mod_mercaderia.php
+02/01/2013  09:21 a.m.             3.753 mod_mercaderia.php.bak
+16/11/2012  01:37 p.m.             1.641 variables.php
+25/10/2012  01:18 p.m.             1.429 variables.php.bak
+              43 archivos        152.681 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\proveedores
+
+25/10/2012  08:11 a.m.    <DIR>          .
+25/10/2012  08:11 a.m.    <DIR>          ..
+05/10/2011  03:47 p.m.             2.707 borra.php
+21/07/2006  05:45 p.m.             2.666 borra.php.bak
+25/10/2012  08:24 a.m.               348 borra_provee.php
+25/10/2012  08:23 a.m.               346 borra_provee.php.bak
+05/10/2011  03:47 p.m.             3.468 buscar_laboratorios.php
+18/03/2008  03:58 p.m.             3.411 buscar_laboratorios.php.bak
+19/11/2012  09:07 a.m.             4.097 buscar_proveedores.php
+19/11/2012  08:38 a.m.             4.101 buscar_proveedores.php.bak
+11/07/2012  09:29 a.m.    <DIR>          compra_proveedores
+08/06/2012  01:00 p.m.             6.505 entrada_dato.php
+23/05/2012  05:10 p.m.             6.477 entrada_dato.php.bak
+27/12/2012  09:47 a.m.             1.431 guardar_proveedores.php
+25/10/2012  08:25 a.m.             1.430 guardar_proveedores.php.bak
+08/06/2012  12:59 p.m.             6.637 modificar.php
+08/06/2012  12:53 p.m.             6.604 modificar.php.bak
+08/06/2012  01:00 p.m.             1.125 modificar_proveedores.php
+08/06/2012  12:58 p.m.             1.161 modificar_proveedores.php.bak
+08/06/2012  12:52 p.m.               860 variables.php
+08/06/2012  12:48 p.m.               844 variables.php.bak
+              18 archivos         54.218 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\monodrogas\proveedores\compra_proveedores
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+16/05/2007  09:03 p.m.            16.578 123.php3
+04/06/2007  08:51 p.m.               688 borra.php
+30/03/2007  04:11 p.m.               312 borra.php3
+05/10/2011  03:47 p.m.            18.150 borra_despues.php
+06/08/2007  01:21 p.m.            17.966 borra_despues.php.bak
+05/10/2011  03:47 p.m.            17.645 borra_despues.php3
+01/06/2007  06:02 p.m.            17.505 borra_despues.php3.bak
+05/10/2011  03:47 p.m.             5.023 carga_merca_stock.php
+22/08/2007  10:30 a.m.             4.991 carga_merca_stock.php.bak
+05/10/2011  03:47 p.m.             5.620 carga_merca_stock_pruba.php
+27/08/2007  11:06 a.m.             5.596 carga_merca_stock_pruba.php.bak
+05/10/2011  03:47 p.m.             7.113 carga_merca_stock_pruba1.php
+27/08/2007  09:54 p.m.             7.061 carga_merca_stock_pruba1.php.bak
+05/10/2011  03:47 p.m.            19.535 compras_con_if_pro.php
+20/09/2007  07:15 p.m.            19.415 compras_con_if_pro.php.bak
+05/10/2011  03:47 p.m.            19.447 compras_pro.php
+24/09/2007  04:29 p.m.            19.335 compras_pro.php.bak
+05/10/2011  03:47 p.m.            15.725 compras_pro1.php
+07/06/2007  07:54 p.m.            15.609 compras_pro1.php.bak
+05/10/2011  03:47 p.m.            19.814 compras_profede.php
+20/09/2007  07:02 p.m.            19.694 compras_profede.php.bak
+05/10/2011  03:47 p.m.            19.419 compras_pro_seg.php
+21/09/2007  06:22 p.m.            19.299 compras_pro_seg.php.bak
+05/10/2011  03:47 p.m.            17.959 compras_pro_seguridad.php
+07/06/2007  08:00 p.m.            17.827 compras_pro_seguridad.php.bak
+05/10/2011  03:47 p.m.             3.100 compra_pro_bioqui.php
+07/06/2007  08:13 p.m.             3.076 compra_pro_bioqui.php.bak
+05/10/2011  03:47 p.m.             5.243 DATOS.php3
+29/03/2007  05:02 p.m.             5.179 DATOS.php3.bak
+05/10/2011  03:47 p.m.               917 guardar_vtas_pro.php
+04/09/2007  06:07 p.m.               913 guardar_vtas_pro.php.bak
+28/03/2007  12:13 p.m.               909 imprimir-seccion.txt
+05/10/2011  03:47 p.m.             3.362 imprimir.php
+29/03/2007  03:30 p.m.             3.330 imprimir.php.bak
+05/10/2011  03:47 p.m.             1.747 pro.php
+28/03/2007  10:23 a.m.             1.719 pro.php.bak
+05/10/2011  03:47 p.m.             1.514 recuperar.php
+04/04/2007  10:21 p.m.             1.482 recuperar.php.bak
+05/10/2011  03:47 p.m.            13.108 vtas_pro123.php
+03/04/2007  05:02 p.m.            12.996 vtas_pro123.php.bak
+              40 archivos        405.921 bytes
+
+ Directorio de C:\utiles\EasyPHP-5.3.9\www\oncologico\a_sectores\preparacion
+
+11/07/2012  09:29 a.m.    <DIR>          .
+11/07/2012  09:29 a.m.    <DIR>          ..
+15/11/2007  01:16 p.m.             2.947 buscar.php
+28/08/2008  10:10 a.m.             7.288 facturacion.php
+23/01/2012  02:11 p.m.             4.167 preparacion.php
+13/12/2011  10:12 p.m.             4.310 preparacion.php.bak
+05/10/2011  03:31 p.m.               588 separar_busqueda.php
+18/03/2008  03:55 p.m.               584 separar_busqueda.php.bak
+               6 archivos         19.884 bytes
+
+     Total de archivos en la lista:
+            2028 archivos     20.740.792 bytes
+             506 dirs  442.256.785.408 bytes libres

@@ -1,0 +1,178 @@
+<?php 
+global $buscador_rapido;
+
+if ($borrar != 1){
+$buscador_rapido=$_POST["buscador_rapido"];
+}
+
+$hoy = date("d/m/Y");
+include("../../../conexiones/config_pro.php");
+
+
+$B = 1;
+
+
+
+
+$a = "inventario_po.xls";
+
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$a");
+
+
+
+?>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close(); cerrar()"> 
+<table width="800" height="131" border="1" cellpadding="0" cellspacing="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+    <td colspan="3"><div align="center"><strong>INVENTARIO UNICO </strong></div></td>
+    <td colspan="4"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><?php echo $hoy;?> </font></div></td>
+  </tr>
+  
+  <tr bordercolor="#FFFFFF" bgcolor="#000099">
+
+
+    <td width="8%" height="23" bgcolor="#999999"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">CODIGO</font></div></td>
+    <td width="28%" bgcolor="#999999"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">PRODUCTO</font></div></td>
+
+<td width="29%" bgcolor="#999999"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">PRESENTACION</font></div></td>
+	<td width="5%" bgcolor="#FFFF99"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">I</font></div></td>
+<td width="5%" bgcolor="#FFFF99"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">E</font></div></td>
+<td width="5%" bgcolor="#FFFF99"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">S</font></div></td>
+<td width="11%" bgcolor="#CCCCCC"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">INV</font></div></td>
+<td width="9%" bgcolor="#66FFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">ST</font></div></td>
+  </tr>
+  
+  <?php 
+
+
+
+$anio_actual = date("y");
+$mes_actual = date ("m");
+
+$sql1="select * from existencias group by cod_mercaderia ORDER BY cod_mercaderia";
+$result1 = $db->Execute($sql1);
+ 
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+
+ $nro_factura=strtoupper($result1->fields["nro_factura"]);
+  $cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+   $precio_unitario=strtoupper($result1->fields["precio_unitario"]);
+    $fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+	 $proveedor=strtoupper($result1->fields["proveedor"]);
+	  $cod_interno=strtoupper($result1->fields["cod_interno"]);
+ 
+
+
+
+
+
+
+
+$sql2="select *, sum(cantidad_ingresada) as cantidad_ingresada, sum(cantidad_salida) as cantidad_salida from existencias where cod_mercaderia = '$cod_mercaderia' ";
+$result2 = $db->Execute($sql2);
+
+
+$cantidad_ingresada=strtoupper($result2->fields["cantidad_ingresada"]);
+$cantidad_salida=strtoupper($result2->fields["cantidad_salida"]);
+
+
+
+
+//$fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+
+$dia1 = substr($fecha_ultimo_mov,8,2);
+$mes1 = substr($fecha_ultimo_mov,5,2);
+$anio1 = substr($fecha_ultimo_mov,0,4);
+
+//$fecha_ultimo_mov = $dia1."-".$mes1."-".$anio1;
+
+$sql="select * from monodrogas where troquel = $cod_mercaderia ";
+$result = $db->Execute($sql);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+
+
+$vto_lote = $mes_lote." - ".$anio_lote;
+
+
+
+$cantidad_existente = $cantidad_ingresada - $cantidad_salida;
+	
+$mes = $mes_lote;
+$anio = $anio_lote;
+
+if ($anio == ""){
+	$anio = $anio_actual;
+}
+else
+		  {
+$estado = "-";
+		  }
+
+
+
+if (($anio != "00") && ($mes != "00") or ($anio != "00") or ($mes != "00") ){
+
+if ($anio < $anio_actual){
+$estado = "VENCIDO";
+}
+else{
+
+if ($anio > $anio_actual){
+$estado = "-";}
+else{
+
+if ($mes < $mes_actual){
+$estado = "VENCIDO";
+}
+else{
+	$estado ="-";
+}
+}
+}
+}
+
+
+
+$sql="select * from stock_inventario where cod_mercaderia = $cod_mercaderia";
+$result = $db->Execute($sql);
+$cantidad_agrupado=strtoupper($result->fields["cantidad"]);
+
+
+ $sql="select sum(cantidad) as cantidad from stock where cod_mercaderia = $cod_mercaderia and cod_movimiento between '1' and '3'";
+$result = $db->Execute($sql);
+ $cantidad_ingresada_stock=$result->fields["cantidad"];
+
+ $sql="select sum(cantidad) as cantidad from stock where cod_mercaderia = $cod_mercaderia and cod_movimiento between '6' and '6'";
+$result = $db->Execute($sql);
+$cantidad_salida_stock=$result->fields["cantidad"];
+
+ $existencia_stock = $cantidad_ingresada_stock - $cantidad_salida_stock;
+
+
+$sql3 = "INSERT INTO `oncologico`.`existencias_unido` (`nro_factura`, `cod_detalle`, `cod_mercaderia`, `lote`, `mes_lote`, `anio_lote`, `cantidad_ingresada`, `precio_unitario`, `cantidad_salida`, `fecha_ultimo_mov`, `proveedor`, `cod_interno`) VALUES ('$nro_factura', '', '$cod_mercaderia', '$lote', '$mes_lote', '$anio_lote', '$cantidad_ingresada', '$precio_unitario', '$cantidad_salida', '$fecha_ultimo_mov', '$proveedor', '$cod_interno');";
+//mysql_query($sql3);
+
+
+?>
+
+    <tr bgcolor="#FFFFFF"><td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cod_mercaderia");?></font></div></td>
+    <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$nombre_comercial");?></font></div></td>
+    <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$presentacion");?></font></div></td>
+<td bgcolor="#FFFF99"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_ingresada");?></font></div></td>
+	  <td bgcolor="#FFFF99"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_salida");?></font></div></td>
+	<td bgcolor="#FFFF99"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_existente");?></font></div></td>
+    <td bgcolor="#CCCCCC"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_agrupado");?></font></div></td>
+	    <td bgcolor="#66FFFF"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$existencia_stock");?></font></div></td>
+  </tr>
+<?php 
+
+$result1->MoveNext();
+	}
+  
+
+?>
+</table>

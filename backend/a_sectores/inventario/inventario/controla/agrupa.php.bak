@@ -1,0 +1,65 @@
+<?php 
+include ("../../../../conexiones/config_usu.php");
+
+$sql = "DELETE FROM inventario_agrupado";
+mysql_query($sql);
+
+
+  $sql1="select * from inventario_provisorio group by cod_mercaderia order by gtin ";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo 1".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+$gtin=strtoupper($result1->fields["gtin"]);
+
+$gtin=strtoupper($result1->fields["gtin"]);
+$cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+$nombre_comercial=strtoupper($result1->fields["nombre_comercial"]);
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+$drogas=strtoupper($result1->fields["drogas"]);
+$laboratorio=strtoupper($result1->fields["laboratorio"]);
+$nombre_laboratorio=strtoupper($result1->fields["nombre_laboratorio"]);
+$estado=strtoupper($result1->fields["estado"]);
+$cantidad_ingresada=strtoupper($result1->fields["cantidad_ingresada"]);
+$cantidad_salida=strtoupper($result1->fields["cantidad_salida"]);
+$saldo=strtoupper($result1->fields["saldo"]);
+$presentacion=strtoupper($result1->fields["presentacion"]);
+
+
+$sql2="select sum(cantidad_ingresada) as cantidad_ingresada from inventario_provisorio where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$cantidad_ingresada=strtoupper($result2->fields["cantidad_ingresada"]);
+
+$sql2="select sum(cantidad_salida) as cantidad_salida from inventario_provisorio where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$cantidad_salida=strtoupper($result2->fields["cantidad_salida"]);
+
+ $sql2="select sum(saldo) as saldo from inventario_provisorio where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$saldo=strtoupper($result2->fields["saldo"]);
+
+$sql2="select count(gtin) as cantidad from inventario_provisorio where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$cantidad=strtoupper($result2->fields["cantidad"]);
+
+
+ $sql2="select sum(cantidad_ingresada) as ingresada from  `tr_existencias` where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$ingresada=strtoupper($result2->fields["ingresada"]);
+
+ $sql2="select sum(cantidad_salida) as salida from  `tr_existencias` where cod_mercaderia = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+$salida=strtoupper($result2->fields["salida"]);
+
+$saldo = $ingresada - $salida;
+
+  echo $sql3 = "INSERT INTO inventario_agrupado (`gtin`, `fecha`, `cod_operacion`, `cod_mercaderia`, `nombre_comercial`, `cod_droga`, `drogas`, `laboratorio`, `nombre_laboratorio`, `estado` , `cantidad_ingresada` , `cantidad_salida` , `saldo` , `presentacion` , `cantidad`) VALUES ('$gtin', '$fecha', '$cod_operacion', '$cod_mercaderia', '$nombre_comercial', '$cod_droga', '$drogas', '$laboratorio', '$nombre_laboratorio', '$estado' , '$ingresada' , '$salida' , '$saldo' ,  '$presentacion'  , '$cantidad' )";
+mysql_query($sql3);
+
+
+
+$result1->MoveNext();
+	}
+
+	

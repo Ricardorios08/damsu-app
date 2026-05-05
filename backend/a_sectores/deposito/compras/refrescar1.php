@@ -1,0 +1,92 @@
+<style type="text/css">
+<!--
+.Estilo30 {color: #FFFFFF}
+.Estilo39 {font-family: Arial, Helvetica, sans-serif}
+.Estilo40 {font-size: 10px}
+.Estilo41 {font-family: Arial, Helvetica, sans-serif; font-size: 10px; }
+.Estilo42 {font-size: 12px}
+-->
+</style>
+<table width="996" border="0">
+  <tr bgcolor="#000099">
+    <td width="65" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Cod Barra</div></td>
+	<td width="65" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Troquel</div></td>
+<td width="65" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Grupo</div></td>
+    <td width="414" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Descripcion</div></td>
+    <td width="275" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Presentacion</div></td>
+	<td width="86" scope="col"><div align="center" class="Estilo1 Estilo30 Estilo39 Estilo42">Laborotarorio</div></td>
+   
+  </tr>
+
+<?php 
+	
+
+
+$cod_barra = $_REQUEST['cod_barra'];
+ $nro_proveedor = $_REQUEST['nro_proveedor'];
+$dia= $_REQUEST['dia'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$modo_carga= $_REQUEST['modo_carga'];
+
+$nro_factura= $_REQUEST['nro_factura'];
+$operador= $_REQUEST['operador'];
+$fecha = $dia."/".$mes."/".$anio;
+
+include("../../../conexiones/config_usu.php");
+
+if ($cod_barra == ""){
+ $sql = "SELECT * FROM `monodrogas` order by nombre_comercial";
+}
+else
+{
+$sql = "SELECT * FROM `monodrogas`   WHERE  `cod_barra` like '$cod_barra%' OR nombre_comercial like '$cod_barra%' or troquel like '$cod_barra%' order by nombre_comercial";
+}
+$result = $db->Execute($sql);
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$troquel=strtoupper($result->fields["troquel"]);
+$grupo=strtoupper($result->fields["grupo"]);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$cod_droga=strtoupper($result->fields["cod_droga"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+$cadena_frio=strtoupper($result->fields["cadena_frio"]);
+$cod_barra=strtoupper($result->fields["cod_barra"]);
+$porcentaje_diferencial=strtoupper($result->fields["porcentaje_diferencial"]);
+$observaciones=strtoupper($result->fields["observaciones"]);
+
+$sql1 = "SELECT * FROM `laboratorios` WHERE  `cod_laboratorio` like '$laboratorio'";
+$result1 = $db->Execute($sql1);
+$nombre_laboratorio=strtoupper($result1->fields["laboratorio"]);
+
+$no_hacer_nada = 1;
+?>
+
+  <tr bgcolor="#FFFFFF">
+    <td bgcolor="#FFFFCC" scope="col"><div align="center"><span bgcolor="#FFFFCC" class="Estilo37 Estilo39 Estilo40"><?php echo $cod_barra;?></span></div></td>
+	<td bgcolor="#FFFFCC" scope="col"><div align="center"><span bgcolor="#FFFFCC" class="Estilo37 Estilo39 Estilo40"><?php echo $troquel;?></span></div></td>
+<td bgcolor="#FFFFCC" scope="col"><div align="center"><span class="Estilo37 Estilo39 Estilo40"><?php echo $grupo;?></span></div></td>
+
+   <td height="20" bgcolor="#FFFFCC" class="Estilo37 Estilo39 Estilo40" scope="col"><center><a href="pagina2.php?nro_proveedor=<?php print("$nro_proveedor");?>&&band=no&&nro_factura=<?php print("$nro_factura");?>&&operador=<?php print("$operador");?>&&modo_carga=<?php print("$modo_carga");?>&&dia=<?php print("$dia");?>&&mes=<?php print("$mes");?>&&anio=<?php print("$anio");?>&&cod_barra=<?php print("$cod_barra");?>&&pasada=1&&nombre_comercial=<?php print("$nombre_comercial");?>&&no_hacer_nada=<?php print("$no_hacer_nada");?>"><?php print("$nombre_comercial");?></a></center>
+ 
+  <td bgcolor="#FFFFCC" scope="col"><div align="center"><span bgcolor="#FFFFCC" class="Estilo37 Estilo39 Estilo40"><?php echo $presentacion;?></span></div></td>
+  <td bgcolor="#FFFFCC" scope="col"><div align="center"><span bgcolor="#FFFFCC" class="Estilo37 Estilo39 Estilo40"><?php echo $nombre_laboratorio;?></span></div></td> 
+  </tr>
+
+
+
+<?php 
+   $result->MoveNext();
+				}
+				
+ 
+
+
+	
+	?>	
+</table>
+

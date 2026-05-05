@@ -1,0 +1,28 @@
+<?php 
+
+$dia = $_REQUEST['dia'];
+$mes = $_REQUEST['mes'];
+$anio = $_REQUEST['anio'];
+$manual_es = $_REQUEST['manual_es'];
+$fecha_a = $dia."/".$mes."/".$anio;
+$fecha = $anio."-".$mes."-".$dia;
+
+ $id = $_REQUEST['id'];
+
+include ("../../../conexiones/config_pro.php");
+
+  $sql1="select * from usuario where id = '$id'";
+$result1 = $db->Execute($sql1);
+  $programa=strtoupper($result1->fields["programa"]);
+
+if ($manual_es == 1){
+	include ("manuales.php");
+	}else{
+
+include ("diario_vta.php");
+$total_total = 0;
+?><br><?php
+include ("devoluciones.php");
+}
+
+?>

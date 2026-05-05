@@ -1,0 +1,20 @@
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337911428  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795320028911  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371698100  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371698155  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795356997298  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7798122020190  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7791829000816  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795367001342  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355000197  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355000203  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355998104  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795306010565  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371074102  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337911411  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337910308  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7791829009499  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7798017280111  AND anio =15;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7794640231360  AND anio =15;
+
+

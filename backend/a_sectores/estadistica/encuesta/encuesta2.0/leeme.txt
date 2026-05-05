@@ -1,0 +1,31 @@
+/////ENCUESTA PHP SIN mySQL v2.0/////
+
+esta es la versión 2.0 de la Encuesta:
+
+1.- Almacena las IP's , solo se puede votar una vez, a menos que 
+borres los datos de ips.txt
+2.- Almacena las votaciones en 1 solo archivo, y ahora es mucho más
+fácil agregar opciones:
+
+==============================================================
+en el archivo index.php :::
+
+Opción A
+<input type="radio" name="voto" value="Opción A">
+    <font color="#00FF00">Opción A</font></font></p>
+
+.....
+
+Opción x
+
+<input type="radio" name="voto" value="Opción X">
+    <font color="#00FF00">Opción X</font></font></p>
+
+==============================================================
+en el archivo votos.txt :::
+
+Opción A:0|Opción B:0|Opción C:0|Opción X:0
+
+==============================================================
+
+s3b4@datafull.cl

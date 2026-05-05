@@ -1,0 +1,23 @@
+body {
+	font-family: Arial, Helvetica, sans-serif;
+background: ../../IMAGENES/gris09t.jpg;
+	
+}
+
+td {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.Estilo1 {
+	color: #FF0000;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 80%;
+}
+.Estilo11 {font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size: 80%; }
+

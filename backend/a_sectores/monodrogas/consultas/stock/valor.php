@@ -1,0 +1,220 @@
+<table width="800" border="1" cellpadding="0" cellspacing="0" bordercolor="#666666">
+  <!--DWLayoutTable-->
+  <tr bordercolor="#FFFFCC" bgcolor="#000099">
+    <td colspan="11" bgcolor="#FFFFFF"><div align="right"><font color="#181818" face="Arial, Helvetica, sans-serif"><?php echo $hoy;?></font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFCC" bgcolor="#000099">
+    <td colspan="11" bgcolor="#666666"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><strong>FICHA STOCK PROGRAMA</strong></font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E6E6E6">
+    <td colspan="11" valign="top"><font face="Arial, Helvetica, sans-serif"><strong><font size="2"><?php print("$nombre_comercial");?> </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E6E6E6">
+    <td colspan="11" valign="top"><font face="Arial, Helvetica, sans-serif"><strong><font size="2">Troquel: <?php print("$troquel");?> COD-BARRA: <?php print("$cod_barra");?> </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#000099">
+    <td width="40" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">FECHA</font></div></td>
+    <td width="72" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">MOVIMIENTO</font></div></td>
+    <td width="72" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">COMPROBANTE</font></div></td>
+    <?php if ($opcion == "valor"){?>
+    <td width="41" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">MOV</font></div></td>
+    <?php }?>
+    <td width="256" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">GTIN</font></div></td>
+    <td width="48" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">LOTE</font></div></td>
+    <td width="55" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">VTO</font></div></td>
+    <td width="55" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">ENTRADA</font></div></td>
+    <td width="41" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">SALIDA</font></div></td>
+    <td width="39" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">SALDO</font></div></td>
+    <td width="57" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif">PROVEE.</font></div></td>
+  </tr>
+
+    <tr bordercolor="#FFFFCC" bgcolor="#FFFFCC">
+    <td bgcolor="#EDEDED"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#EDEDED"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#EDEDED"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#EDEDED"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#EDEDED"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td colspan="4" bgcolor="#EDEDED"><div align="center"><em><font color="#FF0000" size="2" face="Trebuchet MS">TRANSPORTE</font></em></div>      <div align="center"></div></td>
+    <td bgcolor="#FFFFFF"><div align="center"><em><font color="#FF0000" size="2" face="Trebuchet MS"><?php echo $saldo;?></font></em></div></td>
+    <td bgcolor="#FFFFFF"><!--DWLayoutEmptyCell-->&nbsp;</td>
+  </tr>
+
+
+
+  <?php 
+
+
+  $saldo = $saldo + $saldo_inicial;
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+
+	
+
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]);
+$fecha=fecha_argentina(strtoupper($result->fields["fecha"]));
+ $nro_comprobante=strtoupper($result->fields["nro_comprobante"]);
+$cantidad=strtoupper($result->fields["cantidad"]);
+$tipo_fact=strtoupper($result->fields["tipo_fact"]);
+ $precio_unitario=strtoupper($result->fields["precio_unitario"]);
+$cod_movimiento=strtoupper($result->fields["cod_movimiento"]);
+$nro_serie=strtoupper($result->fields["nro_serie"]);
+$gtin=strtoupper($result->fields["gtin"]);
+
+$lote=strtoupper($result->fields["lote"]);
+$mes_lote=strtoupper($result->fields["mes_lote"]);
+$anio_lote=strtoupper($result->fields["anio_lote"]);
+$fecha_ultimo_mov=strtoupper($result->fields["fecha_ultimo_mov"]);
+$cuenta=strtoupper($result->fields["cuenta"]);
+
+$sql1="select * from proveedores where cod_proveedor = $cuenta";
+$result1 = $db->Execute($sql1);
+$denominacion=strtoupper($result1->fields["denominacion_reducida"]);
+
+
+
+ $nro_factura=$result->fields["nro_factura"];
+
+
+$vto_lote = $mes_lote." - ".$anio_lote;
+
+
+$precio_renglon =  $precio_unitario * $cantidad;
+
+SWITCH ($cod_movimiento){
+
+case "1":{
+$entrada = $precio_unitario;
+$ca_entrada = $cantidad;
+$tot_ca_entrada = $tot_ca_entrada + $cantidad;
+
+$tot_entrada = $tot_entrada + $precio_unitario;
+$movimiento = "Ingresos";
+BREAK;
+}
+
+case "2":{
+$entrada = $precio_unitario;
+$ca_entrada = $cantidad;
+$tot_ca_entrada = $tot_ca_entrada + $cantidad;
+
+$tot_entrada = $tot_entrada + $precio_unitario;
+$movimiento = "N/Dev.";
+BREAK;
+}
+
+case "3":{
+ 
+
+$entrada = $precio_unitario;
+$ca_entrada = $cantidad;
+$tot_ca_entrada = $tot_ca_entrada + $cantidad;
+
+$tot_entrada = $tot_entrada + $precio_unitario;
+$movimiento = "Don.";
+BREAK;
+}
+
+case "4":{
+ 
+$ca_entrada = $cantidad;
+$tot_ca_entrada = $tot_ca_entrada + $cantidad;
+
+
+$entrada = $precio_unitario;
+$tot_entrada = $tot_entrada + $precio_unitario;
+$movimiento = "AJ. POS";
+BREAK;
+}
+
+//***************************************
+ 
+
+CASE "6":{
+ 
+$ca_salida = $cantidad;
+$tot_ca_salida = $tot_ca_salida + $cantidad;
+
+$salida = $precio_unitario;
+$tot_salida = $tot_salida + $precio_unitario;
+$movimiento = "N/Entrega";
+BREAK;
+}
+
+CASE "7":{
+$salida = $precio_unitario;
+$tot_salida = $tot_salida + $precio_unitario;
+$movimiento = "AJUSTE NEGATIVO";
+BREAK;
+}
+
+CASE "8":{
+$salida = $precio_unitario;
+$movimiento = "LOTE VENCIDO";
+BREAK;
+}
+
+CASE "9":{
+$salida = $precio_unitario;
+$tot_salida = $tot_salida + $precio_unitario;
+$movimiento = "MERMAS Y ROTURAS";
+BREAK;
+}
+}
+
+
+ $saldo = $tot_entrada - $tot_salida;
+$acumula_saldo = $acumula_saldo + $saldo;
+ 
+?>
+
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFCC">
+     <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$fecha");?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$movimiento");?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$nro_comprobante");?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $cod_movimiento;?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $gtin;?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $lote;?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $vto_lote;?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $entrada;?></font></div></td>
+    <td bgcolor="#EDEDED"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $salida;?></font></div></td>
+    <td bgcolor="#FFFFFF"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $saldo;?></font></div></td>
+    <td bgcolor="#FFFFFF"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $denominacion;?></font></div></td>
+  </tr>
+  <?php 
+
+	$to_entrada = $to_entrada + $entrada;
+	$to_salida = $to_salida + $salida;
+	
+	 $entrada = "";
+	$salida = "";
+	$saldo = "";
+$result->MoveNext();
+	}
+  
+  $existencia = $tot_ca_entrada - $tot_ca_salida;
+
+?>
+  
+  <tr bgcolor="#EDEDED"><td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="left"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="left"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $tot_entrada;?></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $tot_salida;?></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"> <?php echo $acumula_saldo;?></font></div></td>
+  </tr>
+  <tr bgcolor="#EDEDED"><td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="left"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="left"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2"></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $tot_ca_entrada;?></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $tot_ca_salida;?></font></div></td>
+    <td bgcolor="#999999"><div align="center"><font size="2" face="Trebuchet MS"> <?php echo $existencia;?></font></div></td>
+  </tr>
+</table>

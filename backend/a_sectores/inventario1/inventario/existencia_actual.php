@@ -1,0 +1,175 @@
+<?php 
+global $buscador_rapido;
+
+if ($borrar != 1){
+$buscador_rapido=$_POST["buscador_rapido"];
+}
+
+$hoy = date("d/m/Y");
+include("../../../conexiones/config_pro.php");
+
+
+$B = 1;
+
+
+
+
+
+
+
+
+?>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close(); cerrar()"> 
+<table width="800" height="131" border="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+    <td colspan="7"><div align="center"><strong>INVENTARIO </strong></div>      <div align="center"></div></td>
+  </tr>
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+    <td colspan="7"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif">LISTADO DE EXISTENCIA. Emitido el <?php echo $hoy;?> </font></div></td>
+  </tr>
+  <tr valign="top" bordercolor="#FFFFFF" bgcolor="#000099">
+    <td height="32" colspan="7" bgcolor="#FFFFFF"><hr noshade></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#000099">
+
+
+    <td width="8%" height="23" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">CODIGO</font></div></td>
+    <td bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">PRODUCTO</font></div>      <div align="center"></div></td>
+
+<td width="12%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">LOTE</font></div></td>
+	<td width="9%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">SERIE</font></div></td>
+    <td width="4%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">E</font></div></td>
+<td width="3%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">S</font></div></td>
+<td width="6%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">TOT</font></div></td>
+<td width="9%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">ULT-MOV</font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td colspan="7"><hr noshade></td>
+  </tr>
+  <?php 
+
+
+
+$anio_actual = date("y");
+$mes_actual = date ("m");
+
+$sql1="select * from tr_existencias";
+$result1 = $db->Execute($sql1);
+ 
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+
+ $cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+$cantidad_ingresada=strtoupper($result1->fields["cantidad_ingresada"]);
+$cantidad_salida=strtoupper($result1->fields["cantidad_salida"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$gtin=$result1->fields["gtin"];
+
+$nro_serie=$result1->fields["nro_serie"];
+
+$fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+
+$dia1 = substr($fecha_ultimo_mov,8,2);
+$mes1 = substr($fecha_ultimo_mov,5,2);
+$anio1 = substr($fecha_ultimo_mov,0,4);
+
+$fecha_ultimo_mov = $dia1."-".$mes1."-".$anio1;
+
+$sql="select * from monodrogas where cod_barra = $cod_mercaderia ";
+$result = $db->Execute($sql);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+
+
+
+$vto_lote = $mes_lote." - ".$anio_lote;
+
+
+
+$cantidad_existente = $cantidad_ingresada - $cantidad_salida;
+	
+$mes = $mes_lote;
+$anio = $anio_lote;
+
+if ($anio == ""){
+	$anio = $anio_actual;
+}
+else
+		  {
+$estado = "-";
+		  }
+
+
+
+if (($anio != "00") && ($mes != "00") or ($anio != "00") or ($mes != "00") ){
+
+if ($anio < $anio_actual){
+$estado = "VENCIDO";
+}
+else{
+
+if ($anio > $anio_actual){
+$estado = "-";}
+else{
+
+if ($mes < $mes_actual){
+$estado = "VENCIDO";
+}
+else{
+	$estado ="-";
+}
+}
+}
+}
+
+
+$total_ingresada  = $total_ingresada + $cantidad_ingresada;
+$total_salida  = $total_salida + $cantidad_salida;
+$total_saldo  = $total_saldo + $cantidad_existente;
+
+$cont = $cont + 1;
+
+
+
+
+?>
+
+    <tr bgcolor="#FFFFFF"><td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$cod_mercaderia");?></font></div></td>
+    <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$nombre_comercial");?> - <?php print("$presentacion");?></font></div>      <div align="left"></div></td>
+    <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$lote");?></font></div></td>
+<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$nro_serie");?></font></div></td>
+<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_ingresada");?></font></div></td>
+	  <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_salida");?></font></div></td>
+	<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cantidad_existente");?></font></div></td>
+<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$fecha_ultimo_mov");?></font></div></td>
+  </tr>
+    <tr bgcolor="#FFFFFF">
+      <td><div align="center"><font color="#000000" size="2" face="Trebuchet MS">GTIN</font></div></td>
+      <td colspan="3"><font size="2" face="Trebuchet MS"><?php print("$gtin");?></font></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  
+<?php 
+
+$result1->MoveNext();
+	}
+  
+
+?>
+  <tr bgcolor="#FFFFFF">
+      <td>&nbsp;</td>
+      <td colspan="3"><font size="2" face="Trebuchet MS">Cantidad Ingresada: <?php print("$cont");?></font></td>
+      <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$total_ingresada");?></font></div></td>
+      <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$total_salida");?></font></div></td>
+      <td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$total_saldo");?></font></div></td>
+      <td>&nbsp;</td>
+    </tr>
+
+</table>

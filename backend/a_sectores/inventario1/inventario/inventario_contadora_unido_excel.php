@@ -1,0 +1,302 @@
+<?php 
+
+ include ("../../../conexiones/config_pro.php");
+ 
+$provee = "";
+
+
+
+$sql = "DELETE FROM tr_stock_contadora_unido";
+mysql_query($sql);
+
+
+
+switch ($mes){
+	
+case "01":{$dia = "31";break;}
+case "02":{$dia = "28";break;}
+case "03":{$dia = "31";break;}
+case "04":{$dia = "30";break;}
+case "05":{$dia = "31";break;}
+case "06":{$dia = "30";break;}
+case "07":{$dia = "31";break;}
+case "08":{$dia = "31";break;}
+case "09":{$dia = "30";break;}
+case "10":{$dia = "31";break;}
+case "11":{$dia = "30";break;}
+case "12":{$dia = "31";break;}
+}
+
+
+
+if (($mes == 10) and ($anio == 12)){
+$monodrogas = "monodrogas_30102012";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 11) and ($anio == 12)){
+$monodrogas = "monodrogas_30112012";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 12) and ($anio == 12)){
+$monodrogas = "monodrogas_31122012";
+ $tr_stock_provisorio = "tr_stock_temp_provisorio_21012013";
+ $tr_stock_provisorio1 = "tr_stock_temp_provisorio1_21012013";
+
+// Año 2013
+}elseif (($mes == 01) and ($anio == 13)){
+$monodrogas = "monodrogas_31012013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 02) and ($anio == 13)){
+$monodrogas = "monodrogas_31022013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 03) and ($anio == 13)){
+$monodrogas = "monodrogas_27032013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 04) and ($anio == 13)){
+$monodrogas = "monodrogas_31042013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 05) and ($anio == 13)){
+$monodrogas = "monodrogas_30052013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 06) and ($anio == 13)){
+$monodrogas = "monodrogas_30062013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 07) and ($anio == 13)){
+$monodrogas = "monodrogas_30072013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 08) and ($anio == 13)){
+$monodrogas = "monodrogas_30082013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 09) and ($anio == 13)){
+$monodrogas = "monodrogas_30092013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 10) and ($anio == 13)){
+$monodrogas = "monodrogas_30102013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 11) and ($anio == 13)){
+$monodrogas = "monodrogas_30112013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}elseif (($mes == 12) and ($anio == 13)){
+$monodrogas = "monodrogas_30122013";
+$tr_stock_provisorio = "tr_stock_temp_provisorio";
+$tr_stock_provisorio1 = "tr_stock_temp_provisorio1";
+}
+
+
+
+  $sql = "INSERT into tr_stock_contadora_unido SELECT * FROM $tr_stock_provisorio where mes = $mes and anio = $anio and anterior + cantidad - salida > 0 order by drogas";
+mysql_query($sql);
+
+ $sql = "INSERT into tr_stock_contadora_unido SELECT * FROM $tr_stock_provisorio1 where mes = $mes and anio = $anio and anterior + cantidad - salida > 0  order by drogas";
+mysql_query($sql);
+
+
+$a = "inventario_".$dia."-".$mes."-".$anio. " (COMPLETO).xls";
+ 
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$a");
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo1 {font-family: "Trebuchet MS"}
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo3 {font-size: 12px}
+-->
+</style>
+
+<table width="918" border="1" cellpadding="0" cellspacing="0">
+  <tr bgcolor="#FFBC79">
+    <td width="8%"  bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo2"><span class="Estilo28 Estilo13 Estilo7">COD BARRA </span></div></td>
+
+    <td width="36%"  bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo26 Estilo13 Estilo7 Estilo1 Estilo3">Descripcion / Mercaderia</div></td>
+    <td width="23%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7 Estilo1 Estilo3"> Droga </div></td>
+    <td width="11%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7 Estilo1 Estilo3"> Laboratorio </div></td>
+    <td width="3%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14 Estilo1 Estilo3">CANT</div></td>
+    <td width="3%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14 Estilo1 Estilo3"><span 
+	class="Estilo13">UNI</span></div></td>
+	<td width="3%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14 Estilo1 Estilo3"><span 
+	class="Estilo13">TOT</span></div></td>
+  </tr>
+
+  <?php
+
+
+$hoy=date("d/m/y");
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+if ($provee == 1){
+ $sql1="select * from tr_stock_contadora_unido where mes = '$mes' and anio = '$anio' and cuenta = 110 order by drogas";
+}else{
+$sql1="select * from tr_stock_contadora_unido where mes = '$mes' and anio = '$anio' order by drogas";
+}
+$result1 = $db->Execute($sql1);
+ 
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ 
+$fecha=strtoupper($result1->fields["fecha"]);
+$cod_movimiento=strtoupper($result1->fields["cod_movimiento"]);
+$tipo_fact=strtoupper($result1->fields["tipo_fact"]);
+$nro_comprobante=strtoupper($result1->fields["nro_comprobante"]);
+
+$precio_unitario=strtoupper($result1->fields["precio_unitario"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cuenta=strtoupper($result1->fields["cuenta"]);
+$tipo_cuenta=strtoupper($result1->fields["tipo_cuenta"]);
+$observaciones=strtoupper($result1->fields["observaciones"]);
+$documento=strtoupper($result1->fields["documento"]);
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+$nro_os=strtoupper($result1->fields["nro_os"]);
+$gtin=strtoupper($result1->fields["gtin"]);
+$transaccion=strtoupper($result1->fields["transaccion"]);
+$nro_serie=strtoupper($result1->fields["nro_serie"]);
+$drogas=strtoupper($result1->fields["drogas"]);
+$grupo=strtoupper($result1->fields["grupo"]);
+$laboratorio=strtoupper($result1->fields["laboratorio"]);
+$anterior=strtoupper($result1->fields["anterior"]);
+$cantidad=strtoupper($result1->fields["cantidad"]);
+$salida=strtoupper($result1->fields["salida"]);
+$cod_barra=strtoupper($result1->fields["cod_mercaderia"]);
+
+$precio_anterior =strtoupper($result1->fields["precio_anterior"]);
+$precio_ingreso=strtoupper($result1->fields["precio_ingreso"]);
+$precio_egreso=strtoupper($result1->fields["precio_egreso"]);
+
+$saldo = $precio_anterior + $precio_ingreso - $precio_egreso;
+
+$suma_saldo = $suma_saldo + $saldo;
+$suma_ingresos = $suma_ingresos + $precio_ingreso;
+$suma_ingresos = $suma_ingresos + $precio_ingreso;
+$suma_egresos = $suma_egresos + $precio_egreso;
+
+$todo = $anterior + $cantidad - $salida;
+
+
+
+
+  $sql="select * from laboratorios where cod_laboratorio = $laboratorio";
+$result = $db->Execute($sql);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+
+$sql="select * from $monodrogas where cod_barra = $cod_barra";
+$result = $db->Execute($sql);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$troquel=strtoupper($result->fields["troquel"]);
+$cant_caja=strtoupper($result->fields["cant_caja"]);
+$precio_actualizado=strtoupper($result->fields["precio_actualizado"]);
+
+ if ($cod_droga == 0){
+  $sql="select * from drogas where cod_droga = $cod_barra and tipo = 1";
+$result = $db->Execute($sql);
+$drogas=strtoupper($result->fields["droga"]);
+ }
+
+
+
+IF ($laboratorio == ""){
+$laboratorio = "UNICO";
+}
+
+
+$pre = $todo * $precio_actualizado;
+
+
+
+$suma_saldo1 = $suma_saldo1 + $pre;
+
+$nombre_comercial = $drogas;
+
+
+ list($precio_entero1,$precio_decimal1) = explode(".",$todo);
+if (strlen($precio_decimal1) == 1){
+$precio_decimal1 = $precio_decimal1."0";
+}
+$todo = $precio_entero1.",".$precio_decimal1;
+
+
+list($precio_entero1,$precio_decimal1) = explode(".",$precio_actualizado);
+if (strlen($precio_decimal1) == 1){
+$precio_decimal1 = $precio_decimal1."0";
+}
+$precio_actualizado = $precio_entero1.",".$precio_decimal1;
+
+list($precio_entero1,$precio_decimal1) = explode(".",$pre);
+if (strlen($precio_decimal1) == 1){
+$precio_decimal1 = $precio_decimal1."0";
+}
+$pre = $precio_entero1.",".$precio_decimal1;
+
+
+?><tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FFFFFF" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)" scope="col"><span class="Estilo28 Estilo6 Estilo7"><?php echo $troquel;?></span></td>
+   
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="left" class="Estilo13 Estilo7"><span class="Estilo28"><?php echo $nombre_comercial;?></span> <span class="Estilo14"><span class="Estilo26"><?php echo $presentacion;?></span></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14"><span class="Estilo26"><?php echo $cant_caja;?> </span></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo14"><span class="Estilo28"><?php echo $laboratorio;?></span></div></td>
+    <td width="3%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">    <span class="Estilo28"><?php echo $todo;?></span></div></td>
+    <td width="3%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">
+      <div align="right"><span class="Estilo28"><?php echo $precio_actualizado;?></span></div>
+    </div></td>
+	<td width="3%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">
+	  <div align="right"><span class="Estilo28"><?php echo $pre;?></span></div>
+	</div></td>
+  </tr>
+ 
+<?php 
+
+
+
+
+$cant = $todo + $cant;
+
+$contame = $contame + 1;
+
+
+
+
+$result1->MoveNext();
+	}
+
+list($precio_entero1,$precio_decimal1) = explode(".",$suma_saldo1);
+if (strlen($precio_decimal1) == 1){
+$precio_decimal1 = $precio_decimal1."0";
+}
+$suma_saldo1 = $precio_entero1.",".$precio_decimal1;
+
+
+ ?>  <tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FFFFFF" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)" scope="col">&nbsp;</td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">&nbsp;</td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">&nbsp;</td>
+    <td bgcolor="#FFFFFF" scope="col">&nbsp;</td>
+    <td bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)">&nbsp;</td>
+    <td bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="right"></div></td>
+    <td bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="right"><span class="Estilo28"><?php echo $suma_saldo1;?></span></div></td>
+  </tr>
+  </table>
+ 

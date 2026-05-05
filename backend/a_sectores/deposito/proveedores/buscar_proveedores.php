@@ -1,0 +1,149 @@
+<?php 
+global $buscador_rapido;
+$buscador_rapido=$_POST["buscador_rapido"];
+$hoy = date("d/m/y");
+include ("../../conexiones/config_usu.php");
+
+$B = 1;
+$palabra=$_POST["busca"];
+
+$sql="select * from proveedores where cod_proveedor like '%$palabra%'  or denominacion like '%$palabra%' or domicilio like '%$palabra%' order by cod_proveedor asc ";
+
+	$result = $db->Execute($sql);
+?>
+<table width="103%" height="58" border="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#E6E6E6">
+    <td colspan="11"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif">LISTADO DE PROVEEDORES . Emitido el <?php echo $hoy;?> </font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFCC" bgcolor="#000099">
+    <?php 
+
+switch ($buscador_rapido)
+{
+	case "1"://mostrar sin modificar
+	{ 
+		?>
+    <td width="5%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>COD PROVEEDOR</strong></font></div></td>
+    <td width="11%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>DENOMINACION</strong></font></div></td>
+	<td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>COD AREA</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>TELEFONO</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>MAIL</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>FICHA</strong></font></div></td>
+    <?php 
+
+
+
+	break;
+}
+
+
+	case "2": //mostrar con modificar
+	{
+		?>
+        <td width="5%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>COD PROVEEDOR</strong></font></div></td>
+    <td width="11%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>DENOMINACION</strong></font></div></td>
+	<td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>COD AREA</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>TELEFONO</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>MAIL</strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>FICHA</strong></font></div></td>
+
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>MODIFICAR </strong></font></div></td>
+    <td width="12%"><div align="center"><font color="#FFFFFF" size="1" face="Arial, Helvetica, sans-serif"><strong>ELIMINAR </strong></font></div></td>
+
+  </tr>
+  <?php 
+
+
+	break;
+}	
+
+
+
+
+
+
+}
+ 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$cod_proveedor=strtoupper($result->fields["cod_proveedor"]);
+$denominacion=strtoupper($result->fields["denominacion"]);
+$cod_area=strtoupper($result->fields["cod_area"]);
+$telefono=strtoupper($result->fields["telefono"]);
+$cod_area_celular=strtoupper($result->fields["cod_area_celular"]);
+$celular=strtoupper($result->fields["celular"]);
+$servicio=strtoupper($result->fields["servicio"]);
+$denominacion_reducida=strtoupper($result->fields["denominacion_reducida"]);
+$mail=strtoupper($result->fields["mail"]);
+				 
+
+
+
+	if ($B == 1) {
+
+?>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <?php 
+$B = 0;
+				}
+	ELSE	{
+	$B=1;
+		 	
+?>
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFCC">
+    <?php 
+
+			}
+
+
+
+
+
+switch ($buscador_rapido)
+{
+	case "2": //mostrar sin modificar
+	{
+		?>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$cod_proveedor");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$denominacion");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$cod_area");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$telefono");?></font></div></td>
+<td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$mail");?></font></div></td>
+
+    <td bordercolor="#E8DCFC" bgcolor="#E8DCFC"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> <a href="ficha.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/005.ico" alt="Ficha" border = "0"></a></font></div></td>
+
+   <td bordercolor="#E8DCFC" bgcolor="#E8DCFC"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><a href="modificar.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/027.ico" alt="Modificar" border = "0"></a></font></div></td>
+    <td bordercolor="#E8DCFC" bgcolor="#E8DCFC"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> <a href="borra.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/1047.ico" alt="Eliminar" border = "0"></a></font></div></td>
+
+  </tr>
+  <?php 
+
+
+
+break;
+}
+
+
+case "1":
+	  {
+	?>
+<td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$cod_prveedor");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$denominacion");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$cod_area");?></font></div></td>
+    <td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$telefono");?></font></div></td>
+<td bgcolor="#E8DCFC"><div align="center"><font size="2"><?php print("$mail");?></font></div></td>
+
+    <td bordercolor="#E8DCFC" bgcolor="#E8DCFC"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> <a href="ficha.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/005.ico" alt="Ficha" border = "0"></a></font></div></td>
+  <?php 
+
+	break;
+	  }
+	  }
+
+$result->MoveNext();
+	}
+
+?>
+</table>

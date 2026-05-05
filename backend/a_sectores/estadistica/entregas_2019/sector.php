@@ -1,0 +1,152 @@
+<?php
+require_once("../../../drivers/fpdf/fpdf.php");
+
+class PDF_Sector extends FPDF
+{
+	function Sector($xc, $yc, $r, $a, $b, $style='FD', $cw=true, $o=90)
+	{
+		$d0 = $a - $b;
+		if($cw){
+			$d = $b;
+			$b = $o - $a;
+			$a = $o - $d;
+		}else{
+			$b += $o;
+			$a += $o;
+		}
+		while($a<0)
+			$a += 360;
+		while($a>360)
+			$a -= 360;
+		while($b<0)
+			$b += 360;
+		while($b>360)
+			$b -= 360;
+		if ($a > $b)
+			$b += 360;
+		$b = $b/360*2*M_PI;
+		$a = $a/360*2*M_PI;
+		$d = $b - $a;
+		if ($d == 0 && $d0 != 0)
+			$d = 2*M_PI;
+		$k = $this->k;
+		$hp = $this->h;
+		if (sin($d/2))
+			$MyArc = 4/3*(1-cos($d/2))/sin($d/2)*$r;
+		else
+			$MyArc = 0;
+		//first put the center
+		$this->_out(sprintf('%.2F %.2F m',($xc)*$k,($hp-$yc)*$k));
+		//put the first point
+		$this->_out(sprintf('%.2F %.2F l',($xc+$r*cos($a))*$k,(($hp-($yc-$r*sin($a)))*$k)));
+		//draw the arc
+		if ($d < M_PI/2){
+			$this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+						$yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+						$xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+						$yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+						$xc+$r*cos($b),
+						$yc-$r*sin($b)
+						);
+		}else{
+			$b = $a + $d/4;
+			$MyArc = 4/3*(1-cos($d/8))/sin($d/8)*$r;
+			$this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+						$yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+						$xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+						$yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+						$xc+$r*cos($b),
+						$yc-$r*sin($b)
+						);
+			$a = $b;
+			$b = $a + $d/4;
+			$this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+						$yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+						$xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+						$yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+						$xc+$r*cos($b),
+						$yc-$r*sin($b)
+						);
+			$a = $b;
+			$b = $a + $d/4;
+			$this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+						$yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+						$xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+						$yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+						$xc+$r*cos($b),
+						$yc-$r*sin($b)
+						);
+			$a = $b;
+			$b = $a + $d/4;
+			$this->_Arc($xc+$r*cos($a)+$MyArc*cos(M_PI/2+$a),
+						$yc-$r*sin($a)-$MyArc*sin(M_PI/2+$a),
+						$xc+$r*cos($b)+$MyArc*cos($b-M_PI/2),
+						$yc-$r*sin($b)-$MyArc*sin($b-M_PI/2),
+						$xc+$r*cos($b),
+						$yc-$r*sin($b)
+						);
+		}
+		//terminate drawing
+		if($style=='F')
+			$op='f';
+		elseif($style=='FD' || $style=='DF')
+			$op='b';
+		else
+			$op='s';
+		$this->_out($op);
+	}
+
+// Tabla coloreada
+
+
+	function _Arc($x1, $y1, $x2, $y2, $x3, $y3 )
+	{
+		$h = $this->h;
+		$this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c',
+			$x1*$this->k,
+			($h-$y1)*$this->k,
+			$x2*$this->k,
+			($h-$y2)*$this->k,
+			$x3*$this->k,
+			($h-$y3)*$this->k));
+	}
+
+
+	function FancyTable($header, $data)
+{
+    // Colores, ancho de línea y fuente en negrita
+    $this->SetFillColor(255,0,0);
+    $this->SetTextColor(255);
+    $this->SetDrawColor(128,0,0);
+    $this->SetLineWidth(.3);
+    $this->SetFont('','B');
+    // Cabecera
+    $w = array(40, 35, 45, 40);
+    for($i=0;$i<count($header);$i++)
+        $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
+    $this->Ln();
+    // Restauración de colores y fuentes
+    $this->SetFillColor(224,235,255);
+    $this->SetTextColor(0);
+    $this->SetFont('');
+    // Datos
+    $fill = false;
+    foreach($data as $row)
+    {
+        $this->Cell($w[0],6,$row[0],'LR',0,'L',$fill);
+        $this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
+        $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
+        $this->Cell($w[3],6,number_format($row[3]),'LR',0,'R',$fill);
+        $this->Ln();
+        $fill = !$fill;
+    }
+    // Línea de cierre
+    $this->Cell(array_sum($w),0,'','T');
+}
+
+
+}
+
+
+
+?>

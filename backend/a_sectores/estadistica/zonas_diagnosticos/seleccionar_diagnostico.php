@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+
+<style type="text/css">
+<!--
+.Estilo3 {
+	font-family: "Trebuchet MS";
+	color: #FFFFFF;
+}
+-->
+</style>
+<link href="../../../menus.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.Estilo58 {font-size: 12px}
+.Estilo15 {font-family: "Trebuchet MS"}
+-->
+</style>
+</head>
+
+<body>
+<table width="154"  border="0">
+  <tr bgcolor="#990033"> </tr>
+  <tr>
+    <td bgcolor="#666666"><div align="center" class="Estilo3">DIAGNOSTICOS</div></td>
+  </tr>
+</table>
+<div id="menuv">
+		<ul>
+			<ul>
+			 			  
+<!-- <li><a href="carga_datos.php" target = "central1" class="Estilo7 Estilo58" >1. Cargar Encuesta </a></li> -->
+<!-- <li><a href="resultado_encuesta1.php" target = "central1" class="Estilo7 Estilo58" >2. Resultado Encuesta</a></li> -->
+ 
+
+<!-- <li><a href="direccion/pacientes_atendidos_entrega.php" target = "central1" class="Estilo7 Estilo58" >7. Cantidad de Entregas</a></li> -->
+<!-- <li><a href="direccion/grafico1.php" target = "central1" class="Estilo7 Estilo58" >5. Prueba</a></li>
+<li><a href="direccion/grafico2.php" target = "central1" class="Estilo7 Estilo58" >5. Prueba</a></li>
+<li><a href="direccion/diag/ex.php" target = "central1" class="Estilo7 Estilo58" >5. Prueba</a></li> -->
+
+<!-- <li><a href="../ver_asiento_gtin.php" target = "central1" class="Estilo7 Estilo58" >5. Prueba</a></li> -->
+<!-- <li><a href="existencia/consulta.php" target = "central1" class="Estilo7 Estilo58" >5. Existencia</a></li>  -->
+
+</ul>
+		</ul>
+</div>
+  
+  <?PHP 
+  $mes = date("m");
+  $anio3 = date("y");
+
+  $anio2 = date("y") - 1;
+$anio1 = date("y") - 2;
+
+
+  ?>
+   <form action="ver_diagnosticos.php" method="post" target = "central1">
+     <table width="152"  border="0">
+       
+       <tr>
+         <td colspan="2" bgcolor="#666666"><div align="center" class="Estilo3">DIAGNOSTICOS</div></td>
+       </tr>
+       <tr>
+         <td colspan="2" align="center" class="Estilo79 Estilo58 Estilo15" scope="row">DIAGNOSTICO</td>
+       </tr>
+       <tr>
+         <td colspan="2" align="center" class="Estilo79 Estilo58 Estilo15" scope="row"><?php 
+include ("../../../conexiones/config_usu.php");
+$sql="select * from diagnostico ORDER BY cod_agrupado";
+$result = $db->Execute($sql);
+echo "<select name=cod_agrupado[] size=1 id =obrasocial onKeyPress='return verif_caracter(this,event)'>";
+
+
+if (!$result) die("fallo".$db->ErrorMsg());
+while (!$result->EOF) {
+$cod=$result->fields["nro_diagnostico"];
+$a1=strtoupper($result->fields["nombre_diagnostico"]);
+echo"<option value=$cod>$a1</option>";
+$result->MoveNext();
+	}
+echo"</select>";
+?></td>
+       </tr>
+	    
+       <tr>
+         <td align="center" class="Estilo79 Estilo58 Estilo15" scope="row">Mes:</td>
+         <td align="center" class="Estilo79 Estilo58 Estilo15" scope="row"><input name = "mes" type = "text" id="mes" value = "<?php echo $mes;?>" size = "4" maxlength="4" /></td>
+       </tr>
+       <tr>
+         <td width="53" align="center" class="Estilo79 Estilo58 Estilo15" scope="row">A&ntilde;o: </td>
+         <td width="89" align="center" class="Estilo79 Estilo58 Estilo15" scope="row"><input name = "anio" type = "text" id="anio" value = "<?php echo $anio3;?>" size = "4" maxlength="4" /></td>
+       </tr>
+       
+
+       <tr>
+         <td colspan="2" align="center" class="Estilo79 Estilo58 Estilo15" scope="row"><label>
+         
+<select name='zonas[]' size=1 id ='obrasocial' onKeyPress='return verif_caracter(this,event)'>
+  <optgroup label="Centro"> 
+        <option value="Ciudad"><font size="2">Ciudad</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Godoy Cruz"><font size="2">Godoy Cruz</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Guaymallen"><font size="2">Guaymallen</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Lujan"><font size="2">Lujan</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Maipu"><font size="2">Maipu</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		</optgroup>
+        <optgroup label="Valle de Uco"> 
+        <option value="Tupungato"><font size="2">Tupungato</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Tunuyan"><font size="2">Tunuyan</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="San Carlos"><font size="2">San Carlos</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        </optgroup>
+        <optgroup label="Este">
+		        <option value="San Martin"><font size="2">San Martin</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Santa Rosa"><font size="2">Santa Rosa</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="Rivadavia"><font size="2">Rivadavia</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+        <option value="Junin"><font size="2">Junin</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="La Paz"><font size="2">La Paz</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		</optgroup> 
+		<optgroup label="Norte">
+        <option value="Las Heras"><font size="2">Las Heras</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="Lavalle"><font size="2">Lavalle</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		</optgroup>
+				<optgroup label="Sur">
+        <option value="Malargue"><font size="2">Malargue</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="San Rafael"><font size="2">San Rafael</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		        <option value="Gral Alvear"><font size="2">Gral Alvear</font><font size="2"></font><font size="2"></font><font size="2"></font></option>
+		</optgroup>
+      </select>
+         </label></td>
+       </tr>
+       <tr>
+         <td colspan="2" align="center" class="Estilo7" scope="row"><input name="Submit2" type="submit" value="BUSCAR" /></td>
+       </tr>
+     </table>
+   </form> 
+</body>
+</html>

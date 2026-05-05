@@ -1,0 +1,24 @@
+
+.Estilo1 {
+	font-family: "Arial Black";
+	font-size: 24px;
+}
+.Estilo5 {color: #000099}
+.Estilo15 {font-family: Arial, Helvetica, sans-serif}
+body {
+	background-color: #FFFFFF;
+	background-image: url(../imagenes/blanco.jpg);
+	
+	background-image: url(../imagenes/presentacion/fondo4.jpg);
+	background-repeat: no-repeat bottom right;
+
+	
+
+}
+.Estilo21 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+.Estilo24 {font-size: 14px; font-family: Arial, Helvetica, sans-serif; }
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+

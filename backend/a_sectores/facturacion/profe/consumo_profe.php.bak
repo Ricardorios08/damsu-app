@@ -1,0 +1,285 @@
+<?php
+/*$file = 'consumo_profe_autorizadas_drogas.xls';
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$file");
+
+*/
+
+?>
+
+<style type="text/css">
+<!--
+.Estilo12 {font-family: "Trebuchet MS"; font-size: 10; }
+.Estilo13 {font-size: 10}
+.Estilo16 {font-family: "Trebuchet MS"; font-size: 10px; }
+.Estilo19 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+<table width="850" border="0" cellpadding="0">
+  <tr>
+    <th bgcolor="#F0F0F0" scope="col">PROFE</th>
+    <th bgcolor="#F0F0F0" scope="col">CONSUMO</th>
+    <th bgcolor="#F0F0F0" scope="col">2013</th>
+    <th bgcolor="#F0F0F0" scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <th width="212" bgcolor="#3399FF" scope="col"><span class="Estilo19">Paciente</span></th>
+    <th width="177" bgcolor="#3399FF" scope="col"><span class="Estilo19">Direccion </span></th>
+    <th width="209" bgcolor="#3399FF" scope="col"><span class="Estilo19">Localidad</span></th>
+    <th width="85" bgcolor="#3399FF" scope="col"><span class="Estilo19">Ingreso</span></th>
+  </tr>
+  
+
+<?php 
+
+include ("../../../conexiones/config_pro.php");
+
+///////////////
+/*
+ $sql1 = "select * from tr_ventas_encabezado where nro_os = 10";
+$result1 = $db->Execute($sql1);
+
+ 
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+$documento=$result1->fields["documento"];
+$nro_factura=$result1->fields["nro_factura"];
+
+ 
+  $sql = "UPDATE tr_ventas_detalle SET nro_os = '10' WHERE nro_factura = '$nro_factura'";
+//$result = $db->Execute($sql);
+
+
+
+
+//echo "<br>";
+$cont = $cont + 1;
+
+   $result1->MoveNext();
+	}
+
+*/
+
+////////////
+$total = "";
+ 
+ $sql1 = "SELECT *  FROM drogas_profe_consumo  where fecha between '2013-01-01' and '2013-12-31' group by cod_droga order by fecha";
+$result1 = $db->Execute($sql1);
+
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+ 
+
+
+ $documento=$result1->fields["documento"];
+$fecha=$result1->fields["fecha"];
+
+
+ $nro_factura=$result1->fields["nro_factura"];
+ 
+
+ 
+ $cod_droga=$result1->fields["cod_droga"];
+ $droga=$result1->fields["droga"];
+  $nombre_comercial=$result1->fields["nombre_comercial"];
+   $cod_barra=$result1->fields["cod_barra"];
+    $paciente=$result1->fields["paciente"];
+	 $documento=$result1->fields["documento"];
+	  $nro_factura=$result1->fields["nro_factura"];
+	   $fecha=$result1->fields["fecha"];
+ $dia = substr($fecha,8,2);
+  $mes = substr($fecha,5,2);
+   $anio = substr($fecha,0,4);
+
+   $fecha1 = $dia."/".$mes."/".$anio;
+
+	    $precio_actualizado=$result1->fields["precio"];
+ 
+ 
+
+$cont = $cont + 1;
+
+
+ $sql11 = "SELECT sum(precio) as precio_actualizado  FROM drogas_profe_consumo WHERE cod_droga = $cod_droga and fecha between '2013-01-01' and '2013-12-31'";
+$result11 = $db->Execute($sql11);
+
+  $precio_actualizado=$result11->fields["precio_actualizado"];
+
+$total = $total + $precio_actualizado;
+?>
+<tr>
+    <td><div align="left" class="Estilo16"><?php echo $cod_droga;?> <?php echo $droga;?> c</div></td>
+    <td><span class="Estilo16"><?php  $nombre_comercial;?></span></td>
+    <td><span class="Estilo16"><?php   $nro_factura;?> </span></td>
+    <td><div align="center" class="Estilo16">
+      <div align="right" class="Estilo16"><?php echo number_format($precio_actualizado,2);?></div>
+    </div></td>
+  </tr>
+
+<?php 
+   $result1->MoveNext();
+	}
+
+$promedio = round($total / $cont);
+$tot = $total;
+
+?>
+
+<tr>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+  </tr>
+  <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bgcolor="#B8B8B8"><div align="right" class="Estilo12">Total</div></td>
+    <td bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($total,2);?></span></div></td>
+  </tr>
+
+    <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bgcolor="#B8B8B8"><div align="right" class="Estilo12">Cant</div></td>
+    <td bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($cont,2);?></span></div></td>
+  </tr>
+
+
+    <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right" class="Estilo12">Promedio</div></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($promedio,2);?></span></div></td>
+  </tr>
+
+
+</table>
+
+<table width="850" border="0" cellpadding="0">
+  <tr>
+    <th bgcolor="#F0F0F0" scope="col">PROFE</th>
+    <th bgcolor="#F0F0F0" scope="col">CONSUMO</th>
+    <th bgcolor="#F0F0F0" scope="col">2014</th>
+    <th bgcolor="#F0F0F0" scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <th width="212" bgcolor="#3399FF" scope="col"><span class="Estilo19">Paciente</span></th>
+    <th width="177" bgcolor="#3399FF" scope="col"><span class="Estilo19">Direccion </span></th>
+    <th width="209" bgcolor="#3399FF" scope="col"><span class="Estilo19">Localidad</span></th>
+    <th width="85" bgcolor="#3399FF" scope="col"><span class="Estilo19">Ingreso</span></th>
+  </tr>
+  
+
+<?php
+
+//////
+$total = "";
+$cont = "";
+$promedio= "";
+
+
+$sql1 = "SELECT *  FROM drogas_profe_consumo  where fecha between '2014-01-01' and '2014-12-31' group by cod_droga order by fecha";
+$result1 = $db->Execute($sql1);
+
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+ 
+
+
+ $documento=$result1->fields["documento"];
+$fecha=$result1->fields["fecha"];
+
+
+ $nro_factura=$result1->fields["nro_factura"];
+ 
+
+ 
+ $cod_droga=$result1->fields["cod_droga"];
+ $droga=$result1->fields["droga"];
+  $nombre_comercial=$result1->fields["nombre_comercial"];
+   $cod_barra=$result1->fields["cod_barra"];
+    $paciente=$result1->fields["paciente"];
+	 $documento=$result1->fields["documento"];
+	  $nro_factura=$result1->fields["nro_factura"];
+	   $fecha=$result1->fields["fecha"];
+ $dia = substr($fecha,8,2);
+  $mes = substr($fecha,5,2);
+   $anio = substr($fecha,0,4);
+
+   $fecha1 = $dia."/".$mes."/".$anio;
+
+	    $precio_actualizado=$result1->fields["precio"];
+ 
+ 
+
+$cont = $cont + 1;
+
+
+ $sql11 = "SELECT sum(precio) as precio_actualizado  FROM drogas_profe_consumo WHERE cod_droga = $cod_droga and fecha between '2014-01-01' and '2014-12-31'";
+$result11 = $db->Execute($sql11);
+
+  $precio_actualizado=$result11->fields["precio_actualizado"];
+
+$total = $total + $precio_actualizado;
+?>
+<tr>
+    <td><div align="left" class="Estilo16"><?php echo $cod_droga;?> <?php echo $droga;?> c</div></td>
+    <td><span class="Estilo16"><?php  $nombre_comercial;?></span></td>
+    <td><span class="Estilo16"><?php   $nro_factura;?> </span></td>
+    <td><div align="center" class="Estilo16">
+      <div align="right" class="Estilo16"><?php echo number_format($precio_actualizado,2);?></div>
+    </div></td>
+  </tr>
+
+<?php 
+   $result1->MoveNext();
+	}
+
+$tot1 = $total + $tot;
+$promedio = round($total / $cont);
+?>
+
+<tr>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+    <td bgcolor="#3399FF"><span class="Estilo13"></span></td>
+  </tr>
+  <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right" class="Estilo12">Total</div></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($total,2);?></span></div></td>
+  </tr>
+
+  <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right" class="Estilo12">Cant</div></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($cont,2);?></span></div></td>
+  </tr>
+
+  <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right" class="Estilo12">Promedio</div></td>
+    <td bordercolor="#B8B8B8" bgcolor="#B8B8B8"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($promedio,2);?></span></div></td>
+  </tr>
+
+
+
+  <tr>
+    <td><span class="Estilo13"></span></td>
+    <td><span class="Estilo13"></span></td>
+    <td bordercolor="#3399FF" bgcolor="#3399FF"><div align="right" class="Estilo12">Total 2013-2014 </div></td>
+    <td bordercolor="#3399FF" bgcolor="#3399FF"><div align="right"><span class="Estilo13"></span><span class="Estilo12"><?php echo number_format($tot1,2);?></span></div></td>
+  </tr>
+
+</table>

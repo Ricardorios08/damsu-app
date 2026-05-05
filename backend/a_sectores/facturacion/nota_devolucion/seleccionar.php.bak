@@ -1,0 +1,49 @@
+<?php 
+include("../../../conexiones/config_pro.php");
+include ("../../../conexiones/usuario_compra.php");
+include("../../../funciones/funciones.php");
+
+$operador = $_REQUEST["operador"];
+
+
+
+echo  $sql10="select * from nota_ajuste_detalle where operador = $operador";
+$result10 = $db->Execute($sql10);
+
+
+if (!$result10) die("fallo".$db->ErrorMsg());
+ while (!$result10->EOF) {
+
+ $cod_detalle=$result10->fields["cod_detalle"];
+
+
+
+$enter=$_POST[enter.$cod_detalle];
+
+
+if ($enter== 'on'){
+$enter= 1;
+ echo $sql = "DELETE FROM nota_ajuste_detalle where cod_detalle = $cod_detalle";
+mysql_query($sql);
+
+}
+else
+	 {
+$enter = "";
+	 }
+
+
+
+
+
+$result10->MoveNext();
+
+	}
+
+
+
+$band_refrescar = 1;
+$opera = 1;
+
+
+include_once ("mostrar_detalle.php");

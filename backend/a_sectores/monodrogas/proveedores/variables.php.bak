@@ -1,0 +1,33 @@
+ <?php  
+
+
+include ("../../../conexiones/config_usu.php");
+include("../../../conexiones/config_pro.php");
+
+
+$id = $_REQUEST['id'];
+$sql="select * from proveedores where cod_proveedor =  $id";
+$result = $db->Execute($sql);
+
+
+$cod_proveedor=strtoupper($result->fields["cod_proveedor"]);
+$denominacion=strtoupper($result->fields["denominacion"]);
+$cod_area=strtoupper($result->fields["cod_area"]);
+$domicilio=strtoupper($result->fields["nombre"]);
+$telefono=strtoupper($result->fields["apellido"]);
+$cod_area_celular=strtoupper($result->fields["calle"]);
+$celular=strtoupper($result->fields["puerta"]);
+$servicio=$result->fields["telefono"];
+$denominacion_reducida=strtoupper($result->fields["estado"]);
+$mail=strtoupper($result->fields["localidad"]);
+$gln=strtoupper($result->fields["departamento"]);
+
+
+
+?>
+
+
+
+
+
+

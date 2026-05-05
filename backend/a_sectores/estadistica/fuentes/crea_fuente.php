@@ -1,0 +1,46 @@
+<?PHP
+// arregala hospitales
+
+include ("../../../conexiones/config_usu.php");
+ 
+$sql="select * from tr_ventas_encabezado where fecha between '2014-01-01' and '2014-12-31' and documento > 1000 group by documento";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$documento=strtoupper($result->fields["documento"]);
+$tipo_doc=strtoupper($result->fields["tipo_doc"]);
+
+$sql1="select * from paciente_diagnostico where documento = '$documento' and tipo_doc = '$tipo_doc'";
+$result1 = $db->Execute($sql1);
+$cod_fuente=strtoupper($result1->fields["cod_fuente"]);
+
+$sql1="select * from pacientes where documento = '$documento' and tipo_doc = '$tipo_doc'";
+$result1 = $db->Execute($sql1);
+$apellido=strtoupper($result1->fields["apellido"]);
+$nombre=strtoupper($result1->fields["nombre"]);
+
+$paciente = $apellido.", ".$nombre;
+
+$sql1="select * from fuentes where nro_fuente = '$cod_fuente'";
+$result1 = $db->Execute($sql1);
+$nombre_fuente=strtoupper($result1->fields["nombre_fuente"]);
+
+
+echo $sql3 = "INSERT INTO `est_fuentes` (`fuente`, `nombre_fuente`, `cantidad`, `documento`, `paciente`) VALUES ('$cod_fuente', '$nombre_fuente', '$cantidad', '$documento', '$paciente')"; 
+$result3 = $db->Execute($sql3);
+echo "<br>";
+
+
+$result->MoveNext();
+	}
+
+	
+	?>
+
+	
+
+
+

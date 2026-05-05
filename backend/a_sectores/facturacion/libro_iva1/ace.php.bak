@@ -1,0 +1,114 @@
+<?php $nro_factura;
+$hoy = date("d/m/y");
+?>
+<style type="text/css">
+<!--
+.Estilo5 {font-family: Arial, Helvetica, sans-serif}
+.Estilo65 {font-size: 12px}
+.Estilo65 {font-family: Arial, Helvetica, sans-serif}
+.Estilo20 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo66 {font-family: "Trebuchet MS"}
+-->
+</style>
+
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close();">
+
+
+   <!--DWLayoutTable-->
+
+
+   
+
+   
+     <?php 
+
+include ("../../../conexiones/config_pro.php");
+
+
+
+$fecha_desde = $anio."-".$mes."-01"; 
+$fecha_hasta =$anio."-".$mes."-31";
+
+$periodo = $mes."-".$anio; 
+
+  ?>
+  
+  <table width="593" border="1" cellspacing="0">
+   <!--DWLayoutTable-->
+   
+   
+   <tr bgcolor="#FFFFFF">
+     <td height="2" colspan="2">           
+     <td width="202">        </tr>
+   <tr bgcolor="#FFFFFF">
+     <td bgcolor="#B8B8B8"><div align="center">PERIODO:   </div>
+     <td bgcolor="#B8B8B8">  <?php echo $periodo;?></td> 
+     <td bgcolor="#B8B8B8"></td>
+   </tr>
+   <tr bgcolor="#FFFFFF">
+     <td width="180" bgcolor="#B8B8B8"><div align="center" class="Estilo65">
+       <div align="center"><span class="Estilo2 Estilo5 Estilo65">Fecha</span> </div>
+     </div>
+     <td width="197" bgcolor="#B8B8B8"><div align="center" class="Estilo65">
+       <div align="center"><span class="Estilo2 Estilo5 Estilo65">Comprobante</span> </div>
+     </div>
+     <td bgcolor="#B8B8B8"><div align="right" class="Estilo65">
+       <div align="center"><span class="Estilo2 Estilo5 Estilo65">Total</span></div>
+     </div></td>
+    </tr>
+
+	<?php
+
+
+$sql="select * from tr_ventas_detalle where fecha BETWEEN '$fecha_desde' and '$fecha_hasta' and proveedor = 110 group by nro_factura order by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+
+
+$sql2="select * from tr_ventas_encabezado where nro_factura = $nro_factura";
+$result2 = $db->Execute($sql2);
+
+$fecha=strtoupper($result2->fields["fecha"]);
+$neto=strtoupper($result2->fields["neto"]);
+
+$dia = substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio = substr($fecha,0,4);
+
+$fecha = $dia."/".$mes."/".$anio;
+
+?>
+     <tr><td><div align="center" class="Estilo20">
+       <div align="center"><?php print("$fecha");?></div>
+     </div></td>
+     <td><div align="center" class="Estilo65">
+       <div align="center"><span class="Estilo66"><?php print("$nro_factura");?></span></div>
+     </div></td>
+  
+     <td><div align="right">
+       <div align="right" class="Estilo20">
+         <div align="right"><?php echo $neto;?></div>
+      
+      
+     </div></td>
+     </tr>
+   <?php 
+
+   
+
+	$result->MoveNext();
+	}
+
+	$condicion = "";  
+
+$cuit = "";
+$tipo = "";
+
+
+?>    
+</table>

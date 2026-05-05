@@ -1,0 +1,20 @@
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337911428 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795320028911 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371698100 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371698155 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795356997298 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7798122020190 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7791829000816 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795367001342 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355000197 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355000203 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795355998104 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795306010565 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7792371074102 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337911411 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7795337910308 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7791829009499 AND mes =04 AND anio =14;
+
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7798017280111 AND mes =04 AND anio =14;
+UPDATE `oncologico`.`tr_stock_temp_provisorio` SET `ace` = '1' WHERE `cod_mercaderia` =7794640231360 AND mes =04 AND anio =14;
+

@@ -1,0 +1,4 @@
+<?php
+include("adodb.inc.php");
+$db = NewADOConnection('mysql');
+$db->Connect("localhost", "w1361849_onco", "Civico06", "w1361849_onco");

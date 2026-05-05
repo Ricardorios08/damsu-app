@@ -1,0 +1,156 @@
+<?php 
+
+
+include ("../../../conexiones/config_pro.php");
+
+  
+$anio= "20".$_REQUEST['anio'];
+$mes1= $_REQUEST['mes'];
+
+$ene_desde = $anio."-01-01";
+$ene_hasta = $anio."-01-31";
+
+
+$feb_desde = $anio."-02-01";
+$feb_hasta = $anio."-02-31";
+
+$mar_desde = $anio."-03-01";
+$mar_hasta = $anio."-03-31";
+
+$abr_desde = $anio."-04-01";
+$abr_hasta = $anio."-04-31";
+
+$may_desde = $anio."-05-01";
+$may_hasta = $anio."-05-31";
+
+$jun_desde = $anio."-06-01";
+$jun_hasta = $anio."-06-31";
+
+$jul_desde = $anio."-07-01";
+$jul_hasta = $anio."-07-31";
+
+$ago_desde = $anio."-08-01";
+$ago_hasta = $anio."-08-31";
+
+$set_desde = $anio."-09-01";
+$set_hasta = $anio."-09-31";
+
+$oct_desde = $anio."-10-01";
+$oct_hasta = $anio."-10-31";
+
+$nov_desde = $anio."-11-01";
+$nov_hasta = $anio."-11-31";
+
+$dic_desde = $anio."-12-01";
+$dic_hasta = $anio."-12-31";
+
+/*include ("diag/ex.php");
+exit;
+
+**/
+$sql1="delete from est_departamento";
+$result1 = $db->Execute($sql1);
+
+$sql1="delete from est_departamento_final";
+$result1 = $db->Execute($sql1);
+
+$sql1="select * from tr_stock where cod_movimiento = 6 and fecha > '2012-12-31' group by documento";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+$documento=strtoupper($result1->fields["documento"]);
+$fecha=strtoupper($result1->fields["fecha"]);
+
+
+$sql = "INSERT INTO est_departamento (`documento`, `departamento` , `fecha` ) VALUES ('$documento', '$departamento' , '$fecha');";
+$result = $db->Execute($sql);
+
+
+$result1->MoveNext();
+	}
+
+$sql1="select * from stock where cod_movimiento = 6 group by documento";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+$documento=strtoupper($result1->fields["documento"]);
+$fecha=strtoupper($result1->fields["fecha"]);
+
+
+$sql = "INSERT INTO est_departamento (`documento`, `departamento` , `fecha` ) VALUES ('$documento', '$departamento' , '$fecha');";
+$result = $db->Execute($sql);
+
+
+$result1->MoveNext();
+	}
+
+
+//////////////
+  $sql1="select * from tr_stock_migrado where cod_movimiento between '20' and '24' and fecha between '2012-01-01' and '2012-12-31' group by documento";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+$documento=strtoupper($result1->fields["documento"]);
+$fecha=strtoupper($result1->fields["fecha"]);
+
+
+ $sql = "INSERT INTO est_departamento (`documento`, `departamento` , `fecha` ) VALUES ('$documento', '$departamento' , '$fecha');";
+$result = $db->Execute($sql);
+$cont = $cont + 1;
+
+$result1->MoveNext();
+	}
+
+
+ 
+
+	$sql1="select * from est_departamento";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+$documento=strtoupper($result1->fields["documento"]);
+$cod_operacion=strtoupper($result1->fields["cod_operacion"]);
+
+$sql7="select departamento, provincia, sexo from pacientes where documento = $documento";
+$result7 = $db->Execute($sql7);
+
+$departamento=strtoupper($result7->fields["departamento"]); // numero
+$provincia=strtoupper($result7->fields["provincia"]); // numero
+$sexo=strtoupper($result7->fields["sexo"]); // numero
+
+$sql = "UPDATE `est_departamento` SET `departamento` = '$departamento' , `provincia` = '$provincia' , `sexo` = '$sexo' WHERE `cod_operacion` = $cod_operacion";
+$result = $db->Execute($sql);
+
+$result1->MoveNext();
+	}
+
+
+
+$sql7="select departamento from `est_departamento` group by departamento";
+$result7 = $db->Execute($sql7);
+
+  if (!$result7) die("fallo".$db->ErrorMsg());
+  while (!$result7->EOF) {
+
+
+$departamento=strtoupper($result7->fields["departamento"]); // numero
+$provincia=strtoupper($result7->fields["provincia"]); // numero
+$sexo=strtoupper($result7->fields["sexo"]); // numero
+
+include ("meses.php");
+
+
+
+
+
+$result7->MoveNext();
+	}
+
+
+include ("diag/ex.php");
+
+

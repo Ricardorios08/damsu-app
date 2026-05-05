@@ -1,0 +1,87 @@
+<?php
+
+
+   function datecheck($input,$format="")
+    {
+        $separator_type= array(
+            "/",
+            "-",
+            "."
+        );
+        foreach ($separator_type as $separator) {
+            $find= stripos($input,$separator);
+            if($find<>false){
+                $separator_used= $separator;
+            }
+        }
+        $input_array= explode($separator_used,$input);
+        if ($format=="mdy") {
+            return checkdate($input_array[0],$input_array[1],$input_array[2]);
+        } elseif ($format=="ymd") {
+            return checkdate($input_array[1],$input_array[2],$input_array[0]);
+        } else {
+            return checkdate($input_array[1],$input_array[0],$input_array[2]);
+        }
+        $input_array=array();
+    }
+
+   function fecha_argentina($input)
+    {
+
+$di = substr($input,8,2);
+$me = substr($input,5,2);
+$an = substr($input,0,4);
+
+$fecha_terminada = $di."/".$me."/".$an;
+
+return $fecha_terminada;
+
+	}
+
+	function estados_receta($a){
+	switch ($a){
+		case "0": {$a = "SIN PREPARAR";break;}
+		case "1": {$a = "ARCHIVADO";break;}
+		case "2": {$a = "PEDIDO";break;}
+		case "3": {$a = "PENDIENTE";break;}
+		case "4": {$a = "RECHAZADO";break;}
+		case "5": {$a = "PREPARADO";break;}
+		case "6": {$a = "FACTURADO";break;}
+		case "7": {$a = "ENTREGADO";break;}
+	}
+
+	RETURN $a;
+}
+
+
+function tipodoc($a){
+	switch ($a){
+		case "3": {$a = "D.N.I";break;}
+		case "1": {$a = "L.E";break;}
+		case "2": {$a = "L.C";break;}
+		case "5": {$a = "C.E";break;}
+		case "6": {$a = "PAS";break;}
+		case "7": {$a = "C.I";break;}
+	}
+
+	RETURN $a;
+}
+
+   
+   function estados_receta_reducita($a){
+	switch ($a){
+		case "0": {$a = "S/P";break;}
+		case "1": {$a = "ARC";break;}
+		case "2": {$a = "PED";break;}
+		case "3": {$a = "PEN";break;}
+		case "4": {$a = "RE";break;}
+		case "5": {$a = "PR";break;}
+		case "6": {$a = "FA";break;}
+		case "7": {$a = "EN";break;}
+	}
+
+	RETURN $a;
+}
+
+
+?>

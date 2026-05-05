@@ -1,0 +1,34 @@
+<?php
+include ("../../../conexiones/config_pro.php");
+
+$gtin= $_REQUEST['gtin'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$contra= $_REQUEST['contra'];
+
+
+
+if ($contra == "papo2012"){
+echo  $sql = "UPDATE tr_stock SET `mes_lote` = '$mes' , `anio_lote` = '$anio'  WHERE gtin = '$gtin'";
+mysql_query($sql);
+
+ echo $sql = "UPDATE tr_existencias SET `mes_lote` = '$mes' , `anio_lote` = '$anio'  WHERE gtin = '$gtin'";
+mysql_query($sql);
+
+echo  $sql = "UPDATE tr_compras_detalle SET `mes_lote` = '$mes' , `anio_lote` = '$anio'  WHERE gtin = '$gtin'";
+mysql_query($sql);
+
+$leyenda = "SE MODIFICO CORRECTAMENTE";
+include ("../../../alertas/campo_informacion.php");
+
+
+}
+else
+{
+$leyenda = "CONTRASEÑA DE SEGURIDAD INCORRECTA";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+

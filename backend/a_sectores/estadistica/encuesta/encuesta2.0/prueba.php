@@ -1,0 +1,7 @@
+<?php $porcnt = 50;
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";
+echo "\t<img src=barra.jpg width=$porcnt height=15> <br><b>$porcnt%</b> <br>";

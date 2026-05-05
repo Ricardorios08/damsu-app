@@ -1,0 +1,123 @@
+<script type="text/javascript">
+function ocultamenu(){
+  var menu = document.getElementById("Atributos");
+  menu.style.display = "none";
+}
+function despliega(){
+  var menu = document.getElementById("Atributos");
+    if(menu.style.display == "none"){
+      menu.style.display = "block";
+    }
+    else{
+      menu.style.display = "none";
+    }
+}
+</script>
+<script LANGUAGE="JavaScript">
+function multicarga(documento1,documento2)
+{
+parent.izquierda.location.href=documento1;
+parent.central.location.href=documento2;
+}
+</script>
+<style type="text/css">
+<!--
+.Estilo4 {font-size: xx-small}
+.Estilo6 {color: #FFFFFF}
+.Estilo13 {
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+-->
+</style>
+
+<?php 
+$dia = date("d");
+$mes= date("m");
+$anio = date("y");
+
+ 
+
+$fecha2 = $_REQUEST['desde'];
+$dia1 = substr($fecha2,8,2);
+$mes1 = substr($fecha2,5,2);
+$anio1 = substr($fecha2,2,2);
+
+if ($fecha2 != ''){
+
+$dia = $dia1;
+$mes= $mes1;
+$anio = $anio1;
+
+
+}
+
+?>
+
+<BODY>
+<FORM ACTION="separar_busqueda.php" method="post" TARGET = "central1">
+<table width="800" border="0">
+  <tr>
+    <td colspan="2" align="center" bgcolor="#000099" scope="row"><div align="center"><span class="Estilo13">DIARIO DE ENTREGAS </span></div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td width="27%" align="center" scope="row"><div align="right">Fecha </div></td>
+    <td width="73%" align="center" scope="row"><div align="left">
+      <input name = "dia" type = "text" id="dia_d" value = "<?php echo $dia;?>" maxlength = "2" size = "2">
+  /
+  <input name = "mes" type = "text" id="mes_d" value = "<?php echo $mes;?>" maxlength = "2" size = "2">
+  / 20
+  <input name = "anio" type = "text" id="anio_d" value = "<?php echo $anio;?>" size = "2" maxlength = "2">
+    <input type="submit" name="Submit" value="CONSULTAR">
+    Solo con alguna busqueda Manual 
+    <input name="manual_es" type="checkbox" id="manual_es" value="1">
+    </div></td>
+  </tr>
+  <tr bgcolor="#000099">
+    <td colspan="2" align="center" scope="row">
+      <div align="center"></div></td>
+    </tr>
+</table>
+
+<table width="800" border="0" cellpadding="0">
+  <tr>
+    <td><div align="center">FECHAS NOTAS ENTREGAS DEL MES </div></td>
+  </tr>
+
+<?PHP 
+
+
+include ("../../../conexiones/config_pro.php");
+include ("../../../funciones/funciones.php");
+
+$fecha_d = $anio."-".$mes."-01";
+$fecha_h = $anio."-".$mes."-31";
+
+$sql="select * from tr_ventas_encabezado where fecha between '$fecha_d' and '$fecha_h' group by fecha";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+ $fecha2=$result->fields["fecha"];
+$fecha=fecha_argentina(strtoupper($result->fields["fecha"]));
+
+
+?>
+ <tr>
+    <td><a href="consultas.php?desde=<?php print("$fecha2");?>"><?php echo $fecha;?></a></td>
+  </tr>
+<?php 
+
+
+	$result->MoveNext();
+	}
+
+
+	  ?>
+
+
+ 
+</table>
+</form>

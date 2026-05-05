@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+
+<style type="text/css">
+<!--
+.Estilo3 {
+	font-family: "Trebuchet MS";
+	color: #FFFFFF;
+}
+-->
+</style>
+<link href="../../../../menus.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.Estilo16 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+</head>
+
+<?php $anio = date("y");?>
+<BODY>
+
+
+<form action ="buscar_facturas.php" method="post" target ="central1">
+  <table width="154"  border="0">
+    <tr bgcolor="#990033"> </tr>
+    <tr>
+      <td bgcolor="#666666"><div align="center" class="Estilo3">LIBRO IVA </div></td>
+    </tr>
+  </table>
+  <table width="154" border="1" cellspacing="0"> 
+        
+        <tr>
+          <td colspan="2"><div align="center" class="Estilo16">
+            <select name="tipo_libro[]" id="tipo_libro[]" onkeypress="return verif_caracter(this,event)">
+              <option value="COMPRAS" selected>COMPRAS</option>
+              <option value="VENTAS">VENTAS</option>
+            </select>
+          </div></td>
+        </tr>
+        <tr>
+          <td width="55"> <div align="right" class="Estilo16">A&ntilde;o: </div></td>
+          <td width="89"><span class="Estilo16">
+          20 
+              <input name = "anio" type = "text" value="<?php echo $anio;?>" size = "2" maxlength ="2">
+          </span></td>
+        </tr>
+        <tr>
+          <td><div align="right" class="Estilo16">Mes:
+          </div></td>
+          <td><span class="Estilo16">
+            <select name="mes[]" id="select3" onkeypress="return verif_caracter(this,event)">
+              <option value = "01" >ENE</option>
+              <option value = "02">FEB</option>
+              <option value = "03">MAR</option>
+              <option value = "04">ABR</option>
+              <option value = "05">MAY</option>
+              <option value = "06">JUN</option>
+              <option value = "07">JUL</option>
+              <option value = "08">AGO</option>
+              <option value = "09">SET</option>
+              <option value = "10">OCT</option>
+              <option value = "11">NOV</option>
+              <option value = "12">DIC</option>
+            </select>
+          </span></td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2" bgcolor="#DADADA"><div align="center" class="Estilo16">Salida:</div></td>
+        </tr>
+			<td colspan="2">
+            <div align="center" class="Estilo16">
+              <select name="ordenar[]" id="select5" onkeypress="return verif_caracter(this,event)">
+                <option value ="fecha" selected>FECHA</option>
+                <option value ="factura">FACTURA</option>
+              </select>
+            </div></td></tr>
+			<tr>
+			  <td colspan="2"><div align="center" class="Estilo16">N&ordm; Registro:
+		          <input name = "registro" type = "text" id="registro" value="" size = "2">
+		      </div></td>
+    </tr>
+			<tr>
+			  <td colspan="2"><div align="center" class="Estilo16">N&ordm; Hoja:&nbsp; &nbsp; &nbsp;
+			      <input name = "hoja" type = "text" id="hoja" value="" size = "2">
+			  </div></td>
+    </tr>
+        <tr>
+          <td colspan="2" bgcolor="#666666"><div align="center" class="Estilo16">
+            <input type = "submit" name = "ok" value = "CONSULTAR">
+          </div></td>
+        </tr>
+       <!--  <tr>
+          <td colspan="2"><div align="center"><A HREF="errores.php" target = "central">Errores</A></div></td>
+        </tr> -->
+</table>
+</form>
+
+ 

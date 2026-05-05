@@ -1,0 +1,211 @@
+<script language="javascript">
+function on_load()
+{
+document.getElementById("nro_os").focus();
+}
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "nro_os":
+				document.getElementById("nombre_os").focus();
+				
+				break;
+				case "nombre_os":
+				document.getElementById("sigla").focus();
+				break;
+				case "sigla":
+				document.getElementById("cobertura_drogas").focus();
+				break;
+				case "cobertura_drogas":
+				document.getElementById("cobertura_material").focus();
+				break;
+				case "cobertura_material":
+				document.getElementById("cobertura_internacion").focus();
+				break;
+				case "cobertura_internacion":
+				document.getElementById("cobertura_estudios").focus();
+				break;
+				case "cobertura_estudios":
+				document.getElementById("recargo_facturacion").focus();
+				break;
+				case "recargo_facturacion":
+				document.getElementById("SI").focus();
+				break;
+				case "SI":
+				document.getElementById("NO").focus();
+				break;
+				case "NO":
+				document.getElementById("domicilio").focus();
+				break;
+
+				case "domicilio":
+				document.getElementById("localidad").focus();
+				break;
+				case "localidad":
+				document.getElementById("cod_postal").focus();
+				break;
+				case "cod_postal":
+				document.getElementById("cod_area").focus();
+				break;
+				case "cod_area":
+				document.getElementById("telefono").focus();
+				break;
+				case "telefono":
+				document.getElementById("tel_fax").focus();
+				break;
+				case "tel_fax":
+				document.getElementById("email").focus();
+				break;
+				
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+
+<?php php
+
+include ("../../../conexiones/config_usu.php");
+$sql="select * from obrasocial ORDER BY nro_os DESC";
+$result = $db->Execute($sql);
+
+$id=($result->fields["nro_os"] + 1);
+include ("variables.php");
+?>
+
+<BODY background="../../IMAGENES/IZQUIERDA.PNG"  onload = "on_load()">
+<form action="modificar_os.php" method="post">
+  <table width="800" border="0" cellspacing="0">
+    <tr bordercolor="#FFFFCC" bgcolor="#E6E6E6"> 
+      <td colspan="4" bgcolor="#CCCCCC"><div align="center"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          DATOS DE OBRA SOCIAL</strong></font></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td width="27%" bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">N&ordm; 
+          Obra Social</font></div></td>
+      <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input type="text" name="nro_os" id="nro_os" value =<?php print("$id");?> onKeyPress="return verif_caracter(this,event)" size = "8" >
+        </strong> </font> <div align="right"></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Nombre</font></div></td>
+      <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="nombre_os" type="text" id="nombre_os" onKeyPress="return verif_caracter(this,event)" value="<?php print("$nombre_os");?>" size = "30">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Sigla</font></div></td>
+      <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="sigla" type="text" id="sigla" onKeyPress="return verif_caracter(this,event)" value="<?php print("$sigla");?>" size = "12">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Cobertura 
+          Drogas </font></div></td>
+      <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="cobertura_drogas" type="text" id="cobertura_drogas" onKeyPress="return verif_caracter(this,event)" value="<?php print("$cobertura_drogas");?>" size = "5">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Cobertura Material Descartable</font></div></td>
+      <td width="28%" bgcolor="#E6E6E6"><div align="left"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          </strong> </font> <font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          <input name="cobertura_material" type="text" id="cobertura_material" onKeyPress="return verif_caracter(this,event)" value="<?php print("$cobertura_material");?>" size = "5">
+          % </strong></font></div></td>
+      <td width="32%" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">Cobertura Estudios</font></td>
+      <td width="13%" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong>
+        <input name="cobertura_estudios" type="text" id="cobertura_estudios" onKeyPress="return verif_caracter(this,event)" value="<?php print("$cobertura_estudios");?>" size = "5">
+% </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Cobertura Internaci&oacute;n</font></div></td>
+      <td bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="cobertura_internacion" type="text" id="cobertura_internacion" onKeyPress="return verif_caracter(this,event)" value="<?php print("$cobertura_internacion");?>" size = "5">
+        % </strong></font></td>
+      <td bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">Recargo Facturacion</font></td>
+      <td bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong>
+        <input name="recargo_facturacion" type="text" id="recargo_facturacion" onKeyPress="return verif_caracter(this,event)" value="<?php print("$recargo_facturacion");?>" size = "5">
+% </strong></font></td>
+    </tr>
+    
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Convenio OSEP</font></div></td>
+      <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+    
+		<?php  if ($convenio_osep == "SI"){?>
+		<input type="radio" name="convenio_osep" value="SI" id = "SI" checked = "true" onKeyPress="return verif_caracter(this,event)">
+        SI 
+        <input type="radio" name="convenio_osep" value="NO" id = "NO"  onKeyPress="return verif_caracter(this,event)">
+        NO 
+        <?php }else{?>
+		
+		<input type="radio" name="convenio_osep" value="SI" id = "radio" onKeyPress="return verif_caracter(this,event)">
+SI
+<input type="radio" name="convenio_osep" value="NO" id = "radio2" checked = "true" onKeyPress="return verif_caracter(this,event)">
+NO 
+<?php }?>
+
+</strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFCC"> 
+      <td colspan="4" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">UBICACION        </font></div>
+      <div align="center"><font color="#000000" size="2" face="Trebuchet MS"><strong> </strong></font></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Domicilio</font></div></td>
+      <td colspan="3" bordercolor="#FFFFCC" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="domicilio" type="text" id="domicilio" onKeyPress="return verif_caracter(this,event)" value="<?php print("$domicilio");?>" size = "35">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Localidad</font></div></td>
+      <td colspan="3" bordercolor="#FFFFCC" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="localidad" type="text" id="localidad" onKeyPress="return verif_caracter(this,event)" value="<?php print("$localidad");?>" size = "12">
+        </strong>Cod. Postal <strong> 
+        <input name="cod_postal" type="text" id="cod_postal" onKeyPress="return verif_caracter(this,event)" value="<?php print("$cod_postal");?>" size = "4" maxlength = "7">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Telefono 
+          </font></div></td>
+      <td colspan="3" bordercolor="#FFFFCC" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input type="text" name="cod_area" id="cod_area" onKeyPress="return verif_caracter(this,event)" size = "4" maxlength = "5" value ="<?php print("$cod_area");?>">
+        <input name="telefono" type="text" id="telefono" onKeyPress="return verif_caracter(this,event)" value="<?php print("$telefono");?>" size = "7" maxlength = "7">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Tel-Fax</font></div></td>
+      <td colspan="3" bordercolor="#FFFFCC" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="telefax" type="text" id="tel_fax" onKeyPress="return verif_caracter(this,event)" value="<?php print("$tel_fax");?>" size = "8">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+      <td bgcolor="#E6E6E6"><div align="right"></div>
+        <div align="right"><font color="#000000" size="2" face="Trebuchet MS">E-mail 
+          &nbsp;</font></div></td>
+      <td colspan="3" bordercolor="#FFFFCC" bgcolor="#E6E6E6"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+        <input name="email" type="text" id="email" value="<?php print("$email");?>" size = "45">
+        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#E6E6E6"> 
+      <td colspan="4"><div align="right"><strong><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          <input type="submit" name="Submit" value="Guardar -->">
+          </strong></font> </strong></div></td>
+    </tr>
+  </table>
+
+</form>
+</body>

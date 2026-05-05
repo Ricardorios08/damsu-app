@@ -1,0 +1,108 @@
+<?php include("../../../conexiones/config_usu.php");
+ $sql = "SELECT * FROM `deta_comp`  WHERE  `nro_factura` = $nro_factura";
+$result = $db->Execute($sql);
+?>
+<style type="text/css">
+<!--
+.Estilo1 {font-family: Arial, Helvetica, sans-serif}
+.Estilo2 {font-size: 12px}
+.Estilo3 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+-->
+</style>
+<table width="996" border="0">
+  <tr bgcolor="#FFBC79">
+    <td width="48" scope="col"><div align="center" class="Estilo26 Estilo1 Estilo2">ORDEN</div></td>
+    <td width="97" scope="col"><div align="center" class="Estilo26 Estilo1 Estilo2">TROQUEL</div></td>
+    <td width="325" scope="col"><div align="center" class="Estilo28 Estilo1 Estilo2">MONODROGA</div></td>
+	    <td width="144" scope="col"><div align="center" class="Estilo28 Estilo1 Estilo2"> LABORATORIO</div></td>
+		    <td width="97" scope="col"><div align="center" class="Estilo28 Estilo1 Estilo2"> CANTIDAD</div></td>
+            <td width="87" scope="col"><div align="center"><span class="Estilo28 Estilo1 Estilo2">UNITARIO</span></div></td>
+    <td width="117" scope="col"><div align="center" class="Estilo28 Estilo1 Estilo2"> TOTAL</div></td>
+   
+    <td width="47" class="Estilo28" scope="col"><div align="center" class="Estilo3">Borrar</div></td>
+  </tr><?php 
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$cod_barra=strtoupper($result->fields["cod_barra"]);
+$cod_detalle=strtoupper($result->fields["cod_detalle"]);
+$troquel=strtoupper($result->fields["troquel"]);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+$cantidad_ingresada=strtoupper($result->fields["cantidad_ingresada"]);
+$cont = $cont +1;
+$precio_cantidad = $precio_unitario * $cantidad_ingresada;
+
+$sql2 = "SELECT * FROM `monodrogas`  WHERE  `cod_barra` = $cod_barra";
+$result2 = $db->Execute($sql2);
+$nombre_comercial=strtoupper($result2->fields["nombre_comercial"]);
+
+$sql1 = "SELECT * FROM `laboratorios` WHERE  `cod_laboratorio` like '$laboratorio'";
+$result1 = $db->Execute($sql1);
+$nombre_laboratorio=strtoupper($result1->fields["laboratorio"]);
+
+/*
+
+
+$sql3 = "SELECT * FROM existencias  WHERE  `cod_merca` = $cod_mercaderia";
+$result3 = $db->Execute($sql3);
+$cod_lote=strtoupper($result3->fields["cod_lote"]);
+$vencimiento_lote=strtoupper($result3->fields["vencimiento_lote"]);
+$precio_unitario=strtoupper($result3->fields["precio_unitario"]);
+
+
+
+
+
+*/
+
+$neto = $neto + $precio_cantidad;
+$iva = ($neto * 21) /100;
+$total_factura = round($neto,2) + round($iva,2);
+
+
+?><tr bgcolor="#FFFFBF">
+    <td height="25" scope="col"><div align="center"><span class="Estilo28 Estilo1 Estilo2"><?php echo $cont;?></span></div></td>
+    <td scope="col"><div align="center"><span class="Estilo26 Estilo1 Estilo2"><?php echo $troquel;?></span></div></td>
+    <td scope="col"><div align="center"><span class="Estilo28 Estilo1 Estilo2"><?php echo $nombre_comercial;?></span></div></td>
+	    <td scope="col"><div align="center"><span class="Estilo26 Estilo2 Estilo1"><?php echo $nombre_laboratorio;?></span></div></td>
+		    <td scope="col"><div align="center"><span class="Estilo28 Estilo1 Estilo2"><?php echo $cantidad_ingresada;?></span></div></td>
+
+            <td scope="col"><div align="right"><span class="Estilo28 Estilo1 Estilo2"><?php echo $precio_unitario;?></span></div></td>
+    <td scope="col"><div align="right"><span class="Estilo28 Estilo1 Estilo2"><?php echo number_format($precio_cantidad,2);?></span></div></td>
+    <td width="47" class="Estilo6"><div align="center"><a href="pagina2.php?nro_proveedor=<?php print("$nro_proveedor");?>&&borrar_item=si&&band=no&&cod_detalle=<?php print("$cod_detalle");?>&&nro_factura=<?php print("$nro_factura");?>&&operador=<?php print("$operador");?>&&modo_carga=<?php print("$modo_carga");?>&&dia=<?php print("$dia");?>&&mes=<?php print("$mes");?>&&anio=<?php print("$anio");?>&&cod_barra=<?php print("$cod_barra");?>&&pasada=1&&nombre_comercial=<?php print("$nombre_comercial");?>&&no_hacer_nada=<?php print("$no_hacer_nada");?>"><IMG SRC="../../../imagenes/botones/btn_anular.gif" alt="Anular" width="25" height="23" border = "0"></a></div></td>
+
+
+
+  </tr>
+<?php 
+
+
+	        
+
+	 $result->MoveNext();
+				}
+
+?>
+</table>
+<table width="996" border="0">
+		  <tr bgcolor="#FFFFFF" class="Estilo26">
+		    <td colspan="3" scope="col"><hr noshade></td>
+  </tr>
+		  <tr bgcolor="#FFBC79" class="Estilo26">
+    <td width="300" scope="col"><div align="center" class="Estilo35 Estilo36 Estilo1 Estilo2">
+      <div align="right">Neto Grabado $ <?php echo round($neto,2);?></div>
+    </div>      </td>
+    <td scope="col"><div align="right" class="Estilo3">
+      <div align="right"><span class="Estilo37">IVA </span>$ <?php echo round($iva,2);?>
+      </div>
+    </div>
+      <div align="right"><span class="Estilo1"><span class="Estilo2"></span></span></div></td>
+    <td scope="col"><div align="right" class="Estilo3"><strong>TOTAL $ <?php echo $total_factura;?></strong></div>      </td>
+  </tr>
+<?php 
+$cod_barra == "";
+?></table>
+

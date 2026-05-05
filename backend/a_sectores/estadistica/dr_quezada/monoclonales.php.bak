@@ -1,0 +1,129 @@
+<?php
+
+$anio = 2015;
+$desde = $anio."-01-01";
+$hasta = $anio."-12-31";
+
+$file = "MONOCLONALES.XLS";
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$file");
+
+
+
+
+include ("../../../conexiones/config_pro.php");
+
+?>
+<table width="1316" border="1" cellspacing="0">
+  <tr bordercolor="#0066FF" bgcolor="#FF0000">
+    <td bgcolor="#B8B8B8"><strong><font size="4" face="Arial, Helvetica, sans-serif">MONOCLONALES PROG. ONCOLOGICO </font></strong></td>
+    <td bgcolor="#B8B8B8"><div align="center"><strong><font size="4" face="Arial, Helvetica, sans-serif">A&Ntilde;O: <?PHP echo $anio;?></font></strong></div></td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+    <td colspan="2" bgcolor="#B8B8B8">&nbsp;</td>
+  </tr>
+  <tr bordercolor="#0066FF" bgcolor="#FF0000"> 
+    <td width="30%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">DROGA</font></font></div></td>
+    <td width="9%" bgcolor="#B8B8B8"><div align="center"><font color="#000000" face="Arial, Helvetica, sans-serif"><font size="2">PRECIO UNITARIO </font></font></div></td>
+
+	 <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">ENE</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">FEB</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">MAR</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">ABR</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">MAY</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">JUN</font></div></td>
+ <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">JUL</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">AGO</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">SET</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">OCT</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">NOV</font></div></td>
+    <td colspan="2" bgcolor="#B8B8B8"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">DIC</font></div></td>
+ </tr>
+  <?php 
+
+
+ $sql = "SELECT * FROM `tr_stock` WHERE   `fecha` between '$desde' and '$hasta'  and grupo = 3 and cod_movimiento = 1 group by cod_mercaderia ORDER BY `precio_unitario` DESC";
+$result = $db->Execute($sql);
+
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$cod_mercaderia=$result->fields["cod_mercaderia"];
+$drogas=$result->fields["drogas"];
+$precio_unitario=$result->fields["precio_unitario"];
+
+
+$mes='01';include ("mes.php");$tot_ene=$tot;$cant_ene=$cant;
+$mes='02';include ("mes.php");$tot_feb=$tot;$cant_feb=$cant;
+$mes='03';include ("mes.php");$tot_mar=$tot;$cant_mar=$cant;
+$mes='04';include ("mes.php");$tot_abr=$tot;$cant_abr=$cant;
+$mes='05';include ("mes.php");$tot_may=$tot;$cant_may=$cant;
+$mes='06';include ("mes.php");$tot_jun=$tot;$cant_jun=$cant;
+$mes='07';include ("mes.php");$tot_jul=$tot;$cant_jul=$cant;
+$mes='08';include ("mes.php");$tot_ago=$tot;$cant_ago=$cant;
+$mes='09';include ("mes.php");$tot_set=$tot;$cant_set=$cant;
+$mes='10';include ("mes.php");$tot_oct=$tot;$cant_oct=$cant;
+$mes='11';include ("mes.php");$tot_nov=$tot;$cant_nov=$cant;
+$mes='12';include ("mes.php");$tot_dic=$tot;$cant_dic=$cant;
+
+
+?>
+
+
+
+
+
+
+ <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+ <td bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $drogas;?></font></td>
+ <td bgcolor="#EDEDED"><div align="right"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $precio_unitario;?></font></div></td>
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_ene;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_ene;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_feb;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_feb;?></font></div></td>
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_mar;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_mar;?></font></div></td>
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_abr;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_abr;?></font></div></td>
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_may;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_may;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_jun;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_jun;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_jul;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_jul;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_ago;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_ago;?></font></div></td>
+
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_set;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_set;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_oct;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_oct;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_nov;?></font></td>
+<td width="3%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_nov;?></font></div></td>
+
+<td width="2%" bgcolor="#EDEDED"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $tot_dic;?></font></td>
+<td width="2%" bgcolor="#EDEDED"><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php echo $cant_dic;?></font></div></td>
+ </tr>
+
+   <?php 
+
+$result->MoveNext();
+	}
+
+?>
+</table>

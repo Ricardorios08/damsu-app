@@ -1,0 +1,10 @@
+<?php
+
+include ("../../../conexiones/config_usu.php");
+$a = $_GET['id'];
+$SQL="Delete From obrasocial where nro_os = $a";
+$db->Execute($SQL);
+
+$leyenda = "LA OBRA SOCIAL HA SIDO ELIMINADA DEL SISTEMA";
+include ("../../../alertas/campo_informacion.php");
+

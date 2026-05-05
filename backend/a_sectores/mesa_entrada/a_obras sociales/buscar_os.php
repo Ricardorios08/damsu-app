@@ -1,0 +1,99 @@
+<?php 
+
+include ("../../conexiones/config_usu.php");
+$B = 1;
+if ($palabra == ""){
+$sql="select * from obrasocial";
+}else{
+$sql="select * from obrasocial where nro_os like '%$palabra%' or nombre_os like '%$palabra%' or sigla like '%$palabra%'";
+}
+	$result = $db->Execute($sql);
+?>
+<table width="80%" height="66" border="1" cellpadding="0" cellspacing="0">
+  <tr bordercolor="#0066FF" bgcolor="#FF0000">
+    <td height="24" colspan="2" bgcolor="#FFFFFF">&nbsp;</td>
+    <td height="24" colspan="4" bgcolor="#FF0000"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Cobertura</font></font></div></td>
+    <td width="9%" rowspan="2"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Recargo</font></font></div>      <div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Facturacion</font></font></div></td>
+    <td width="6%" rowspan="2"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Convenio</font></font></div>      <div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Osep</font></font></div></td>
+    <td colspan="4" bgcolor="#FFFFFF"><div align="center"></div></td>
+  </tr>
+  <tr bordercolor="#0066FF" bgcolor="#FF0000"> 
+
+
+    <td width="6%" height="24"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Nº OS</font></font></div></td>
+        <td width="38%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Sigla</font></font></div></td>
+	<td width="5%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Droga</font></font></div></td>
+<td width="5%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Mat. Desc. </font></font></div></td>
+<td width="8%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Internacion</font></font></div></td>
+<td width="7%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Estudios</font></font></div></td>
+<?php if ($modifica == "SI"){?>
+	<td width="6%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Mod.</font></font></div></td>
+	<td width="5%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Borrar</font></font></div></td>
+<?php }?>
+	<td width="5%"><div align="center"><font color="#FFFFFF" face="Arial, Helvetica, sans-serif"><font size="2">Ficha</font></font></div></td>
+
+  </tr>
+  <?php 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	$nro_os=strtoupper($result->fields["nro_os"]);
+$nombre_os=strtoupper($result->fields["nombre_os"]);
+$sigla=strtoupper($result->fields["sigla"]);
+
+$cobertura_drogas=$result->fields["cobertura_drogas"];
+$cobertura_material=$result->fields["cobertura_material"];
+$cobertura_internacion=$result->fields["cobertura_internacion"];
+$cobertura_estudios=$result->fields["cobertura_estudios"];
+$recargo_facturacion=$result->fields["recargo_facturacion"];
+$convenio_osep=$result->fields["convenio_osep"];
+
+
+$cobertura_drogas = $cobertura_drogas * 1;
+$cobertura_material = $cobertura_material * 1;
+$cobertura_internacion = $cobertura_internacion * 1;
+$cobertura_estudios = $cobertura_estudios * 1;
+$recargo_facturacion = $recargo_facturacion * 1;
+$convenio_osep = $convenio_osep * 1;
+
+if ($cobertura_drogas == 0){$cobertura_drogas = "-";}
+if ($cobertura_material == 0){$cobertura_material = "-";}
+if ($cobertura_internacion == 0){$cobertura_internacion = "-";}
+if ($cobertura_estudios == 0){$cobertura_estudios = "-";}
+if ($recargo_facturacion == 0){$recargo_facturacion = "-";}
+if ($convenio_osep == 0){$convenio_osep = "-";}
+
+
+
+?>
+
+   
+	<tr><td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$nro_os");?></font></div></td>
+    <td><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$nombre_os");?></font></td>
+	    <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cobertura_drogas");?></font></div></td>
+     <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cobertura_material");?></font></div></td>
+<td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cobertura_internacion");?></font></div></td>
+         <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$cobertura_estudios");?></font></div></td>
+		      <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$recargo_facturacion");?></font></div></td>
+			
+
+
+   	          <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><?php print("$convenio_osep");?></font></div></td>
+      <?php if ($modifica == "SI"){?>
+	    <td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="a_obras sociales/modificar.php?id=<?php print("$nro_os");?>"><IMG SRC="../../imagenes/office//027.ico" alt="Modificar" border = "0"></a> </font></div></td>
+		<td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif">
+				<a href="a_obras sociales/borra.php?id=<?php print("$nro_os");?>" onclick="return confirm('¿Está seguro de borrar esta OBRA SOCIAL');"><IMG SRC="../../imagenes/office//027.ico" alt="Modificar" border = "0"></a>
+        <?php }?>
+		</font></div></td>
+		<td><div align="center"><font size="2" face="Arial, Helvetica, sans-serif"><a href="a_obras sociales/ficha.php?id=<?php print("$nro_os");?>"><IMG SRC="../../imagenes/office//029.ico" alt="Modificar" border = "0"></a> </font></div></td>
+
+  </tr>
+
+  <?php  
+$result->MoveNext();
+	}
+
+?>
+</table>
+
+

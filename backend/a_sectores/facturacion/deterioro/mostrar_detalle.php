@@ -1,0 +1,113 @@
+
+<?php include("../../../conexiones/config_pro.php");
+
+
+$sql3 = "SELECT * FROM `temp_detalle`  WHERE  operador = $operador order by cod_detalle desc";
+$result3 = $db->Execute($sql3);
+?>
+<style type="text/css">
+<!--
+.Estilo90 {
+	font-family: "Trebuchet MS";
+	font-size: 12;
+}
+.Estilo92 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo93 {font-size: 12px}
+.Estilo94 {font-size: 10px}
+.Estilo96 {font-size: 10}
+.Estilo97 {font-family: "Trebuchet MS"; font-size: 10; }
+-->
+</style>
+
+<table width="800" border="0">
+  <tr bgcolor="#CFCFCF" class="Estilo26">
+    <td width="6%" class="Estilo90" scope="col"><div align="center" class="Estilo2 Estilo1 Estilo93">N&ordm;</div></td>
+    <td class="Estilo92" scope="col"><div align="center" class="Estilo6 Estilo2 Estilo1"></div>      <div align="center" class="Estilo3"><span class="Estilo6"><span class="Estilo46">Descripcion / Mercaderia</span></span></div></td>
+    <td width="6%" class="Estilo90" scope="col"><div align="center" class="Estilo6 Estilo2 Estilo1 Estilo93"><span class="Estilo46">Gtin</span></div></td>
+	    <td width="6%" class="Estilo90" scope="col"><div align="center" class="Estilo6 Estilo2 Estilo1 Estilo93"><span class="Estilo46"> Lote</span></div></td>
+		    <td width="8%" class="Estilo90" scope="col"><div align="center" class="Estilo6 Estilo2 Estilo1 Estilo93"><span class="Estilo46">Vencimiento</span></div></td>
+    <td width="9%" class="Estilo90" scope="col"><div align="center" class="Estilo6 Estilo2 Estilo1 Estilo93"><span class="Estilo46">Total</span></div></td>
+    <td width="4%" class="Estilo90" scope="col"><div align="center" class="Estilo93"><span class="Estilo1">Borrar</span></div></td>
+  </tr><?php 
+
+if (!$result3) die("fallo".$db->ErrorMsg());
+
+ while (!$result3->EOF) {
+$renglon = $renglon + 1;
+$cod_mercaderia=strtoupper($result3->fields["cod_mercaderia"]);
+$cantidad=strtoupper($result3->fields["cantidad"]);
+$proveedor=strtoupper($result3->fields["proveedor"]);
+$presentacion=strtoupper($result3->fields["presentacion"]);
+$descripcion=strtoupper($result3->fields["descripcion"]);
+$cod_detalle=strtoupper($result3->fields["cod_detalle"]);
+$lote1=strtoupper($result3->fields["lote"]);
+$mes_lote=strtoupper($result3->fields["mes_lote"]);
+$anio_lote=strtoupper($result3->fields["anio_lote"]);
+$vto_lote = $mes_lote."/".$anio_lote;
+
+$gtin=strtoupper($result3->fields["gtin"]);
+$precio_unitario=strtoupper($result3->fields["precio_unitario"]);
+
+
+$sql = "SELECT * FROM `monodrogas`  WHERE  `cod_barra` = '$cod_mercaderia'";
+$result = $db->Execute($sql);
+$cod_mercaderia=strtoupper($result->fields["troquel"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+
+$total_factura = $total_factura + $precio_unitario;
+
+
+$cont = $cont + 1;
+
+
+
+?>
+  <tr bordercolor="#FFFFCC" bgcolor="#E0EDF3">
+    <td class="Estilo90" scope="col"><div align="center" class="Estilo93"><span class="Estilo47 Estilo48"><span class="Estilo26"><?php echo $renglon;?></span></span></div></td>
+    <?php 
+
+			
+
+
+
+?>
+
+
+    <td height="27" class="Estilo90" scope="col"><div align="left" class="Estilo47 Estilo48 Estilo93"><span class="Estilo26"><?php echo $cod_mercaderia. " - ".$nombre_comercial;?></span></div></td>
+    <td class="Estilo90" scope="col"><div align="center" class="Estilo46 Estilo93"><span class="Estilo26"><?php echo $gtin;?></span></div></td>
+	    <td class="Estilo90" scope="col"><div align="center" class="Estilo46 Estilo93"><span class="Estilo26"><?php echo $lote1;?></span></div></td>
+		    <td class="Estilo90" scope="col"><div align="center" class="Estilo46 Estilo93"><span class="Estilo26"><?php echo $vto_lote;?></span></div></td>
+
+    <td class="Estilo90" scope="col"><div align="right" class="Estilo46 Estilo93"><span class="Estilo26">$ <?php echo number_format($precio_unitario,2);?></span></div></td>
+   <td width="4%" bgcolor="#E0EDF3" class="Estilo6 Estilo90"><div align="center" class="Estilo93">
+   <a href="borrar_item.php?cod_detalle=<?php print("$cod_detalle");?>&&nro_factura=<?php print("$nro_factura");?>&&documento=<?php print("$documento");?>&&nro_afiliado=<?php print("$nro_afiliado");?>&&pasada=1&&nro_os[]=<?php print("$nro_os");?>&&dia=<?php print("$dia");?>&&mes=<?php print("$mes");?>&&anio=<?php print("$año");?>&&mes=<?php print("$mes");?>&&band=<?php print("$band");?>&&operador=<?php print("$operador");?>" onclick="return confirm('¿Está seguro de borrar este producto?');"><IMG SRC="../../../imagenes/office/095.ico" alt="Anular"  border = "0"></a>
+   
+ 
+   </div></td>
+  </tr>
+<?php 
+
+	 $result3->MoveNext();
+				}
+
+
+ $sumatoria = $cont;
+		$cont = 0;
+
+//include ("espacios_en_blancos_detalle.php");
+$sumatoria = 0;
+
+?>
+</table>
+
+<table width="800" border="0">
+		  <tr bgcolor="#CFCFCF" >
+    <td class="Estilo90" scope="col"><div align="right"><span class="Estilo94"><span class="Estilo96"></span></span><strong><span class="Estilo76">TOTAL $</span></strong></div></td>
+    <td width="13%" class="Estilo97" scope="col"><div align="center"><strong><span class="Estilo76"><?php echo number_format($total_factura,2);?></span></strong></div></td>
+  </tr>
+<?php 
+
+?></table>
+
+

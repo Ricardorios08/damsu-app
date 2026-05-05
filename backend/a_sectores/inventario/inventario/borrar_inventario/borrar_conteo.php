@@ -1,0 +1,38 @@
+<?php
+include ("../../../../conexiones/config_pro.php");
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$contra= $_REQUEST['contra'];
+$mes_actual = date("m");
+$anio_actual = date("y");
+
+
+if ($contra == "papo2012"){
+
+
+
+
+$leyenda = "SE ELIMINO EL INVENTARIO ".$mes."/".$anio;
+include ("../../../../alertas/campo_informacion.php");
+
+ $sql = "truncate table inventario";
+$result = $db->Execute($sql);
+ $sql = "truncate table stock_inventario";
+$result = $db->Execute($sql);
+
+
+
+}
+
+
+
+
+else
+{
+$leyenda = "CONTRASEÑA DE SEGURIDAD INCORRECTA";
+include ("../../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+ 

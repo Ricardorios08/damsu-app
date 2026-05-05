@@ -1,0 +1,182 @@
+<?php
+
+
+$file = 'consumo_profe_autorizadas_pacientes.xls';
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$file");
+
+
+
+?>
+
+<style type="text/css">
+<!--
+.Estilo12 {font-family: "Trebuchet MS"; font-size: 10; }
+.Estilo13 {font-size: 10}
+.Estilo16 {font-family: "Trebuchet MS"; font-size: 10px; }
+.Estilo19 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+<table width="850" border="1" cellpadding="0" cellspacing="0">
+  <tr>
+    <th colspan="5" bgcolor="#F0F0F0" scope="col">PROFE</th>
+  </tr>
+  
+  
+
+<?php 
+
+include ("../../../conexiones/config_pro.php");
+
+
+
+
+$sql1 = "delete FROM profe_detalle";
+$result1 = $db->Execute($sql1);
+
+$sql1 = "delete FROM profe_detalle_1";
+$result1 = $db->Execute($sql1);
+
+$sql1 = "delete FROM profe_detalle_2";
+$result1 = $db->Execute($sql1);
+
+
+$sql1 = "SELECT *  FROM drogas_profe_coope  order by cod_droga";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ $cod_droga=$result1->fields["cod_droga"];
+
+$sql = "INSERT into profe_detalle SELECT * FROM `tr_ventas_detalle` where cod_droga = '$cod_droga' and fecha > '2014-12-31'";
+mysql_query($sql);
+
+
+   $result1->MoveNext();
+	}
+
+
+
+
+
+$sql1 = "SELECT *  FROM profe_detalle  order by cod_droga";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ $tipo_fact=$result1->fields["tipo_fact"];
+  $nro_factura=$result1->fields["nro_factura"];
+$cod_detalle=$result1->fields["cod_detalle"];
+
+ $sql = "SELECT * FROM tr_ventas_encabezado where tipo_fact = '$tipo_fact' and nro_factura = '$nro_factura'";
+$result = $db->Execute($sql);
+  $documento=$result->fields["documento"];
+  $nro_os=$result->fields["nro_os"];
+
+ $sql = "UPDATE `profe_detalle` SET `documento` = '$documento' WHERE `cod_detalle` = '$cod_detalle'";
+mysql_query($sql);
+
+
+   $result1->MoveNext();
+	}
+
+
+$sql1 = "SELECT *  FROM pacientes where autorizados_profe = 1  order by documento";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ $documento=$result1->fields["documento"];
+
+$sql = "INSERT into profe_detalle_1 SELECT * FROM profe_detalle where documento = '$documento' and nro_os = 10";
+mysql_query($sql);
+
+
+   $result1->MoveNext();
+	}
+
+$sql1 = "SELECT *  FROM drogas_profe_coope  order by cod_droga";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+ $cod_droga=$result1->fields["cod_droga"];
+
+ $sql = "SELECT * FROM drogas where cod_droga = '$cod_droga'";
+$result = $db->Execute($sql);
+  $nombre_droga=$result->fields["droga"];
+
+?><tr bgcolor="#B8B8B8">
+    <th colspan="5" scope="col"><div align="left">DROGA: <?php echo $nombre_droga;?></span></div></th>
+  </tr>
+  <tr>
+    <th width="222" bgcolor="#3399FF" scope="col"><span class="Estilo19">Paciente</span></th>
+    <th width="350" bgcolor="#3399FF" scope="col"><span class="Estilo19">Nombre Comercial </span></th>
+    <th width="84" bgcolor="#3399FF" scope="col"><span class="Estilo19">Comprobante</span></th>
+    <th width="91" bgcolor="#3399FF" scope="col"><span class="Estilo19">Fecha</span></th>
+	<th width="91" bgcolor="#3399FF" scope="col"><span class="Estilo19">Consumo</span></th>
+  </tr>
+
+  <?php
+
+
+$anio = "2015";
+$mes = "01";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "02";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "03";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "04";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "05";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "06";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "07";
+include ("meses.php");
+
+$anio = "2015";
+$mes = "08";
+include ("meses.php");
+
+
+?>
+  <tr>
+    <td bgcolor="#66CC00">TOTAL DROGA<span class="Estilo13"></span></td>
+    <td bgcolor="#66CC00"><span class="Estilo13"></span></td>
+    <td bgcolor="#66CC00"><span class="Estilo13"></span></td>
+    <td bgcolor="#66CC00"><span class="Estilo13"></span></td>
+	 <td bgcolor="#66CC00"><div align="right"><span class="Estilo13"><?php echo $total_droga;?></span></div></td>
+  </tr>
+
+
+<?php
+
+$total_droga = "";
+   $result1->MoveNext();
+	}
+
+
+
+?>
+
+
+
+</table>

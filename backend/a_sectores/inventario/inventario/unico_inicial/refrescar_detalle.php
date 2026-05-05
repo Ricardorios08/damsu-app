@@ -1,0 +1,102 @@
+<?php 
+
+include("../../../../conexiones/config_pro.php");
+
+
+$sql = "SELECT * FROM stock_inventario1 order by cod_operacion";
+$result = $db->Execute($sql);
+
+
+
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo6 {font-family: Arial, Helvetica, sans-serif}
+.Estilo7 {font-size: 12px}
+.Estilo13 {font-family: "Trebuchet MS"}
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+
+<table width="800" border="0" cellspacing="0">
+  <tr bgcolor="#FFBC79">
+    <td width="10%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7">COD BARRA </span></div></td>
+    <td width="7%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7">Cantidad</span></div></td>
+    <td width="10%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7">Unitario</span></div></td>
+    <td width="14%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7">Valor</span></div></td>
+    <td width="34%"  bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo26 Estilo13 Estilo7">Descripcion / Mercaderia</div></td>
+    <td width="5%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> Droga </div></td>
+		    <td width="9%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> Laboratorio </div></td>
+    <td width="11%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14">Borrar</div></td>
+  </tr><?php 
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]);
+$cod_operacion=strtoupper($result->fields["cod_operacion"]);
+$cantidad=strtoupper($result->fields["cantidad"]);
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+
+$total = $cantidad * $precio_unitario;
+
+ $sql2 = "SELECT * FROM `monodrogas`  WHERE cod_barra = $cod_mercaderia";
+$result2 = $db->Execute($sql2);
+ $descripcion=strtoupper($result2->fields["nombre_comercial"]);
+ $presentacion=strtoupper($result2->fields["presentacion"]);
+ $cod_droga =$result2->fields["cod_droga"];
+$laboratorio =$result2->fields["laboratorio"];
+
+
+$sql2 = "SELECT * FROM drogas  WHERE  `cod_droga` = $cod_droga";
+$result2 = $db->Execute($sql2);
+$drogas=strtoupper($result2->fields["drogas"]);
+ 
+ $sql2 = "SELECT * FROM laboratorios  WHERE  cod_laboratorio = $laboratorio";
+$result2 = $db->Execute($sql2);
+$nombre_laboratorio=strtoupper($result2->fields["laboratorio"]);
+
+ 
+
+ $sql2 = "select * from tr_stock_temp_provisorio1 where mes = '10' and anio = '12' and cod_mercaderia = $cod_mercaderia order by drogas, laboratorio";
+$result2 = $db->Execute($sql2);
+$cod_mercaderi=strtoupper($result2->fields["cod_mercaderia"]);
+$cant=strtoupper($result2->fields["anterior"]);
+
+
+?><tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FFFFFF" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)" scope="col"><span class="Estilo28 Estilo6 Estilo7"><?php echo $cod_mercaderia;?> <?php echo $cod_mercader;?></span></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center"><span class="Estilo14"><span class="Estilo28 Estilo6"><?php echo $cantidad;?> <?php echo $can;?></span></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14"><span class="Estilo28 "><?php echo $precio_unitario;?><?php echo $precio_unitari;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14"><span class="Estilo28 "><?php echo $total;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="left" class="Estilo13 Estilo7"><span class="Estilo28"><?php echo $descripcion;?></span> <span class="Estilo14"><span class="Estilo26"><?php echo $presentacion;?></span></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14"><span class="Estilo26"><?php echo $cod_droga;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo14"><span class="Estilo28"><?php echo $nombre_laboratorio;?></span></div></td>
+    <td width="11%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">   <a href="borrar_item.php?cod_operacion=<?php print("$cod_operacion");?>"><IMG SRC="../../../../../imagenes/botones/btn_anular.gif" alt="Anular" border = "0"></a></div></td>
+  </tr>
+<?php 
+
+
+
+$total_gral = $total_gral + $total;
+$total_item = $total_item + $cantidad;
+	 $result->MoveNext();
+				}
+
+?>
+
+<tr bgcolor="#E6E6E6">
+  <td bgcolor="#CCCCCC" scope="col"><span class="Estilo14">Cantidad: <strong><?php echo $total_item;?></strong></span></td>
+  <td colspan="3" bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td bgcolor="#CCCCCC" scope="col">&nbsp;</td>
+  <td bgcolor="#CCCCCC" scope="col"><div align="right"><span class="Estilo14">Total </span></div></td>
+  <td bgcolor="#CCCCCC" scope="col"><div align="right"><?php echo $total_gral;?></div></td>
+</tr>
+</table>
+
+

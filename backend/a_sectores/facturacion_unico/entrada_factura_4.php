@@ -1,0 +1,585 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<html>
+<head>
+<title>Facturación PROGRAMA UNICO</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.Estilo4 {
+	color: #006633;
+	font-size: 10px;
+	font-weight: bold;
+}
+.Estilo6 {font-size: 12}
+.Estilo16 {font-family: Arial, Helvetica, sans-serif}
+.Estilo26 {
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+-->
+
+
+<!--
+.Estilo67 {color: #FFFFFF; font-size: 12px; font-family: Arial, Helvetica, sans-serif;}
+.Estilo70 {color: #FFFFFF}
+.Estilo71 {font-size: 10px}
+.Estilo72 {font-size: 12px; color: #000000; }
+-->
+
+<!--
+.Estilo83 {font-size: 10px; font-family: Arial, Helvetica, sans-serif;}
+.Estilo85 {color: #000000}
+.Estilo60 {font-size: 12px; color: #000000; font-family: "Trebuchet MS"; }
+.Estilo62 {color: #000000; font-family: "Trebuchet MS"; font-size: 10px; }
+.Estilo63 {font-size: 10px; color: #006633;}
+.Estilo64 {font-family: "Trebuchet MS"}
+.Estilo65 {font-family: Geneva, Arial, Helvetica, sans-serif}
+.Estilo90 {font-size: 16}
+-->
+
+
+
+</style>
+
+<script language="javascript">
+function on_load()
+{
+document.getElementById("cod_barra").focus();
+document.getElementById("cod_barra").style.backgroundColor =  "#CCFFCC";
+}
+
+function on_proveedor()
+{
+document.getElementById("proveedor").focus();
+document.getElementById("proveedor").style.backgroundColor =  "#CCFFCC";
+}
+
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "cod_barra":
+document.getElementById("cod_barra").style.backgroundColor =  "#FFFFFF";
+document.getElementById("proveedor").style.backgroundColor =  "#CCFFCC";
+document.getElementById("proveedor").focus();
+				break;
+
+				case "proveedor":
+document.getElementById("proveedor").style.backgroundColor =  "#FFFFFF";
+document.getElementById("cantidad").style.backgroundColor =  "#CCFFCC";
+document.getElementById("cantidad").focus();
+document.getElementById("cantidad").select();
+				break;
+				
+				case "cantidad":
+document.getElementById("cantidad").style.backgroundColor =  "#FFFFFF";
+document.getElementById("Alta").style.backgroundColor =  "#CCFFCC";
+document.getElementById("Alta").focus();
+				break;
+		
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+function abrirVentan() {
+	var cod_detalle = <?php echo $cod_detalle;?> 
+    open("buscador_rapido.php","miVentana", "width=300,height=600,toolbar=no,directories=no,menubar=no,status=no, scrollbars=01, location = 01, top = 35");
+}
+
+</script>
+
+
+</head>
+
+<?php 
+include ("../../conexiones/config_pro.php");
+include ("../../conexiones/usuario_actual.php");
+
+
+$primera_vez= $_REQUEST['primera_vez'];
+		if ($primera_vez == 1){
+				include ("primera_vez.php");
+							}
+
+
+							else{ // cambia primera vez 
+// 07795305791571
+include ("../../conexiones/config_pro.php");
+$operador= $_REQUEST['operador'];
+
+$pasada= $_REQUEST['pasada'];
+
+if ($pasada == 1){
+$cod_mercaderia= $_REQUEST['cod_mercaderia'];
+$cod_detalle= $_REQUEST['cod_detalle'];
+$proveedor= $_REQUEST['proveedor'];
+
+ $sql = "SELECT * FROM existencias where cod_detalle = '$cod_detalle'";
+$result = $db->Execute($sql);
+$lote=$result->fields["lote"];
+$mes_lote=$result->fields["mes_lote"];
+$anio_lote=$result->fields["anio_lote"];
+$proveedor=$result->fields["proveedor"];
+$precio_unitario=$result->fields["precio_unitario"];
+
+$sql18 = "SELECT SUM(cantidad_ingresada) as cant FROM existencias  WHERE  cod_detalle = '$cod_detalle'";
+$result18 = $db->Execute($sql18);
+$cantidad_ingresada=strtoupper($result18->fields["cant"]);
+
+$sql18 = "SELECT SUM(cantidad_salida) as salid FROM existencias  WHERE cod_detalle = '$cod_detalle'";
+$result18 = $db->Execute($sql18);
+$cantidad_salida=strtoupper($result18->fields["salid"]);
+
+
+
+$vto_lote=$mes_lote."/".$anio_lote;
+
+$nombre=strtoupper($result->fields["nombre"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+
+$cantidad_existente = $cantidad_ingresada - $cantidad_salida;
+
+$precio_actualizado = number_format($precio_actualizado,2);
+$contar = $contar + 1;
+
+
+
+
+ $sql = "SELECT * FROM monodrogas where cod_barra = '$cod_mer'";
+$result = $db->Execute($sql);
+$nombre_comercial=$result->fields["nombre_comercial"];
+$cod_droga=$result->fields["cod_droga"];
+
+ $sql = "SELECT * FROM drogas where cod_droga = '$cod_droga'";
+$result = $db->Execute($sql);
+$droga=$result->fields["droga"];
+
+
+$nro_afiliado=$result->fields["nro_afiliado"];
+
+
+}
+else
+								{
+$cod_mercaderia = "";
+$proveedor = "";
+								}
+  $sql = "SELECT * FROM `un_ventas1_encab_temp` where operador = $operador";
+$result = $db->Execute($sql);
+
+ $nombre_completo=$result->fields["denominacion"];
+ $observaciones=strtoupper($result->fields["observaciones"]);
+ $fecha=$result->fields["fecha"];
+
+
+ $dia= substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio= substr($fecha,0,4);
+
+$fecha= $anio.$mes.$dia;
+
+
+$cod_paciente=$result->fields["cod_paciente"];
+$nombre_os=$result->fields["nombre_os"];
+ $documento=$result->fields["documento"];
+
+ $tipo_doc=$result->fields["tipo_doc"];
+
+
+ $sql7="select * from pacientes where documento = $documento and tipo_doc = '$tipo_doc'";
+$result7 = $db->Execute($sql7);
+$estado=strtoupper($result7->fields["estado"]);
+$fecha_estado=strtoupper($result7->fields["fecha_estado"]);  // letras
+$calle=strtoupper($result7->fields["calle"]); // numero
+$puerta=strtoupper($result7->fields["puerta"]); // numero
+$localidad=strtoupper($result7->fields["localidad"]); // numero
+$departamento=strtoupper($result7->fields["departamento"]); // numero
+$direccion = $calle." ".$puerta." ".$localidad." ".$departamento;
+
+
+$apellido=strtoupper($result7->fields["apellido"]); // numero
+$nombre=strtoupper($result7->fields["nombre"]); // numero
+
+$nombre_completo = $apellido.", ".$nombre;
+
+ $sql="select * from paciente_diagnostico where documento = '$documento' and tipo_doc = '$tipo_doc'";
+$result = $db->Execute($sql);
+$cod_diagnostico=strtoupper($result->fields["cod_diagnostico"]); 
+
+
+ $sql="select * from diagnostico where nro_diagnostico = '$cod_diagnostico'";
+$result = $db->Execute($sql);
+$nombre_diagnostico=strtoupper($result->fields["nombre_diagnostico"]); 
+
+
+ $sql = "SELECT * FROM `afiliaciones` where documento = $documento order by documento";
+$result = $db->Execute($sql);
+$nro_os=$result->fields["nro_os"];
+$nro_afiliado=$result->fields["nro_afiliado"];
+
+$sql = "SELECT * FROM `obrasocial` where nro_os = $nro_os";
+$result = $db->Execute($sql);
+
+$nombre_os=strtoupper($result->fields["nombre_os"]);
+$sigla=strtoupper($result->fields["sigla"]);
+
+$nombre_os = $nombre_os." - ".$sigla." (".$nro_os.")";
+
+
+
+
+}
+?>
+
+<script>
+
+function abrirVentana() {
+	var cod_detalle = <?php  $cod_detalle;?> 
+    open("factura_papel.php?cod_detalle=<?php print($cod_detalle);?>&&nro_factura=<?php print($nro_factura);?>&&nro_cliente=<?php print($nro_cliente);?>&&matriculae=<?php print($matricula);?>&&forma_pago=<?php print($forma_pago);?>&&dia=<?php print($dia);?>&&mes=<?php print($mes);?>&&anio=<?php print($anio);?>&&todo=<?php print($todo);?>&&direccion=<?php print($direccion);?>&&cuit=<?php print($cuit);?>&&tipo_fact=<?php print($tipo_fact);?>","MERCADERIA", "width=1000,height=1000,toolbar=no,directories=no,menubar=no,status=no");
+} 
+</script>
+
+<?php
+	
+	
+	
+	if ($pasada == 1){?>
+<body onload = "on_proveedor ()">
+<?php }else{?>
+<body onload = "on_load ()">
+<?php }
+
+if ($pasada == ""){?>
+<body onload = "on_load ()">
+<?php }?>
+
+
+<FORM name="form" ACTION="<?php  echo $_SERVER["PHP_SELF"];?>" METHOD = "POST">
+<?php include("../../conexiones/config_pro.php");
+$sql8 = "SELECT * FROM `un_ventas1_encab_temp` where nro_factura = $nro_factura";
+$result8 = $db->Execute($sql8);
+$plan=strtoupper($result8->fields["plan"]);?>
+<table width="800" border="0">
+          <!--DWLayoutTable-->
+          <tr bgcolor="#000099">
+            <td height="22" colspan="6" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67"><div align="left" class="Estilo70">
+              <div align="left"><span class="Estilo83"><span class="Estilo6 Estilo70 Estilo16 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo60">Paciente: <?php echo $nombre_completo;?>&nbsp;&nbsp;&nbsp;</span></span></span></span><span class="Estilo4 Estilo6 Estilo70  Estilo16"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo60"> &nbsp;&nbsp;&nbsp;</span></span></span></span></span><span class="Estilo62">&nbsp;</span><span class="Estilo60">Fecha: <?php echo $dia;?> / <?php echo $mes;?> / <?php echo $anio?></span> &nbsp;&nbsp;&nbsp;</div>
+            </div>              </td>
+            <td colspan="2" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67">&nbsp;
+              <span class="Estilo85">Operador: <?php echo $nombre_operador;?> <?php echo $operador;?></span></td>
+            <td bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67"><div align="center"><span class="Estilo85">UNICO</span></div></td>
+    </tr>
+          
+          <tr bgcolor="#C4D7E6">
+            <td width="91" height="20" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64">Domicilio: </span></span></span></span></span></span></td>
+            <td colspan="7" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64"><?php echo strtoupper($direccion);?></span></span></span></span></span></span></td>
+            <td width="128" rowspan="3" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67 Estilo85"> <div align="center"><a href="guardar_factura.php?&&operador=<?php print("$operador");?>&&nro_factura_nuevo=<?php print("$nro_factura_nuevo");?>&&programa=<?php print("$programa");?>&&documento=<?php print("$documento");?>&&operador=<?php print("$operador");?>&&cuit=<?php print("$cuit");?>"  onclick="return confirm('¿Está seguro de Guardar esta Factura?');"><IMG SRC="../../imagenes/boton-guardar.jpg" alt="GUARDAR"  border = "0"></a> </div></td>
+          </tr>
+          <tr bgcolor="#C4D7E6">
+            <td height="20" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64">Diagnostico: </span></span></span></span></span></span></td>
+            <td colspan="7" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64"><?php echo strtoupper($nombre_diagnostico);?></span></span></span></span></span></span></td>
+          </tr>
+          <tr bgcolor="#C4D7E6">
+            <td height="24" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64">Obra Social:  &nbsp;&nbsp;</span></span></span></span></span></span></td>
+            <td colspan="4" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64"><?php echo $nombre_os;?> </span></span></span></span></span></span></td>
+            <td width="48" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><div align="right"><span class="Estilo72 Estilo85 Estilo64">Afiliado:</span></div></td>
+            <td colspan="2" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><div align="center"><span class="Estilo26"><span class="Estilo70"><span class="Estilo6 Estilo16 Estilo70 Estilo63"><span class="Estilo16 Estilo6 Estilo63"><span class="Estilo71"><span class="Estilo72 Estilo85 Estilo64"><?php echo $nro_afiliado;?></span></span></span></span></span></span></div></td>
+          </tr>
+          <tr bgcolor="#C4D7E6">
+            <td height="24" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo72 Estilo85 Estilo64">Nota:</span></td>
+            <td colspan="8" bordercolor="#000000" bgcolor="#E6E6E6" class="Estilo67"><span class="Estilo72 Estilo85 Estilo64"><?php echo $observaciones;?></span></td>
+          </tr>
+          
+          <tr bgcolor="#B09268">
+            <td height="24" colspan="9" bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><p>COD UNICO:
+                <input name="cod_barra" type="text"  id ="cod_barra" value = "<?php echo $cod_mercaderia;?>" onKeyPress='return verif_caracter(this,event)' size="25">
+              <!-- <input name="Alta" type="submit" value= "PROVEEDOR" id = "ok2"> -->
+              <span class="Estilo90">
+			   <input name="operador" type="hidden" value ="<?php echo $operador;?>">
+              <input name="Alta" type="submit" value= "BUSCAR" id = "ok1">
+              </span><span class="Estilo90">
+              <input name="Alta" type="submit" value= "REFRESCAR" id = "Refrescar">
+              </span></td>
+    </tr>
+
+<?php	if ($pasada == 1){?>
+          <tr bgcolor="#B09268">
+            <td height="24" colspan="7" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="left"><span class="Estilo90"> <?php echo $nombre_comercial;?> - <?php echo $presentacion;?></span></div></td>
+            <td height="24" colspan="2" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><span class="Estilo90">Droga: <?php echo $droga;?> </span></td>
+          </tr>
+          <tr bgcolor="#B09268">
+            <td height="21" colspan="2" bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">LOTE</div></td>
+            <td width="50" bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">MES</div></td>
+            <td width="54" bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">A&Ntilde;O</div></td>
+            <td bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">N/ DEV-DON</div></td>
+            <td colspan="2" bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">PRECIO</div></td>
+            <td width="122" bgcolor="#999999"><div align="center"><span class="Estilo67 Estilo85 Estilo65">CANTIDAD</span></div></td>
+            <td bordercolor="#000000" bgcolor="#999999" class="Estilo67 Estilo85 Estilo65"><div align="center">OPCIONES</div></td>
+          </tr>
+          <tr bgcolor="#B09268">
+            <td height="26" colspan="2" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="lote" type="text" id ="lote" value="<?php echo $lote;?>" onKeyPress="return verif_caracter(this,event)" size="20">
+            </div></td>
+            <td bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="mes_lote" type="text" id ="mes_lote" onKeyPress="return verif_caracter(this,event)" value="<?php echo $mes_lote;?>" size="4">
+            </div></td>
+            <td valign="top" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="anio_lote" type="text" id="anio_lote" onKeyPress="return verif_caracter(this,event)" value="<?php echo $anio_lote;?>" size="4">
+            </div></td>
+            <td valign="top" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="proveedor" type="hidden" id ="proveedor" value="<?php echo $proveedor;?>" onKeyPress="return verif_caracter(this,event)" size="12" >
+              <input name="nd" type="text" id ="nd" value="<?php echo $nd;?>" onKeyPress="return verif_caracter(this,event)" size="12" >
+            </div></td>
+            <td colspan="2" valign="top" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <div align="center">
+                <input name="precio_unitario_nuevo" type="text" id ="precio_unitario" value="<?php echo $precio_unitario;?>" onKeyPress="return verif_caracter(this,event)" size="12" >
+              </div>
+            </div></td>
+            <td bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="cantidad" type="text" id ="cantidad" onKeyPress="return verif_caracter(this,event)" size="4" value = "<?php echo $cantidad_existente;?>">
+            </div></td>
+            <td bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67 Estilo85 Estilo65"><div align="center">
+              <input name="Alta" type="submit" id="Alta" value="OK">
+            </div></td>
+          </tr>
+          <tr>
+            <td height="3"></td>
+            <td width="42"></td>
+            <td></td>
+            <td></td>
+            <td width="147"></td>
+            <td></td>
+            <td width="80"></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+		  <?php }?>
+                      <input name="documento" type="hidden" value ="<?php echo $documento;?>">
+                      <input name="tipo_doc" type="hidden" value ="<?php echo $tipo_doc;?>">
+ <input name="operador" type="hidden" value ="<?php echo $operador;?>">
+  <input name="tipo_fact" type="hidden" value ="<?php echo $tipo_fact;?>">
+
+							 <input name="dia" type="hidden" value ="<?php echo $dia;?>">
+                      <input name="mes" type="hidden" value ="<?php echo $mes;?>">
+                      <input name="anio" type="hidden" value ="<?php echo $anio;?>">
+
+					     <input name="cod_paciente" type="hidden" value ="<?php echo $cod_paciente;?>">
+
+<input name="cod_detalle" type="hidden" value ="<?php echo $cod_detalle;?>">
+					   <input name="nro_os[]" type="hidden" value ="<?php echo $nro_os;?>">
+					   					   <input name="sigla" type="hidden" value ="<?php echo $sigla;?>">
+
+  </table>
+
+</form>
+
+
+
+
+  <?php 
+		
+
+
+		
+
+		if(isset($_REQUEST['Alta'])) {
+	
+	switch ($_REQUEST['Alta'])
+	{
+		case "OK":
+				{
+
+include("../../conexiones/config_pro.php");
+
+$operador = $_REQUEST['operador'];
+$nro_factura_nuevo= $_REQUEST['nro_factura_nuevo'];
+$tipo_fact= $_REQUEST['tipo_fact'];
+$nd= $_REQUEST['nd'];
+
+$cod_barra = $_REQUEST['cod_barra'];
+$proveedor= $_REQUEST['proveedor'];
+ $cantidad= $_REQUEST['cantidad'];
+$mes_actual =  date("m");
+$anio_actual=  date("y");
+ $precio_unitario_nuevo = $_REQUEST['precio_unitario_nuevo'];
+$cod_detalle= $_REQUEST['cod_detalle'];
+
+$cod_detalle1= $_REQUEST['cod_detalle'];
+$sql = "SELECT * FROM `monodrogas`  WHERE  `cod_barra` = '$cod_barra' or `troquel` = '$cod_barra' ";
+$result = $db->Execute($sql);
+$cod_mercaderia=strtoupper($result->fields["troquel"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+
+$sql = "SELECT * FROM `existencias`  WHERE  cod_detalle = $cod_detalle";
+$result = $db->Execute($sql);
+
+$cantidad_ingresada=$result->fields["cantidad_ingresada"];
+ $cantidad_salida=$result->fields["cantidad_salida"];
+
+ $lote=$result->fields["lote"];
+  $mes_lote=$result->fields["mes_lote"];
+   $anio_lote=$result->fields["anio_lote"];
+//  $precio_unitario=$result->fields["precio_unitario"];
+
+$dif = $cantidad_ingresada - $cantidad_salida;
+
+ if ($cantidad_ingresada - $cantidad_salida < 0) {
+$leyenda = "NO LE ALCANZA EL STOCK";
+include ("../../alertas/campo_informacion.php");
+ }
+
+
+$precio_unitario=$precio_unitario_nuevo;
+
+
+
+ include ("cuentas.php");
+
+	
+include ("mostrar_detalle.php");
+	
+	 ?>
+  
+  </div>
+  </th>
+  
+    </tr>
+    <?php 
+			break;
+				}
+
+
+
+
+case "BUSCAR":
+				{
+
+
+
+
+$cod_barra = $_REQUEST['cod_barra'];
+$proveedor= $_REQUEST['proveedor'];
+$cod_paciente= $_REQUEST['cod_paciente'];
+$cod_mercaderia= $_REQUEST['cod_mercaderia'];
+
+include("refrescar1.php");
+
+
+	 ?>
+  
+  </div>
+  </th>
+  
+    </tr>
+    <?php 
+			break;
+				}
+
+				case "BUSCAR PROVEEDOR":
+				{
+$cod_barra = $_REQUEST['cod_barra'];
+$proveedor= $_REQUEST['proveedor'];
+
+include("refrescar_prov.php");
+
+
+	 ?>
+  
+  </div>
+  </th>
+  
+    </tr>
+    <?php 
+			break;
+				}
+
+
+case "REFRESCAR":
+				{
+$cod_barra = $_REQUEST['cod_barra'];
+$proveedor= $_REQUEST['proveedor'];
+
+include("mostrar_detalle.php");
+
+
+	 ?>
+  
+  </div>
+  </th>
+  
+    </tr>
+    <?php 
+			break;
+				}
+
+case "CAMBIAR NUMERO NOTA DE ENTREGA":
+				{
+
+$operador = $_REQUEST['operador'];
+$nro_factura_nuevo= $_REQUEST['nro_factura_nuevo'];
+$tipo_fact= $_REQUEST['tipo_fact'];
+if ($nro_factura_nuevo != ""){
+
+$sql = "SELECT * FROM `un_ventas1_encab_temp`  WHERE  operador = '$operador'";
+$result3 = $db->Execute($sql);
+$nro_factura=strtoupper($result3->fields["nro_factura"]);
+
+$sql = "UPDATE `un_ventas1_encab_temp` SET `nro_factura` = '$nro_factura_nuevo'   WHERE `nro_factura` = '$nro_factura' and `tipo_fact` = '$tipo_fact' ";
+mysql_query($sql);
+$sql = "UPDATE `un_ventas1_deta_temp` SET `nro_factura` = '$nro_factura_nuevo'  WHERE `nro_factura` = '$nro_factura' and `tipo_fact` = '$tipo_fact' ";
+mysql_query($sql);
+$nro_factura = $nro_factura_nuevo;
+
+}
+include ("mostrar_detalle.php");
+
+
+
+
+	 ?>
+  
+  </div>
+  </th>
+  
+    </tr>
+    <?php 
+			break;
+				}
+
+	}
+ }
+?>
+    </table>
+
+	  <!-- <table width="800" border="0">
+    <tr>
+      <td><div align="center"><strong>EN CASO DE NO COINCIDIR CAMBIAR POR: <span class="Estilo67 Estilo70">
+          <input name="nro_factura_nuevo" type="text" id ="nro_factura_nuevo" value="<?php  if (isset($_REQUEST['nro_factura_nuevo'])) echo $_REQUEST['nro_factura_nuevo'];?>" onKeyPress="return verif_caracter(this,event)" size="4">
+          <input name="Alta2" type="submit" value= "CAMBIAR NUMERO NOTA DE ENTREGA" id = "Alta2">
+      </span></strong></div></td>
+    </tr>
+  </table> -->
+
+  </form>
+ 
+  
+
+

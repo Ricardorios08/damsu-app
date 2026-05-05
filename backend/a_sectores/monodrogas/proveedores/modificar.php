@@ -1,0 +1,144 @@
+<script language="javascript">
+function on_load()
+{
+document.getElementById("cod_proveedor").focus();
+}
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "cod_proveedor":
+				document.getElementById("denominacion").focus();
+				break;
+				case "denominacion":
+				document.getElementById("domicilio").focus();
+				break;
+				case "domicilio":
+				document.getElementById("cod_area").focus();
+				break;
+				case "cod_area":
+				document.getElementById("telefono").focus();
+				break;
+				case "telefono":
+				document.getElementById("cod_area_celular").focus();
+				break;
+				case "cod_area_celular":
+				document.getElementById("celular").focus();
+				break;
+				case "celular":
+				document.getElementById("servicio").focus();
+				break;
+				case "servicio":
+				document.getElementById("denominacion_reducida").focus();
+				break;
+				case "denominacion_reducida":
+				document.getElementById("mail").focus();
+				break;
+
+				case "mail":
+				document.getElementById("guardar").focus();
+				break;
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+<?php include ("../../../conexiones/config_usu.php");
+include ("variables.php");
+
+
+?>
+<BODY onload = "on_load ()">
+<form action="modificar_proveedores.php" method="post">
+<table width="800" border="0" cellspacing="0">
+  <tr align="center" bordercolor="#FFFFFF" bgcolor="#000099"> 
+    <td colspan="4" bgcolor="#CCCCCC"><font color="#000000" size="2" face="Trebuchet MS"><strong>MODIFICAR 
+      DE PROVEEDORES / PRESTADORES</strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td width="49%" bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Codigo 
+        de Prestador / Prestador</font> </div></td>
+    <td width="2%" bgcolor="#E6E6E6">&nbsp;</td>
+    <td width="49%" colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="cod_proveedor" id="cod_proveedor" value = "<?php echo $cod_proveedor;?>" onKeyPress="return verif_caracter(this,event)" size="5" > 
+      </font>
+      <div align="right"></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Denominacion</font> 
+      </div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="denominacion" id="denominacion"  size="25" value = "<?php echo $denominacion;?>"  onKeyPress="return verif_caracter(this,event)">    
+      </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Domicilio</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="domicilio" id="domicilio"  size="45" value = "<?php echo $domicilio;?>"  onKeyPress="return verif_caracter(this,event)">    
+      </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000"  size="2" face="Trebuchet MS">Telefono</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input name="cod_area" type="text" id="cod_area" onKeyPress="return verif_caracter(this,event)" value = "<?php echo $cod_area;?>"  size="7"> 
+      <input type="text" name="telefono" id="telefono" size="15" value = "<?php echo $telefono;?>"  onKeyPress="return verif_caracter(this,event)">    
+      </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Celular</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input name="cod_area_celular" type="text" id="cod_area_celular" onKeyPress="return verif_caracter(this,event)" value = "<?php echo $cod_area_celular;?>"  size="7"> 
+      <input type="text" name="celular" id="celular" size="15" value = "<?php echo $celular;?>" onKeyPress="return verif_caracter(this,event)">
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Servicio</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="servicio" id="servicio"  size="15" value = "<?php echo $servicio;?>"  onKeyPress="return verif_caracter(this,event)">
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Denominacion 
+      Reducida </font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input name="denominacion_reducida" type="text" id ="denominacion_reducida" value = "<?php echo $denominacion_reducida;?>"  onKeyPress="return verif_caracter(this,event)" size="15" maxlength="10"> 
+    </font></tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Email</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="mail" id="mail" size="45" value = "<?php echo $mail;?>"  onKeyPress="return verif_caracter(this,event)">
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">GLN</font></div></td>
+    <td bgcolor="#E6E6E6">&nbsp;</td>
+    <td colspan="2" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <input type="text" name="gln" id="gln" size="45" value = "<?php echo $gln;?>"  onKeyPress="return verif_caracter(this,event)">
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#E1F2EF">
+    <td colspan="4" bgcolor="#CCCCCC"><div align="center">
+      <input name="guardar" type="Submit" id="guardar" value="MODIFICAR" target = "arriba">
+    </div></td>
+    </tr>
+</table>
+</form>
+</body>

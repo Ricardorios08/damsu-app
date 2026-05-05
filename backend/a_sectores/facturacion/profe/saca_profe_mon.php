@@ -1,0 +1,46 @@
+<?php
+
+include ("../../../conexiones/config_pro.php");
+
+$nro_comprobante = $_REQUEST['nro_comprobante'];
+$seguridad= $_REQUEST['seguridad'];
+
+$sql="select * from `tr_ventas_encabezado` where nro_factura =  '$nro_comprobante'";
+$result = $db->Execute($sql);
+
+$nro_fac=strtoupper($result->fields["nro_factura"]);
+
+
+if ($nro_comprobante == ""){
+$leyenda = "NO INGRESO COMPRONBATE";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+
+if ($nro_fac == ""){
+$leyenda = "NO EXISTE COMPROBANTE CON ESE NUMERO";
+include ("../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+
+
+if ($seguridad == 'KARINNA'){
+
+ $sql = "UPDATE `tr_ventas_detalle` SET `no_profe` = '1' WHERE `nro_factura` = $nro_comprobante";
+$result = $db->Execute($sql);
+
+
+
+
+}ELSE{
+
+$leyenda = "CONTRASEÑA INCORRECTA";
+include ("../../../alertas/campo_informacion2.php");
+EXIT;
+}
+
+include ("sacar_profe_mon.php");

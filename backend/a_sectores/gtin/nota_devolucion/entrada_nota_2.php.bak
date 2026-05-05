@@ -1,0 +1,107 @@
+<?php global $band;
+
+include("../../../conexiones/config_pro.php");
+include ("../../../conexiones/usuario_compra.php");
+include("../../../funciones/funciones.php");
+
+$id = $_REQUEST["id"];
+$operador = $_REQUEST["id"];
+
+$dia= $_REQUEST['dia'];
+if ($dia == ""){$dia = date("d");}
+$mes= $_REQUEST['mes'];
+if ($mes == ""){$mes = date("m");}
+$anio= $_REQUEST['anio'];
+if ($anio == ""){$anio = date("y");}
+
+
+$sql = "DELETE from `nota_devolucion` where operador = $id";
+$result = $db->Execute($sql);
+
+
+$fecha = $anio."-".$mes."-".$dia;
+
+
+$fecha1 =$dia."-".$mes."-".$anio;
+
+if(datecheck($fecha1)===false){
+   $leyenda = "LA FECHA NO ES CORRECTA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+
+ 
+
+
+$dia= $_REQUEST['dia'];
+if ($dia == ""){$dia = date("d");}
+$mes= $_REQUEST['mes'];
+if ($mes == ""){$mes = date("m");}
+$anio= $_REQUEST['anio'];
+if ($anio == ""){$anio = date("y");}
+
+
+
+$fecha = "20".$anio."-".$mes."-".$dia;
+
+
+$fecha1 =$dia."-".$mes."-20".$anio;
+
+if(datecheck($fecha1)===false){
+   $leyenda = "LA FECHA NO ES CORRECTA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}
+
+
+$operador= $_REQUEST['id'];
+
+
+$cod_movimient=$_REQUEST["cod_movimiento"];
+	for ($i=0;$i<count($cod_movimient);$i++)    
+	{     
+	$cod_movimiento = $cod_movimient[$i];    
+	}
+
+$observaciones= $_REQUEST['observaciones'];
+$importe= $_REQUEST['importe'];
+
+$nro_factura_afectada= $_REQUEST['nro_factura_afectada'];
+
+if ($nro_factura_afectada == ""){
+
+	$leyenda = "NO INGRESO N° ENTREGA AFECTADA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+}else{
+
+ECHO $sql="select * from compras_encabezado where nro_factura = $nro_factura_afectada";
+$result = $db->Execute($sql);
+$nro_fac=strtoupper($result->fields["nro_factura"]);
+$neto=strtoupper($result->fields["total"]);
+
+	if ($nro_fac == ""){
+	$leyenda = "NO EXISTE ESA NOTA DE ENTREGA INGRESADA";
+	INCLUDE ("../../../alertas/campo_vacio.php");
+	exit;
+	} 
+
+
+}
+
+
+
+
+
+
+
+$sql = "INSERT INTO `nota_ajuste` (`operador`, `fecha`, `nro_factura_afectada`, `importe`, `observaciones`) VALUES ('$operador', '$fecha', '$nro_factura_afectada', '$importe', '$observaciones')";
+$result = $db->Execute($sql);
+
+
+include ("mostrar_detalle.php");
+
+
+?>

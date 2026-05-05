@@ -1,0 +1,26 @@
+<?php
+
+   $sql = "SELECT  sum(total) as neto  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and resultado = '$departamento' and grupo = 3";
+$result = $db->Execute($sql);
+$monoclonales=$result->fields["neto"];
+
+  $sql = "SELECT sum(total)  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento = 3 and resultado = '$departamento' and grupo = 3";
+$result = $db->Execute($sql);
+$monoclonales_nc=$result->fields["neto"];
+
+
+$monoclo = $monoclonales - $monoclonales_nc;
+
+   $sql = "SELECT  sum(total) as neto  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and resultado = '$departamento' and grupo != 3";
+$result = $db->Execute($sql);
+$otros_no=$result->fields["neto"];
+
+  $sql = "SELECT sum(total)  FROM `tr_ventas_detalle` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento = 3 and resultado = '$departamento' and grupo != 3";
+$result = $db->Execute($sql);
+$otros_no_nc=$result->fields["neto"];
+
+
+$otros = $otros_no - $otros_no_nc;
+ 
+
+?>

@@ -1,0 +1,1023 @@
+<style type="text/css">
+<!--
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo5 {font-size: 14px}
+.Estilo7 {font-family: "Trebuchet MS"}
+.Estilo8 {font-size: 24px}
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 14px; }
+.Estilo20 {font-family: "Trebuchet MS"; font-size: 24px; }
+.Estilo21 {color: #000000}
+.Estilo22 {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+}
+.Estilo23 {font-size: 12px}
+-->
+</style>
+
+
+<?php 
+
+
+
+
+include ("../../../conexiones/config_pro.php");
+
+$anio = $_REQUEST['anio'];
+$departamento = $_REQUEST['departamento'];
+$desde = $_REQUEST['desde'];
+$hasta = $_REQUEST['hasta'];
+
+$desde = '2018-01-01';
+$hasta = '2018-06-31';
+
+$enca = 2;
+$deta = 2;
+$fuente  =2;
+$fecha = 2;
+$grupo = 2;
+$resultado = 1;
+
+
+
+
+////// encabezado sin documento
+
+if ($enca == 1){
+
+ $sql="select * from tr_ventas_encabezado where fecha between '$desde' and '$hasta'   group by nro_factura ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$documento=strtoupper($result->fields["documento"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+
+ 
+
+echo $sql88 = "UPDATE tr_ventas_detalle SET `documento` = $documento WHERE `nro_factura` = $nro_factura";
+$result88 = $db->Execute($sql88);
+
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+}
+
+
+
+
+if ($deta == 1){
+////// arregla detalle sin documento
+ 
+echo $sql="select * from tr_ventas_detalle where fecha between '$desde' and '$hasta'  and documento = 0 group by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+
+ echo $sql8 = "SELECT * FROM tr_ventas_encabezado where nro_factura = '$nro_factura'";
+$result8 = $db->Execute($sql8);
+$documento=$result8->fields["documento"];
+
+echo $sql88 = "UPDATE tr_ventas_detalle SET documento = $documento WHERE nro_factura = '$nro_factura'";
+$result88 = $db->Execute($sql88);
+
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+ 
+}
+
+
+
+if ($fuente == 1){
+
+///////////////este si va aaregla fuente sin cargar.....//////////////////////////////////////////
+echo $sql="select * from tr_ventas_encabezado where fecha between '$desde' and '$hasta'    ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$documento=strtoupper($result->fields["documento"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+$forma_pago=$result->fields["forma_pago"];
+
+ echo $sql8 = "SELECT * FROM `paciente_diagnostico` where documento = '$documento'";
+$result8 = $db->Execute($sql8);
+$cod_fuente=$result8->fields["cod_fuente"];
+
+ 
+echo $sql88 = "UPDATE `tr_ventas_encabezado` SET `forma_pago` = $cod_fuente WHERE `tr_ventas_encabezado`.`nro_factura` = $nro_factura";
+$result88 = $db->Execute($sql88);
+ 
+
+
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+ 
+
+}
+
+/// arregla resultado sin cargar
+ if ($resultado == 1){
+
+echo $sql="select * from tr_ventas_encabezado where fecha between '$desde' and '$hasta' group by nro_factura  ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$documento=strtoupper($result->fields["documento"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+$forma_pago=$result->fields["forma_pago"];
+  
+echo $sql8 = "SELECT * FROM tr_ventas_encabezado where nro_factura = '$nro_factura'";
+$result8 = $db->Execute($sql8);
+$resultado=$result8->fields["forma_pago"];
+
+
+echo $sql88 = "UPDATE tr_ventas_detalle SET `resultado` = '$resultado' WHERE nro_factura = '$nro_factura'";
+$result88 = $db->Execute($sql88);
+
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+
+ }
+
+
+ /// arregla fecha sin cargar
+ if ($fecha == 1){
+
+ $sql="select * from tr_ventas_detalle where fecha = '0000-00-00'   AND resultado = 29 group by nro_factura  ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$documento=strtoupper($result->fields["documento"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+$forma_pago=$result->fields["forma_pago"];
+  
+
+
+ $sql8 = "SELECT * FROM tr_ventas_encabezado where nro_factura = '$nro_factura'";
+$result8 = $db->Execute($sql8);
+$fecha=$result8->fields["fecha"];
+
+
+echo $sql88 = "UPDATE tr_ventas_detalle SET `fecha` = '$fecha' WHERE `nro_factura` = $nro_factura";
+$result88 = $db->Execute($sql88);
+
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+
+ }
+
+
+
+if ($grupo == 1){
+
+ $sql="select * from tr_ventas_detalle where  resultado = 29 and grupo = 0 group by cod_mercaderia  ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+if (!$result) die("fallo".$db->ErrorMsg());
+while (!$result->EOF) {
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$documento=strtoupper($result->fields["documento"]);
+$cod_movimiento=$result->fields["cod_movimiento"];
+$forma_pago=$result->fields["forma_pago"];
+  
+$cod_mercaderia=$result->fields["cod_mercaderia"];
+
+ $sql8 = "SELECT * FROM monodrogas where cod_barra = '$cod_mercaderia'";
+$result8 = $db->Execute($sql8);
+$grupo=$result8->fields["grupo"];
+
+
+echo $sql88 = "UPDATE tr_ventas_detalle SET grupo = '$grupo' WHERE cod_mercaderia = $cod_mercaderia";
+$result88 = $db->Execute($sql88);
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+echo "fin";
+
+}
+
+
+
+ 
+
+
+
+
+
+
+
+header("Content-type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=$anio");
+
+$departamento = 29;
+////////////////;////////////////
+$mes = "01";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+if ($neto > 0){
+$ene_facturas = $facturas - $facturas_nc;
+$ene_recetas = $recetas_pro;
+$ene_monoclonales = $monoclo;
+$ene_otros = $otros;
+
+
+
+$ene_recetas_pro = $recetas_pro;
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+$ene_neto = number_format($neto,2);
+$ene_neto_pro = number_format($neto_pro,2);
+
+$ene_consumo_receta = round($neto / $recetas_pro,2);
+$ene_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $total_total2;
+$ene_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+}
+
+
+
+////////////////////////////////
+$mes = "02";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+
+if ($neto > 0){
+$feb_facturas = $facturas - $facturas_nc;
+$feb_recetas = $recetas_pro;
+
+$feb_monoclonales = $monoclo;
+$feb_otros = $otros;
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+$feb_recetas_pro = $recetas_pro;
+
+$feb_neto = number_format($neto,2);
+$feb_neto_pro = number_format($neto_pro,2);
+
+$feb_consumo_receta = round($neto / $recetas_pro,2);
+$feb_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $total_total2;
+$feb_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+
+}
+
+////////////////////////////////
+$mes = "03";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+if ($neto > 0){
+$mar_facturas = $facturas - $facturas_nc;
+$mar_recetas = $recetas_pro;
+
+$mar_monoclonales = $monoclo;
+$mar_otros = $otros;
+
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+
+$mar_neto = number_format($neto,2);
+$mar_neto_pro = number_format($neto_pro,2);
+
+
+$mar_recetas_pro = $recetas_pro;
+
+
+$mar_consumo_receta = round($neto / $recetas_pro,2);
+$mar_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $total_total2;
+$mar_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+
+}
+
+////////////////////////////////
+$mes = "04";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php"); 
+
+
+
+if ($neto > 0){
+$abr_facturas = $facturas - $facturas_nc;
+$abr_recetas = $recetas_pro;
+
+$abr_recetas_pro = $recetas_pro;
+
+
+$abr_monoclonales = $monoclo;
+$abr_otros = $otros;
+
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+
+$abr_neto_pro = number_format($neto_pro,2);
+
+$abr_neto = number_format($neto,2);
+$abr_consumo_receta = round($neto / $recetas_pro,2);
+$abr_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $total_total2;
+$abr_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+
+}
+
+////////////////////////////////
+$mes = "05";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mono2_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+if ($neto > 0){
+$may_facturas = $facturas - $facturas_nc;
+$may_recetas = $recetas_pro;
+
+$may_recetas_pro = $recetas_pro;
+
+$may_monoclonales = $monoclo;
+$may_otros = $otros;
+
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+
+$may_neto_pro = number_format($neto_pro,2);
+
+$may_neto = number_format($neto,2);
+$may_consumo_receta = round($neto / $recetas_pro,2);
+$may_consumo_entrega = round($neto / ($facturas),2);
+
+if ($total_total2 > 0){
+$may_mono = $total_total2;
+$may_mono = number_format($may_mono,2);
+$total_total2 = "";
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $may_mono;
+}
+
+}
+
+////////////////////////////////
+$mes = "06";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mono2_notti.php");
+include ("mes1_notti_hemo.php");
+
+if ($neto > 0){
+$jun_facturas = $facturas - $facturas_nc;
+$jun_recetas = $recetas_pro;
+
+$jun_recetas_pro = $recetas_pro;
+
+$jun_monoclonales = $monoclo;
+$jun_otros = $otros;
+
+
+$suma_primer_semestre = $suma_primer_semestre + $neto;
+$suma_primer_semestre_pro = $suma_primer_semestre_pro + $neto_pro;
+
+$jun_neto_pro = number_format($neto_pro,2);
+$jun_neto = number_format($neto,2);
+$jun_consumo_receta = round($neto / $recetas_pro,2);
+$jun_consumo_entrega = round($neto / ($facturas),2);
+
+if ($total_total2 > 0){
+$jun_mono = $total_total2;
+$jun_mono = number_format($jun_mono,2);
+$total_total2 = "";
+$suma_primer_semestre_mon = $suma_primer_semestre_mon + $jun_mono;
+}
+
+
+}
+
+
+
+////////////////////////////////
+$mes = "07";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mono2_notti.php");
+include ("mes1_notti_hemo.php");
+
+if ($neto > 0){
+$jul_facturas = $facturas - $facturas_nc;
+$jul_recetas = $recetas_pro;
+
+$jul_recetas_pro = $recetas_pro;
+
+$jul_monoclonales = $monoclo;
+$jul_otros = $otros;
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+
+$jul_neto_pro = number_format($neto_pro,2);
+
+$jul_neto = number_format($neto,2);
+$jul_consumo_receta = round($neto / $recetas_pro,2);
+$jul_consumo_entrega = round($neto / ($facturas),2);
+
+if ($total_total2 > 0){
+$jul_mono = $total_total2;
+
+$total_total2 = "";
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $jul_mono;
+$jul_mono = number_format($jul_mono,2);
+
+}
+
+}
+
+////////////////////////////////
+$mes = "08";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+if ($neto > 0){
+$ago_facturas = $facturas - $facturas_nc;
+$ago_recetas = $recetas_pro;
+
+$ago_recetas_pro = $recetas_pro;
+
+$ago_monoclonales = $monoclo;
+$ago_otros = $otros;
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+
+$ago_neto_pro = number_format($neto_pro,2);
+
+$ago_neto = number_format($neto,2);
+$ago_consumo_receta = round($neto / $recetas_pro,2);
+$ago_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $total_total2;
+$ago_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+}
+
+////////////////////////////////
+$mes = "09";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+if ($neto > 0){
+$set_facturas = $facturas - $facturas_nc;
+$set_recetas = $recetas_pro;
+
+$set_recetas_pro = $recetas_pro;
+
+$set_monoclonales = $monoclo;
+$set_otros = $otros;
+
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+
+$set_neto_pro = number_format($neto_pro,2);
+
+$set_neto = number_format($neto,2);
+$set_consumo_receta = round($neto / $recetas_pro,2);
+$set_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $total_total2;
+$set_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+}
+
+////////////////////////////////
+$mes = "10";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+if ($neto > 0){
+$oct_facturas = $facturas - $facturas_nc;
+$oct_recetas = $recetas_pro;
+
+$oct_recetas_pro = $recetas_pro;
+
+$oct_monoclonales = $monoclo;
+$oct_otros = $otros;
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+
+$oct_neto_pro = number_format($neto_pro,2);
+
+$oct_neto = number_format($neto,2);
+$oct_consumo_receta = round($neto / $recetas_pro,2);
+$oct_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $total_total2;
+$oct_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+}
+
+////////////////////////////////
+$mes = "11";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+
+if ($neto > 0){
+$nov_facturas = $facturas - $facturas_nc;
+$nov_recetas = $recetas_pro;
+
+$nov_recetas_pro = $recetas_pro;
+
+$nov_monoclonales = $monoclo;
+$nov_otros = $otros;
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+$nov_neto_pro = number_format($neto_pro,2);
+
+$nov_neto = number_format($neto,2);
+$nov_consumo_receta = round($neto / $recetas_pro,2);
+$nov_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $total_total2;
+$nov_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+
+}
+
+////////////////////////////////
+$mes = "12";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+include ("mes_todo_notti.php");
+include ("mes1_notti.php");
+include ("mes1_notti_hemo.php");
+
+
+
+if ($neto > 0){
+$dic_facturas = $facturas - $facturas_nc;
+$dic_recetas = $recetas_pro;
+
+$dic_recetas_pro = $recetas_pro;
+$dic_monoclonales = $monoclo;
+$dic_otros = $otros;
+
+
+$suma_segundo_semestre = $suma_segundo_semestre + $neto;
+$suma_segundo_semestre_pro = $suma_segundo_semestre_pro + $neto_pro;
+
+
+$dic_neto_pro = number_format($neto_pro,2);
+$dic_neto = number_format($neto,2);
+$dic_consumo_receta = round($neto / $recetas_pro,2);
+$dic_consumo_entrega = round($neto / ($facturas),2);
+
+include ("mono2_notti.php");
+if ($total_total2 > 0){
+$suma_segundo_semestre_mon = $suma_segundo_semestre_mon + $total_total2;
+$dic_mono = number_format($total_total2,2);
+$total_total2 = "";
+}
+
+}
+
+ $suma_segundo_semestre_mon;
+
+$suma_anual = number_format($suma_primer_semestre  + $suma_segundo_semestre,2);
+$suma_anual_pro = number_format($suma_primer_semestre_pro  + $suma_segundo_semestre_pro,2);
+$suma_anual_mon = number_format($suma_primer_semestre_mon  + $suma_segundo_semestre_mon,2);
+
+//////////////////////////////
+if ($ene_recetas == 0){$ene_recetas = "";}
+if ($ene_facturas== 0){$ene_facturas = "";}
+
+if ($feb_recetas == 0){$feb_recetas = "";}
+if ($feb_facturas== 0){$feb_facturas = "";}
+
+if ($mar_recetas == 0){$mar_recetas = "";}
+if ($mar_facturas== 0){$mar_facturas = "";}
+
+if ($abr_recetas == 0){$abr_recetas = "";}
+if ($abr_facturas== 0){$abr_facturas = "";}
+
+if ($may_recetas == 0){$may_recetas = "";}
+if ($may_facturas== 0){$may_facturas = "";}
+
+if ($jun_recetas == 0){$jun_recetas = "";}
+if ($jun_facturas== 0){$jun_facturas = "";}
+
+if ($jul_recetas == 0){$jul_recetas = "";}
+if ($jul_facturas== 0){$jul_facturas = "";}
+
+if ($ago_recetas == 0){$ago_recetas = "";}
+if ($ago_facturas== 0){$ago_facturas = "";}
+
+if ($set_recetas == 0){$set_recetas = "";}
+if ($set_facturas== 0){$set_facturas = "";}
+
+if ($oct_recetas == 0){$oct_recetas = "";}
+if ($oct_facturas== 0){$oct_facturas = "";}
+
+if ($nov_recetas == 0){$nov_recetas = "";}
+if ($nov_facturas== 0){$nov_facturas = "";}
+
+if ($dic_recetas == 0){$dic_recetas = "";}
+if ($dic_facturas== 0){$dic_facturas = "";}
+
+
+$ene_total = $ene_monoclonales + $ene_otros;
+$feb_total = $feb_monoclonales + $feb_otros;
+$mar_total = $mar_monoclonales + $mar_otros;
+
+$abr_total = $abr_monoclonales + $abr_otros;
+$may_total = $may_monoclonales + $may_otros;
+$jun_total = $jun_monoclonales + $jun_otros;
+
+$jul_total = $jul_monoclonales + $jul_otros;
+$ago_total = $ago_monoclonales + $ago_otros;
+$set_total = $set_monoclonales + $set_otros;
+
+$oct_total = $oct_monoclonales + $oct_otros;
+$nov_total = $nov_monoclonales + $nov_otros;
+$dic_total = $dic_monoclonales + $dic_otros;
+
+
+$total_anual = $ene_total + $feb_total + $mar_total + $abr_total + $may_total + $jun_total + $jul_total + $ago_total + $set_total + $oct_total + $nov_total + $dic_total;
+
+$total_semestral1 =$ene_total + $feb_total + $mar_total + $abr_total + $may_total + $jun_total + $jul_total;
+
+$total_semestral2 = $ago_total + $set_total + $oct_total + $nov_total + $dic_total;
+
+?>
+
+
+
+ <table width="962" border="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr bgcolor="#CCCCCC">
+    <td height="31" colspan="8" valign="top"><div align="center" class="Estilo2 Estilo8">CONSUMO POR PACIENTE PROGRAMA ONCOLOGICO  </div></td>
+   </tr>
+  <tr bgcolor="#CCCCCC">
+    <td height="31" colspan="8" valign="top"><span class="Estilo2 Estilo8">DEPARTAMENTO: <?PHP echo $departamento;?></span><span class="Estilo20"></strong></span></span></td>
+  </tr>
+  <tr bgcolor="#0000FF">
+
+    <td width="114" bgcolor="#F0F0F0"><div align="center" class="Estilo2 Estilo21"><strong><span class="Estilo5"><span class="Estilo7"><span class="Estilo2"><?PHP echo $anio;?></span></span></span></strong></div></td>
+    <td width="124" bgcolor="#F0F0F0"><div align="center" class="Estilo22">CANT. <span class="Estilo2">RECETAS</span></div>    </td>
+    <td width="104" bgcolor="#F0F0F0"><div align="center" class="Estilo22">CANT.  PACIENTES</div></td>
+    <td width="90" bgcolor="#F0F0F0"><div align="center" class="Estilo21"><strong><span class="Estilo2">COSTO  PACIENTE</span></strong></div></td>
+    <td width="126" bgcolor="#F0F0F0"><div align="center" class="Estilo21"><strong><span class="Estilo2">COSTO RECETA  </span></strong></div></td>
+    <td width="138" bgcolor="#F0F0F0"><div align="center" class="Estilo7 Estilo23">MONOCOLONALES</div></td>
+    <td width="123" bgcolor="#F0F0F0"><div align="center" class="Estilo2">OTROS</div></td>
+	    <td width="127" bgcolor="#F0F0F0"><div align="center" class="Estilo2">TOTAL</div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">ENERO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ene_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7">
+      <?PHP echo $ene_recetas;?>
+    </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $ene_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $ene_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ene_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ene_otros;?></span></span></div></td>
+<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ene_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">FEBRERO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $feb_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $feb_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $feb_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $feb_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $feb_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $feb_otros;?></span></span></div></td>
+<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $feb_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">MARZO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $mar_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $mar_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $mar_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $mar_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $mar_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $mar_otros;?></span></span></div></td>
+	 <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $mar_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">ABRIL </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $abr_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $abr_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $abr_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $abr_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $abr_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $abr_otros;?></span></span></div></td>
+	 <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $abr_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">MAYO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $may_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $may_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $may_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $may_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $may_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $may_otros;?></span></span></div></td>
+	<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $may_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">JUNIO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jun_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jun_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $jun_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $jun_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jun_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jun_otros;?></span></span></div></td>
+	  <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jun_total;?></span></span></div></td>
+  </tr>
+  <tr bgcolor="#66CCCC">
+    <td height="21"><div align="center"><span class="Estilo14">1&deg; SEMESTRE </span></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="right"></div></td>
+    <td valign="top"><div align="right"></div></td>
+    <td valign="top"><span class="Estilo5"><span class="Estilo7">&nbsp;&nbsp;&nbsp;<?PHP echo $total_semestral1;?></span></span></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">JULIO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jul_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $jul_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $jul_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $jul_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jul_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jul_otros;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $jul_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">AGOSTO </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ago_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $ago_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $ago_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $ago_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ago_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ago_otros;?></span></span></div></td>
+	<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $ago_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">SETIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $set_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $set_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $set_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $set_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $set_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $set_otros;?></span></span></div></td>
+	    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $set_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">OCTUBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $oct_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $oct_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $oct_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $oct_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $oct_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $oct_otros;?></span></span></div></td>
+	<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $oct_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">NOVIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $nov_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $nov_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $nov_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $nov_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $nov_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $nov_otros;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $nov_total;?></span></span></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#9BBCFF"><div align="right" class="Estilo5">
+      <div align="center"><span class="Estilo7">DICIEMBRE </span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $dic_facturas;?> </span></div></td>
+    <td><div align="center" class="Estilo5"><span class="Estilo7"> <?PHP echo $dic_recetas;?> </span></div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $dic_consumo_entrega;?></span></div>
+    </div></td>
+    <td><div align="center" class="Estilo5">
+      <div align="right"><span class="Estilo7"><?PHP echo $dic_consumo_receta;?></span></div>
+    </div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $dic_monoclonales;?></span></span></div></td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $dic_otros;?></span></span></div></td>
+<td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $dic_total;?></span></span></div></td>
+  </tr>
+  <tr bgcolor="#66CCCC">
+    <td><div align="center"><span class="Estilo14">2&deg; SEMESTRE </span></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="left"><span class="Estilo5"><span class="Estilo7">&nbsp;&nbsp;&nbsp;<?PHP echo $total_semestral2;?></span></span></div></td>
+  </tr>
+  <tr bgcolor="#FF9966">
+    <td><div align="center"><span class="Estilo14">ANUAL</span></div></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="right"><span class="Estilo5"><span class="Estilo7"><?PHP echo $total_anual;?></span></span></div></td>
+  </tr>
+</table>
+

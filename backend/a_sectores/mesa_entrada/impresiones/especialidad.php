@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close();">
+
+
+<?php 
+//global $buscador_rapido;
+$buscador_rapido=2;
+$fecha = date('d/m/Y');
+ include("adodb.inc.php");
+ $db = NewADOConnection('mysql');
+ $db->Connect("localhost", "root", "", "bioquimica");
+
+
+
+$B = 1;
+
+$sql="select * from datos_laboratorio order by especialidad";
+$result = $db->Execute($sql);
+
+
+
+
+?>
+LISTADO DE LABORATORIOS <br />
+Emitido el: <?php echo $fecha;?>
+<table width="83%" height="58" border="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#993300"> 
+<td width="5%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">CUENTA</font></strong></font></div></td>
+<td width="11%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">LABORATORIO</font></strong></font></div></td>
+<td width="10%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">DOMICILIO</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">LOCALIDAD</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">TELEFONO</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">CATEGORIA</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">ESPECIALIDAD</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">ORIENTACION</font></strong></font></div></td>
+
+</tr>	
+<?php 
+
+ 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	$nro_laboratorio=$result->fields["nro_laboratorio"];
+	$nombre_lab=$result->fields["nombre_laboratorio"];
+$domicilio_lab=$result->fields["domicilio"];
+$nro_dom_lab=$result->fields["nro_domicilio"];
+$direccion = $domicilio_lab." (". $nro_dom_lab." )";
+$localidad_lab=$result->fields["localidad"];
+$telefono=$result->fields["telefono"];
+
+$categoria_lab=$result->fields["categoria_lab"];
+$especialidad=$result->fields["especialidad"];
+$orientacion=$result->fields["orientacion"];
+
+	
+
+	if ($B == 1) {
+
+?><tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"><?php 
+$B = 0;
+				}
+	ELSE	{
+	$B=1;
+		 	
+?><tr bordercolor="#FFFFCC" bgcolor="#FFFFCC"> <?php 
+
+			}
+
+
+
+
+
+		?>
+     <td><font size="2"><?php print("$nro_laboratorio");?></font></td>
+     <td><font size="2"><?php print("$nombre_lab");?></font></td>
+	 <td><font size="2"><?php print("$direccion");?></font></td>
+     <td><font size="2"><?php print("$localidad_lab");?></font></td>
+    <td><font size="2"><?php print("$telefono");?></font></td>
+   
+	
+	<td><font size="2"><?php print("$categoria_lab");?></font></td>
+	<td><font size="2"><?php print("$especialidad");?></font></td>
+	<td><font size="2"><?php print("$orientacion");?></font></td>
+
+
+		
+		
+
+  </tr>
+	  
+    
+<?php 
+
+$result->MoveNext();
+	}
+
+?>
+</table>
+
+</body>
+

@@ -1,0 +1,85 @@
+<tr>
+    <th colspan="5" bgcolor="#B8B8B8" scope="col"><div align="left">PERIODO: <?php echo $mes;?>/<?php echo $anio;?></span></div></th>
+  </tr>
+  
+  
+  <?php
+
+$desde  =$anio."-".$mes."-01";
+$hasta  =$anio."-".$mes."-31";
+
+$sql1 = "SELECT *  FROM profe_detalle_1 where fecha between '$desde' and '$hasta' and cod_droga = '$cod_droga'";
+$result11 = $db->Execute($sql1);
+
+ if (!$result11) die("fallo".$db->ErrorMsg());
+  while (!$result11->EOF) {
+
+ $cod_detalle=$result11->fields["cod_detalle"];
+ $nro_factura=$result11->fields["nro_factura"];
+   $fecha=$result11->fields["fecha"];
+    $precio_unitario=$result11->fields["precio_unitario"];
+	 $documento=$result11->fields["documento"];
+ $cod_mercaderia=$result11->fields["cod_mercaderia"];
+$cod_droga=$result11->fields["cod_droga"];
+
+ $sql = "SELECT * FROM pacientes where documento = '$documento'";
+$result = $db->Execute($sql);
+  $apellido=$result->fields["apellido"];
+ 
+  $nombre=$result->fields["nombre"];
+ $calle=$result->fields["calle"];
+ $puerta=$result->fields["puerta"];
+ $departamento=$result->fields["departamento"];
+
+
+ $sql = "SELECT * FROM monodrogas where cod_droga = '$cod_droga'";
+$result = $db->Execute($sql);
+  $nombre_comercial=$result->fields["nombre_comercial"];
+$presentacion=$result->fields["presentacion"];
+
+$total_mes  =$total_mes + $precio_unitario;
+$total_droga = $total_droga + $total_mes;
+?>
+<tr>
+    <td><div align="left" class="Estilo16"><?php echo $apellido;?>, <?php echo $nombre;?> (<?php echo $documento;?>) </div></td>
+    <td><span class="Estilo16"><?php echo $nombre_comercial;?> </span></td>
+    <td><div align="center"><span class="Estilo16"><?php echo $nro_factura;?></span></div></td>
+    <td><div align="center" class="Estilo16"><?php echo $fecha;?></div></td>
+	  <td><div class="Estilo16">
+	    <div align="right"><?php echo number_format($precio_unitario,2);?></div>
+	  </div>
+	  <div align="right"></div></td>
+  </tr>
+
+
+
+<?php
+
+
+//$sql = "INSERT into profe_detalle_2 SELECT * FROM profe_detalle where cod_detalle = '$cod_detalle'";
+//mysql_query($sql);
+
+
+   $result11->MoveNext();
+	}
+
+?>
+
+ <tr>
+    <td bgcolor="#FFFFFF"><span class="Estilo13"></span></td>
+    <td bgcolor="#FFFFFF"><span class="Estilo13"></span></td>
+    <td bgcolor="#FFFFFF"><span class="Estilo13"></span></td>
+    <td bgcolor="#FFFFFF"><span class="Estilo13"></span></td>
+	 <td bgcolor="#FFFFFF"></td>
+  </tr>
+
+
+	  <tr>
+    <td bgcolor="#79BCFF">TOTAL MES<span class="Estilo13"></span></td>
+    <td bgcolor="#79BCFF"><span class="Estilo13"></span></td>
+    <td bgcolor="#79BCFF"><span class="Estilo13"></span></td>
+    <td bgcolor="#79BCFF"><span class="Estilo13"></span></td>
+	 <td bgcolor="#79BCFF"><div align="right"><span class="Estilo13"><?php echo $total_mes;?></span></div></td>
+  </tr>
+
+  <?php $total_mes = '';

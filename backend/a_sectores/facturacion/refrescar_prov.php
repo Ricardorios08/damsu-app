@@ -1,0 +1,100 @@
+<style type="text/css">
+<!--
+.Estilo16 {font-family: Arial, Helvetica, sans-serif}
+-->
+
+
+<!--
+.Estilo67 {color: #FFFFFF; font-size: 12px; font-family: Arial, Helvetica, sans-serif;}
+.Estilo69 {font-size: 12px}
+-->
+
+<!--
+.Estilo79 {color: #000099}
+.Estilo80 {color: #000099; font-size: 12px; }
+.Estilo89 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+-->
+
+
+
+</style>
+
+
+<table width="103%" border="0">
+  <tr bgcolor="#E6E6E6">
+    <td width="10%" scope="col"><div align="center" class="Estilo1 Estilo39 Estilo42 Estilo45 Estilo16 Estilo60 Estilo67 Estilo69 Estilo79">Cod.</div></td>
+    <td width="28%" scope="col"><div align="center" class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo16 Estilo60 Estilo67 Estilo69 Estilo79">Proveedor</div></td>
+    <td width="19%" scope="col"><div align="center" class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo16 Estilo60 Estilo67 Estilo69 Estilo79">Domicilio</div></td>
+    <td width="11%" scope="col"><div align="center" class="Estilo80"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Telefono</span></div></td>
+    <td width="12%" scope="col"><div align="center" class="Estilo80"><span class="Estilo1 Estilo45 Estilo39 Estilo42 Estilo60  Estilo16">Mail</span></div></td>
+
+  </tr>
+  
+
+<?php 
+	
+
+
+$nro_proveedor = $_REQUEST['proveedor'];
+
+$cod_merquita= $_REQUEST['cod_barra'];
+$nro_cliente= $_REQUEST['nro_cliente'];
+$operador= $_REQUEST['operador'];
+
+
+
+
+$busca == "SI";
+
+include("../../conexiones/config_pro.php");
+
+if ($nro_proveedor == ""){
+$sql = "select * from proveedores";
+}
+else
+{
+ $sql = "select * from proveedores  WHERE  cod_proveedor like '$nro_proveedor%' OR denominacion like '$nro_proveedor%'";
+}
+$result = $db->Execute($sql);
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$denominacion_proveedor=strtoupper($result->fields["denominacion"]);
+$cod_proveedor=strtoupper($result->fields["cod_proveedor"]);
+$domicilio=strtoupper($result->fields["domicilio"]);
+$telefono=strtoupper($result->fields["telefono"]);
+$mail=strtoupper($result->fields["mail"]);
+
+
+
+
+
+
+
+		?>
+<tr bgcolor="#FFFFFF">
+    <td scope="col"><div align="center" class="Estilo89"><a href="entrada_factura_3.php?documento=<?php print("$documento");?>&&operador=<?php print("$operador");?>&&matricula=<?php print("$matricula");?>&&matricula1=<?php print("$matricula");?>&&nro_factura=<?php print("$nro_factura");?>&&dia=<?php print("$dia");?>&&mes=<?php print("$mes");?>&&anio=<?php print("$anio");?>&&producto=<?php print("$descripcion");?>&&nro_os[]=<?php print("$nro_os");?>&&cod_merquita=<?php print("$cod_merquita");?>&&cod_proveedor=<?php print("$cod_proveedor");?>&&cod_merca=<?php print("$cod_merca");?>&&pasada=1&&no_hacer_nada=<?php print("$no_hacer_nada");?>"><?php print("$cod_merca");?><?php echo $cod_proveedor;?></a></div></td>
+    <td scope="col"><div align="left" class="Estilo89"><?php echo $denominacion_proveedor;?>
+      </div>
+    <div align="center" class="Estilo89"></div></td>
+    <td scope="col"><span class="Estilo89"><?php echo $domicilio;?></span>      <div align="center" class="Estilo89"></div></td>
+    <td scope="col"><div align="center" class="Estilo89"><?php echo $telefono;?>
+      </div>
+    <div align="center" class="Estilo89"></div></td>
+    <td scope="col">
+      <div align="center" class="Estilo89"></div>
+    <div align="center" class="Estilo89"><?php echo $mail;?> </div></td>
+  </tr>
+
+    
+
+
+<?php 
+   $result->MoveNext();
+				}
+				
+	?>	
+</table>
+

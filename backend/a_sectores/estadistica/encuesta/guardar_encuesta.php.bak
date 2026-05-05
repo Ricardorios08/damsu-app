@@ -1,0 +1,24 @@
+<?php 
+include ("../../../conexiones/config_usu.php");
+
+ 
+$preg1=$_POST["preg1"];
+$preg2=$_POST["preg2"];
+$preg3=$_POST["preg3"];
+$preg4=$_POST["preg4"];
+$preg5=$_POST["preg5"];
+$preg6=$_POST["preg6"];
+
+$dia=$_POST["dia"];
+$mes=$_POST["mes"];
+$anio=$_POST["anio"];
+
+$fecha = $anio."/".$mes."/".$dia;
+
+
+echo $sql = "INSERT INTO `encuesta1` ( `preg1` , `preg2` , `preg3` , `preg4` , `preg5` , `preg6` , `fecha` ) VALUES ( '$preg1', '$preg2' , '$preg3', '$preg4' , '$preg5', '$preg6' , '$fecha')";
+mysql_query($sql);
+
+include ("carga_datos.php");
+
+

@@ -1,0 +1,36 @@
+<?
+
+$busca = $_REQUEST['busca'];
+$buscador_rapido = $_REQUEST['buscador_rapido'];
+
+$opcione=$_POST["opciones"];
+	for ($i=0;$i<count($opcione);$i++)    
+	{     
+$opciones = $opcione[$i];    
+	}
+
+$opciones;
+switch ($opciones){
+
+
+	case "proveedores":{
+include ("proveedores/buscar_proveedores.php");
+		break;
+	}
+
+	case "laboratorios":{
+include ("proveedores/buscar_laboratorios.php");
+		break;
+	}
+
+	case "vademecum":{
+include ("mercaderia/buscar_monodrogas.php");
+		break;
+	}
+
+	case "drogas":{
+include ("mercaderia/buscar_drogas.php");
+		break;
+	}
+}
+?>

@@ -1,0 +1,84 @@
+<?php 
+
+global $buscador_rapido;
+
+
+if ($borrar != 1){
+$buscador_rapido=$_POST["buscador_rapido"];
+$palabra=$_POST["busca"];
+}
+
+ $buscador_rapido = 2;
+$hoy = date("d/m/y");
+
+include("../../conexiones/config_pro.php");
+
+
+$B = 1;
+
+
+if ($busca == ""){
+$sql="select * from compras_encabezado";
+}else{
+$sql="select * from compras_encabezado where nro_factura like '$busca%' or nro_proveedor like '$busca%' or denominacion like '%$busca%' order by fecha desc, nro_factura";
+}
+$result = $db->Execute($sql);
+
+?>
+<table width="800" border="0" cellspacing="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#E6E6E6">
+    <td colspan="12"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS"><font color="#000000">LISTADO DE FACTURAS DE COMPRAS. Emitido el <?php echo $hoy;?></font></font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFCC" bgcolor="#000099">
+
+    <td width="5%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">Nº FACTURA</font></div></td>
+    <td width="13%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">PROVEEDOR</font></div></td>
+    <td width="5%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">FECHA </font></div></td>
+    <td width="2%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">DESC.</font></div></td>
+    <td width="3%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">BONIF.</font></div></td>
+	<td width="5%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">SUBTOTAL</font></div></td>
+	<td width="3%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">IVA</font></div></td>
+	<td width="3%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">TOTAL</font></div></td>
+    <td width="5%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">MODIFICAR </font></div></td>
+    <td width="4%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">ELIMINAR </font></div></td>
+    <td width="3%" bgcolor="#666666"><div align="center"><font color="#FFFFFF" size="2" face="Trebuchet MS">DETALLE</font></div></td>
+  </tr>
+ 
+  <?php 
+   
+   if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+$denominacion=strtoupper($result->fields["denominacion"]);
+$nro_proveedor=strtoupper($result->fields["nro_proveedor"]);
+$fecha=strtoupper($result->fields["fecha"]);
+$bonificacion=strtoupper($result->fields["bonificacion"]);
+$descuento=strtoupper($result->fields["descuento"]);
+$subtotal=strtoupper($result->fields["subtotal"]);
+$iva=strtoupper($result->fields["iva"]);
+$total=strtoupper($result->fields["total"]);
+
+
+?>
+  <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$nro_factura");?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="left"><font size="2" face="Trebuchet MS"><?php print("$denominacion");?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$fecha");?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$descuento");?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$bonificacion");?></font></div></td>
+	<td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$subtotal");?></font></div></td>
+	<td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$iva");?></font></div></td>
+	<td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php print("$total");?></font></div></td>
+    <td bordercolor="#E8DCFC" bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><a href="clientes/modificar.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/027.ico" alt="Modificar" border = "0"></a></font></div></td>
+    <td bordercolor="#E8DCFC" bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"> <a href="clientes/borra.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/1047.ico" alt="Eliminar" border = "0"></a></font></div></td>
+    <td bordercolor="#E8DCFC" bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"> <a href="clientes/ficha.php?id=<?php print("$cuenta");?>"><IMG SRC="../../imagenes/office/005.ico" alt="Ficha" border = "0"></a></font></div></td>
+  </tr>
+  <?php 
+
+
+$result->MoveNext();
+	}
+
+?>
+</table>

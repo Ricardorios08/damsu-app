@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+
+	
+
+.Estilo1 {
+	font-family: "Arial Black";
+	font-size: 24px;
+}
+.Estilo4 {font-family: Arial, Helvetica, sans-serif; font-size: 16px; }
+.Estilo5 {color: #000099}
+.Estilo15 {font-family: Arial, Helvetica, sans-serif}
+.Estilo16 {font-size: 16px}
+.Estilo17 {color: #000066}
+.Estilo18 {font-family: Arial, Helvetica, sans-serif; color: #000066; }
+-->
+</style>
+<script language="javascript">
+function on_load()
+{
+document.getElementById("matricula").focus();
+}
+
+function pagina2()
+{
+document.getElementById("titulo").focus();
+}
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "matricula":
+				document.getElementById("apellido").focus();
+				
+				break;
+				case "apellido":
+				document.getElementById("apellido_materno").focus();
+				break;
+			
+		}
+		return false;
+	}
+	return true;
+}
+
+
+
+<script language="JavaScript" src="../imagenes/fuegos/rutbasicas.js">
+
+<script language="JavaScript" src="../imagenes/fuegos/artificiales.js">
+</script>
+
+</head>
+<!-- <BODY  bgcolor="#000066" background="../IMAGENES/BOTONES/BARRA/fondo3.jpg" > -->
+<BODY  bgcolor="#000066" background="../IMAGENES/fondo.png" > 
+<script language="JavaScript">
+ponerFuegos(3, 400, 400, 300, true);
+</script>
+<div align="center" class="Estilo1">
+  <p class="Estilo5"></p>
+</div>
+<TR><TD>  
+<FORM ACTION="../validar/validar.php" method="post" TARGET = "central">
+
+  <div align="left"><font size="1"> </font>
+  </div>
+  <table width="80%" height="221" border="0">
+    <tr>
+      <th width="9%" scope="col"><div align="right"><span class="Estilo15 Estilo17"><span class="Estilo4">USUARIO</span></span></div></th>
+      <th width="7%" scope="col"><div align="left">
+        <input type="text" name="usuario" size = "6">
+      </div></th>
+      <th width="84%" rowspan="12" scope="col"><img src="..//imagenes/fondos/programa.png"  border="0" usemap="#Map"></th>
+      </tr>
+    <tr>
+      <th scope="col"><div align="right"><span class="Estilo18"><span class="Estilo16">CONTRASE&Ntilde;A</span></span></div></th>
+      <th scope="col"><div align="left">
+        <input type="password" name="password" size = "6">
+      </div></th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col"><input type="Submit" name="bLogin" value="Entrar">
+        <input type="button" name="logout" value="Salir"></th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+    <tr>
+      <th colspan="2" scope="col">&nbsp;</th>
+    </tr>
+  </table>
+  
+</form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?php 
+include ("../../../conexiones/config_pro.php");
+
+$cod_detalle = $_REQUEST['cod_detalle'];
+$id= $_REQUEST['id'];
+
+$sql = "DELETE FROM compras1_deta_temp where cod_detalle = $cod_detalle";
+mysql_query($sql);
+
+include ("pagina2.php");
+include_once("refrescar_detalle.php");
+
+?>
+

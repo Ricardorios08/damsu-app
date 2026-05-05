@@ -1,0 +1,352 @@
+<?php 
+
+$B = 1;
+ include ("../../../conexiones/config_usu.php");
+
+
+
+$anio = 2013;
+$mes = 08;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=$result->fields["nro_factura"];	
+
+
+
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= '$nro_factura'";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+
+$total = $total + $cant;
+$result->MoveNext();
+	}
+
+
+echo "t.$total;
+
+$total = "";
+echo "<br>";
+
+$mes = 09;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=$result->fields["nro_factura"];	
+
+
+
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= '$nro_factura'";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+
+$total = $total + $cant;
+$result->MoveNext();
+	}
+
+
+echo $total;
+
+$total = "";
+echo "<br>";
+
+$mes = 10;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=$result->fields["nro_factura"];	
+
+
+
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= '$nro_factura'";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+
+$total = $total + $cant;
+$result->MoveNext();
+	}
+
+
+echo $total;
+
+$total = "";
+echo "<br>";
+
+$mes = 11;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=$result->fields["nro_factura"];	
+
+
+
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= '$nro_factura'";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+
+$total = $total + $cant;
+$result->MoveNext();
+	}
+
+
+echo $total;
+
+$total = "";
+echo "<br>";
+
+$mes = 12;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=$result->fields["nro_factura"];	
+
+
+
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= '$nro_factura'";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+
+$total = $total + $cant;
+$result->MoveNext();
+	}
+
+
+echo $total;
+
+$total = "";
+echo "<br>";
+/*
+$mes = 02;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 03;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 04;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 05;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+/*
+$mes = 06;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 07;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 08;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 09;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 10;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 11;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+
+$mes = 12;
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+ $sql="select * from tr_compras_encab where fecha between  '$desde' and '$hasta' and nro_proveedor = 110 group by nro_factura";
+$result = $db->Execute($sql);
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+$nro_factura=$result->fields["nro_factura"];	
+ $sql3=" SELECT count(cod_mercaderia) as cant FROM tr_compras_detalle where nro_factura= $nro_factura";
+$result3 = $db->Execute($sql3);
+$cant=$result3->fields["cant"];
+$total = $total + $cant;
+$result->MoveNext();
+	}
+echo $total;
+$total = "";
+echo "<br>";
+*/
+?>
+
+
+
+

@@ -1,0 +1,493 @@
+<?php 
+
+require('../../../drivers/fpdf/fpdf.php');
+include ("../../../conexiones/config_pro.php");
+
+
+$hoy=date("d/m/y");
+$nro_factura= $_REQUEST['nro_factura'];
+
+class PDF2 extends FPDF
+{
+
+    var $nroPac;
+//Page header
+function Header()
+{
+
+   
+//$this->Image('../../../imagenes/logo_coope2.jpg',10,5,180, 'C');
+
+$this->SetY(9);
+$this->SetX(160);
+ $this->SetFont('Arial','B',13);
+$this->Cell(50,5,$this->getTipo());  
+$this->SetY(16);
+$this->SetX(155);
+ $this->SetFont('Arial','',11);
+$this->Cell(50,5,$this->getFecha());  
+$this->SetX(180);
+  $this->SetFont('Arial','',11);
+
+   
+	$this->Cell(0,5,'Pag '.$this->PageNo().'/{nb}',0,0,'C');
+
+
+$this->SetY(23);
+$this->SetX(155);
+
+   $this->SetFont('Arial','',13);
+$this->Cell(50,5,$this->getFactura());
+
+
+}
+
+function Footer()
+{
+	
+
+
+$this->SetY(-35);
+$this->SetX(120);  
+
+    //Select Arial italic 8
+  
+    $this->SetFont('Arial','I',10);
+    //Print centered page number
+
+
+ $this->Cell(80,6,"TOTAL GENERAL $ ".$this->getNeto(),1,0,'C');
+ $this->Ln();
+
+//$this->Image('../../../imagenes/logo_abajo.jpg',10,270,180, 'C');
+
+
+}
+
+
+function setFecha($nrofec) {
+    $this->nroFec = $nrofec;
+}
+function getFecha() {
+    return $this->nroFec;
+}
+
+
+function setFactura($nrofac) {
+    $this->nroFac = $nrofac;
+}
+function getFactura() {
+    return $this->nroFac;
+}
+
+
+function setNeto($nronet) {
+    $this->nroNet = $nronet;
+}
+function getNeto() {
+    return $this->nroNet;
+}
+
+function setTipo($nrotip) {
+    $this->nroTip = $nrotip;
+}
+function getTipo() {
+    return $this->nroTip;
+}
+
+
+function setNetos($nronet) {
+    $this->nroNets = $nronet;
+}
+function getNetos() {
+    return $this->nroNets;
+}
+
+
+
+var $widths;
+var $aligns;
+
+function SetWidths($w)
+{
+	//Set the array of column widths
+	$this->widths=$w;
+}
+
+function SetAligns($a)
+{
+	//Set the array of column alignments
+	$this->aligns=$a;
+}
+
+function Row($data)
+{
+	//Calculate the height of the row
+	$nb=0;
+	for($i=0;$i<count($data);$i++)
+		$nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
+	$h=5*$nb;
+	//Issue a page break first if needed
+	$this->CheckPageBreak($h);
+	//Draw the cells of the row
+	for($i=0;$i<count($data);$i++)
+	{
+		$w=$this->widths[$i];
+		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'R';
+		//Save the current position
+		$x=$this->GetX();
+		$y=$this->GetY();
+		//Draw the border
+//		$this->Rect($x,$y,$w,$h);
+		//Print the text
+		$this->MultiCell($w,5,$data[$i],0,$a);
+		//Put the position to the right of the cell
+		$this->SetXY($x+$w,$y);
+	}
+	//Go to the next line
+	$this->Ln($h);
+}
+
+function CheckPageBreak($h)
+{
+	//If the height h would cause an overflow, add a new page immediately
+	if($this->GetY()+$h>$this->PageBreakTrigger)
+		$this->AddPage($this->CurOrientation);
+}
+
+function NbLines($w,$txt)
+{
+	//Computes the number of lines a MultiCell of width w will take
+	$cw=&$this->CurrentFont['cw'];
+	if($w==0)
+		$w=$this->w-$this->rMargin-$this->x;
+	$wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s=str_replace("\r",'',$txt);
+	$nb=strlen($s);
+	if($nb>0 and $s[$nb-1]=="\n")
+		$nb--;
+	$sep=-1;
+	$i=0;
+	$j=0;
+	$l=0;
+	$nl=1;
+	while($i<$nb)
+	{
+		$c=$s[$i];
+		if($c=="\n")
+		{
+			$i++;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+			continue;
+		}
+		if($c==' ')
+			$sep=$i;
+		$l+=$cw[$c];
+		if($l>$wmax)
+		{
+			if($sep==-1)
+			{
+				if($i==$j)
+					$i++;
+			}
+			else
+				$i=$sep+1;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+		}
+		else
+			$i++;
+	}
+	return $nl;
+}
+
+}
+
+$hoja = "A4";
+
+$pdf=new PDF2('P','mm',$hoja); 
+$pdf->SetDisplayMode(real,'default'); 
+
+//$pdftest=new PDF2();
+$pdf->AliasNbPages();
+//$pdf->AddPage();
+$pdf->SetFont('ARIAL','',8);
+
+
+
+
+
+
+
+
+  $sql = "SELECT * FROM compras_encabezado where nro_factura = $nro_factura";
+$result = $db->Execute($sql);
+
+$tipo_fact=001;
+$nro_factura=$result->fields["nro_factura"];
+$comprobante=$result->fields["comprobante"];
+
+$fecha=$result->fields["fecha"];
+ 
+$nro_fact = str_pad($nro_factura, 10, "0", STR_PAD_LEFT);
+
+ $dia= substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio= substr($fecha,0,4);
+
+$fecha= $dia."/".$mes."/".$anio;
+
+ 
+
+ $pdf->setFecha($fecha);
+$pdf->setFactura($nro_fact);
+
+
+ $nro_receta=$result->fields["nro_receta"];
+ $nro_proveedor=$result->fields["nro_proveedor"];
+ $tipo_doc=$result->fields["tipo_doc"];
+ $plan_completo=$result->fields["plan_completo"];
+ $operador=$result->fields["operador"];
+ $denominacion=$result->fields["denominacion"];
+ $fecha=$result->fields["fecha"];
+ $forma_pago=$result->fields["forma_pago"];
+ $porc_dto=$result->fields["porc_dto"];
+ $nombre_operador=$result->fields["nombre_operador"];
+ $neto=$result->fields["neto"];
+  $tipo_factura=$result->fields["tipo_factura"];
+    $observaciones=$result->fields["observaciones"];
+ $cod_movimiento=$result->fields["cod_movimiento"];
+
+
+ $total=$result->fields["total"];
+
+
+$tipo_comprobante = "COMPRAS";
+
+$pdf->setTipo($tipo_comprobante);
+
+$pdf->setNeto($total);
+
+
+$pdf->AddPage();
+
+
+ $sql1="select * from proveedores where cod_proveedor = $nro_proveedor";
+$result1 = $db->Execute($sql1);
+$denominacion=strtoupper($result1->fields["denominacion"]);
+ 
+ 
+$pdf->ln();
+ 
+$pdf->Cell(18,5,"Proveedor: ",0); 
+$pdf->SetFont('ARIAL','B',12);
+$pdf->Cell(50,5,$denominacion,0); 
+$pdf->SetFont('ARIAL','',8);
+
+$pdf->SetFont('ARIAL','B',12);
+$pdf->SetX(140);
+$pdf->Cell(50,5,$nro_proveedor,0); 
+$pdf->SetFont('ARIAL','',8);
+
+
+$pdf->Cell(50,5,$comprobante,0); 
+$pdf->SetFont('ARIAL','',8);
+
+
+$pdf->ln();
+
+$pdf->Image('../../../imagenes/linea.jpg',10,35,180, 'C');
+
+$pdf->ln();
+
+
+$pdf->Cell(50,5,"CANT      DROGA                 PRESENTACION                                                                             LOTE              VTO                    UNIT      TOTAL ",0); 
+$pdf->ln();
+
+
+ $sql3 = "SELECT * FROM `compras_detalle`  WHERE  nro_factura = $nro_factura order by  cod_detalle desc";
+$result3 = $db->Execute($sql3);
+
+if (!$result3) die("fallo".$db->ErrorMsg());
+
+ while (!$result3->EOF) {
+$renglon = $renglon + 1;
+
+
+ $cod_mer = $cod_merca;
+
+
+  $cod_mercaderia=strtoupper($result3->fields["cod_mercaderia"]);
+$cod_merca=strtoupper($result3->fields["cod_mercaderia"]);
+
+
+if ($cod_mer == ""){
+$cod_mer = $cod_merca;
+}
+
+
+
+
+/*if ($cod_mer == $cod_merca){
+	$canti = $canti + 1;
+}*/
+
+/*if ($cod_mer != $cod_merca){
+
+ 
+$pdf->SetX(190);
+$pdf->Cell(50,5,"Tot: ".$canti,0); 
+$pdf->ln();
+$pdf->ln();
+ 
+$canti = 1;
+
+}*/
+
+$cantidad=strtoupper($result3->fields["cantidad"]);
+$proveedor=strtoupper($result3->fields["proveedor"]);
+$presentacion=strtoupper($result3->fields["presentacion"]);
+$descripcion=strtoupper($result3->fields["descripcion"]);
+$cod_detalle=strtoupper($result3->fields["cod_detalle"]);
+$gtin = $result3->fields["gtin"];
+$resultado= $result3->fields["resultado"];
+$transaccion= $result3->fields["transaccion"];
+
+
+$lote1=strtoupper($result3->fields["lote"]);
+$mes_lote=strtoupper($result3->fields["mes_lote"]);
+$anio_lote=strtoupper($result3->fields["anio_lote"]);
+$vto_lote = $mes_lote."/".$anio_lote;
+
+$gtin=strtoupper($result3->fields["gtin"]);
+$precio_unitario=strtoupper($result3->fields["precio_unitario"]);
+
+$sql = "SELECT * FROM `monodrogas`  WHERE  `cod_barra` = '$cod_mercaderia' or troquel = $cod_mercaderia";
+$result = $db->Execute($sql);
+$cod_mercaderia=strtoupper($result->fields["troquel"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$cod_droga=strtoupper($result->fields["cod_droga"]);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+
+
+if (is_numeric ($laboratorio)) { 
+$sql = "SELECT * FROM laboratorios  WHERE  cod_laboratorio = '$laboratorio' ";
+$result = $db->Execute($sql);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+} 
+
+
+$sql = "SELECT * FROM `drogas`  WHERE  cod_droga = '$cod_droga' ";
+$result = $db->Execute($sql);
+$droga=strtoupper($result->fields["droga"]);
+
+$nombre_remedio = $droga."  ".$presentacion;
+
+$cont = $cont + 1;
+
+$precio_unitario = str_pad($precio_unitario, 12, " ", STR_PAD_LEFT); 
+
+//$pdf->SetX(60);
+
+$pdf->Cell(10,5,$cantidad,0); 
+$pdf->Cell(50,5,$droga ,0,0,'L',false); 
+$pdf->Cell(40,5,$presentacion ,0,0,'C',false); 
+
+ 
+ 
+$pdf->Cell(20,5,$lote1 ,0,0,'C',false); 
+ 
+ 
+$pdf->Cell(20,5,$vto_lote ,0,0,'C',false); 
+
+ 
+$pdf->Cell(20,5,$precio_unitario ,0,0,'R',false); 
+
+ $tot_prod = $precio_unitario * $cantidad;
+
+//$pdf->SetX(160);
+ IF ($tot_prod > 0){
+	 $tot_prod = number_format($tot_prod,2);
+}
+
+$pdf->Cell(30,5,$tot_prod ,0,0,'R',false); 
+$pdf->ln();
+
+
+$subtotal = $subtotal + $precio_unitario;
+
+ 
+	/*$pdf->SetX(12);
+$pdf->Cell(60,5,$nombre_comercial,0); 
+$pdf->Cell(80,5,"GTIN: ".$gtin,0); 
+$pdf->Cell(80,5,$laboratorio,0); 
+$pdf->ln();
+$contame = $contame + 1;
+ */
+
+
+
+
+//$contame = $contame + 1;
+
+if ($contame == 1200){
+
+$pdf->SetX(160);
+$pdf->Cell(18,5,"SubTotal: ",0);
+$pdf->Cell(18,5,$subtotal,1,0,'L'); 
+$pdf->AddPage();
+$pdf->ln();
+ 
+$pdf->Cell(18,5,"Proveedor: ",0); 
+$pdf->SetFont('ARIAL','B',12);
+$pdf->Cell(50,5,$denominacion,0); 
+$pdf->SetFont('ARIAL','',8);
+
+$pdf->SetFont('ARIAL','B',12);
+$pdf->SetX(140);
+$pdf->Cell(50,5,$nro_proveedor,0); 
+$pdf->SetFont('ARIAL','',8);
+
+
+$pdf->ln();
+
+$pdf->Image('../../../imagenes/linea.jpg',10,35,180, 'C');
+
+$pdf->ln();
+
+
+$pdf->Cell(50,5,"CANT    DROGA                 PRESENTACION                                                                             LOTE              VTO                    UNIT      TOTAL ",0); 
+$pdf->ln();
+
+$contame = 1;
+}
+
+
+	 $result3->MoveNext();
+
+				}
+
+/*if ($tipo_fact == '001'){
+$pdf->SetX(190);
+$pdf->Cell(50,5,"Tot: ".$canti,0); 
+$pdf->ln();
+}*/
+
+ $sumatoria = $cont;
+		$cont = 0;
+
+
+$sumatoria = 0;
+
+
+
+$pdf->Output();
+
+
+// 428-7755

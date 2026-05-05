@@ -1,0 +1,65 @@
+<?php 
+$direccion = "";
+$nro = "";
+
+include ("../../../conexiones/config_usu.php");
+$palabra = $_REQUEST['id'];
+
+$sql="select * from pacientes where documento =  $palabra";
+$result = $db->Execute($sql);
+
+$documento=strtoupper($result->fields["documento"]);
+$nombre=strtoupper($result->fields["nombre"]);
+$apellido=strtoupper($result->fields["apellido"]);
+$nombre_completo = $apellido.", ".$nombre; 
+
+$calle=strtoupper($result->fields["calle"]);
+$puerta=strtoupper($result->fields["puerta"]);
+$telefono=strtoupper($result->fields["telefono"]);
+
+$direccion= $calle." ".$nro;
+$estado=strtoupper($result->fields["estado"]);
+$localidad=strtoupper($result->fields["localidad"]);
+$departamento=strtoupper($result->fields["departamento"]);
+
+
+?>
+<table width="800" border="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr bordercolor="#0066FF" bgcolor="#FF0000">
+    <td colspan="6" bordercolor="#E6E6E6" bgcolor="#999999"><div align="center"><font size="3" face="Trebuchet MS">CONSULTA DE RECETAS </font></div></td>
+  </tr>
+  <tr bordercolor="#0066FF" bgcolor="#E6E6E6"> 
+
+
+    <td colspan="5" rowspan="2" bordercolor="#E6E6E6"><div align="center"><font color="#000000" face="Trebuchet MS"></font><font color="#000000" face="Trebuchet MS"><font size="2"></font></font></div>      
+      <font color="#000000" size="2" face="Trebuchet MS">Paciente: </font><font size="2" face="Trebuchet MS"><?php print("$nombre_completo");?> ( <?php print("$documento");?>)</font></td>
+    <td bordercolor="#E6E6E6"><div align="center">
+      <p><font size="2" face="Trebuchet MS"><a href="../receta/entrada_receta.php?id=<?php print("$documento");?>"><img src="../../../imagenes/office//029.ico" alt="Modificar" border = "0"></a></font></p>
+      </div></td>
+  
+  </tr>
+  <tr bordercolor="#0066FF" bgcolor="#E6E6E6">
+    <td bordercolor="#E6E6E6"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">Nueva Receta </font></div></td>
+  </tr>
+
+  <tr bordercolor="#FFFFFF" bgcolor="#CCCCCC">
+    <td width="96"><div align="center"><font size="2" face="Trebuchet MS">Fecha Receta </font></div></td>
+    <td width="229"><div align="center"><font size="2" face="Trebuchet MS">Droga</font></div></td>
+    <td width="175"><div align="center"><font size="2" face="Trebuchet MS">Presentacion</font></div></td>
+    <td width="99"><div align="center"><font size="2" face="Trebuchet MS">Cantidad</font></div></td>
+    <td width="52"><div align="center"><font size="2" face="Trebuchet MS">Estado</font></div></td>
+    <td width="137"><div align="center"></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#E6E6E6"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"></font></div></td>
+  </tr>
+
+</table>
+
+

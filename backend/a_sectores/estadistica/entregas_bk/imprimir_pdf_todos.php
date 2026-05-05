@@ -1,0 +1,967 @@
+<?php 
+
+require('../../../drivers/fpdf/fpdf.php');
+include ("../../../conexiones/config_pro.php");
+//include ("arregla_grupo.php");
+
+$hoy=date("d/m/y");
+
+$mes = $_REQUEST['mes'];
+$anio = $_REQUEST['anio'];
+
+
+switch ($mes){
+	case "01":{$periodo = "ENERO 20".$anio;break;}
+	case "02":{$periodo = "FEBRERO 20".$anio;break;}
+	case "03":{$periodo = "MARZO 20".$anio;break;}
+	case "04":{$periodo = "ABRIL 20".$anio;break;}
+	case "05":{$periodo = "MAYO 20".$anio;break;}
+	case "06":{$periodo = "JUNIO 20".$anio;break;}
+
+	case "07":{$periodo = "JULIO 20".$anio;break;}
+	case "08":{$periodo = "AGOSTO 20".$anio;break;}
+	case "09":{$periodo = "SETIEMBRE 20".$anio;break;}
+	case "10":{$periodo = "OCTUBRE 20".$anio;break;}
+	case "11":{$periodo = "NOVIEMBRE 20".$anio;break;}
+	case "12":{$periodo = "DICIEMBRE 20".$anio;break;}
+
+}
+
+
+
+
+$prov_papo1 = "0";
+$prov_mono = "0";
+$ne_grupo1 = "0";
+$ne_grupo2 = "0";
+$ne_grupo3 = "0";
+$total_renglon = "0";
+
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+
+ 
+$sql = "TRUNCATE TABLE tr_ventas_detalle_entregas";
+mysql_query($sql);
+
+$sql = "INSERT INTO tr_ventas_detalle_entregas SELECT * FROM tr_ventas_detalle where fecha between '$desde' and '$hasta'";
+mysql_query($sql);
+
+class PDF2 extends FPDF
+{
+
+    var $nroPac;
+//Page header
+function Header()
+{
+
+   /*
+$this->SetY(16);
+$this->SetX(155);
+ $this->SetFont('Arial','',11);
+$this->Cell(50,5,$this->getFecha());  
+
+$this->SetY(23);
+$this->SetX(155);
+
+   $this->SetFont('Arial','',13);
+$this->Cell(50,5,$this->getFactura());
+
+*/
+   
+	
+
+$this->SetFillColor(224,235,255);
+$this->SetTextColor(0);
+$this->SetFont('');
+
+
+$titulo = "PROGRAMA ONCOLOGICO - LISTADO DE NOTAS ENTREGADAS - PERIODO: ".$this->getPaciente();
+$this->Cell(210,5,$titulo,0,0,'C'); 
+$this->SetFillColor(255,0,0);
+$this->SetTextColor(255);
+$this->SetDrawColor(128,0,0);
+$this->SetLineWidth(.3);
+$this->SetFont('','B');
+$this->SetX(0);
+$this->ln();
+$this->Cell(25,5,'COMPROBANTE',0,0,'C',true); 
+$this->Cell(20,5,'FECHA',0,0,'C',true); 
+$this->Cell(100,5,'PACIENTE',0,0,'C',true); 
+$this->SetX(150);
+$this->Cell(20,5,"PAPO 1",0,0,'R',true); 
+$this->Cell(20,5,"PAPO 2",0,0,'R',true); 
+$this->Cell(20,5,"PAPO MONO",0,0,'R',true); 
+$this->Cell(20,5,"ACE 1",0,0,'R',true); 
+$this->Cell(20,5,"ACE 2",0,0,'R',true); 
+$this->Cell(20,5,"MONO",0,0,'R',true); 
+$this->Cell(20,5,'TOTAL',0,0,'R',true); 
+
+ $this->ln();
+
+
+}
+
+function Footer()
+{
+	
+
+
+$this->SetY(-10);
+
+$this->SetFont('Arial','I',8);
+
+$this->Cell(0,10,'Pag. '.$this->PageNo().'/{nb}',0,0,'C');
+
+
+}
+
+
+function setPaciente($nropac) {
+    $this->nroPac = $nropac;
+}
+
+function getPaciente() {
+    return $this->nroPac;
+}
+
+
+
+
+
+
+var $widths;
+var $aligns;
+
+function SetWidths($w)
+{
+	//Set the array of column widths
+	$this->widths=$w;
+}
+
+function SetAligns($a)
+{
+	//Set the array of column alignments
+	$this->aligns=$a;
+}
+
+function Row($data)
+{
+	//Calculate the height of the row
+	$nb=0;
+	for($i=0;$i<count($data);$i++)
+		$nb=max($nb,$this->NbLines($this->widths[$i],$data[$i]));
+	$h=5*$nb;
+	//Issue a page break first if needed
+	$this->CheckPageBreak($h);
+	//Draw the cells of the row
+	for($i=0;$i<count($data);$i++)
+	{
+		$w=$this->widths[$i];
+		$a=isset($this->aligns[$i]) ? $this->aligns[$i] : 'R';
+		//Save the current position
+		$x=$this->GetX();
+		$y=$this->GetY();
+		//Draw the border
+//		$this->Rect($x,$y,$w,$h);
+		//Print the text
+		$this->MultiCell($w,5,$data[$i],0,$a);
+		//Put the position to the right of the cell
+		$this->SetXY($x+$w,$y);
+	}
+	//Go to the next line
+	$this->Ln($h);
+}
+
+function CheckPageBreak($h)
+{
+	//If the height h would cause an overflow, add a new page immediately
+	if($this->GetY()+$h>$this->PageBreakTrigger)
+		$this->AddPage($this->CurOrientation);
+}
+
+function NbLines($w,$txt)
+{
+	//Computes the number of lines a MultiCell of width w will take
+	$cw=&$this->CurrentFont['cw'];
+	if($w==0)
+		$w=$this->w-$this->rMargin-$this->x;
+	$wmax=($w-2*$this->cMargin)*1000/$this->FontSize;
+	$s=str_replace("\r",'',$txt);
+	$nb=strlen($s);
+	if($nb>0 and $s[$nb-1]=="\n")
+		$nb--;
+	$sep=-1;
+	$i=0;
+	$j=0;
+	$l=0;
+	$nl=1;
+	while($i<$nb)
+	{
+		$c=$s[$i];
+		if($c=="\n")
+		{
+			$i++;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+			continue;
+		}
+		if($c==' ')
+			$sep=$i;
+		$l+=$cw[$c];
+		if($l>$wmax)
+		{
+			if($sep==-1)
+			{
+				if($i==$j)
+					$i++;
+			}
+			else
+				$i=$sep+1;
+			$sep=-1;
+			$j=$i;
+			$l=0;
+			$nl++;
+		}
+		else
+			$i++;
+	}
+	return $nl;
+}
+
+}
+
+$hoja = "A4";
+
+$pdf=new PDF2('L','mm',$hoja); 
+$pdf->SetDisplayMode(real,'default'); 
+
+//$pdftest=new PDF2();
+$pdf->AliasNbPages();
+//$pdf->AddPage();
+$pdf->SetFont('ARIAL','',8);
+
+
+$pdf->setPaciente($periodo);
+
+
+
+$pdf->AddPage();
+include ("entregas.php");
+
+
+
+$total_prov_papo_programa1 = $total_prov_papo1;
+$total_prov_papo_programa2 = $total_prov_papo2;
+$total_prov_mono_programa = $total_prov_mono;
+
+$total_grupo1_programa = $total_grupo1;
+$total_grupo2_programa = $total_grupo2;
+$total_grupo3_programa = $total_grupo3;
+
+
+include ("ajustes_positivos.php");
+
+$total_prov_papo_programa1 = $total_prov_papo1;
+$total_prov_papo_programa2 = $total_prov_papo2;
+$total_prov_mono_programa = $total_prov_mono;
+
+$total_grupo1_programa = $total_grupo1;
+$total_grupo2_programa = $total_grupo2;
+$total_grupo3_programa = $total_grupo3;
+
+include ("ajustes_negativos.php");
+
+
+$total_general_programa = $total_prov_papo_programa + $total_prov_mono_programa + $total_grupo1_programa + $total_grupo2_programa + $total_grupo3_programa;
+
+include ("devoluciones.php");
+
+
+
+ $total_general = $total_prov_papo1 + $total_prov_papo2 + $total_prov_mono + $total_grupo1 + $total_grupo2 + $total_grupo3;
+
+$total_grupo1_programa = $total_grupo1 - $dev_ace1;
+$total_grupo2_programa = $total_grupo2 - $dev_ace2;
+$total_grupo3_programa = $total_grupo3 - $dev_ace3;
+
+ $pdf->ln();
+ $pdf->ln();
+
+$papo_1 = $total_prov_papo1 - $total_dev1;
+$papo_2 = $total_prov_papo2 - $total_dev2;
+$papo_3 = $total_prov_mono - $total_dev3;
+
+$ace_1 = $total_grupo1;
+$ace_2 = $total_grupo2;
+$ace_3 = $total_grupo3;
+
+$total_general = $papo1 + $papo2 + $papo3 + $ace_1 + $ace_2 + $ace_3;
+
+
+$total_unico = $papo_1 + $papo_2 + $papo_3;
+$total_ace = $ace_1 + $ace_2;
+$total_gastado = $total_unico + $total_ace + $ace_3;
+$monoclonales = $papo_3 + $total_grupo3;
+
+
+
+
+
+
+
+$pdf->AddPage();
+
+
+$pdf->SetX(150);
+
+$tot = $total_prov_papo1 + $total_prov_papo2 + $total_prov_mono + $total_grupo1 + $total_grupo2 + $total_grupo3;
+$tot_dev = $total_dev1 + $total_dev2 + $total_dev3 + $dev_ace1 + $dev_ace2 + $dev_ace3;
+$final= $papo_1 + $papo_2 + $papo_3 + $total_grupo1 + $total_grupo2 + $total_grupo3;
+
+
+ 
+$pdf->SetX(130);
+$pdf->Cell(20,5,"ENTREGAS",0,0,'C');
+ $pdf->Cell(20,5,number_format($total_prov_papo1,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($total_prov_papo2,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($total_prov_mono,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($total_grupo1,2),0,0,'R');  
+$pdf->Cell(20,5,number_format($total_grupo2,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($total_grupo3,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot,2),0,0,'R'); 
+
+
+  $pdf->ln();
+  $pdf->SetX(130);
+$pdf->Cell(20,5,"DEVOLUCIONES",0,0,'C'); 
+$pdf->Cell(20,5,"-".number_format($total_dev1,2),0,0,'R'); 
+$pdf->Cell(20,5,"-".number_format($total_dev2,2),0,0,'R'); 
+$pdf->Cell(20,5,"-".number_format($total_dev3,2),0,0,'R'); 
+$pdf->Cell(20,5,"-".number_format($dev_ace1,2),0,0,'R'); 
+$pdf->Cell(20,5,"-".number_format($dev_ace2,2),0,0,'R'); 
+$pdf->Cell(20,5,"-".number_format($dev_ace3,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot_dev,2),0,0,'R'); 
+
+
+
+
+$tot1 = $total_prov_papo1 - $total_dev1;
+$tot2 = $total_prov_papo2 - $total_dev2;
+$tot3 = $total_prov_mono - $total_dev3;
+$tot4 = $total_grupo1 - $dev_ace1;
+$tot5 = $total_grupo2 - $dev_ace2;
+$tot6 = $total_grupo3 - $dev_ace3;
+
+$tot_fin = $tot1 + $tot2 + $tot3 + $tot4 + $tot5  + $tot6;
+
+ $pdf->ln();
+$pdf->SetX(130);
+$pdf->Cell(20,5,"TOTAL",0,0,'C'); 
+$pdf->Cell(20,5,number_format($tot1,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot2,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot3,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot4,2),0,0,'R');  
+$pdf->Cell(20,5,number_format($tot5,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot6,2),0,0,'R'); 
+$pdf->Cell(20,5,number_format($tot_fin,2),0,0,'R'); 
+
+  $pdf->ln();
+
+
+$total_gastado = $total_unico + $total_ace + $monoclonales;
+
+$total_ace = $tot4 + $tot5;
+
+
+$papo_1 = $papo_1 + $papo_2;
+$tot4 = $tot4 + $tot5;
+   $pdf->ln();
+
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"TIPO",1,0,'C',true);
+$pdf->Cell(50,5,"ENTREGADO",1,0,'C',true); 
+$pdf->ln();
+
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+$pdf->SetX(80);
+
+$pdf->Cell(80,5,"UNICO + OTROS PROVEEDORES: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($papo_1,2),1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+    $pdf->ln();
+
+/*$pdf->SetX(50);
+$pdf->Cell(50,5,"G2 UNICO: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($papo_2,2),1,0,'R'); 
+$pdf->Cell(50,5,'',1,0,'R'); 
+$pdf->Cell(50,5,'',1,0,'R'); 
+    $pdf->ln();
+*/
+$pdf->SetX(80);
+
+
+$pdf->Cell(80,5,"MONOCLONAL UNICO + OTROS PROVEEDORES: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($papo_3,2),1,0,'R'); 
+//$pdf->Cell(50,5,number_format($total_unico,2),1,0,'R'); 
+//$pdf->Cell(50,5,number_format($papo_3,2),1,0,'R');
+  $pdf->ln();
+
+$pdf->SetX(80);
+////////////////////////////////////////////////////
+$pdf->Cell(80,5,"ACE: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($tot4,2),1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+   $pdf->ln();
+
+/*$pdf->SetX(50);
+$pdf->Cell(50,5,"G2 ACE: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($tot5,2),1,0,'R'); 
+$pdf->Cell(50,5,number_format($total_ace,2),1,0,'R'); 
+$pdf->Cell(50,5,'',0,0,'R'); 
+   $pdf->ln();
+*/
+
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"MONOCLONAL META: ",1,0,'C'); 
+$pdf->Cell(50,5,number_format($tot6,2),1,0,'R'); 
+//$pdf->Cell(50,5,number_format($total_grupo3,2),1,0,'R'); 
+//$pdf->Cell(50,5,number_format($total_grupo3,2),1,0,'R'); 
+
+$tot_gas = $total_unico + $total_ace + $total_grupo3;
+
+
+    $pdf->ln();
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+
+
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"TOTAL GASTADO: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+ $pdf->Cell(50,5,number_format($tot_fin,2),1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+
+
+$pdf->ln();
+
+
+$tot_mono = $total_grupo3 + $papo_3;
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"TOTAL MONOCLONALES: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+//$pdf->Cell(50,5,'',1,0,'R'); 
+//$pdf->Cell(50,5,'',1,0,'R'); 
+$pdf->Cell(50,5,number_format($tot_mono,2),1,0,'R'); 
+
+///////////////
+
+
+$sql11 = "SELECT count(nro_factura) AS tot_prog FROM `tr_ventas_encabezado` where (fecha between '$desde' and '$hasta' and cod_movimiento = '1') or (fecha between '$desde' and '$hasta' and cod_movimiento = '10') order by nro_factura ";
+$result9 = $db->Execute($sql11);
+$tot_prog=strtoupper($result9->fields["tot_prog"]);
+
+$sql11 = "SELECT count(nro_factura) AS tot_deb FROM `tr_ventas_encabezado` where (fecha between '$desde' and '$hasta' and cod_movimiento = '2')   order by nro_factura ";
+$result9 = $db->Execute($sql11);
+$tot_deb=strtoupper($result9->fields["tot_deb"]);
+
+$sql11 = "SELECT count(nro_factura) AS tot_cred FROM `tr_ventas_encabezado` where (fecha between '$desde' and '$hasta' and cod_movimiento = '3')   order by nro_factura ";
+$result9 = $db->Execute($sql11);
+$tot_cred=strtoupper($result9->fields["tot_cred"]);
+
+   $sql11 = "SELECT count(nro_factura) AS tot_don FROM `compras_encabezado` where fecha between '$desde' and '$hasta' order by nro_factura";
+$result9 = $db->Execute($sql11);
+$tot_don=strtoupper($result9->fields["tot_don"]);
+
+
+$pdf->ln();
+
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+  $pdf->ln();
+$pdf->SetX(80);
+$pdf->Cell(80,5,"TOTAL ENTREGAS: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+
+$pdf->Cell(50,5,$tot_prog,1,0,'R'); 
+  $pdf->ln();
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"AJUSTES POSITIVOS: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+
+$pdf->Cell(50,5,$tot_deb,1,0,'R'); 
+  $pdf->ln();
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"AJUSTES NEGATIVOS: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+$pdf->Cell(50,5,$tot_cred,1,0,'R'); 
+$pdf->ln();
+
+$pdf->SetFillColor(255,0,0);
+$pdf->SetTextColor(255);
+$pdf->SetDrawColor(128,0,0);
+$pdf->SetLineWidth(.3);
+$pdf->SetFont('','B');
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"N/C UNICO: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+
+
+$pdf->Cell(50,5,$tot_don,1,0,'R'); 
+  $pdf->ln();
+
+
+$sql11 = "SELECT * FROM `tr_ventas_encabezado` where (fecha between '$desde' and '$hasta') order by nro_factura desc";
+$result = $db->Execute($sql11);
+$ultima_entrega=$result->fields["nro_factura"];
+
+
+   $sql11 = "SELECT * FROM `compras_encabezado` where fecha between '$desde' and '$hasta' order by nro_factura desc";
+$result = $db->Execute($sql11);
+
+$ultima_devolucion=$result->fields["nro_factura"];
+
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"N° ULTIMA NOTA ENTREGA: ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+$pdf->Cell(50,5,$ultima_entrega,1,0,'R'); 
+$pdf->ln();
+
+$pdf->SetX(80);
+$pdf->Cell(80,5,"N° ULTIMA NOTA DEVOLUCION (N/C): ",1,0,'C',true); 
+$pdf->SetFillColor(224,235,255);
+$pdf->SetTextColor(0);
+$pdf->SetFont('');
+$pdf->Cell(50,5,$ultima_devolucion,1,0,'R'); 
+
+
+
+/*
+////////////////////////////////
+$mes = "01";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$ene_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$ene_facturas=$result->fields["total"];
+$ene_neto=$result->fields["neto"];
+
+
+if ($ene_neto > 0){
+$ene_consumo_receta = round($ene_neto / $ene_recetas,2);
+$ene_consumo_entrega = round($ene_neto / $ene_facturas,2);
+}
+
+////////////////////////////////
+$mes = "02";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$feb_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$feb_facturas=$result->fields["total"];
+$feb_neto=$result->fields["neto"];
+
+
+if ($feb_neto > 0){
+$feb_consumo_receta = round($feb_neto / $feb_recetas,2);
+$feb_consumo_entrega = round($feb_neto / $feb_facturas,2);
+}
+ ////////////////////////////////////
+
+ $mes = "03";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$mar_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$mar_facturas=$result->fields["total"];
+$mar_neto=$result->fields["neto"];
+
+if ($mar_neto > 0){
+$mar_consumo_receta = round($mar_neto / $mar_recetas,2);
+$mar_consumo_entrega = round($mar_neto / $mar_facturas,2);
+}
+ ////////////////////////////////////
+
+////////////////////////////////
+$mes = "04";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$abr_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$abr_facturas=$result->fields["total"];
+$abr_neto=$result->fields["neto"];
+
+
+if ($abr_neto > 0){
+$abr_consumo_receta = round($abr_neto / $abr_recetas,2);
+$abr_consumo_entrega = round($abr_neto / $abr_facturas,2);
+}
+////////////////////////////////
+$mes = "05";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$may_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$may_facturas=$result->fields["total"];
+$may_neto=$result->fields["neto"];
+
+
+if ($may_neto > 0){
+$may_consumo_receta = round($may_neto / $may_recetas,2);
+$may_consumo_entrega = round($may_neto / $may_facturas,2);
+}
+ ////////////////////////////////////
+
+$mes = "06";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$jun_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$jun_facturas=$result->fields["total"];
+$jun_neto=$result->fields["neto"];
+
+ 
+ 
+
+
+
+
+if ($jun_neto > 0){
+$jun_consumo_receta = round($jun_neto / $jun_recetas,2);
+$jun_consumo_entrega = round($jun_neto / $jun_facturas,2);
+}
+ ////////////////////////////////////
+
+ ////////////////////////////////
+$mes = "07";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$jul_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$jul_facturas=$result->fields["total"];
+$jul_neto=$result->fields["neto"];
+
+
+if ($jul_neto > 0){
+$jul_consumo_receta = round($jul_neto / $jul_recetas,2);
+$jul_consumo_entrega = round($jul_neto / $jul_facturas,2);
+}
+
+////////////////////////////////
+$mes = "08";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$ago_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$ago_facturas=$result->fields["total"];
+$ago_neto=$result->fields["neto"];
+
+
+if ($ago_neto > 0){
+$ago_consumo_receta = round($ago_neto / $ago_recetas,2);
+$ago_consumo_entrega = round($ago_neto / $ago_facturas,2);
+}
+
+ ////////////////////////////////////
+
+ $mes = "09";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$set_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$set_facturas=$result->fields["total"];
+$set_neto=$result->fields["neto"];
+
+
+if ($set_neto > 0){
+$set_consumo_receta = round($set_neto / $set_recetas,2);
+$set_consumo_entrega = round($set_neto / $set_facturas,2);
+}
+ ////////////////////////////////////
+
+ ////////////////////////////////
+$mes = "10";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$oct_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$oct_facturas=$result->fields["total"];
+$oct_neto=$result->fields["neto"];
+
+
+if ($oct_neto > 0){
+$oct_consumo_receta = round($oct_neto / $oct_recetas,2);
+$oct_consumo_entrega = round($oct_neto / $oct_facturas,2);
+}
+
+////////////////////////////////
+
+$mes = "11";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$nov_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$nov_facturas=$result->fields["total"];
+$nov_neto=$result->fields["neto"];
+
+
+if ($nov_neto > 0){
+$nov_consumo_receta = round($nov_neto / $nov_recetas,2);
+$nov_consumo_entrega = round($nov_neto / $nov_facturas,2);
+}
+ ////////////////////////////////////
+
+ $mes = "12";
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$dic_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$dic_facturas=$result->fields["total"];
+$dic_neto=$result->fields["neto"];
+
+
+if ($dic_neto > 0){
+$dic_consumo_receta = round($dic_neto / $dic_recetas,2);
+$dic_consumo_entrega = round($dic_neto / $dic_facturas,2);
+}
+ ////////////////////////////////////
+
+
+
+$pdf->ln();
+
+$pdf->ln();
+$pdf->Cell(240,5,'CONSUMO POR PACIENTE',1,0,'C',true);
+$pdf->ln();
+
+$pdf->Cell(50,5,'MES',1,0,'C',true); 
+$pdf->Cell(35,5,'RECETAS',1,0,'C',true); 
+$pdf->Cell(35,5,'COSTO RECETAS',1,0,'C',true); 
+$pdf->Cell(35,5,'PACIENTES',1,0,'C',true); 
+$pdf->Cell(35,5,"COSTO PACIENTES",1,0,'C',true); 
+$pdf->Cell(50,5,'CONSUMO',1,0,'C',true); 
+
+
+
+$pdf->ln();
+$pdf->Cell(50,5,'ENERO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$ene_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$ene_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$ene_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$ene_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$ene_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'FEBRERO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$feb_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$feb_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$feb_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$feb_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$feb_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'MARZO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$mar_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$mar_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$mar_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$mar_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$mar_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'ABRIL '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$abr_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$abr_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$abr_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$abr_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$abr_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'MAYO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$may_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$may_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$may_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$may_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$may_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'JUNIO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$jun_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$jun_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$jun_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$jun_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$jun_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'JULIO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$jul_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$jul_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$jul_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$jul_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$jul_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'AGOSTO '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$ago_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$ago_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$ago_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$ago_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$ago_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'SETIEMBRE '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$set_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$set_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$set_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$set_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$set_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'OCTUBRE '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$oct_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$oct_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$oct_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$oct_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$oct_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'NOVIEMBRE '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$nov_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$nov_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$nov_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$nov_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$nov_neto,1,0,'R',true); 
+
+$pdf->ln();
+$pdf->Cell(50,5,'DICIEMBRE '.$anio,1,0,'C',true); 
+$pdf->Cell(35,5,$dic_facturas,1,0,'C',true); 
+$pdf->Cell(35,5,$dic_consumo_entrega,1,0,'R',true); 
+$pdf->Cell(35,5,$dic_recetas,1,0,'C',true); 
+$pdf->Cell(35,5,$dic_consumo_receta,1,0,'R',true); 
+$pdf->Cell(50,5,$dic_neto,1,0,'R',true); 
+
+*/
+
+$pdf->Output();
+
+//$nombre = "DETALLE_COMPROBANTES.PDF";
+//$pdf->Output($nombre, 'D');
+
+
+
+//8325959

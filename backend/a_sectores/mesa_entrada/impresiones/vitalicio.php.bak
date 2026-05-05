@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close();">
+
+
+<?php
+//global $buscador_rapido;
+$buscador_rapido=2;
+$buscador_rapido;
+$fecha = date('d/m/Y');
+ include("adodb.inc.php");
+ $db = NewADOConnection('mysql');
+ $db->Connect("localhost", "root", "", "bioquimica");
+
+$B = 1;
+
+$sql="select * from datos_personales where vitalicio = 'SI' and vitalicio != '' order by localidad asc ";
+
+	$result = $db->Execute($sql);
+?>
+LISTADO DE BIOQUIMICOS VITALICOS. <br>
+Emitido el:  <?echo $fecha;?> <br> 
+
+<table width="85%" height="49" border="1">
+  <tr bordercolor="#FFFFCC" bgcolor="#993300">
+    <td width="10%" height="19" bgcolor="#FFFF99"><div align="center"><font color="#006633"><strong><font color="#000000" size="2">MATRICULA</font></strong></font></div></td>
+    <td width="14%" bgcolor="#FFFF99"><div align="left"><font color="#000000"><strong><font size="2">APELLIDO</font></strong></font></div></td>
+    <td width="18%" bgcolor="#FFFF99"><div align="left"><font color="#000000"><strong><font size="2">NOMBRE</font></strong></font></div></td>
+    <td width="22%" bgcolor="#FFFF99"><div align="left"><font color="#000000"><strong><font size="2">DOMICILIO</font></strong></font></div></td>
+    <td width="21%" bgcolor="#FFFF99"><div align="left"><font color="#000000"><strong><font size="2">LOCALIDAD</font></strong></font></div></td>
+    <td width="15%" bgcolor="#FFFF99"><div align="left"><font color="#000000"><strong><font size="2">TELEFONO</font></strong></font></div></td>
+  </tr>
+  <?
+ 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+ $id=$result->fields["matricula"];
+
+	$sql1="select * from datos_estudio where matricula = '$id'";
+	$result1 = $db->Execute($sql1);
+
+$matricula=$result1->fields["matricula"];
+
+
+$apellido=strtoupper($result->fields["apellido"]);
+$nombre=strtoupper($result->fields["nombre"]);
+
+$domicilio=strtoupper($result->fields["domicilio"]); 
+$nro_domicilio=$result->fields["nro_domicilio"];
+
+$direccion = $domicilio. " (". $nro_domicilio. ")";
+$localidad=strtoupper($result->fields["localidad"]);
+$telefono=$result->fields["telefono"];
+
+	if ($B == 1) {
+
+?>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <?
+$B = 0;
+				}
+	ELSE	{
+	$B=1;
+		 	
+?>
+  </tr>
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFCC">
+    <?
+
+			}
+
+
+
+?>
+  </tr>
+  <td height="22"><div align="left"><font size="2"><?print("$id");?></font></div></td>
+      <td><div align="left"><font size="2"><?print("$apellido");?></font></div></td>
+      <td><div align="left"><font size="2"><?print("$nombre");?></font></div></td>
+      <td><div align="left"><font size="2"><?print("$direccion");?></font></div></td>
+      <td><div align="left"><font size="2"><?print("$localidad");?></font></div></td>
+      <td><div align="left"><font size="2"><?print("$telefono");?></font></div></td>
+  </tr>
+  <?
+
+
+$result->MoveNext();
+	}
+
+?>
+</table>
+</body>
+

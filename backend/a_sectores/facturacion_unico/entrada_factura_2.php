@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+
+<script language="javascript">
+function on_load()
+{
+document.getElementById("cod_mercaderia").focus();
+document.getElementById("cod_mercaderia").style.backgroundColor =  "#CCFFCC";
+}
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "forma_pago":
+document.getElementById("cod_mercaderia").style.backgroundColor =  "#CCFFCC";
+document.getElementById("cod_mercaderia").focus();
+				break;
+
+				case "cod_mercaderia":
+document.getElementById("cod_mercaderia").style.backgroundColor = "#ffffff";	document.getElementById("cantidad").style.backgroundColor =  "#CCFFCC";
+				document.getElementById("cantidad").focus();
+				break;
+				
+				case "cantidad":
+document.getElementById("cod_mercaderia").style.backgroundColor = "#CCFFFF";	document.getElementById("cantidad").style.backgroundColor =  "#CCFFFF";
+
+				document.getElementById("OK").focus();
+				break;
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+function abrirVentan() {
+	var cod_detalle = <?php echo $cod_detalle;?> 
+    open("buscador_rapido.php","miVentana", "width=300,height=600,toolbar=no,directories=no,menubar=no,status=no, scrollbars=01, location = 01, top = 35");
+}
+
+</script>
+
+
+</script>
+
+<html>
+<head>
+<title>Documento sin t&iacute;tulo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.Estilo4 {
+	color: #006633;
+	font-size: 10px;
+	font-weight: bold;
+}
+.Estilo6 {font-size: 12}
+.Estilo16 {font-family: Arial, Helvetica, sans-serif}
+.Estilo26 {
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+-->
+
+
+<!--
+.Estilo67 {color: #FFFFFF; font-size: 12px; font-family: Arial, Helvetica, sans-serif;}
+.Estilo70 {color: #FFFFFF}
+.Estilo71 {font-size: 10px}
+.Estilo72 {font-size: 12px; color: #000000; }
+-->
+
+<!--
+.Estilo84 {font-size: 12px}
+.Estilo85 {color: #000000}
+.Estilo89 {font-size: 12px; font-family: Arial, Helvetica, sans-serif; }
+.Estilo58 {color: #000000; font-family: "Trebuchet MS"; }
+.Estilo60 {font-size: 12px; color: #000000; font-family: "Trebuchet MS"; }
+.Estilo62 {color: #000000; font-family: "Trebuchet MS"; font-size: 10px; }
+.Estilo83 {font-size: 10px; font-family: Arial, Helvetica, sans-serif;}
+.Estilo90 {font-family: "Trebuchet MS"}
+-->
+
+
+
+</style>
+</head>
+
+<?php 
+//ECHO "Entrada de Factura 2";
+include ("../../../conexiones/config_pro.php");
+$nro_factura= $_REQUEST['nro_factura'];
+
+$tipo_fact = "x";
+
+$dia= $_REQUEST['dia'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+
+$fecha= $anio.$mes.$dia;
+$producto= $_REQUEST['producto'];
+$cod_merquita= $_REQUEST['cod_merquita'];
+$operador= $_REQUEST['operador'];
+
+include ("../../../conexiones/usuario_actual.php");
+
+
+echo $sql = "DELETE FROM `tr_ventas1_deta_temp` WHERE operador = $operador";
+mysql_query($sql);
+echo $sql = "DELETE FROM `tr_ventas1_encab_temp` WHERE operador = $operador";
+mysql_query($sql);
+
+
+$cantidad_existente= $_REQUEST['cantidad_existente'];
+$porc_dto= $_REQUEST['porc_dto'];
+$tipo_do=$_REQUEST["tipo_doc"];
+	for ($i=0;$i<count($tipo_do);$i++)    
+	{     
+	$tipo_doc = $tipo_do[$i];    
+	}
+
+
+
+$documento= $_REQUEST['documento'];
+
+if ($documento == ""){
+$nro_pacient=$_REQUEST["nro_paciente"];
+	for ($i=0;$i<count($nro_pacient);$i++)    
+	{     
+	$nro_paciente = $nro_pacient[$i];    
+	}
+
+if ($nro_paciente == ""){
+$leyenda = "NO INGRESO PACIENTE";
+include ("../../../alertas/campo_vacio.php");
+exit;
+
+}ELSE
+	{
+$documento = $nro_paciente;
+	}
+}
+
+$sql7="select * from pacientes where documento like '$documento'";
+$result7 = $db->Execute($sql7);
+$estado=strtoupper($result7->fields["estado"]);
+
+$doc=strtoupper($result7->fields["documento"]);
+
+if ($doc == ""){
+$leyenda = "NO EXISTE PACIENTE CON ESE DOCUMENTO";
+include ("../../../alertas/campo_vacio.php");
+exit;
+
+}
+$fecha_estado=strtoupper($result7->fields["fecha_estado"]);  // letras
+$calle=strtoupper($result7->fields["calle"]); // numero
+$puerta=strtoupper($result7->fields["puerta"]); // numero
+$localidad=strtoupper($result7->fields["localidad"]); // numero
+$departamento=strtoupper($result7->fields["departamento"]); // numero
+$direccion = $calle." ".$puerta." ".$localidad." ".$departamento;
+
+$apellido=strtoupper($result7->fields["apellido"]); // numero
+$nombre=strtoupper($result7->fields["nombre"]); // numero
+
+$nombre_completo = $apellido.", ".$nombre;
+
+$sql="select * from paciente_diagnostico where documento = '$documento'";
+$result = $db->Execute($sql);
+$cod_diagnostico=strtoupper($result->fields["cod_diagnostico"]); 
+
+
+$sql="select * from diagnostico where nro_diagnostico = '$cod_diagnostico'";
+$result = $db->Execute($sql);
+$nombre_diagnostico=strtoupper($result->fields["nombre_diagnostico"]); 
+
+
+
+ 
+
+echo  $sql = "INSERT INTO `tr_ventas1_encab_temp` ( `tipo_fact` , `nro_factura` , `cod_operacion` , `tipo` , `nro_cliente` , `nro_cuenta` , `plan` , `operador` , `denominacion` , `fecha` , `forma_pago` , `porc_dto` , `nombre_operador` , `nro_os` , `nombre_os`) VALUES ( 'x'  , '$operador' , '$cod_operacion' , '$tipo_iva' , '$documento' , '$documento' , '' , '$operador' , '$nombre_completo' , '$fecha' , '' , '' , '$nombre_operador' , '$nro_os' , '$nombre_os' )";
+mysql_query($sql);
+
+
+?>
+
+<script>
+
+function abrirVentana() {
+	var cod_detalle = <?php echo $cod_detalle;?> 
+    open("factura_papel.php?cod_detalle=<?php print($cod_detalle);?>&&nro_factura=<?php print($nro_factura);?>&&nro_cliente=<?php print($nro_cliente);?>&&matriculae=<?php print($matricula);?>&&forma_pago=<?php print($forma_pago);?>&&dia=<?php print($dia);?>&&mes=<?php print($mes);?>&&anio=<?php print($anio);?>&&todo=<?php print($todo);?>&&direccion=<?php print($direccion);?>&&cuit=<?php print($cuit);?>&&tipo_fact=<?php print($tipo_fact);?>","MERCADERIA", "width=1000,height=1000,toolbar=no,directories=no,menubar=no,status=no");
+} 
+</script>
+
+<body onload = "on_load ()">
+<FORM name="form" ACTION="entrada_factura_3.php" METHOD = "POST">
+<?php include("../../../conexiones/config_pro.php");
+$sql8 = "SELECT * FROM `tr_ventas1_encab_temp` where nro_factura = $nro_factura";
+$result8 = $db->Execute($sql8);
+$plan=strtoupper($result8->fields["plan"]);?>
+<table width="800" border="0" cellspacing="0">
+          <!--DWLayoutTable-->
+          <tr bgcolor="#000099">
+            <td colspan="3" bordercolor="#000000" bgcolor="#CCCCCC" class="Estilo67"><div align="left" class="Estilo58">
+              <div align="left"><span class="Estilo83"><span class="Estilo4 Estilo6 Estilo70  Estilo16"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo60"><span class="Estilo85 Estilo67"><span class="Estilo84">N&ordm; ENTREGA:</span> <?php echo $nro_factura;?></span> &nbsp;&nbsp;&nbsp;&nbsp;Paciente: <?php echo $nombre_completo;?>&nbsp;&nbsp;&nbsp;              &nbsp;&nbsp;&nbsp;</span></span></span></span></span><span class="Estilo62">&nbsp;</span><span class="Estilo60">Fecha: <?php echo $dia;?> / <?php echo $mes;?> / <?php echo $anio?></span><span class="Estilo62"> &nbsp;&nbsp;&nbsp;</span><span class="Estilo60">&nbsp;</span></span><span class="Estilo85">Operador:</span> <span class="Estilo84"><?php echo $nombre_operador;?> <?php echo $operador;?></span></span><span class="Estilo84"></strong></span></span><span class="Estilo84"><span class="Estilo71">&nbsp;&nbsp;&nbsp;&nbsp;</span> </span></div>
+            </div>              </td>
+    </tr>
+          
+          <tr bgcolor="#E6E6E6">
+            <td width="15%" bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70">Domicilio:</span></span></span></span></span></span></td>
+            <td width="62%" bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70"><?php echo strtoupper($direccion);?></span></span></span></span></span></span></td>
+            <td width="23%" rowspan="3" bordercolor="#000000" class="Estilo67 Estilo85"><div align="center"><a href="detalle_ventas.php?nro_factura=<?php print("$nro_factura");?>">
+              <input name="siguiente" type="image" src="../../../imagenes/flechas/derecha.png"  width="137" height="66" value="SIGUIENTE">
+            </a></div></td>
+          </tr>
+          <tr bgcolor="#E6E6E6">
+            <td bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70">Diagn&oacute;stico: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></span></span></span></span></td>
+            <td bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70"><?php echo strtoupper($nombre_diagnostico);?></span></span></span></span></span></span></td>
+          </tr>
+          <tr bgcolor="#E6E6E6">
+            <td bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70">Obra Social:
+                          
+            </span></span></span></span></span></span></td>
+            <td bordercolor="#000000" class="Estilo67"><span class="Estilo26"><span class="Estilo70"><span class="Estilo4 Estilo6  Estilo16 Estilo70"><span class="Estilo4 Estilo16  Estilo6"><span class="Estilo71"><span class="Estilo72 Estilo70">
+              <?php include ("../../../conexiones/config_pro.php");
+$sql = "SELECT * FROM `afiliaciones` where documento = $documento order by documento";
+$result = $db->Execute($sql);
+
+
+echo "<select name=nro_os[] size=1 id =nro_cliente onKeyPress='return verif_caracter(this,event)'>";
+$nro_os=$result->fields["nro_os"];
+$nombre_os=strtoupper($result->fields["nombre_os"]);
+$nro_afiliado=$result->fields["nro_afiliado"];
+
+echo"<option value=$nro_os>$nombre_os ($nro_afiliado) </option>";
+
+echo"<option value=''>Seleccione Obra Social</option>";
+
+if (!$result) die("fallo".$db->ErrorMsg());
+while (!$result->EOF) {
+$nro_os=$result->fields["nro_os"];
+$nombre_os=strtoupper($result->fields["nombre_os"]);
+$nro_afiliado=$result->fields["nro_afiliado"];
+echo"<option value=$nro_os>$nombre_os ($nro_afiliado) </option>";
+$result->MoveNext();
+	}
+echo"</select>";
+?></span></span></span></span></span></span></td>
+          </tr>
+          
+                      <input name="documento" type="hidden" value ="<?php echo $documento;?>">
+                      <input name="tipo_doc" type="hidden" value ="<?php echo $tipo_doc;?>">
+					         <input name="operador" type="hidden" value ="<?php echo $operador;?>">
+							 <input name="dia" type="hidden" value ="<?php echo $dia;?>">
+                      <input name="mes" type="hidden" value ="<?php echo $mes;?>">
+                      <input name="anio" type="hidden" value ="<?php echo $anio;?>">
+  </table>
+
+
+<?php include ("../../../conexiones/config_pro.php");
+$sql="select * from tr_ventas_encabezado where nro_cuenta = $documento  ORDER by nro_factura Desc LIMIT 10";
+$result = $db->Execute($sql);
+
+$nro_fact=$result->fields["nro_factura"];
+
+IF ($nro_fact > 0){
+
+?>
+
+  <table width="800" border="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr valign="middle" bgcolor="#CFCFCF">
+    <td colspan="5" bgcolor="#CCCCCC"><div align="center" class="Estilo85 Estilo90 Estilo84"><span class="Estilo3 ">Ultimos Medicamentos Entregados: </span></div></td>
+  </tr>
+  <tr bgcolor="#E1F2EF">
+    <td width="24%" bgcolor="#CCCCCC"><div align="center" class="Estilo90 Estilo84"><span class="Estilo2 Estilo5 ">N&deg; Nota de Entrega </span> </div>
+    <td width="23%" bgcolor="#CCCCCC"><div align="center" class="Estilo90 Estilo84"><span class="Estilo2 Estilo5 ">Fecha</span></div></td>
+    <td width="24%" bgcolor="#CCCCCC"><div align="center" class="Estilo90 Estilo84"><span class="Estilo2 Estilo5 ">Total</span></div></td>
+    <td width="29%" bgcolor="#CCCCCC"><div align="center" class="Estilo90 Estilo84"><span class="Estilo2 Estilo5 ">Detalle</span></div></td>
+  </tr>
+
+
+<?PHP 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+
+$denominacion=strtoupper($result->fields["denominacion"]);
+$fecha=strtoupper($result->fields["fecha"]);
+
+$dia = substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio = substr($fecha,0,4);
+
+$fecha = $dia."/".$mes."/".$anio;
+
+$bruto=strtoupper($result->fields["bruto"]);
+$descuento=strtoupper($result->fields["descuento"]);
+$neto_gravado=strtoupper($result->fields["neto_gravado"]);
+$iva=strtoupper($result->fields["iva"]);
+$retencion=strtoupper($result->fields["retencion"]);
+$total=strtoupper($result->fields["neto"]);
+$periodo=strtoupper($result->fields["periodo"]);
+$anio=strtoupper($result->fields["anio"]);
+$tipo_fact=strtoupper($result->fields["tipo_fact"]);
+
+
+
+$cod_operacion=strtoupper($result->fields["cod_operacion"]);
+$forma_pago=strtoupper($result->fields["forma_pago"]);
+
+?>
+<tr>
+    <td bgcolor="#E6E6E6">      <div align="center" class="Estilo5">
+        <div align="center" class="Estilo89"><span class="Estilo2 "> <?php print("$programa_todos");?> - </span><span class="Estilo5 "><?php print("$nro_factura");?></font></a></span></div>
+    </div></td>
+    <td bgcolor="#E6E6E6"><div align="center" class="Estilo5"><span class="Estilo2 Estilo84 Estilo16"><?php print("$fecha");?> </span></div></td>
+    <!-- <td><div align="center" class="Estilo6"><span class="Estilo4 Estilo5"><?php print("$proveedor");?></span></div></td> -->
+    <td bgcolor="#E6E6E6"><div align="center" class="Estilo5"><span class="Estilo89"><?php echo $total;?> </span></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font color="#000000" size="2"><a href="detalle_ventas.php?nro_factura=<?php print("$nro_factura");?>"><img src="../../../imagenes/office//009.ico" alt="Imprimir Detalle" width="17" height="16" border = "0" target= "_top"></a></font></div></td>
+  </tr>
+  <?php 
+	$result->MoveNext();
+	}
+
+
+
+
+?></table>
+
+<?php }?>
+</form>

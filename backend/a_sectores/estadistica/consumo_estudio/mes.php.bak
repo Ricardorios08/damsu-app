@@ -1,0 +1,6 @@
+<?php
+  $sql="select sum(cant_realizado) as cant from prestaciones_pacientes where cod_prestacion = '$cod_prestacion' and  fecha_prestacion between '$desde' and '$hasta'";
+$result3 = $db->Execute($sql);
+$cant=$result3->fields["cant"];
+
+?>

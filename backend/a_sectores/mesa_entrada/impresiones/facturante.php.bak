@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+</head>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close();">
+
+
+<?php
+$fecha = date('d/m/Y');
+//global $buscador_rapido;
+$buscador_rapido=2;
+
+ include("adodb.inc.php");
+ $db = NewADOConnection('mysql');
+ $db->Connect("localhost", "root", "", "bioquimica");
+
+
+
+$B = 1;
+
+$sql="select * from facturante where facturante = 'SI' order by nro_laboratorio asc";
+$result = $db->Execute($sql);
+
+
+
+
+?>
+LISTADO DE BIOQUIMICOS FACTURANTES. <br />
+Emitido el: <?echo $fecha;?>
+<table width="83%" height="58" border="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#993300"> 
+   
+<td width="5%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">CUENTA</font></strong></font></div></td>
+<td width="11%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">LABORATORIO</font></strong></font></div></td>
+<td width="10%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">DOMICILIO</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">LOCALIDAD</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">TELEFONO</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">ANSAL</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">AFIP</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">ING. BRUTOS</font></strong></font></div></td>
+<td width="12%" bgcolor="#FFFF99"><div align="center"><font color="#000000"><strong><font size="2">SIT. IVA</font></strong></font></div></td>
+
+
+</tr>	
+<?
+
+ 
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+ $id=$result->fields["matricula"];
+$nro_laboratorio=$result->fields["nro_laboratorio"];
+
+	$sql2="select * from datos_laboratorio where nro_laboratorio = '$nro_laboratorio'";
+	$result2 = $db->Execute($sql2);
+
+$nombre_lab=$result2->fields["nombre_laboratorio"];
+$domicilio_lab=$result2->fields["domicilio"];
+$nro_dom_lab=$result2->fields["nro_domicilio"];
+$direccion = $domicilio_lab." (". $nro_dom_lab." )";
+$localidad_lab=$result2->fields["localidad"];
+$telefono=$result2->fields["telefono"];
+
+	$sql6="select * from ansal where nro_laboratorio = '$nro_laboratorio'";
+	$result6 = $db->Execute($sql6);
+
+$nro_ansal=$result6->fields["nro_ansal"];
+
+
+	$sql4="select * from afip where nro_laboratorio = '$nro_laboratorio'";
+	$result4 = $db->Execute($sql4);
+
+$nro_afip=$result4->fields["nro_afip"];
+$sit_iva=$result4->fields["sit_iva"];
+
+	$sql5="select * from ing_bruto where nro_laboratorio = '$nro_laboratorio'";
+	$result5 = $db->Execute($sql5);
+
+$nro_ib=$result5->fields["nro_ib"];
+
+
+
+	
+
+	if ($B == 1) {
+
+?><tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"><?
+$B = 0;
+				}
+	ELSE	{
+	$B=1;
+		 	
+?><tr bordercolor="#FFFFCC" bgcolor="#FFFFCC"> <?
+
+			}
+
+
+
+
+
+		?>
+		     <td><font size="2"><?print("$nro_laboratorio");?></font></td>
+     <td><font size="2"><?print("$nombre_lab");?></font></td>
+	 <td><font size="2"><?print("$direccion");?></font></td>
+     <td><font size="2"><?print("$localidad_lab");?></font></td>
+    <td><font size="2"><?print("$telefono");?></font></td>
+   
+	
+	<td><font size="2"><?print("$nro_ansal");?></font></td>
+	<td><font size="2"><?print("$nro_afip");?></font></td>
+	<td><font size="2"><?print("$nro_ib");?></font></td>
+	<td><font size="2"><?print("$sit_iva");?></font></td>
+
+		
+		
+
+  </tr>
+	  
+    
+
+
+
+<?
+
+$result->MoveNext();
+	}
+
+?>
+</table>
+
+</body>
+

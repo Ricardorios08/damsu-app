@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+<style type="text/css">
+<!--
+.Estilo2 {font-family: "Trebuchet MS"; font-size: 12px; }
+-->
+</style>
+</head>
+
+<body>
+
+<?PHP 
+ function CalculaEdad( $fecha ) {
+    list($Y,$m,$d) = explode("-",$fecha);
+    return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
+}
+
+
+
+include ("../../../conexiones/config_usu.php");
+///////////////////////////
+$cod_diagnostico = "C124";
+
+/*$cod_diagnostico1 = "C39";
+$cod_diagnostico2 = "C45";
+$cod_diagnostico2 = "X110";
+*/
+
+//$cod_diagnostico = "C50";
+//$cod_diagnostico1 = "D05";
+
+//$cod_diagnostico = "C61";
+
+
+/*$cod_diagnostico = "C18";
+$cod_diagnostico1 = "C19";
+$cod_diagnostico2 = "C20";
+$cod_diagnostico2 = "X25";
+$cod_diagnostico3 = "X53";
+*/
+
+
+
+
+
+$anio = '2013';
+include ("ver_dptos.php");
+
+
+exit;
+$anio = '2010';
+include ("ver_dptos.php");
+$anio = '2011';
+include ("ver_dptos.php");
+$anio = '2012';
+include ("ver_dptos.php");
+$anio = '2013';
+include ("ver_dptos.php");
+///////////////////////////
+
+
+
+
+?>
+</body>
+</html>

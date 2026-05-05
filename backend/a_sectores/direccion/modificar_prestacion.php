@@ -1,0 +1,168 @@
+<script language="javascript">
+function on_load()
+{
+document.getElementById("nombre_diagnostico").focus();
+}
+
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "cod_diagnostico":
+				document.getElementById("nombre_diagnostico").focus();
+				
+				break;
+				case "nombre_diagnostico":
+				document.getElementById("nombre_reducido_diagnostico").focus();
+				break;
+				case "nombre_reducido_diagnostico":
+				document.getElementById("siguiente").focus();
+				break;
+			
+		}
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+
+<?php include ("../../conexiones/config_usu.php");
+
+$cod_operacion = $_REQUEST['cod_operacion'];
+
+$sql="select * from prestaciones where cod_operacion = $cod_operacion";
+$result = $db->Execute($sql);
+
+$cod_prestacion=$result->fields["cod_prestacion"];
+$descripcion=$result->fields["descripcion"];
+$caracteristica=$result->fields["caracteristica"];
+$cod_proveedor=$result->fields["cod_proveedor"];
+$precio=$result->fields["precio"];
+$cupo_mensual=$result->fields["cupo_mensual"];
+$cant_realizado=$result->fields["cant_realizado"];
+$periodo=$result->fields["periodo"];
+$cod_operacion=$result->fields["cod_operacion"];
+
+
+echo $sql="select * from proveedores where cod_proveedor = $cod_proveedor";
+$result = $db->Execute($sql);
+
+$denominacion=strtoupper($result->fields["denominacion"]);
+ 
+
+switch ($periodo){
+case "1": {$mostrar_periodo  ="QUINCENAL";break;}
+case "2": {$mostrar_periodo  ="MENSUAL";break;}
+case "3": {$mostrar_periodo  ="ANUAL";break;}
+}
+
+
+?>
+
+<BODY onload = "on_load()">
+<form action="modificar_des_prestaciones.php" method="post">
+<table width="800" border="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr bordercolor="#FFFFFF" bgcolor="#E6E6E6"> 
+    <td colspan="4" bgcolor="#CCCCCC"><div align="center"><font color="#000000" size="2" face="Trebuchet MS"><strong>MODIFICAR PRESTACION</strong></font></div></td>
+  </tr>
+  <tr align="center" bordercolor="#FFFFFF" bgcolor="#C4D7E6"> 
+    <td width="50%" bgcolor="#E6E6E6"> <div align="right"><font size="2" face="Trebuchet MS">Cod. Prestacion </font></div></td>
+    <td width="50%" colspan="3" bgcolor="#E6E6E6"><div align="left"> <font color="#000000" size="2" face="Trebuchet MS"><strong> 
+        <input type="text" name="cod_prestacion"  size="4" id="cod_prestacion"  value = "<?php echo $cod_prestacion;?>" onKeyPress="return verif_caracter(this,event)">
+        </strong> </font></div>
+      <div align="left"></div>
+    <div align="left">     </div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6"> 
+    <td bgcolor="#E6E6E6"><div align="right"><font color="#000000" size="2" face="Trebuchet MS">Descripci&oacute;n</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font color="#000000" size="2" face="Trebuchet MS"><strong>
+      <input name="descripcion" type="text" id="descripcion"  onKeyPress="return verif_caracter(this,event)" value="<?php echo $descripcion;?>"  size="45">
+
+
+    </strong> 
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6"> 
+    <td bgcolor="#E6E6E6"> <div align="right"><font size="2" face="Trebuchet MS">Caracteristica</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"> <div align="left">  
+        <font color="#000000" size="2" face="Trebuchet MS"><strong>
+        <input name="caracteristica" type="text" id="caracteristica"  onKeyPress="return verif_caracter(this,event)" value="<?php echo $caracteristica;?>"  size="25">
+        </strong></font> 
+</div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Cod. Proveedor </font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font size="2" face="Trebuchet MS">
+      <?php 
+
+$sql="select * from proveedores ORDER BY denominacion";
+$result = $db->Execute($sql);
+echo "<select name=cod_proveedor[] size=1 id =cod_proveedor onKeyPress='return verif_caracter(this,event)'>";
+
+?><option value selected= "<?php  "$cod_proveedor";?>"> <font size="2" face="Trebuchet MS"><strong><font color="#000000"><?php print("$denominacion");?></font></strong></font></option><?php
+
+
+echo"<option value='ninguna'>Ninguna</option>";
+
+if (!$result) die("fallo".$db->ErrorMsg());
+while (!$result->EOF) {
+$cod=$result->fields["cod_proveedor"];
+$a1=strtoupper($result->fields["denominacion"]);
+echo"<option value=$cod>$a1</option>";
+$result->MoveNext();
+	}
+echo"</select>";
+?>
+    </font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Periodo</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font color="#000000" size="2"><strong><font face="Trebuchet MS">
+
+
+      <select name="periodo[]">
+	  <option value selected= "<?php  "$periodo";?>"> <font size="2" face="Trebuchet MS"><strong><font color="#000000"><?php print("$mostrar_periodo");?></font></strong></font></option>
+        <option value="1">Quincenal</option>
+        <option value="2">Mensual</option>
+        <option value="3">Anual</option>
+      </select>
+    </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Cupo</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font color="#000000" size="2"><strong><font face="Trebuchet MS">
+      <input name="cupo" type="text" id="cupo"  onKeyPress="return verif_caracter(this,event)" value="<?php echo $cupo_mensual;?>"  size="10">
+    </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Cantidad Realizada</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font color="#000000" size="2"><strong><font face="Trebuchet MS">
+      <input name="cant_realizada" type="text" id="cant_realizada"  onKeyPress="return verif_caracter(this,event)" value="<?php echo $cant_realizado;?>"  size="10"> 
+    </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C4D7E6">
+    <td bgcolor="#E6E6E6"><div align="right"><font size="2" face="Trebuchet MS">Precio</font></div></td>
+    <td colspan="3" bgcolor="#E6E6E6"><font color="#000000" size="2"><strong><font face="Trebuchet MS">
+      <input name="precio" type="text" id="precio"  onKeyPress="return verif_caracter(this,event)" value="<?php echo $precio;?>"  size="10">
+    </font></strong></font></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#C9C9C9">
+    <td colspan="4" bgcolor="#999999"><div align="center"><font color="#000000" size="2"><strong><font color="#000000" size="2"><strong><font size="2">
+
+	 <input type="Hidden" name="cod_operacion"  value="<?php echo $cod_operacion;?>">
+
+
+        <input type="Submit" name="Submit" id ="siguiente" value="GUARDAR">
+    </font></strong></font></strong></font></div></td>
+  </tr>
+</table>

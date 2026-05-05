@@ -1,0 +1,50 @@
+<?php 
+
+include("../../../conexiones/config_pro.php");
+$id = $_REQUEST["id1"];
+
+
+ $sql = "SELECT * FROM nota_devolucion  WHERE  `operador` = $id ";
+$result = $db->Execute($sql);
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+$operador=strtoupper($result->fields["operador"]);
+$fecha=strtoupper($result->fields["fecha"]);
+$nro_factura_afectada=strtoupper($result->fields["nro_factura_afectada"]);
+$importe=strtoupper($result->fields["importe"]);
+$observaciones=strtoupper($result->fields["observaciones"]);
+
+$observaciones = $observaciones." AFECTADA: (".$nro_factura_afectada.")";
+
+
+$sql2 = "SELECT * FROM compras_detalle  WHERE  `nro_factura` = $nro_factura_afectada";
+$result2 = $db->Execute($sql2);
+ $proveedor=strtoupper($result2->fields["proveedor"]);
+
+
+$sql = "INSERT INTO `compras_encabezado15` ( `nro_factura`, `cod_operacion`, `nro_proveedor`, `fecha`, `total`, `periodo`, `anio`, `operador`, `tipo_doc`, `documento`, `nro_receta`, `tipo` , `nro_comprobante_afectado` , `observaciones`)  VALUES ( '' , '5' , '$nro_proveedor' , '$fecha' , '$total_compra' , '$periodo' , '$anio' ,  '$operador' , '$tipo_doc', '$documento' , '' , '8' , '$nro_comprobante_afectado' , '$observaciones')";
+mysql_query($sql);
+$idgenerado = mysql_insert_id();
+
+$sql = "INSERT INTO `compras_detalle15` ( `nro_factura` , `cod_detalle` , `cod_mercaderia` , `presentacion` , `lote` , `mes_lote` ,  `anio_lote` , `cantidad` , `precio_unitario` , `total` , `tipo_fact` )  VALUES ('$idgenerado' , '' ,'0' ,'NOTA DEVOLUCION PRECIO' , '' , '' , '' , '1' , '$importe' , '$importe' , '004')";
+mysql_query($sql);
+
+
+
+
+
+	 $result->MoveNext();
+				}
+
+
+
+$sql = "DELETE from `nota_devolucion` where operador = $id";
+$result = $db->Execute($sql);
+
+include ("imprimir.php");
+
+
+// 428-7755

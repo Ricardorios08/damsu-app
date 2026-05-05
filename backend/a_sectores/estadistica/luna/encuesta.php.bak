@@ -1,0 +1,9 @@
+<?php 
+
+include ("entregas_mes.php");
+include ("entregas_pacientes.php");
+
+
+
+
+?>

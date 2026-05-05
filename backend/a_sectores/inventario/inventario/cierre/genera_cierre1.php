@@ -1,0 +1,110 @@
+<?php 
+include ("../../../../conexiones/config_usu.php");
+:
+ 
+$mes=10;
+$anio=12;
+
+$dia= date("d");
+
+$fecha_inventario = $anio."-".$mes."-".$dia;
+
+
+$sql = "DELETE FROM `tr_stock_temp`";
+mysql_query($sql);
+
+$sql = "DELETE FROM `tr_stock_temp_provisorio`";
+mysql_query($sql);
+
+$sql = "DELETE FROM `tr_stock_temp_provisorio1`";
+mysql_query($sql);
+
+$tr_stock = "tr_stock_30-11-2012";
+
+$sql = "INSERT into tr_stock_temp SELECT * FROM `tr_stock_30-11-2012` where cod_movimiento = 1 and fecha = '2012-10-31'";
+mysql_query($sql);
+
+  $sql="select * from tr_stock_temp group by cod_mercaderia order by cod_mercaderia, laboratorio";
+$result = $db->Execute($sql);
+
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]) * 1;
+$cont = $cont + 1;
+
+  $sql1="select * from tr_stock_temp where cod_mercaderia = '$cod_mercaderia' group by laboratorio order by laboratorio";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo 1".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+$fecha=strtoupper($result1->fields["fecha"]);
+$cod_movimiento=strtoupper($result1->fields["cod_movimiento"]);
+$tipo_fact=strtoupper($result1->fields["tipo_fact"]);
+$nro_comprobante=strtoupper($result1->fields["nro_comprobante"]);
+$cantidad=strtoupper($result1->fields["cantidad"]);
+$precio_unitario=strtoupper($result1->fields["precio_unitario"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cuenta=strtoupper($result1->fields["cuenta"]);
+$tipo_cuenta=strtoupper($result1->fields["tipo_cuenta"]);
+$observaciones=strtoupper($result1->fields["observaciones"]);
+$documento=strtoupper($result1->fields["documento"]);
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+$nro_os=strtoupper($result1->fields["nro_os"]);
+$gtin=strtoupper($result1->fields["gtin"]);
+$transaccion=strtoupper($result1->fields["transaccion"]);
+$nro_serie=strtoupper($result1->fields["nro_serie"]);
+$drogas=strtoupper($result1->fields["drogas"]);
+$grupo=strtoupper($result1->fields["grupo"]);
+$laboratorio=strtoupper($result1->fields["laboratorio"]);
+$cod_barra=strtoupper($result1->fields["cod_mercaderia"]);
+
+$sql8="select * from monodrogas where cod_barra = $cod_barra";
+$result8 = $db->Execute($sql8);
+$nombre_comercial=strtoupper($result8->fields["nombre_comercial"]);
+$presentacion=strtoupper($result8->fields["presentacion"]);
+$troquel=strtoupper($result8->fields["troquel"]);
+$precio_actualizado=strtoupper($result8->fields["precio_actualizado"]);
+
+
+   $sql2="select sum(cantidad) as ingresada  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 1 and fecha = '2012-10-31'";
+$result2 = $db->Execute($sql2);
+$ingresada=strtoupper($result2->fields["ingresada"]);
+
+
+    $sql2="select sum(precio_unitario) as precio_entrada  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 1 and fecha = '2012-10-31'";
+$result2 = $db->Execute($sql2);
+$precio_entrada=strtoupper($result2->fields["precio_entrada"]);
+
+   $sql2="select sum(precio_unitario) as precio_salida  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 6 and fecha = '2012-10-31'";
+$result2 = $db->Execute($sql2);
+$precio_salida=strtoupper($result2->fields["precio_salida"]);
+
+
+$precio_entrada = $ingresada * $precio_actualizado;
+
+$existencia = $precio_entrada - $precio_salida;
+
+
+
+  $sql3 = "INSERT INTO tr_stock_temp_provisorio (`cod_mercaderia`, `fecha`, `cod_movimiento`, `tipo_fact`, `nro_comprobante`, `cantidad`, `precio_unitario`, `lote`, `mes_lote`, `anio_lote`, `cuenta`, `tipo_cuenta`, `cod_operacion`, `observaciones`, `documento`, `cod_droga`, `nro_os`, `gtin`, `transaccion`, `nro_serie`, `drogas`, `grupo`, `laboratorio`, `fecha_inventario`, `mes`, `anio` , `salida` , `anterior` , `precio_ingreso`, `precio_egreso` , `nombre_comercial` ) VALUES ('$cod_mercaderia', '$fecha', '$cod_movimiento', '$tipo_fact', '$nro_comprobante', '$ingresada1', '$existencia', '$lote', '$mes_lote', '$anio_lote', '$cuenta', '$tipo_cuenta', '$cod_operacion', '$observaciones', '$documento', '$cod_droga', '$nro_os', '$gtin', '$transaccion', '$nro_serie', '$drogas', '$grupo', '$laboratorio', '$fecha_inventario', '$mes', '$anio' , '$salida1' , '$ingresada' , '$precio_entrada' , '$precio_salida', '$nombre_comercial' );";
+mysql_query($sql3);
+
+
+
+$result1->MoveNext();
+	}
+
+	$result->MoveNext();
+	}
+
+
+
+echo "<br>";
+echo $cont;
+echo "<br>";
+INCLUDE ("genera_cierre2.php");

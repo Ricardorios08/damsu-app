@@ -1,0 +1,203 @@
+<?php 
+include ("../../../conexiones/config_pro.php");
+echo "actauliza_b1.php";
+//$nro_factura= $_REQUEST['nro_factura'];
+ $operador= $_REQUEST['operador'];
+
+
+
+$dia= $_REQUEST['dia'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+
+$fecha= $anio.$mes.$dia;
+$producto= $_REQUEST['producto'];
+$cod_merquita= $_REQUEST['cod_merquita'];
+$cod_proveedor= $_REQUEST['cod_proveedor'];
+
+
+
+
+$sql="select * from usuario where id = '$operador'";
+$result = $db->Execute($sql);
+$nombre_operador=strtoupper($result->fields["usuario"]); 
+$tipo_fact=strtoupper($result->fields["programa"]); 
+
+
+
+
+ $documento= $_REQUEST['documento'];
+
+$nro_o=$_REQUEST["nro_os"];
+	for ($i=0;$i<count($nro_o);$i++)    
+	{     
+	$nro_os = $nro_o[$i];    
+	}
+
+$sql = "SELECT * FROM `afiliaciones` where nro_os = $nro_os and documento = $documento order  by documento";
+$result = $db->Execute($sql);
+
+$nombre_os=strtoupper($result->fields["nombre_os"]);
+$nro_afiliado=$result->fields["nro_afiliado"];
+
+
+
+$cantidad_existente= $_REQUEST['cantidad_existente'];
+$porc_dto= $_REQUEST['porc_dto'];
+$tipo_do=$_REQUEST["tipo_doc"];
+	for ($i=0;$i<count($tipo_do);$i++)    
+	{     
+	$tipo_doc = $tipo_do[$i];    
+	}
+
+
+
+
+
+$sql7="select * from pacientes where documento like '$documento'";
+$result7 = $db->Execute($sql7);
+$estado=strtoupper($result7->fields["estado"]);
+$fecha_estado=strtoupper($result7->fields["fecha_estado"]);  // letras
+$calle=strtoupper($result7->fields["calle"]); // numero
+$puerta=strtoupper($result7->fields["puerta"]); // numero
+$localidad=strtoupper($result7->fields["localidad"]); // numero
+$departamento=strtoupper($result7->fields["departamento"]); // numero
+$direccion = $calle." ".$puerta." ".$localidad." ".$departamento;
+
+$apellido=strtoupper($result7->fields["apellido"]); // numero
+$nombre=strtoupper($result7->fields["nombre"]); // numero
+
+$nombre_completo = $apellido.", ".$nombre;
+
+$sql="select * from paciente_diagnostico where documento = '$documento'";
+$result = $db->Execute($sql);
+$cod_diagnostico=strtoupper($result->fields["cod_diagnostico"]); 
+
+
+$sql="select * from diagnostico where nro_diagnostico = '$cod_diagnostico'";
+$result = $db->Execute($sql);
+$nombre_diagnostico=strtoupper($result->fields["nombre_diagnostico"]); 
+
+
+ $sql = "SELECT * FROM `ventas1_encab_temp`  WHERE  operador = '$operador'";
+$result3 = $db->Execute($sql);
+$nro_factura=strtoupper($result3->fields["nro_factura"]);
+$fecha=strtoupper($result3->fields["fecha"]);
+
+  $sql = "SELECT * FROM `ventas1_deta_temp`  WHERE  `nro_factura` = $nro_factura and tipo_fact = '$tipo_fact'";
+$result3 = $db->Execute($sql);
+if (!$result3) die("fallo".$db->ErrorMsg());
+
+ while (!$result3->EOF) {
+
+$cod_mercaderia=strtoupper($result3->fields["cod_mercaderia"]);
+$cantidad=strtoupper($result3->fields["cantidad"]);
+
+$descripcion=strtoupper($result3->fields["descripcion"]);
+$cod_detalle=strtoupper($result3->fields["cod_detalle"]);
+$lote1=strtoupper($result3->fields["lote"]);
+$mes_lote=strtoupper($result3->fields["mes_lote"]);
+$anio_lote=strtoupper($result3->fields["anio_lote"]);
+$proveedor=strtoupper($result3->fields["proveedor"]);
+
+$vto_lote = $mes_lote."/".$anio_lote;
+
+
+$sql = "SELECT * FROM monodrogas  WHERE  troquel = $cod_mercaderia";
+$result = $db->Execute($sql);
+
+$precio_actualizado=strtoupper($result->fields["precio_actualizado"]);
+$presentacion=strtoupper($result->fields["nombre_comercial"]);
+
+$id_tasa=strtoupper($result->fields["id_tasa"]);
+
+
+$sql5="select * from proveedores where cod_proveedor = $proveedor";
+$result5 = $db->Execute($sql5);
+$nombre_proveedor=strtoupper($result5->fields["denominacion"]);
+
+$sql2="select * from tasas where cod_tasa = $id_tasa";
+$result2 = $db->Execute($sql2);
+
+$iva_normal=strtoupper($result2->fields["iva_normal"]);
+
+
+$sql1 = "SELECT * FROM existencias  WHERE  `cod_mercaderia` = $cod_mercaderia";
+$result1 = $db->Execute($sql1);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cantidad_ingresada =$result1->fields["cantidad_ingresada"];
+$cantidad_salida =$result1->fields["cantidad_salida"];
+
+$sql18 = "SELECT SUM(cantidad_ingresada) as cant FROM existencias  WHERE  `cod_mercaderia` = '$cod_mercaderia' ";
+$result18 = $db->Execute($sql18);
+$cant_lotes=strtoupper($result18->fields["cant"]);
+
+$sql18 = "SELECT SUM(cantidad_salida) as salid FROM existencias  WHERE  `cod_mercaderia` = '$cod_mercaderia' ";
+$result18 = $db->Execute($sql18);
+$cant_salid_lotes=strtoupper($result18->fields["salid"]);
+
+$sql98 = "SELECT sum(cantidad) as cant_temp FROM `ventas1_deta_temp`  WHERE  `cod_mercaderia` = $cod_mercaderia";
+$result98 = $db->Execute($sql98);
+$cant_temp=$result98->fields["cant_temp"];
+
+$cant_exis = ($cant_lotes - $cantidad_salid_lotes) - $cant_temp;
+$cantidad_existente = ($cantidad_ingresada - $cantidad_salida) - $cant_temp;
+
+
+$total = round($cantidad * $precio_actualizado,2);
+$total_factura = $total_factura + $total;
+
+$subtotal = $total_factura;
+$cont = $cont + 1;
+
+ $sql = "UPDATE `existencias` SET `cantidad_salida` = '$cantidad_existente' WHERE cod_mercaderia = $cod_mercaderia and mes_lote = '$mes_lote' and anio_lote = '$anio_lote' and lote = '$lote'";
+mysql_query($sql);
+
+echo $sql = "INSERT INTO `stock` ( `cod_mercaderia` , `fecha` ,  `tipo_fact` , `cod_movimiento` , `nro_comprobante` , `cantidad` , `precio_unitario` , `lote` , `mes_lote` , `anio_lote` , `cuenta` ,  `tipo_cuenta` , `cod_operacion`  , `observaciones`  , `documento` , `cod_droga` ) VALUES ('$cod_mercaderia' , '$fecha' , '$tipo_fact' , '6' , '$nro_factura' , '$cantidad' , '$precio_actualizado' , '$lote' , '$mes_lote' , '$anio_lote' , '$proveedor' ,  '$tipo_doc' , '' , '' , '$documento' , '$cod_droga')" ;
+mysql_query($sql);
+
+
+$sql = "INSERT INTO `ventas_detalle` ( `nro_factura` , `cod_detalle` , `cod_mercaderia` , `descripcion` , `presentacion` , `lote` , `mes_lote` , `anio_lote` , `cantidad` , `precio_unitario` , `total` , `tipo_fact` )  VALUES ('$nro_factura' , '' ,'$cod_mercaderia' , '$descripcion', '$presentacion' , '$lote' , '$mes_lote' , '$anio_lote' , '$cantidad' , '$precio_actualizado' , '$total' , '$tipo_fact' )";
+mysql_query($sql);
+
+
+
+
+<?php 
+	 $result3->MoveNext();
+		}
+
+		
+$sql = "INSERT INTO `ventas_encabezado` ( `tipo_fact` , `nro_factura` , `cod_operacion` , `tipo` , `nro_cliente` , `nro_cuenta` , `plan` , `operador` , `denominacion` , `fecha` , `bruto` , `descuento` , `iva` , `retencion` , `neto` , `forma_pago` ) VALUES ( '$tipo_fact' , '$nro_factura' , '1' , '' , '$documento' , '$documento' , '' , '$operador' , '$nombre_completo' , '$fecha' , '$total' ,  '' , '' , '' , '$total' , '' )";
+mysql_query($sql);
+
+
+
+ $sumatoria = $cont;
+		$cont = 0;
+
+
+
+$desc_factura1= 0;
+$subtotal= 0;
+
+$total_factura = 0;
+$neto = 0;
+$iva = 0;
+ 
+$sql = "TRUNCATE TABLE ventas1_deta_temp and operador = $operador";
+mysql_query($sql);
+$sql = "TRUNCATE TABLE ventas1_encab_temp and operador = $operador";
+mysql_query($sql);
+
+$total_factura = 0;
+$neto = 0;
+$iva = 0;
+
+$leyenda  = "SE ACTUALIZO EL STOCK, EXISTENCIA Y FACTURA DE VENTA";
+include ("../../../alertas/campo_informacion.php");
+
+
+?>

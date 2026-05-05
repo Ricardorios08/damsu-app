@@ -1,0 +1,38 @@
+<?php
+include ("../../conexiones/config_usu.php");
+
+ 
+$precio=$_POST["precio"];
+$cantidad=$_POST["cantidad"];
+$observaciones=$_POST["observaciones"];
+$documento=$_POST["documento"];
+
+$prestacione=$_POST["prestaciones"];
+for ($i=0;$i<count($prestacione);$i++)    
+{     
+$prestaciones = $prestacione[$i];    
+}
+
+$dia=$_POST["dia"];
+$mes=$_POST["mes"];
+$anio=$_POST["anio"];
+
+$fecha = $anio."-".$mes."-".$dia;
+
+
+$sql="select * from afiliaciones where documento =  $documento";
+$result = $db->Execute($sql);
+
+$nro_os=strtoupper($result->fields["nro_os"]);
+
+$sql="select * from paciente_diagnostico where documento =  $documento";
+$result = $db->Execute($sql);
+
+$programa=strtoupper($result->fields["programa"]);
+
+
+echo $sql = "INSERT INTO `prestaciones_pacientes` (`tipo_doc` , `documento` , `cod_prestacion` , `precio` , `cant_realizado` , `observaciones` , `fecha_prestacion` , `nro_os` , `programa`) VALUES ( '$tipo_doc', '$documento', '$prestaciones' , '$precio' , '$cantidad' , '$observaciones' , '$fecha'  , '$nro_os' , '$programa'   )";
+
+mysql_query($sql);
+
+include ("registrar_prestaciones.php");

@@ -1,0 +1,11 @@
+<?php 
+
+$dia = $_REQUEST['dia'];
+$mes = $_REQUEST['mes'];
+$anio = $_REQUEST['anio'];
+
+$fecha_a = $dia."/".$mes."/".$anio;
+$fecha = $anio."-".$mes."-".$dia;
+include ("diario_vta.php");
+
+?>

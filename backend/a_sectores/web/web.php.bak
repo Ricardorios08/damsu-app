@@ -1,0 +1,285 @@
+<?php
+
+include ("../../conexiones/config_usu.php");
+require_once("../../nusoap/lib/nusoap.php");
+
+
+
+$wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+
+
+/*
+$sql = "TRUNCATE tr_existencias";
+
+$param1=array('sql'=>$sql); 
+$response= $client->call('pacientes', $param1);
+
+
+
+$sql1="select * from tr_existencias where cantidad_ingresada - cantidad_salida > 0";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+
+$cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+$cantidad_ingresada=strtoupper($result1->fields["cantidad_ingresada"]);
+$cantidad_salida=strtoupper($result1->fields["cantidad_salida"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$gtin=$result1->fields["gtin"];
+$nro_serie=$result1->fields["nro_serie"];
+$fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+
+ 
+ $nro_factura=strtoupper($result1->fields["nro_factura"]);
+ $cod_detalle=strtoupper($result1->fields["cod_detalle"]);
+ $cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+ $lote=strtoupper($result1->fields["lote"]);
+ $mes_lote=strtoupper($result1->fields["mes_lote"]);
+ $anio_lote=strtoupper($result1->fields["anio_lote"]);
+ $cantidad_ingresada=strtoupper($result1->fields["cantidad_ingresada"]);
+ $cantidad_salida=strtoupper($result1->fields["cantidad_salida"]);
+ $fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+ $proveedor=strtoupper($result1->fields["proveedor"]);
+ $proveedor=strtoupper($result1->fields["proveedor"]);
+ $gtin=strtoupper($result1->fields["gtin"]);
+ $transaccion=strtoupper($result1->fields["transaccion"]);
+ $nro_serie=strtoupper($result1->fields["nro_serie"]);
+ $cod_droga=strtoupper($result1->fields["cod_droga"]);
+ $grupo=strtoupper($result1->fields["grupo"]);
+ $laboratorio=strtoupper($result1->fields["laboratorio"]);
+  
+
+
+if ($cont == ""){
+$sql = "('$nro_factura', '$cod_detalle', '$cod_mercaderia', '$lote', '$mes_lote', '$anio_lote', '$cantidad_ingresada', '$precio_unitario', '$cantidad_salida', '$fecha_ultimo_mov', '$proveedor', '$gtin', '$transaccion', '$nro_serie', '$cod_droga', '$grupo', '$laboratorio')";
+$cont = $cont + 1;
+$sql1 = $sql;
+}else{
+	$cont = $cont + 1;
+$sql = "('$nro_factura', '$cod_detalle', '$cod_mercaderia', '$lote', '$mes_lote', '$anio_lote', '$cantidad_ingresada', '$precio_unitario', '$cantidad_salida', '$fecha_ultimo_mov', '$proveedor', '$gtin', '$transaccion', '$nro_serie', '$cod_droga', '$grupo', '$laboratorio')";
+$sql1 = $sql1.",".$sql;
+}
+$result1->MoveNext();
+}
+
+$sql1 = $sql1.";";
+
+
+
+
+ $sql8 = "INSERT INTO `tr_existencias` (`nro_factura`, `cod_detalle`, `cod_mercaderia`, `lote`, `mes_lote`, `anio_lote`, `cantidad_ingresada`, `precio_unitario`, `cantidad_salida`, `fecha_ultimo_mov`, `proveedor`, `gtin`, `transaccion`, `nro_serie`, `cod_droga`, `grupo`, `laboratorio`) VALUES ".$sql1;
+
+
+$wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('sql'=>$sql8); 
+ $response= $client->call('pacientes', $param1);
+
+
+
+///////////////////////// actualiza unico
+
+
+$sql = "TRUNCATE existencias";
+
+$param1=array('sql'=>$sql); 
+$response= $client->call('pacientes', $param1);
+
+
+
+$sql1="select * from existencias where cantidad_ingresada - cantidad_salida > 0";
+$result1 = $db->Execute($sql1);
+
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+
+$nro_factura=strtoupper($result1->fields["nro_factura"]);
+$cod_detalle=strtoupper($result1->fields["cod_detalle"]);
+$cod_mercaderia=strtoupper($result1->fields["cod_mercaderia"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cantidad_ingresada=strtoupper($result1->fields["cantidad_ingresada"]);
+$precio_unitario=$result1->fields["precio_unitario"];
+$cantidad_salida=strtoupper($result1->fields["cantidad_salida"]);
+$fecha_ultimo_mov=strtoupper($result1->fields["fecha_ultimo_mov"]);
+$proveedor=strtoupper($result1->fields["proveedor"]);
+$cod_interno=strtoupper($result1->fields["cod_interno"]);
+
+
+
+if ($cont == ""){
+$sql = "('$nro_factura', '$cod_detalle', '$cod_mercaderia', '$lote', '$mes_lote', '$anio_lote', '$cantidad_ingresada', '$precio_unitario', '$cantidad_salida', '$fecha_ultimo_mov', '$proveedor', '$cod_interno')";
+$cont = $cont + 1;
+$sql1 = $sql;
+}else{
+	$cont = $cont + 1;
+$sql = "('$nro_factura', '$cod_detalle', '$cod_mercaderia', '$lote', '$mes_lote', '$anio_lote', '$cantidad_ingresada', '$precio_unitario', '$cantidad_salida', '$fecha_ultimo_mov', '$proveedor', '$cod_interno')";
+$sql1 = $sql1.",".$sql;
+}
+$result1->MoveNext();
+}
+
+$sql1 = $sql1.";";
+
+
+
+
+ $sql8 = "INSERT INTO `existencias` (`nro_factura`, `cod_detalle`, `cod_mercaderia`, `lote`, `mes_lote`, `anio_lote`, `cantidad_ingresada`, `precio_unitario`, `cantidad_salida`, `fecha_ultimo_mov`, `proveedor`, `cod_interno`) VALUES ".$sql1;
+
+
+$wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('sql'=>$sql8); 
+echo  $response= $client->call('pacientes', $param1);
+
+
+
+
+////////////////////// actualiza encabezado facturas
+ $wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('variable1'=>$a); 
+ $response= $client->call('entregas', $param1);
+
+
+
+
+$sql1="select * from tr_ventas_encabezado where nro_factura > $response";
+$result = $db->Execute($sql1);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+
+$tipo_fact=$result->fields["tipo_fact"];
+$nro_factura=$result->fields["nro_factura"];
+$nro_receta=$result->fields["nro_receta"];
+$documento=$result->fields["documento"];
+$tipo_doc=$result->fields["tipo_doc"];
+$plan=$result->fields["plan"];
+$operador=$result->fields["operador"];
+$denominacion=$result->fields["denominacion"];
+$fecha=$result->fields["fecha"];
+$forma_pago=$result->fields["forma_pago"];
+$porc_dto=$result->fields["porc_dto"];
+$nombre_operador=$result->fields["nombre_operador"];
+$nro_os=$result->fields["nro_os"];
+$nombre_os=$result->fields["nombre_os"];
+$neto=$result->fields["neto"];
+$cod_movimiento=$result->fields["cod_movimiento"];
+$tipo_factura=$result->fields["tipo_factura"];
+$observacionnes=$result->fields["observacionnes"];
+$departamento=$result->fields["departamento"];
+
+  
+   $sql = "INSERT INTO `tr_ventas_encabezado` (`tipo_fact`, `nro_factura`, `nro_receta`, `documento`, `tipo_doc`, `plan`, `operador`, `denominacion`, `fecha`, `forma_pago`, `porc_dto`, `nombre_operador`, `nro_os`, `nombre_os` , `neto` , `cod_movimiento` , `tipo_factura` , `observacionnes` , `departamento`) VALUES ('$tipo_fact', '$nro_factura', '$nro_receta', '$documento', '$tipo_doc', '$plan', '$operador', '$denominacion', '$fecha', '$forma_pago', '$porc_dto', '$nombre_operador', '$nro_os', '$nombre_os' , '$neto' , '$cod_movimiento' , '$tipo_factura' , '$observacionnes' , '$departamento' )";
+
+
+
+
+
+if ($cont == ""){
+$sql = "('$tipo_fact', '$nro_factura', '$nro_receta', '$documento', '$tipo_doc', '$plan', '$operador', '$denominacion', '$fecha', '$forma_pago', '$porc_dto', '$nombre_operador', '$nro_os', '$nombre_os' , '$neto' , '$cod_movimiento' , '$tipo_factura' , '$observacionnes' , '$departamento')";
+$cont = $cont + 1;
+$sql1 = $sql;
+}else{
+	$cont = $cont + 1;
+$sql = "('$tipo_fact', '$nro_factura', '$nro_receta', '$documento', '$tipo_doc', '$plan', '$operador', '$denominacion', '$fecha', '$forma_pago', '$porc_dto', '$nombre_operador', '$nro_os', '$nombre_os' , '$neto' , '$cod_movimiento' , '$tipo_factura' , '$observacionnes' , '$departamento')";
+$sql1 = $sql1.",".$sql;
+}
+$result->MoveNext();
+}
+
+$sql1 = $sql1.";";
+
+
+ $sql9 = "INSERT INTO `tr_ventas_encabezado` (`tipo_fact`, `nro_factura`, `nro_receta`, `documento`, `tipo_doc`, `plan`, `operador`, `denominacion`, `fecha`, `forma_pago`, `porc_dto`, `nombre_operador`, `nro_os`, `nombre_os` , `neto` , `cod_movimiento` , `tipo_factura` , `observacionnes` , `departamento`) VALUES ".$sql1;
+
+
+$wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('sql'=>$sql9); 
+ $response= $client->call('pacientes', $param1);
+
+*/
+
+
+
+
+////////////////////// actualiza encabezado facturas
+ $wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('variable1'=>$a); 
+ $response= $client->call('entregas_detalle', $param1);
+
+ // ACTUALIZA DETALLE
+
+ 
+$sql1="select * from tr_ventas_detalle where nro_factura > $response";
+$result = $db->Execute($sql1);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+
+$tipo_fact=$result->fields["tipo_fact"];
+$nro_factura=$result->fields["nro_factura"];
+$cod_detalle=$result->fields["cod_detalle"];
+$cod_mercaderia=$result->fields["cod_mercaderia"];
+$descripcion=$result->fields["descripcion"];
+$presentacion=$result->fields["presentacion"];
+$lote=$result->fields["lote"];
+$mes_lote=$result->fields["mes_lote"];
+$anio_lote=$result->fields["anio_lote"];
+$cantidad=$result->fields["cantidad"];
+$precio_unitario=$result->fields["precio_unitario"];
+$total=$result->fields["total"];
+$proveedor=$result->fields["proveedor"];
+$operador=$result->fields["operador"];
+$gtin=$result->fields["gtin"];
+$resultado=$result->fields["resultado"];
+$transaccion=$result->fields["transaccion"];
+$nro_serie=$result->fields["nro_serie"];
+$programa=$result->fields["programa"];
+$grupo=$result->fields["grupo"];
+$fecha=$result->fields["fecha"];
+$afectada=$result->fields["afectada"];
+
+
+
+if ($cont == ""){
+$sql = "('$tipo_fact' , '$nro_factura' , '$cod_detalle' , '$cod_mercaderia' , '$descripcion' , '$presentacion' , '$lote' , '$mes_lote' , '$anio_lote' , '$cantidad' , '$precio_unitario' , '$total' , '$proveedor' , '$operador' , '$gtin' , '$resultado' , '$transaccion' , '$nro_serie' , '$programa' , '$grupo' , '$fecha' , '$afectada')";
+$cont = $cont + 1;
+$sql1 = $sql;
+}else{
+	$cont = $cont + 1;
+$sql = "('$tipo_fact' , '$nro_factura' , '$cod_detalle' , '$cod_mercaderia' , '$descripcion' , '$presentacion' , '$lote' , '$mes_lote' , '$anio_lote' , '$cantidad' , '$precio_unitario' , '$total' , '$proveedor' , '$operador' , '$gtin' , '$resultado' , '$transaccion' , '$nro_serie' , '$programa' , '$grupo' , '$fecha' , '$afectada')";
+$sql1 = $sql1.",".$sql;
+}
+$result->MoveNext();
+}
+
+$sql1 = $sql1.";";
+
+
+ $sql10 = "INSERT INTO `tr_ventas_detalle` ( `tipo_fact` , `nro_factura` , `cod_detalle` , `cod_mercaderia` , `descripcion` , `presentacion` , `lote` , `mes_lote` , `anio_lote` , `cantidad` , `precio_unitario` , `total` , `proveedor` , `operador` , `gtin` , `resultado` , `transaccion` , `nro_serie` , `programa` , `grupo` , `fecha` , `afectada`)  VALUES ".$sql1;
+
+
+$wsdl='http://coprofi.com.ar/sulb/nusoap/lib/servicio_papo.php?wsdl';
+$client=new nusoap_client($wsdl, 'wsdl'); 
+
+$param1=array('sql'=>$sql10); 
+echo  $response= $client->call('pacientes', $param1);

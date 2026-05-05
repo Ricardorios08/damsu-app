@@ -1,0 +1,53 @@
+<style type="text/css">
+<!--
+.Estilo1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+-->
+</style>
+
+<?php 
+$nro_proveedor = $_REQUEST['nro_proveedor'];
+$dia= $_REQUEST['dia'];
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$modo_carga= $_REQUEST['modo_carga'];
+
+$nro_factura= $_REQUEST['nro_factura'];
+$operador= $_REQUEST['operador'];
+$fecha = $dia."/".$mes."/".$anio;
+
+
+?>
+
+
+<FORM name="form" ACTION="<?php php echo $_SERVER["PHP_SELF"];?>" METHOD = "POST">
+
+<table width="717" border="0">
+  <tr>
+    <td width="188" bgcolor="#000099"><div align="center" class="Estilo1">BUSCAR DROGAS </div></td>
+    <td width="519" bgcolor="#FFFFFF"><input name="palabra" type="text" size="4">
+    <input type="submit" name="Alta" id= "Alta2" value="BUSCAR"></td>
+  </tr>
+</table>
+
+
+<?php 
+if(isset($_REQUEST['Alta'])) {
+
+	switch ($_REQUEST['Alta'])
+					{
+						
+			case "BUSCAR":
+				{
+
+$palabra=$_POST["palabra"];
+include ("detalle_buscador_mercaderia.php");
+
+ break;	}
+
+
+					}
+}
+?>

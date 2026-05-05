@@ -1,0 +1,38 @@
+ <tr>
+   <td bgcolor="#B8B8B8"><div align="center" class="Estilo13">Fecha Atenci&oacute;n </div></td>
+   <td bgcolor="#B8B8B8"><div align="center" class="Estilo13">N&deg; Nota Entrega </div></td>
+   <td colspan="2" bgcolor="#B8B8B8"><div align="center" class="Estilo13">Importe</div></td>
+ </tr>
+ 
+ <?php
+
+
+ $sql = "SELECT * FROM tr_ventas_encabezado where documento = '$documento' and tipo_doc = '$tipo_doc' ";
+ $result2 = $db->Execute($sql);
+
+if (!$result2) die("fallo".$db->ErrorMsg());
+  while (!$result2->EOF) {
+
+ $nro_factura=$result2->fields["nro_factura"];
+  $fecha=$result2->fields["fecha"];
+  $neto1=$result2->fields["neto"];
+?>
+
+ <tr>
+   <td><div align="center"><span class="Estilo4"><?php echo $fecha;?></span></div></td>
+   <td><div align="center"><span class="Estilo4"><?php echo $nro_factura;?></span></div></td>
+   <td width="212"><div align="right"><span class="Estilo4"><?php echo $neto1;?></span></div></td>
+   <td width="84">&nbsp;</td>
+ </tr>
+
+ <?php
+
+	      $result2->MoveNext();
+	}
+
+?>
+ <tr>
+   <td bgcolor="#B8B8B8"><div align="center" class="Estilo13">* * * *  </div></td>
+   <td bgcolor="#B8B8B8"><div align="center" class="Estilo13">* * * * </div></td>
+   <td colspan="2" bgcolor="#B8B8B8"><div align="center" class="Estilo13">* * * * </div></td>
+ </tr>

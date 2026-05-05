@@ -1,0 +1,140 @@
+<?php 
+include ("../../../../conexiones/config_usu.php");
+
+ 
+$mes=$_POST["mes"];
+$anio=$_POST["anio"];
+
+$mes_anterior = $mes - 1;
+
+$mes_anterior =  str_pad($mes_anterior, 2, "0", STR_PAD_LEFT);
+
+if ($mes == 01){
+$anio_anterior = $anio - 1;
+}else{
+$anio_anterior = $anio;
+}
+
+
+ $fecha_anterior = $anio_anterior."-".$mes_anterior."-31";
+$dia= date("d");
+
+$fecha_inventario = $anio."-".$mes."-".$dia;
+
+
+$sql = "DELETE FROM `tr_stock_temp`";
+mysql_query($sql);
+
+$sql = "DELETE FROM `tr_stock_temp_provisorio`";
+//mysql_query($sql);
+
+//$tr_stock = "tr_stock_30-11-2012";
+$tr_stock = "tr_stock";
+
+ $sql = "INSERT into tr_stock_temp SELECT * FROM `tr_stock` where fecha > '$fecha_anterior'";
+mysql_query($sql);
+
+
+  $sql="select * from tr_stock_temp group by cod_mercaderia order by cod_mercaderia, laboratorio";
+$result = $db->Execute($sql);
+
+ if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+	
+$cod_mercaderia=strtoupper($result->fields["cod_mercaderia"]);
+
+$conta = $conta + 1;
+  $sql1="select * from tr_stock_temp where cod_mercaderia = $cod_mercaderia group by laboratorio order by laboratorio";
+$result1 = $db->Execute($sql1);
+
+ if (!$result1) die("fallo 1".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+$fecha=strtoupper($result1->fields["fecha"]);
+$cod_movimiento=strtoupper($result1->fields["cod_movimiento"]);
+$tipo_fact=strtoupper($result1->fields["tipo_fact"]);
+$nro_comprobante=strtoupper($result1->fields["nro_comprobante"]);
+$cantidad=strtoupper($result1->fields["cantidad"]);
+$precio_unitario=strtoupper($result1->fields["precio_unitario"]);
+$lote=strtoupper($result1->fields["lote"]);
+$mes_lote=strtoupper($result1->fields["mes_lote"]);
+$anio_lote=strtoupper($result1->fields["anio_lote"]);
+$cuenta=strtoupper($result1->fields["cuenta"]);
+$tipo_cuenta=strtoupper($result1->fields["tipo_cuenta"]);
+$observaciones=strtoupper($result1->fields["observaciones"]);
+$documento=strtoupper($result1->fields["documento"]);
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+$nro_os=strtoupper($result1->fields["nro_os"]);
+$gtin=strtoupper($result1->fields["gtin"]);
+$transaccion=strtoupper($result1->fields["transaccion"]);
+$nro_serie=strtoupper($result1->fields["nro_serie"]);
+$drogas=strtoupper($result1->fields["drogas"]);
+$grupo=strtoupper($result1->fields["grupo"]);
+$laboratorio=strtoupper($result1->fields["laboratorio"]);
+
+$cant = $cant + 1;
+     $sql2="select sum(cantidad) as ingresada  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 1 and fecha > '$fecha_anterior'";
+$result2 = $db->Execute($sql2);
+$ingresada=strtoupper($result2->fields["ingresada"]);
+
+   $sql2="select sum(cantidad) as salida  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 6 and fecha > '$fecha_anterior'";
+$result2 = $db->Execute($sql2);
+$salida=strtoupper($result2->fields["salida"]);
+
+
+   $sql2="select * from tr_stock_temp_provisorio where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio  and mes = '$mes_anterior' and anio = $anio_anterior";
+$result2 = $db->Execute($sql2);
+$anterior=strtoupper($result2->fields["anterior"]);
+$cantidad=strtoupper($result2->fields["cantidad"]);
+$salida1=strtoupper($result2->fields["salida"]);
+$anterior = $anterior + $cantidad - $salida1;
+
+
+  $sql2="select sum(precio_unitario) as precio_anterior  from tr_stock_temp_provisorio where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio  and mes = '$mes_anterior' and anio = $anio_anterior";
+$result2 = $db->Execute($sql2);
+$precio_anterior=strtoupper($result2->fields["precio_anterior"]);
+
+
+
+  $sql2="select sum(precio_unitario) as precio_ingreso  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 1 and fecha  > '$fecha_anterior'";
+$result2 = $db->Execute($sql2);
+$precio_ingreso=strtoupper($result2->fields["precio_ingreso"]);
+
+ $sql2="select sum(precio_unitario) as precio_egreso  from tr_stock_temp where cod_mercaderia = $cod_mercaderia and laboratorio = $laboratorio and cod_movimiento = 6 and fecha  > '$fecha_anterior'";
+$result2 = $db->Execute($sql2);
+$precio_egreso=strtoupper($result2->fields["precio_egreso"]);
+
+$sql8="select * from monodrogas where cod_barra = $cod_mercaderia";
+$result8 = $db->Execute($sql8);
+$nombre_comercial=strtoupper($result8->fields["nombre_comercial"]);
+$presentacion=strtoupper($result8->fields["presentacion"]);
+$troquel=strtoupper($result8->fields["troquel"]);
+$precio_actualizado=strtoupper($result8->fields["precio_actualizado"]);
+
+
+
+$precio_unitario = $precio_anterior + $precio_ingreso - $precio_egreso;
+
+
+$exis = $anterior + $ingresada - $salida;
+
+
+
+ echo  $sql3 = "INSERT INTO tr_stock_temp_provisorio (`cod_mercaderia`, `fecha`, `cod_movimiento`, `tipo_fact`, `nro_comprobante`, `cantidad`, `precio_unitario`, `lote`, `mes_lote`, `anio_lote`, `cuenta`, `tipo_cuenta`, `cod_operacion`, `observaciones`, `documento`, `cod_droga`, `nro_os`, `gtin`, `transaccion`, `nro_serie`, `drogas`, `grupo`, `laboratorio`, `fecha_inventario`, `mes`, `anio` , `salida` , `anterior` , `precio_ingreso`, `precio_egreso` , `nombre_comercial` , `precio_anterior` ) VALUES ('$cod_mercaderia', '$fecha', '$cod_movimiento', '$tipo_fact', '$nro_comprobante', '$ingresada', '$precio_unitario', '$lote', '$mes_lote', '$anio_lote', '$cuenta', '$tipo_cuenta', '$cod_operacion', '$observaciones', '$documento', '$cod_droga', '$nro_os', '$gtin', '$transaccion', '$nro_serie', '$drogas', '$grupo', '$laboratorio', '$fecha_inventario', '$mes', '$anio' , '$salida' , '$anterior'  , '$precio_ingreso' , '$precio_egreso', '$nombre_comercial' , '$precio_anterior');";
+//mysql_query($sql3);
+
+
+
+$result1->MoveNext();
+	}
+
+	$result->MoveNext();
+	}
+
+//include ("genera_unico.php");
+
+echo "<br>";
+echo $conta;
+echo "<br>";
+echo $cant;

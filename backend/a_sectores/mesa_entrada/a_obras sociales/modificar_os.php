@@ -1,0 +1,50 @@
+<?php 
+include ("../../../conexiones/config_usu.php");
+global $domicilio_l;
+global $telefono_1;
+global $cod_area_n;
+global $cod_area_l;
+$nro_os=$_POST["nro_os"];
+
+$nombre_os=$_POST["nombre_os"];
+$sigla=$_POST["sigla"];
+$cobertura_drogas=$_POST["cobertura_drogas"];
+$cobertura_material=$_POST["cobertura_material"];
+$cobertura_internacion=$_POST["cobertura_internacion"];
+$cobertura_estudios=$_POST["cobertura_estudios"];
+$recargo_facturacion=$_POST["recargo_facturacion"];
+$convenio_osep=$_POST["convenio_osep"];
+$domicilio=$_POST["domicilio"];
+$localidad=$_POST["localidad"];
+$cod_postal=$_POST["cod_postal"];
+$cod_area=$_POST["cod_area"];
+$telefono=$_POST["telefono"];
+$tel_fax=$_POST["tel_fax"];
+$email=$_POST["email"];
+
+	
+if ($nombre_os == ""){
+	$leyenda = "NO INGRESO NOMBRE DE OBRA SOCIAL";
+	include ("../../../alertas/campo_vacio.php");
+	EXIT;
+}
+
+if ($sigla== ""){
+	$leyenda = "NO INGRESO SIGLA DE OBRA SOCIAL";
+	include ("../../../alertas/campo_vacio.php");
+	EXIT;
+}
+
+$SQL="Delete From obrasocial where nro_os = $nro_os";
+$db->Execute($SQL);
+
+$sql = "INSERT INTO `obrasocial` ( `nro_os` , `nombre_os` , `sigla` , `cobertura_drogas` , `cobertura_material` , `cobertura_internacion` , `cobertura_estudios` , `recargo_facturacion` , `convenio_osep` , `domicilio` , `localidad` , `cod_postal` , `cod_area` , `telefono` , `tel_fax` , `email` )  VALUES ('$nro_os' , '$nombre_os' , '$sigla' , '$cobertura_drogas' , '$cobertura_material' , '$cobertura_internacion' , '$cobertura_estudios' , '$recargo_facturacion' , '$convenio_osep' , '$domicilio' , '$localidad' , '$cod_postal' , '$cod_area' , '$telefono' , '$tel_fax' , '$email' )";
+mysql_query($sql);
+
+
+		
+$leyenda = "LA OBRA SOCIAL HA SIDO MODIFICADA DEL SISTEMA";
+include ("../../../alertas/campo_informacion.php");
+ 
+
+?>

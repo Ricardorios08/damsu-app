@@ -1,0 +1,53 @@
+<?php  
+
+
+include ("../../../conexiones/config_pro.php");
+
+$anio = $_REQUEST['anio'];
+$departamento = $_REQUEST['departamento'];
+$desde = $_REQUEST['desde'];
+$hasta = $_REQUEST['hasta'];
+
+$desde = '2018-01-01';
+$hasta = '2019-12-31';
+
+$enca = 2;
+$deta = 2;
+$fuente  =2;
+$fecha = 2;
+$grupo = 2;
+$resultado = 2;
+$compras = 1;
+
+
+
+////// encabezado sin documento
+
+if ($compras == 1){
+
+ $sql="select * from compras_encabezado where fecha between '$desde' and '$hasta'   group by documento ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$documento=strtoupper($result->fields["documento"]);
+
+
+ echo $sql8 = "SELECT * FROM `paciente_diagnostico` where documento = '$documento'";
+$result8 = $db->Execute($sql8);
+$cod_fuente=$result8->fields["cod_fuente"];
+
+
+echo $sql88 = "UPDATE compras_encabezado SET `cod_fuente` = $cod_fuente WHERE documento = $documento";
+$result88 = $db->Execute($sql88);
+
+$cont = $cont + 1;
+echo "<br>";
+
+	$result->MoveNext();
+	}
+
+echo "<br>";
+echo "registros: ".$cont;
+}

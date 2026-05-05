@@ -1,0 +1,135 @@
+<?php 
+include ("../../../conexiones/config_pro.php");
+
+$cod_diag = $_REQUEST['cod_diag'];
+$cod_prestacion= $_REQUEST['cod_prestacion'];
+
+
+$sql="select * from diagnostico where nro_diagnostico like '$cod_diag%'";
+$result = $db->Execute($sql);
+$nombre_diagnostico=strtoupper($result->fields["nombre_diagnostico"]);
+
+$sql="select * from prestaciones where cod_prestacion like '$cod_prestacion%'";
+$result = $db->Execute($sql);
+$descripcion=strtoupper($result->fields["descripcion"]);
+
+
+ $hoy = date("d-m-Y");?>
+
+
+<table width="800" border="0">
+  <tr>
+    <td height="35" bgcolor="#B8B8B8"><div align="center" class="Estilo11">PROGRAMA ONCOLOGICO PROVINCIAL </div></td>
+  </tr>
+  <tr>
+    <td><div align="right" class="Estilo11"><?php echo $hoy;?></div></td>
+  </tr>
+
+  <tr>
+    <td><span class="Estilo14">CANTIDAD DE PACIENTES CON DIAGNOSTICO: <?php echo $cod_diag;?> - <?php echo $nombre_diagnostico;?></span></td>
+  </tr>
+</table>
+
+<table width="800" border="0">
+  <tr>
+    <td width="380" bgcolor="#B8B8B8"><div align="center" class="Estilo14">A&Ntilde;O</div></td>
+    <td width="410" bgcolor="#B8B8B8"><div align="center" class="Estilo14">QUIMIO</div></td>
+     <td width="410" bgcolor="#B8B8B8"><div align="center" class="Estilo14">RADIO</div></td>
+  </tr>
+  
+ </table>
+
+
+<?php 
+
+
+$anio1= $_REQUEST['anio1'];
+$anio2= $_REQUEST['anio2'];
+$anio3= $_REQUEST['anio3'];
+
+
+if ($anio1 > 0){
+		$anio = $anio1;
+$fecha_desde = $anio1."-01-01";
+$fecha_hasta = $anio1."-12-31";
+include ("ver_diagnosticos.php");
+
+}
+
+
+if ($anio2 > 0){
+		$anio = $anio2;
+$fecha_desde = $anio2."-01-01";
+$fecha_hasta = $anio2."-12-31";
+include ("ver_diagnosticos.php");
+
+}
+
+
+if ($anio3 > 0){
+	$anio = $anio3;
+$fecha_desde = $anio3."-01-01";
+$fecha_hasta = $anio3."-12-31";
+include ("ver_diagnosticos.php");
+
+}
+
+
+
+////////////////
+
+
+?>
+
+<table width="800" border="0">
+
+  <tr>
+    <td><span class="Estilo14">CANTIDAD DE PACIENTES CON PRESTACION <?php echo $cod_prestacion;?> - <?php echo $descripcion;?> </span></td>
+  </tr>
+</table>
+
+<table width="800" border="0">
+  <tr>
+    <td width="380" bgcolor="#B8B8B8"><div align="center" class="Estilo14">A&Ntilde;O</div></td>
+    <td width="410" bgcolor="#B8B8B8"><div align="center" class="Estilo14">CANTIDAD</div></td>
+ 
+  </tr>
+  
+ </table>
+
+<?php
+
+
+if ($anio1 > 0){
+		$anio = $anio1;
+$fecha_desde = $anio1."-01-01";
+$fecha_hasta = $anio1."-12-31";
+ 
+include ("ver_diagnosticos_radio.php");
+}
+
+ 
+if ($anio2 > 0){
+		$anio = $anio2;
+$fecha_desde = $anio2."-01-01";
+$fecha_hasta = $anio2."-12-31";
+ 
+include ("ver_diagnosticos_radio.php");
+}
+
+ 
+if ($anio3 > 0){
+	$anio = $anio3;
+$fecha_desde = $anio3."-01-01";
+$fecha_hasta = $anio3."-12-31";
+ 
+include ("ver_diagnosticos_radio.php");
+}
+
+
+
+ ?>
+
+
+
+

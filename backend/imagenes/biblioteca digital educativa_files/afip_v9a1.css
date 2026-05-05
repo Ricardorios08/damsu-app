@@ -1,0 +1,97 @@
+/* Estilos Globales */
+BODY {margin:0px; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY:  Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #eeeeee }
+P,TD,TH,DIV,SPAN {FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY:  Arial, Helvetica, sans-serif;}
+B, STRONG {FONT-WEIGHT: bold}
+I {FONT-STYLE: italic}
+EM {FONT-STYLE: italic}
+LI {LIST-STYLE-IMAGE: url(/imagenes/ic_flecha.gif); LIST-STYLE-TYPE: circle}
+SMALL {FONT-SIZE: 10px}
+BIG {FONT-SIZE: 14px; FONT-WEIGHT: bold;}
+INPUT, SELECT, TEXTAREA {FONT-SIZE: 12px; FONT-FAMILY:  Arial, Helvetica, sans-serif}
+A {FONT-WEIGHT: bold; COLOR: #083C96; text-decoration: none;  }
+A:hover {FONT-WEIGHT: bold; COLOR: #000000; TEXT-DECORATION: underline}
+/* Estilos barra de navegación */
+.NavDiv {background: url(/imagenes/fondo_header_divisor.jpg);}
+.NavLnk {FONT-WEIGHT: bold; FONT-SIZE:13px; COLOR: #1773D6; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;} 
+.NavLnk:hover {FONT-WEIGHT: bold; FONT-SIZE:13px; COLOR: #000080; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;}
+.FooterDiv {background: url(/imagenes/fondo_footer_divisor.jpg);}
+.HeaderLink {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #CDDBED; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;}
+.HeaderLink:hover {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #FFFFFF; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;}
+.HeaderText {FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #1773D6; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+.HeaderText B {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000080; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+.FooterText {FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #1773D6; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+.FooterText B {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #1773D6; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+.FooterLink {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #1773D6; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+
+/* Estilos de botones AFIP LE DA UNA MANO */
+.FooterLink2 {FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #1773D6; FONT-FAMILY:  Arial, Helvetica; TEXT-DECORATION: none;}
+.FooterLink:hover {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000080; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;}
+.Footerpp {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #FF0000; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none;}
+/* Estilos de cajas del header, body y footer */
+TABLE#HeaderTable {border-collapse:collapse; padding: 0px; height: 47px; width: 770px; background: url(/imagenes/fondo_header.jpg);  BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 1px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 0px solid; empty-cells: show;}
+
+/*Este fué creado para el Header de Clave Fiscal.Dario*/
+/*TABLE#HeaderTableClaveFiscal {border-collapse:collapse; padding: 0px; height: 47px; width: 770px; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 1px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 0px solid; empty-cells: show;}*/
+TABLE#HeaderTableClaveFiscal {border-collapse:collapse; padding: 0px; height: 47px; width: 770px; background: #EFEFEF; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 1px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; empty-cells: show;}
+TABLE#FooterTableClaveFiscal {background: #ECF9FF; height: 25px; width: 770px; border-collapse:collapse; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 0px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; padding: 2px; empty-cells: show;}
+TABLE#BodyTable {BACKGROUND-COLOR: #ffffff; height: 348px; width: 770px; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 0px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; empty-cells: show; cell-padding: 5px;}
+TABLE#FooterTable {background: url(/imagenes/fondo_footer.jpg); height: 25px; width: 770px; border-collapse:collapse; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 0px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; padding: 2px; empty-cells: show;}
+INPUT.HeaderSearch {FONT-WEIGHT: none; FONT-SIZE: 11px; COLOR: #1773D6; BACKGROUND-COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none; height: 19px; PADDING-RIGHT: 4px; PADDING-LEFT: 4px; BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 1px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; cursor:hand;}
+INPUT.Button, INPUT.Submit {FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial, Helvetica; TEXT-DECORATION: none; height: 19px; background: url(/imagenes/swpk350ButtonBg.jpg); BORDER-LEFT: #1773D6 1px solid; BORDER-TOP: #1773D6 1px solid; BORDER-RIGHT: #1773D6 1px solid; BORDER-BOTTOM: #1773D6 1px solid; cursor:hand;}
+/* estilos generales del diseño */
+.menu_a {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #FFFFFF; text-decoration: none; border: solid; border-width: 0px 1px 0px 0px; clip:    rect(   ); vertical-align: middle; height: 25px; margin-left: -4px; padding-top: 4px; padding-right: 9px; padding-left: 10px; border-color: #FFFFFF #2AACEA A9E2 #FFFFFF; width: auto}
+a.menu_a:hover {  clip:  rect(   ); background-image: url(/imagenes/menu_a_over_ani.gif); color: #007CBF}
+.vacio {  font-family: Arial, Helvetica, sans-serif; font-size: 1px}
+.formulario {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #008DD6; background-color: #E3F3FD; border: 1px inset; border-color: #669DDB #008DD6 #008DD6}
+.top_txt {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #FFFFFF; text-decoration: none}
+.contenido_tit {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #333333; border: solid; clip:  rect(   ); background-image: url(/imagenes/tit_fondo2.gif); border-width: 0px; border-color: #9DDFFE #FCE6CB #9DDFFE #FBD5A8}
+a.contenido_tit, a.contenido_tit:hover {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #333333; text-decoration: none;border-width: 0px}
+.contenido_descrp {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #204373; text-decoration: none; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); background-color: #DBE4F2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.contenido {  font-family: Arial, Helvetica, sans-serif; font-size: 11px; color: #000000; text-decoration: none; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.titulos {  font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: #000000; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.titulos2 {  font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #666666; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px}
+.contenido_descrp2 {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #204373; text-decoration: none; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); background-color: #DBE4F2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 0px; border-right-width: 1px; border-bottom-width: 0px; border-left-width: 0px}
+.contenido_descrp3 {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #1773D6; text-decoration: none;font-weight: bold; }
+/*Para Tablas. Ejemplo: "Pagos VEP"*/
+.contenido_descrp4 {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #204373; text-decoration: none; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #9DDFFE; clip:   rect(   ); background-color: #DBE4F2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+.contenido_sub_tit { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #FFFFFF; border: solid; clip:    rect(   ); background-image: url(/imagenes/sub.tit.fondo.gif); border-color: #FFFFFF #FFFFFF #9DDFFE #9DDFFE; text-decoration: none; background-color: #CCCCCC; border-width: 1px 1px 0px 0px; left: 5px; padding-left: 5px}
+.contenido_naranja {  font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration: none; padding-left: 5px; border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF; clip:   rect(   ); background-color: #FEB825; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px}
+a.contenido_sub_tit:hover {  background-image: url(/imagenes/sub.tit.fondo.over.gif); color: #0099CC}
+a.link_seccion {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #FFFFFF; text-decoration: none;}
+a.link_seccion:hover {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bold; color: #ffcc00; text-decoration: none;}
+.novedades { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #666666; border: #9DDFFE}
+.novedades {  text-decoration: none; clip:  rect(   ); font-weight: normal}
+a.novedades { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #000000; text-decoration: none}
+a.novedades:hover { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #0066CC; text-decoration: underline}
+.interna_descrp { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #333333; text-decoration: none; padding-left: 4px; border-color: #FFFFFF #333333 black #9DDFFE; background-image: url(/imagenes/fondo_txt.gif); width: 449px; clip: rect( ); margin-right: 5px; margin-left: 5px; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; margin-bottom: 5px; border-style: none; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px }
+.interna_desc { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #333333; text-decoration: none;}
+.interna_sub { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: Bold; color: #1773D6; border: #9DDFFE solid; clip:  rect(   ); border-width: 0px 0px 0px 0px}
+.interna_item {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt; color: #666666; text-decoration: none; list-style-image: url(/imagenes/ic_flecha.gif); font-weight: bold; list-style-position: outside; vertical-align: top}
+a.interna_item:hover {  color: #000000; text-decoration: none}
+.pie_txt {  font-family: Arial, Helvetica, sans-serif; font-size: 9px; color: #F2FFFF; text-decoration: none}
+a.pie_txt:hover {  color: #FFFFFF; text-decoration: none}
+.contenido_tit_col2 { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; font-weight: bold; color: #FFCC00; border: 1px #9DDFFE solid; height: auto; width: 273px; margin-top: 5px; margin-left: 2px; margin-right: 5px; padding-left: 5px}
+.contorno_cian { border: 1px #4578BE solid; clip:  rect(   )}
+.contorno_down {  border-color: black black #4578BE; border-style: solid; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px; border-left-width: 0px}
+.contorno_izq { border: #4578BE solid; clip: rect( ) ; border-width: 0px 0px 0px 1px}
+.home_titulo, a.home_titulo {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #EF8C00; text-decoration: none; font-weight: Bold;}
+a.home_titulo:hover {font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #000000; text-decoration: none; font-weight: Bold;}
+.home_desc { font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration: none; background-color: #FFFFFF; border-color: #EF8C00; border-style: solid; border-top-width: 1px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: hand;}
+a.home_link, a.home_link:hover {FONT-WEIGHT: normal; font-family: Arial, Helvetica, sans-serif; font-size: 8pt; color: #000000; text-decoration: none;  border-width: 0px; cursor: hand;}
+
+/*Botones*/
+
+.botonera-out-largo {
+ font-size:11px;
+ FONT-WEIGHT: bold;
+ font-family:Arial, Helvetica, sans-serif;
+ color:#1773D6;
+ background-color:#c9dbed;
+ text-align: center;
+ height: 22px;
+ border:1px solid #fef2e5;
+}
+
+.tit_fondo {
+BACKGROUND:url(/imagenes/Tit_fondo5.jpg);
+}

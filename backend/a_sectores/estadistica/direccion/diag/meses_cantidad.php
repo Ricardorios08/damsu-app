@@ -1,0 +1,85 @@
+<?php
+$mes = "01";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' and departamento = '$departamento' ";
+$result = $db->Execute($sql);
+$uno=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "02";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' and departamento = '$departamento' ";
+$result = $db->Execute($sql);
+$dos=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "03";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$tres=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "04";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$cuatro=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "05";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$cinco=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "06";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$seis=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "07";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$siete=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "08";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$ocho=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "09";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$nueve=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "10";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$diez=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "11";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+ $sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+ $once=strtoupper($result->fields["cantidad"]); // numero
+
+$mes = "12";
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+$sql="select sum(cantidad) as cantidad from `est_departamento_final` where  mes = '$mes' and anio = '$anio' ";
+$result = $db->Execute($sql);
+$doce=strtoupper($result->fields["cantidad"]); // numero
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Documento sin t&iacute;tulo</title>
+
+<style type="text/css">
+<!--
+.Estilo3 {
+	font-family: "Trebuchet MS";
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+}
+-->
+</style>
+<link href="../../menus.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.Estilo5 {font-size: 12px}
+.Estilo17 {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+}
+-->
+</style>
+</head>
+
+<body>
+<form action="prueba.php" method="post"  target ="central1">
+
+<table width="152"  border="0">
+  <tr bgcolor="#990033"> </tr>
+  
+  <tr>
+    <td bgcolor="#9DACBF"><div align="center">
+      <div align="center" class="Estilo3">GENERA</div>
+      <div align="center" class="Estilo3">GTIN</div>
+      <div align="center" class="Estilo3">PROPIOS</div>
+    </div></td>
+  </tr>
+  <!-- <tr>
+    <td bgcolor="#FFFFFF"><div align="center" class="Estilo17">Cantidad
+          <input name = "cant" type = "text" id="cant" size = "10" />
+    </div></td>
+  </tr>
+   -->
+
+  <tr>
+    <td bgcolor="#EBE9ED"><div align="center"><span class="Estilo5">
+      <input type = "hidden" name = "usuario" value = "<?php echo $usuario;?>" />
+      <input type = "submit" name = "buscar" value = "GENERAR">
+    </span></div></td>
+  </tr>
+</table>
+</form>
+
+</body>
+</html>

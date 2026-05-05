@@ -1,0 +1,109 @@
+<?php 
+global $buscador_rapido;
+
+if ($borrar != 1){
+$buscador_rapido=$_POST["buscador_rapido"];
+}
+
+$hoy = date("d/m/Y");
+include("../../../conexiones/config_pro.php");
+
+
+$B = 1;
+
+
+
+
+
+
+
+
+?>
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close(); cerrar()"> 
+<table width="1000" border="1" cellspacing="0">
+  <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+    <td height="44" colspan="6"><div align="center"><strong>INVENTARIO MONODROGAS. </strong><font color="#000000" face="Arial, Helvetica, sans-serif">Emitido el <?php echo $hoy;?></font></div>      <div align="center"></div></td>
+  </tr>
+  
+  <tr bordercolor="#FFFFFF" bgcolor="#000099">
+
+
+    <td width="7%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">CODIGO</font></div></td>
+    <td width="17%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">LABORATORIO</font></div></td>
+    <td width="39%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">NOMBRE COMERCIAL </font></div></td>
+
+<td width="27%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">DROGA</font></div></td>
+	<td width="5%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">Cant x Caja </font></div></td>
+	<td width="5%" bgcolor="#FFFFFF"><div align="center"><font color="#000000" size="2" face="Trebuchet MS">ANMAT</font></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td colspan="6"><hr noshade></td>
+  </tr>
+  <?php 
+
+
+
+$anio_actual = date("y");
+$mes_actual = date ("m");
+
+/* SELECT * FROM monodrogas
+WHERE cod_droga = (SELECT cod_droga, droga FROM drogas
+ORDER BY cod_droga)";
+*/
+
+
+//echo $sql1 = "SELECT monodrogas.* 
+//FROM drogas INNER JOIN monodrogas on drogas.cod_droga order by drogas.droga";
+
+
+echo $sql1="select * from drogas where tipo = 1 order by droga";
+$result1 = $db->Execute($sql1);
+
+  
+  if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+
+
+$nombre_droga=strtoupper($result1->fields["droga"]);
+
+$cod_droga=strtoupper($result1->fields["cod_droga"]);
+
+
+
+ $sql="select * from monodrogas where cod_droga = $cod_droga order by nombre_comercial ";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+ $cod_mercaderia=strtoupper($result->fields["cod_barra"]);
+ $nombre_comercial=strtoupper($result->fields["nombre_comercial"]);
+$presentacion=strtoupper($result->fields["presentacion"]);
+$laboratorio=strtoupper($result->fields["laboratorio"]);
+$troquel=strtoupper($result->fields["troquel"]);
+$cant_caja=strtoupper($result->fields["cant_caja"]);
+$informar=strtoupper($result->fields["informar"]);
+
+
+?>
+
+    <tr bgcolor="#FFFFFF"><td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$troquel");?></font></div></td>
+      <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$laboratorio");?></font></div></td>
+      <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$nombre_comercial");?></font> - <font size="2" face="Trebuchet MS"><?php print("$presentacion");?></font></div></td>
+    <td><div align="left"><font size="2" face="Trebuchet MS"><?php print("$cod_droga");?> - <?php print("$nombre_droga");?></font></div></td>
+<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$cant_caja");?></font></div></td>
+<td><div align="center"><font size="2" face="Trebuchet MS"><?php print("$informar");?></font></div></td>
+</tr>
+<?php 
+
+$result->MoveNext();
+	}
+  
+
+
+
+$result1->MoveNext();
+	}
+  
+?>
+</table>

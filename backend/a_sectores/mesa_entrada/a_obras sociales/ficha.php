@@ -1,0 +1,187 @@
+<script language="javascript">
+function on_load()
+{
+document.getElementById("nro_os").focus();
+}
+
+function verif_caracter(obj,evt)
+{
+
+	evt = (evt) ? evt : event;
+	var charCode = (evt.charCode) ? evt.charCode : ((evt.which) ? evt.which : evt.keyCode);
+	if (charCode == 13) 
+
+	{
+		switch(obj.id)
+		{
+				case "nro_os":
+				document.getElementById("nombre_os").focus();
+				
+				break;
+				case "nombre_os":
+				document.getElementById("sigla").focus();
+				break;
+				case "sigla":
+				document.getElementById("cobertura_drogas").focus();
+				break;
+				case "cobertura_drogas":
+				document.getElementById("cobertura_material").focus();
+				break;
+				case "cobertura_material":
+				document.getElementById("cobertura_internacion").focus();
+				break;
+				case "cobertura_internacion":
+				document.getElementById("cobertura_estudios").focus();
+				break;
+				case "cobertura_estudios":
+				document.getElementById("recargo_facturacion").focus();
+				break;
+				case "recargo_facturacion":
+				document.getElementById("SI").focus();
+				break;
+				case "SI":
+				document.getElementById("NO").focus();
+				break;
+				case "NO":
+				document.getElementById("domicilio").focus();
+				break;
+
+				case "domicilio":
+				document.getElementById("localidad").focus();
+				break;
+				case "localidad":
+				document.getElementById("cod_postal").focus();
+				break;
+				case "cod_postal":
+				document.getElementById("cod_area").focus();
+				break;
+				case "cod_area":
+				document.getElementById("telefono").focus();
+				break;
+				case "telefono":
+				document.getElementById("tel_fax").focus();
+				break;
+				case "tel_fax":
+				document.getElementById("email").focus();
+				break;
+				
+				
+				
+		}
+		return false;
+	}
+	return true;
+}
+
+
+</script>
+
+<?php
+
+include ("../../../conexiones/config_usu.php");
+$sql="select * from obrasocial ORDER BY nro_os DESC";
+$result = $db->Execute($sql);
+
+$id=($result->fields["nro_os"] + 1);
+include ("variables.php");
+?>
+
+<BODY background="../../IMAGENES/IZQUIERDA.PNG"  onload = "on_load()">
+<form action="modificar_os.php" method="post">
+  <table width="800" border="0">
+    <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF"> 
+      <td height="25" colspan="2"><div align="center"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          DATOS DE OBRA SOCIAL</strong></font></div></td>
+    </tr>
+    <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+      <td colspan="2"><hr noshade></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td width="50%"><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">N&ordm; 
+          Obra Social</font></div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong>  <?php print("$id");?> </strong> </font> <div align="right"></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Nombre</font></div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong>     <?php print("$nombre_os");?>   </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Sigla</font></div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+  <?php print("$sigla");?>      </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Cobertura 
+          Drogas </font></div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong>   <?php print("$cobertura_drogas");?> % </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right">Cobertura Material Descartable</div></td>
+      <td><div align="left"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          </strong> </font> <font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+   <?php print("$cobertura_material");?>       % </strong></font></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right">Cobertura Internaci&oacute;n</div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+  <?php print("$cobertura_internacion");?>      % </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right">Cobertura Estudios</div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+<?php print("$cobertura_estudios");?>        % </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right">Recargo Facturacion</div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+    <?php print("$recargo_facturacion");?>    % </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right">Convenio OSEP</div></td>
+      <td><font size="2" face="Arial, Helvetica, sans-serif"><strong><?php print("$convenio_osep");?> 
+    
+	  </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF">
+      <td colspan="2"><hr noshade></td>
+    </tr>
+    <tr bordercolor="#FFFFCC" bgcolor="#FFFFFF"> 
+      <td colspan="2"><div align="center"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif"><strong> 
+          Ubicaci&oacute;n</strong></font></div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Domicilio</font></div></td>
+      <td width="50%" bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+   <?php print("$domicilio");?>     </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Localidad</font></div></td>
+      <td bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+   <?php print("$localidad");?>     </strong><strong>        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+      <td><div align="right"><font size="2" face="Arial, Helvetica, sans-serif">Cod. Postal</font></div></td>
+      <td bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong><?php print("$cod_postal");?></strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Telefono 
+          </font></div></td>
+      <td bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+ <?php print("$cod_area");?> -
+  <?php print("$telefono");?>      </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">Tel-Fax</font></div></td>
+      <td bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong> 
+      <?php print("$tel_fax");?>        </strong></font></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF"> 
+      <td><div align="right"></div>
+        <div align="right"><font color="#000000" size="2" face="Arial, Helvetica, sans-serif">E-mail 
+          &nbsp;</font></div></td>
+      <td bordercolor="#FFFFCC"><font size="2" face="Arial, Helvetica, sans-serif"><strong>   <?php print("$email");?>     </strong></font></td>
+    </tr>
+  </table>
+
+</form>
+</body>

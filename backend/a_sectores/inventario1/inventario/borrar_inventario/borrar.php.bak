@@ -1,0 +1,42 @@
+<?php
+include ("../../../../conexiones/config_pro.php");
+$mes= $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$contra= $_REQUEST['contra'];
+$mes_actual = date("m");
+$anio_actual = date("y");
+
+
+if ($contra == "papo2012"){
+
+
+if (($mes < $mes_actual) AND ($anio == $anio_actual)) {
+$leyenda = "NO PUEDE BORRAR UN INVENTARIO YA FINALIZADO";
+include ("../../../../alertas/campo_informacion2.php");
+exit;
+}else{
+
+$leyenda = "SE ELIMINO EL INVENTARIO ".$mes."/".$anio;
+include ("../../../../alertas/campo_informacion.php");
+
+ $sql = "delete FROM `tr_stock_temp_provisorio` WHERE `mes` = '$mes' AND `anio` = '$anio'";
+$result = $db->Execute($sql);
+ $sql = "delete FROM `tr_stock_temp_provisorio1` WHERE `mes` = '$mes' AND `anio` = '$anio'";
+$result = $db->Execute($sql);
+
+}
+
+
+
+
+
+}
+else
+{
+$leyenda = "CONTRASEÑA DE SEGURIDAD INCORRECTA";
+include ("../../../../alertas/campo_informacion2.php");
+exit;
+}
+
+
+ 

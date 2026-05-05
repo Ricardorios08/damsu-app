@@ -1,0 +1,20 @@
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'CIUDAD' WHERE `departamento` LIKE 'CIUDAD%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'GODOY CRUZ' WHERE `departamento` LIKE 'GODOY CRUZ%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'GRAL ALVEAR' WHERE `departamento` LIKE 'GRAL ALVEAR %';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'GUAYMALLEN' WHERE `departamento` LIKE 'GUAYMALLEN%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'JUNIN' WHERE `departamento` LIKE 'JUNIN%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'LA PAZ' WHERE `departamento` LIKE 'LA PAZ%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'LAS HERAS' WHERE `departamento` LIKE 'LAS HERAS%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'LAVALLE' WHERE `departamento` LIKE 'LAVALLE%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'LUJAN' WHERE `departamento` LIKE 'LUJAN%';
+
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'MALARGUE' WHERE `departamento` LIKE 'MALARGUE%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'RIVADAVIA' WHERE `departamento` LIKE 'RIVADAVIA%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'SAN CARLOS' WHERE `departamento` LIKE 'SAN CARLOS%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'SAN MARTIN' WHERE `departamento` LIKE 'SAN MARTIN%';
+
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'SAN RAFAEL' WHERE `departamento` LIKE 'SAN RAFAEL%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'SANTA ROSA' WHERE `departamento` LIKE 'SANTA ROSA%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'SIN DPTO' WHERE `departamento` LIKE 'SIN DPTO%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'TUNUYAN' WHERE `departamento` LIKE 'TUNUYAN%';
+UPDATE `oncologico`.`pacientes` SET `departamento` = 'TUPUNGATO' WHERE `departamento` LIKE 'TUPUNGATO%';

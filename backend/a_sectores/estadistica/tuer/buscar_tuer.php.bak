@@ -1,0 +1,190 @@
+<?php 
+
+$tipo_encuest=$_POST["tipo_encuesta"];
+for ($i=0;$i<count($tipo_encuest);$i++)    
+{     
+$tipo_encuesta= $tipo_encuest[$i];    
+}
+
+
+if ($tipo_encuesta == "RESULTADO"){
+
+$mes = $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+
+SWITCH ($mes){
+	case "01":{$mes22 = "ENERO";break;}
+	case "02":{$mes22 = "FEBRERO";break;}
+	case "03":{$mes22 = "MARZO";break;}
+	case "04":{$mes22 = "ABRIL";break;}
+	case "05":{$mes22 = "MAYO";break;}
+	case "06":{$mes22 = "JUNIO";break;}
+	case "07":{$mes22 = "JULIO";break;}
+	case "08":{$mes22 = "AGOSTO";break;}
+	case "09":{$mes22 = "SETIEMBRE";break;}
+	case "10":{$mes22 = "OCTUBRE";break;}
+	case "11":{$mes22 = "NOVIEMBRE";break;}
+	case "12":{$mes22 = "DICIEMBRE";break;}
+}
+
+//include ("ver_tuer.php");
+include ("ver_tuer_mon.php");
+EXIT;
+
+}ELSE{
+
+
+
+
+
+include ("../../../conexiones/config_usu.php");
+$B = 1;
+
+if ($band != 1){
+$mes = $_REQUEST['mes'];
+$anio= $_REQUEST['anio'];
+$desde = $anio."-".$mes."-01";
+$hasta= $anio."-".$mes."-31";
+
+SWITCH ($mes){
+	case "01":{$mes22 = "ENERO";break;}
+	case "02":{$mes22 = "FEBRERO";break;}
+	case "03":{$mes22 = "MARZO";break;}
+	case "04":{$mes22 = "ABRIL";break;}
+	case "05":{$mes22 = "MAYO";break;}
+	case "06":{$mes22 = "JUNIO";break;}
+	case "07":{$mes22 = "JULIO";break;}
+	case "08":{$mes22 = "AGOSTO";break;}
+	case "09":{$mes22 = "SETIEMBRE";break;}
+	case "10":{$mes22 = "OCTUBRE";break;}
+	case "11":{$mes22 = "NOVIEMBRE";break;}
+	case "12":{$mes22 = "DICIEMBRE";break;}
+}
+
+}
+
+
+
+
+ 
+ $sql1="select * from encuesta1 where fecha between '$desde' and '$hasta' order by cod_renglon desc";
+$result1 = $db->Execute($sql1);
+
+
+?>
+<table width="800" height="66" border="1" cellspacing="0">
+  <!--DWLayoutTable-->
+  
+  <tr bordercolor="#FFFFFF" bgcolor="#C9C9C9">
+    <td height="22" colspan="9" valign="top"><div align="center"><font color="#000000" size="2" face="Trebuchet MS"><strong>ENCUESTA PERIODO </font><font size="2" face="Trebuchet MS"><?php echo $mes22;?></font><strong><font color="#000000" size="2" face="Trebuchet MS"> - 20</font><font size="2" face="Trebuchet MS"><?php echo $anio;?></font><font color="#000000" size="2" face="Trebuchet MS"> </font></strong></div></td>
+  </tr>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td width="60" bgcolor="#C9C9C9"><!--DWLayoutEmptyCell-->&nbsp;</td>
+    <td width="72" height="23" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Fecha</font></div></td>
+    <td width="90" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Recepcion</font></div></td>
+    <td width="104" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Secretaria</font></div></td>
+    <td width="118" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Receta</font></div></td>
+    <td width="106" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Monoclonales</font></div></td>
+    <td width="122" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Informaci&oacute;n</font></div></td>
+    <td width="91" bgcolor="#C9C9C9"><div align="center"><font size="2" face="Trebuchet MS">Aseo</font></div></td>
+
+  <td width="63" bgcolor="#C9C9C9"><div align="center"> <font size="2" face="Trebuchet MS">BORRAR</font></div></td>
+  </tr>
+  <?php 
+  
+   if (!$result1) die("fallo".$db->ErrorMsg());
+  while (!$result1->EOF) {
+  
+$fecha=$result1->fields["fecha"];
+$cod_renglon=$result1->fields["cod_renglon"];
+$preg1=strtoupper($result1->fields["preg1"]);
+$preg2=strtoupper($result1->fields["preg2"]);
+$preg3=strtoupper($result1->fields["preg3"]);
+$preg4=strtoupper($result1->fields["preg4"]);
+$preg5=strtoupper($result1->fields["preg5"]);
+$preg6=strtoupper($result1->fields["preg6"]);
+
+$d = substr($fecha,8,2);
+$m = substr($fecha,5,2);
+$a = substr($fecha,0,4);
+
+$fecha = $d."/".$m."/".$a;
+
+
+switch ($preg1){
+case "1":{$res1 = "M";}BREAK;
+case "2":{$res1 = "REG.";}BREAK;
+case "3":{$res1 = "B";}BREAK;
+case "4":{$res1 = "MB";}BREAK;
+case "5":{$res1 = "E";}BREAK;
+case "6":{$res1 = "NO UTI.";}BREAK;
+ }
+
+ switch ($preg2){
+case "1":{$res2 = "M";}BREAK;
+case "2":{$res2 = "REG.";}BREAK;
+case "3":{$res2 = "B";}BREAK;
+case "4":{$res2 = "MB ";}BREAK;
+case "5":{$res2 = "E";}BREAK;
+case "6":{$res2 = "NO UTI.";}BREAK;
+ }
+
+ switch ($preg3){
+case "1":{$res3 = "30 MIN A 1 H";}BREAK;
+case "2":{$res3 = "MAS DE 1 H";}BREAK;
+case "3":{$res3 = "1 MES";}BREAK;
+case "6":{$res3 = "NO UTILIZA";}BREAK;
+ }
+
+ switch ($preg4){
+case "1":{$res4 = "1 SEMANA";}BREAK;
+case "2":{$res4 = "15 DIAS";}BREAK;
+case "3":{$res4 = "+ 15 DIAS";}BREAK;
+case "4":{$res4 = "1 MES";}BREAK;
+case "6":{$res4 = "NO UTI.";}BREAK;
+ }
+
+ switch ($preg5){
+case "1":{$res5 = "M";}BREAK;
+case "2":{$res5 = "REG.";}BREAK;
+case "3":{$res5 = "B";}BREAK;
+case "4":{$res5 = "MB";}BREAK;
+case "5":{$res5 = "E";}BREAK;
+case "6":{$res5 = "NO UTI.";}BREAK;
+ }
+
+  switch ($preg6){
+case "1":{$res6 = "M";}BREAK;
+case "2":{$res6 = "REG.";}BREAK;
+case "3":{$res6 = "B";}BREAK;
+case "4":{$res6 = "MB";}BREAK;
+case "5":{$res6 = "E";}BREAK;
+case "6":{$res6 = "NO UTI.";}BREAK;
+ }
+
+	?>
+  <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $cod_renglon;?></font></div></td>
+    <td height="36" bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $fecha;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res1;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res2;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res3;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res4;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res5;?></font></div></td>
+    <td bgcolor="#E6E6E6"><div align="center"><font size="2" face="Trebuchet MS"><?php echo $res6;?></font></div></td>
+
+<td bgcolor="#E6E6E6">
+
+	<div align="center"><a href="borrar_encuesta.php?cod_renglon=<?php print("$cod_renglon");?>&&mes=<?php print("$mes");?>&&anio=<?php print("$anio");?>"><IMG SRC="../../../imagenes/office//027.ico" alt="Modificar" border = "0"></a>	    </div>
+    </div></td>
+  </tr>
+  <?php $result1->MoveNext();
+	}
+
+?>
+</table>
+
+<?PHP }?>
+

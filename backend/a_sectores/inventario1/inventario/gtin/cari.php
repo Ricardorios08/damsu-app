@@ -1,0 +1,155 @@
+<?php 
+
+include("../../../../conexiones/config_pro.php");
+
+
+ $sql = "SELECT * FROM inventario where  operador = '$usuario' order by cod_mercaderia, cod_operacion desc";
+$result = $db->Execute($sql);
+
+
+
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo6 {font-family: Arial, Helvetica, sans-serif}
+.Estilo7 {font-size: 12px}
+.Estilo13 {font-family: "Trebuchet MS"}
+.Estilo14 {font-family: "Trebuchet MS"; font-size: 12px; }
+.Estilo17 {
+	font-size: 16px;
+	font-weight: bold;
+}
+.Estilo18 {font-size: 10px}
+.Estilo19 {font-family: "Trebuchet MS"; font-size: 10px; }
+-->
+</style>
+
+<table width="800" border="0" cellspacing="0">
+  <tr bgcolor="#FFBC79">
+    <td width="9%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7"> BARRA </span></div></td>
+    <td width="33%"  bgcolor="#CCCCCC" scope="col"><div align="center"><span class="Estilo28 Estilo13 Estilo7">Gtin</span></div></td>
+    <td width="39%"  bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo26 Estilo13 Estilo7">Descripcion / Mercaderia</div></td>
+    <td width="13%" bgcolor="#CCCCCC" scope="col"><div align="center" class="Estilo28 Estilo13 Estilo7"> Laboratorio </div></td>
+    <td width="6%" bgcolor="#CCCCCC" class="Estilo28" scope="col"><div align="center" class="Estilo14">Borrar</div></td>
+  </tr><?php 
+
+if (!$result) die("fallo".$db->ErrorMsg());
+
+ while (!$result->EOF) {
+
+ $cod_mer = $cod_mercaderia;
+
+$gtin=strtoupper($result->fields["gtin"]);
+$cod_operacion=strtoupper($result->fields["cod_operacion"]);
+
+
+$sql2 = "SELECT * FROM tr_existencias  WHERE  `gtin` = '$gtin'";
+$result2 = $db->Execute($sql2);
+$cod_mercaderia=$result2->fields["cod_mercaderia"];
+
+$lote=strtoupper($result->fields["lote"]);
+$mes_lote=strtoupper($result->fields["mes_lote"]);
+$anio_lote=strtoupper($result->fields["anio_lote"]);
+$precio_unitario=strtoupper($result->fields["precio_unitario"]);
+$total=strtoupper($result->fields["total"]);
+$cod_detalle=strtoupper($result->fields["cod_detalle"]);
+
+$resultado=strtoupper($result->fields["resultado"]);
+ $transaccion=strtoupper($result->fields["transaccion"]);
+
+
+$vto_lote = $mes_lote."  ".$anio_lote;
+
+
+$sql2 = "SELECT * FROM `monodrogas`  WHERE  (`cod_barra` = $cod_mercaderia or troquel = $cod_mercaderia )";
+$result2 = $db->Execute($sql2);
+ $descripcion=strtoupper($result2->fields["nombre_comercial"]);
+ $presentacion=strtoupper($result2->fields["presentacion"]);
+ $cod_droga =$result2->fields["cod_droga"];
+$laboratorio =$result2->fields["laboratorio"];
+
+
+$sql2 = "SELECT * FROM drogas  WHERE  `cod_droga` = $cod_droga";
+$result2 = $db->Execute($sql2);
+$drogas=strtoupper($result2->fields["drogas"]);
+ 
+ $sql2 = "SELECT * FROM laboratorios  WHERE  cod_laboratorio = $laboratorio";
+$result2 = $db->Execute($sql2);
+$nombre_laboratorio=strtoupper($result2->fields["laboratorio"]);
+
+
+if ($cod_mer == ""){
+$cod_mer = $cod_mercaderia;
+}
+
+
+if ($cod_mer == $cod_mercaderia){
+	$canti = $canti + 1;
+}
+
+
+
+if ($cod_mer != $cod_mercaderia){
+ 
+?><tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FF9900"  scope="col">&nbsp;</td>
+    <td bgcolor="#FF9900" scope="col" >&nbsp;</td>
+    <td colspan="3" bgcolor="#FF9900" scope="col"  ><div align="center" class="Estilo14">
+      <div align="right"><span class="Estilo28 Estilo17">Cantidad Ingresada: <?php echo $canti;?></span></div>
+    </div>
+    <div align="center" class="Estilo14"></div>      <div align="center" class="Estilo14">   <a href="borrar_item.php?cod_operacion=<?php print("$cod_operacion");?>&&usuario=<?php print("$usuario");?>"></a></div></td>
+    </tr><?php 
+$canti = 1;
+}
+
+
+
+
+
+
+if ($descripcion != ""){
+?><tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FFFFFF" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)" scope="col"><span class="Estilo28 Estilo18 Estilo13"><?php echo $cod_mercaderia;?></span></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo19"><span class="Estilo28 "><?php echo $gtin;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="left" class="Estilo18 Estilo13"><span class="Estilo28"><?php echo $descripcion;?></span> <span class="Estilo26"><?php echo $presentacion;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo19"><span class="Estilo28 "><?php echo $nombre_laboratorio;?></span></div></td>
+    <td width="6%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">   <a href="borrar_item.php?cod_operacion=<?php print("$cod_operacion");?>&&usuario=<?php print("$usuario");?>"><IMG SRC="../../../../../imagenes/botones/btn_anular.gif" alt="Anular" border = "0"></a></div></td>
+  </tr>
+<?php 
+}else{
+?><tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FFFFFF" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)" scope="col"><span class="Estilo28 Estilo13 Estilo18"><?php echo $cod_mercaderia;?></span></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo19"><span class="Estilo28 ">S<?php echo $gtin;?></span></div></td>
+    <td bgcolor="#FFFFFF" scope="col" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="left" class="Estilo13 Estilo18"><span class="Estilo28 "><?php echo $descripcion;?>NO INGRESADO EN STOCK</span> <?php echo $presentacion;?></div></td>
+    <td bgcolor="#FFFFFF" scope="col"><div align="center" class="Estilo19"><span class="Estilo28 "><?php echo $nombre_laboratorio;?></span></div></td>
+    <td width="6%" bgcolor="#FFFFFF" class="Estilo6" onmouseover="cambiar_color_over(this)" onmouseout="cambiar_color_out(this)"><div align="center" class="Estilo14">   <a href="borrar_item.php?cod_operacion=<?php print("$cod_operacion");?>&&usuario=<?php print("$usuario");?>"><IMG SRC="../../../../../imagenes/botones/btn_anular.gif" alt="Anular" border = "0"></a></div></td>
+  </tr>
+<?php 
+
+
+}
+
+
+$total_unitario = $precio_unitario + $total_unitario;
+$total_item = $total_item + 1;
+	 $result->MoveNext();
+				}
+
+
+?>
+<tr bgcolor="#FFFFFF" >
+    <td bgcolor="#FF9900"  scope="col">&nbsp;</td>
+    <td bgcolor="#FF9900" scope="col" >&nbsp;</td>
+    <td colspan="3" bgcolor="#FF9900" scope="col"  ><div align="center" class="Estilo14">
+      <div align="right"><span class="Estilo28 Estilo17">Cantidad Ingresada: <?php echo $canti;?></span></div>
+    </div>
+    <div align="center" class="Estilo14"></div>      <div align="center" class="Estilo14">   <a href="borrar_item.php?cod_operacion=<?php print("$cod_operacion");?>"></a></div></td>
+    </tr>
+<tr bgcolor="#E6E6E6">
+  <td colspan="5" bgcolor="#CCCCCC" scope="col"><span class="Estilo14">Cantidad STOCKEADA: <strong><?php echo $total_item;?></strong></span>    <div align="right"></div>    <div align="right"></div></td>
+  </tr>
+</table>
+
+

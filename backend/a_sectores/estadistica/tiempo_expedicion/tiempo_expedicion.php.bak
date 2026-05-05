@@ -1,0 +1,13 @@
+<?php 
+
+function resta($inicio, $fin)
+  {
+  $dif=date("H:i:s", strtotime("00:00:00") + strtotime($fin) - strtotime($inicio) );
+  return $dif;
+  }
+
+
+  $hora_inicial="12:45";
+$hora_final="13:00";
+$diferencia=resta($hora_inicial,$hora_final);
+echo "La diferencia es $diferencia";

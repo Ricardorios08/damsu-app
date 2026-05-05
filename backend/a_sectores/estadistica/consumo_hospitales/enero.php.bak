@@ -1,0 +1,20 @@
+<?php
+
+
+$desde = $anio."-".$mes."-01";
+$hasta = $anio."-".$mes."-31";
+$sql = "SELECT *  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2 group by documento";
+$result = $db->Execute($sql);
+$ene_recetas = $result->RecordCount(); 
+$sql = "SELECT count(nro_factura) as total, sum(neto) as neto  FROM `tr_ventas_encabezado` WHERE `fecha` between '$desde' and '$hasta' and cod_movimiento != 6  and cod_movimiento != 3 and cod_movimiento != 2";
+$result = $db->Execute($sql);
+$ene_facturas=$result->fields["total"];
+$ene_neto=$result->fields["neto"];
+
+
+if ($ene_neto > 0){
+$ene_consumo_receta = round($ene_neto / $ene_recetas,2);
+$ene_consumo_entrega = round($ene_neto / $ene_facturas,2);
+}
+
+?>

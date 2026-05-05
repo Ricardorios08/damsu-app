@@ -1,0 +1,59 @@
+<?php 
+
+
+include ("../../../conexiones/config_usu.php");
+
+$sql = "SELECT *   FROM `receta` where nro_paciente = $documento and fecha_estado between '$desde1' and '$hasta1' GROUP BY nro_paciente";
+ $result = $db->Execute($sql);
+$doc=$result->fields["documento"];
+$fecha_estado=$result->fields["fecha_estado"];
+$anio = substr($fecha_estado,0,4);
+
+if ($doc != ""){
+
+
+switch ($anio){
+	case "2009":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2009' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+case "2010":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2010' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+case "2011":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2011' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+case "2012":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2012' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+case "2013":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2013' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+
+case "2014":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2014' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+case "2015":{
+$sql2 = "UPDATE `cantidad_dptos` SET quimio = 'S' , anio = '$anio_2015' WHERE documento= '$documento'";
+$result2 = $db->Execute($sql2);
+break;}
+
+}
+
+
+
+}
+
+  $result1->MoveNext();
+	}

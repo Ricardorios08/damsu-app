@@ -1,0 +1,263 @@
+<style type="text/css">
+<!--
+.Estilo2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.Estilo5 {font-size: 12px}
+.Estilo75 {
+	font-family: "Trebuchet MS";
+	font-size: 12px;
+}
+.Estilo76 {
+	font-size: 36px;
+	font-weight: bold;
+}
+-->
+</style>
+ 
+
+
+
+<body onUnload="window.opener.openedImprimir=0;" onLoad="window.print(); window.close(); cerrar()"> 
+
+
+
+<?php 
+
+
+$nro_factura;
+
+include ("est_detalle_anual.php");
+
+
+?>
+<style type="text/css">
+<!--
+.Estilo5 {font-family: Arial, Helvetica, sans-serif}
+.Estilo8 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.Estilo70 {font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.Estilo72 {font-size: 12px}
+.Estilo72 {font-family: Arial, Helvetica, sans-serif}
+.Estilo74 {font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; }
+-->
+</style>
+
+
+
+<table width="800" height="145" border="1" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr valign="middle" bgcolor="#000099">
+    <td height="26" colspan="5" bgcolor="#CCCCCC"><div align="center" class="Estilo75">CONSUMO POR PACIENTE</div></td>
+  </tr>
+  <tr valign="middle" bgcolor="#000099">
+    <td height="26" colspan="5" bgcolor="#FFFFFF" >
+      <div align="center" class="Estilo76">PROFE <?php //ECHO $fecha_a;?></div>
+      </div></td>
+  </tr>
+   <tr bgcolor="#DAFAFC">
+     <td width="14%" height="21" bgcolor="#B8B8B8"><div align="center"><span class="Estilo2">Fecha</span>
+     </div>
+     <td width="16%" bgcolor="#B8B8B8"><div align="center"><span class="Estilo2">Comprobante</span></span></div></td>
+     <!-- <td width="5%"><div align="center"><span class="Estilo6 Estilo2  Estilo5">Proveedor</span></div></td> -->
+<td width="42%" bgcolor="#B8B8B8" ><div align="center"><span class="Estilo2">Paciente</span></span></div></td>
+<td width="16%" bgcolor="#B8B8B8" ><div align="center"><span class="Estilo2">Documento</span></div></td>
+<td width="12%" bgcolor="#B8B8B8" ><div align="center"><span class="Estilo2">TOTAL</span></div></td>
+   </tr>
+   
+   
+
+	 <?php 
+$band = 0;
+include ("../../../conexiones/config_pro.php");
+
+$sql="select * from tr_ventas_encabezado where fecha between '$fecha_desde_a' and '$fecha_hasta_a' and nro_os = 10 ORDER by nro_factura, fecha desc";
+$result = $db->Execute($sql);
+
+  if (!$result) die("fallo".$db->ErrorMsg());
+  while (!$result->EOF) {
+
+$cuent = $cuenta;
+
+$cuenta=strtoupper($result->fields["documento"]);
+
+ $cod_movimiento=strtoupper($result->fields["cod_movimiento"]);
+$forma_pago=strtoupper($result->fields["forma_pago"]);
+$nro_factura=strtoupper($result->fields["nro_factura"]);
+
+$denominacion=strtoupper($result->fields["denominacion"]);
+$tipo_fact=strtoupper($result->fields["tipo_fact"]);
+
+$fecha=strtoupper($result->fields["fecha"]);
+$descuento=strtoupper($result->fields["descuento"]);
+
+$bonificacion=strtoupper($result->fields["bonificacion"]);
+$subtotal=strtoupper($result->fields["subtotal"]);
+$iva=strtoupper($result->fields["iva"]);
+$total=strtoupper($result->fields["total"]);
+$periodo=strtoupper($result->fields["periodo"]);
+$anio=strtoupper($result->fields["anio"]);
+$neto=strtoupper($result->fields["neto"]);
+$nro_receta=strtoupper($result->fields["nro_receta"]);
+
+
+$documento=strtoupper($result->fields["documento"]);
+
+$me = $mes;
+
+$dia = substr($fecha,8,2);
+$mes= substr($fecha,5,2);
+$anio = substr($fecha,0,4);
+
+$fecha = $dia."/".$mes."/".$anio;
+
+
+ $sql8 = "SELECT * FROM tr_ventas_estadistica where nro_factura = $nro_factura";
+$result8 = $db->Execute($sql8);
+$nro_fac=$result8->fields["nro_factura"];
+
+if ($nro_factura != $nro_fac){
+
+SWITCH ($cod_movimiento){
+
+case "1":{
+$entrada = $precio_renglon;
+$movimiento = "N/Entrega";
+BREAK;
+}
+
+case "2":{
+$entrada = $precio_renglon;
+$movimiento = "NOTA DE DEBITO";
+BREAK;
+}
+
+case "3":{
+$salida = $precio_renglon;
+$movimiento = "DEV. PO";
+
+
+BREAK;
+}
+
+case "4":{
+$salida = $precio_renglon;
+$movimiento = "PAGO POR CAJA";
+BREAK;
+}
+
+
+CASE "5":{
+$salida = $precio_renglon;
+$movimiento = "DESC X LIQUIDACION";
+BREAK;
+}
+
+CASE "6":{
+$salida = ($precio_renglon * -1);
+$movimiento = "ANULADA";
+BREAK;
+}
+
+}
+
+$cant = $cant + 1;
+
+
+
+
+
+if (($me != $mes) and ($band != 0)){
+
+
+?>
+<tr>
+  <td height="21" colspan="2" bgcolor="#B8B8B8"></td>
+  <td height="21" bgcolor="#B8B8B8"></span></td>
+  <td height="21" colspan="2" bgcolor="#B8B8B8"><div align="right"><span class="Estilo75">TOTAL MES $ </span>    <span class="Estilo75"><?php echo number_format($total_mes,2);?></span></div></td>
+  </tr>
+
+  <?php
+
+$total_mes = "";
+
+}
+
+
+if ($cod_movimiento == 3){
+		$total_total = $total_total - $neto;
+$total_mes = $total_mes - $neto;	
+	}
+	else{
+$total_total = $total_total + $neto;
+$total_mes = $total_mes + $neto;
+	}
+
+
+?>
+<tr>
+  <td height="21"><div align="center" class="Estilo70"><?php print("$fecha");?></div></td>
+<td><div align="center" class="Estilo5"> <?php print("$nro_factura");?></div></td>
+<td><div align="center" class="Estilo5"> <div align="left"><?php print("$denominacion"); IF ($cod_movimiento == 3){echo " (".$movimiento.")";}?></div>
+</div>    </td>
+
+
+<?php if ($cod_movimiento == 3){?>
+
+<td><div align="center" class="Estilo75"><?php print("$cuenta");?></div></td>
+<td><div align="center" class="Estilo5">
+  <div align="right">(<?php echo $neto;?>)</div>
+</div></td>
+</tr>
+
+<?php } else {?>
+
+<td><div align="center" class="Estilo75"><?php print("$cuenta");?></div></td>
+<td><div align="center" class="Estilo5">
+  <div align="right"><?php echo $neto;?></div>
+</div></td>
+</tr>
+
+<?php
+
+}
+
+
+
+
+
+
+$cuenta = "";
+	
+}
+
+
+	$result->MoveNext();
+	}
+
+$sql2="select COUNT(DISTINCT documento) as cant_pacientes from tr_ventas_encabezado where fecha between '$fecha_desde_a' and '$fecha_hasta_a' and nro_os = 10";
+$result2 = $db->Execute($sql2);
+
+$cant_pacientes=strtoupper($result2->fields["cant_pacientes"]);
+
+ 
+
+
+	?>
+
+   <tr>
+  <td height="21" colspan="2" bgcolor="#B8B8B8"><span class="Estilo75">
+      Cant. Comprobantes: <?php echo $cant;?>
+  </span></td>
+  <td height="21" bgcolor="#B8B8B8"><span class="Estilo75">Cant. Pacientes: <?php echo $cant_pacientes;?></span></td>
+  <td height="21" colspan="2" bgcolor="#B8B8B8"><div align="right"><span class="Estilo75">TOTAL CONSUMO $ </span>    <span class="Estilo75"><?php echo number_format($total_total,2);?></span></div></td>
+  </tr>
+</table>
+
+
+
+

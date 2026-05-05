@@ -1,0 +1,44 @@
+	<table width="375" border="1" align="center" cellspacing="0">
+     
+	  <?php 
+include ("../../../conexiones/config_usu.php");
+include ("../../../funciones/funciones.php");
+//include ("funcion_cambiar_estados.php");
+$operador= $_REQUEST['operador'];
+ $documento= $_REQUEST['documento'];
+$tipo_doc= $_REQUEST['tipo_doc'];
+$cod_paciente= $_REQUEST['cod_paciente'];
+	
+  $sql3="select * from receta where nro_paciente like '$documento' and tipo_doc = '$tipo_doc' order by fecha desc, nro_receta desc";
+$result3 = $db->Execute($sql3);
+
+  
+   if (!$result3) die("fallo".$db->ErrorMsg());
+  while (!$result3->EOF) {
+  
+  
+  
+$fecha=$result3->fields["fecha"];
+
+$fech = fecha_argentina($fecha);
+
+$nro_receta=$result3->fields["nro_receta"];
+$estado=$result3->fields["estado"];
+
+$estad = estados_receta($estado);
+
+
+?>
+      <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
+        <td bgcolor="#E6E6E6"><div align="center"><font color="#000000" size="2" face="Trebuchet MS"><?php print("$nro_receta");?><a href="../receta/ver_detalle.php?nro_receta_nuevo=<?php print("$nro_receta");?>&&documento=<?php print("$documento");?>&&tipo_doc=<?php print("$tipo_doc");?>&&operador=<?php print("$operador");?>&&band=1" target = "central1"><img src="../../../imagenes/office//336.ico" alt="Modificar" border = "0"></a></font></div></td>
+        <td bgcolor="#E6E6E6"><div align="center"><font color="#000000" size="2" face="Trebuchet MS"><?php print("$fech");?></font></div></td>
+        <td bgcolor="#E6E6E6"><div align="center"><font color="#000000" size="2" face="Trebuchet MS"><?php print("$estad");?></font></div></td>
+        <td bgcolor="#E6E6E6"><div align="center"><a href="../../facturacion/entrada_factura_tabla.php?cod_paciente=<?php print("$cod_paciente");?>&&documento=<?php print("$documento");?>&&tipo_doc=<?php print("$tipo_doc");?>&&operador=<?php print("$operador");?>&&band=1" target = "central1"><img src="../../../imagenes/office//336.ico" alt="Modificar" border = "0"></a></div></td>
+      </tr>
+      <?php 
+  
+  $result3->MoveNext();
+	}
+	
+	?>
+    </table>   

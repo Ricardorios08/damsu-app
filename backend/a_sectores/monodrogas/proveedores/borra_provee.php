@@ -1,0 +1,19 @@
+<?php 
+
+include ("../../../conexiones/config_usu.php");
+
+$cod_operacion = $_REQUEST['cod_operacion'];
+
+$SQL="Delete From proveedores where cod_operacion = $cod_operacion";
+$db->Execute($SQL);
+
+$leyenda = "Se Eliminó el Proveedor";
+include ("../../../alertas/campo_informacion.php");
+
+
+//include ("buscar_proveedores.php");
+
+
+
+
+	?>
