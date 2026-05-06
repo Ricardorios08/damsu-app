@@ -24,8 +24,8 @@ const PatientSearchModal = ({ isOpen, onClose }) => {
 
       setLoading(true);
       try {
-        //const response = await fetch(`http://192.168.2.166:8888/damsu-app/backend/api/pacientes.php?q=${encodeURIComponent(query)}`);
-        const response = await fetch(`http://82.25.78.98/damsu-app/backend/api/pacientes.php?q=${encodeURIComponent(query)}`);
+        const apiBase = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiBase}/pacientes.php?q=${encodeURIComponent(query)}`);
         const data = await response.json();
         setResults(Array.isArray(data) ? data : []);
       } catch (error) {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  ChevronLeft, Calendar, FileText, User, 
-  Package, CheckCircle2, ClipboardList, 
+import {
+  ChevronLeft, Calendar, FileText, User,
+  Package, CheckCircle2, ClipboardList,
   ArrowRight, Download, ExternalLink, Loader2,
   Printer
 } from 'lucide-react';
@@ -27,7 +27,7 @@ const StatBadge = ({ current, total, label, icon: Icon, colorClass }) => {
         {isComplete && <CheckCircle2 size={16} className="text-emerald-500 mb-1" />}
       </div>
       <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-        <div 
+        <div
           className={`h-full transition-all duration-1000 ${isComplete ? 'bg-emerald-500' : 'bg-blue-500'}`}
           style={{ width: `${percentage}%` }}
         />
@@ -45,7 +45,7 @@ const PatientHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch(`http://192.168.2.166:8888/damsu-app/backend/api/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
+        const response = await fetch(`http://82.25.78.98/damsu-app/backend/api/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
         const result = await response.json();
         if (result.status === 'success') {
           setData(result);
@@ -78,7 +78,7 @@ const PatientHistory = () => {
       {/* Header with Back Button */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
         <div className="flex items-start sm:items-center gap-4 md:gap-6">
-          <button 
+          <button
             onClick={() => navigate('/dashboard')}
             className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-slate-400 hover:text-white transition-all shadow-lg shrink-0"
           >
@@ -91,8 +91,8 @@ const PatientHistory = () => {
               </span>
             </div>
             <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight break-words">
-               {data.paciente.apellido}, {data.paciente.nombre}
-             </h1>
+              {data.paciente.apellido}, {data.paciente.nombre}
+            </h1>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-slate-400 text-sm">
               <span className="flex items-center gap-1.5"><FileText size={14} /> DNI: {data.paciente.documento}</span>
               <span className="hidden sm:inline w-1 h-1 rounded-full bg-slate-700"></span>
@@ -101,7 +101,7 @@ const PatientHistory = () => {
           </div>
         </div>
 
-        
+
         <div className="flex gap-3">
           <button className="flex items-center gap-2 px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold transition-all shadow-lg shadow-blue-600/20">
             <ArrowRight size={18} />
@@ -121,7 +121,7 @@ const PatientHistory = () => {
           <Package className="text-blue-500" size={24} />
           Historial de Entregas
         </h2>
-        
+
         {data.entregas.length === 0 ? (
           <div className="bg-white/5 border border-white/5 rounded-3xl p-20 text-center text-slate-500">
             <Package size={64} className="mx-auto mb-4 opacity-10" />
@@ -130,7 +130,7 @@ const PatientHistory = () => {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {data.entregas.map((ent) => (
-              <div 
+              <div
                 key={ent.nro_factura}
                 className="group bg-slate-900/50 hover:bg-slate-900/80 border border-white/5 hover:border-blue-500/30 rounded-3xl p-6 transition-all shadow-xl"
               >
@@ -156,24 +156,24 @@ const PatientHistory = () => {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                  <StatBadge 
-                    current={ent.stats.recibidos} 
-                    total={ent.stats.total} 
-                    label="Recepción" 
+                  <StatBadge
+                    current={ent.stats.recibidos}
+                    total={ent.stats.total}
+                    label="Recepción"
                     icon={Package}
                     colorClass="bg-blue-500"
                   />
-                  <StatBadge 
-                    current={ent.stats.indicados} 
-                    total={ent.stats.total} 
-                    label="Indicación" 
+                  <StatBadge
+                    current={ent.stats.indicados}
+                    total={ent.stats.total}
+                    label="Indicación"
                     icon={ClipboardList}
                     colorClass="bg-amber-500"
                   />
-                  <StatBadge 
-                    current={ent.stats.preparados} 
-                    total={ent.stats.total} 
-                    label="Preparación" 
+                  <StatBadge
+                    current={ent.stats.preparados}
+                    total={ent.stats.total}
+                    label="Preparación"
                     icon={CheckCircle2}
                     colorClass="bg-emerald-500"
                   />
@@ -181,16 +181,16 @@ const PatientHistory = () => {
 
                 <div className="flex items-center justify-between pt-6 border-t border-white/5">
                   <div className="flex gap-2">
-                    <button 
+                    <button
                       onClick={() => navigate(`/dashboard/venta/${ent.nro_factura}`)}
-                      className="p-2 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all group/btn" 
+                      className="p-2 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all group/btn"
                       title="Imprimir / Ver Comprobante"
                     >
                       <Printer size={18} className="group-hover/btn:-translate-y-0.5 transition-transform" />
                     </button>
-                    <button 
+                    <button
                       onClick={() => navigate(`/dashboard/venta/${ent.nro_factura}`)}
-                      className="p-2 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all group/btn" 
+                      className="p-2 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all group/btn"
                       title="Ver Detalles"
                     >
                       <ExternalLink size={18} className="group-hover/btn:scale-110 transition-transform" />

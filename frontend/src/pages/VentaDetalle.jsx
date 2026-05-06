@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { 
-  ChevronLeft, Printer, Download, Mail, 
-  MapPin, Phone, User, Calendar, 
+import {
+  ChevronLeft, Printer, Download, Mail,
+  MapPin, Phone, User, Calendar,
   FileText, Package, CreditCard, Loader2,
   Stethoscope, Info, X, Eye
 } from 'lucide-react';
@@ -22,7 +22,7 @@ const VentaDetalle = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://192.168.2.166:8888/damsu-app/backend/api/venta_detalle.php?nro_factura=${nro_factura}`);
+        const response = await fetch(`http:/82.25.78.98/damsu-app/backend/api/venta_detalle.php?nro_factura=${nro_factura}`);
         const result = await response.json();
         if (result.status === 'success') {
           setData(result);
@@ -38,7 +38,7 @@ const VentaDetalle = () => {
 
   const handleShowFPDF = () => {
     setPdfSource('fpdf');
-    setPdfUrl(`http://192.168.2.166:8888/damsu-app/backend/api/pdf/venta_comprobante.php?nro_factura=${nro_factura}`);
+    setPdfUrl(`http://82.25.78.98/damsu-app/backend/api/pdf/venta_comprobante.php?nro_factura=${nro_factura}`);
     setShowPDF(true);
   };
 
@@ -50,13 +50,13 @@ const VentaDetalle = () => {
     if (!data) return;
     const { venta, paciente, diagnostico, items } = data;
     const doc = new jsPDF();
-    
+
     // Header Logos & Text
     try {
       // Load Logo Header
       const headerLogoUrl = '/images/header_logo_solo.jpg';
       const footerLogoUrl = '/images/footer_logo.jpg';
-      
+
       const loadImage = (url) => new Promise((resolve) => {
         const img = new Image();
         img.src = url;
@@ -80,7 +80,7 @@ const VentaDetalle = () => {
       doc.setFontSize(7);
       doc.setTextColor(100);
       doc.text('TRAZABILIDAD\nDE MEDICAMENTOS', 15, 15);
-      
+
       // Right side header
       doc.setFontSize(9);
       doc.setTextColor(0);
@@ -88,14 +88,14 @@ const VentaDetalle = () => {
       doc.setFontSize(14);
       doc.setFont('helvetica', 'bold');
       doc.text('ENTREGA', 170, 15);
-      
+
       doc.setFontSize(10);
       doc.setFont('helvetica', 'normal');
       doc.text(`FECHA:`, 145, 25);
       doc.text(`${venta.fecha}`, 170, 25);
       doc.text(`N°:`, 145, 35);
       doc.text(`${venta.nro_factura.toString().padStart(8, '0')}`, 170, 35);
-      
+
       // Horizontal Line
       doc.setDrawColor(200);
       doc.line(10, 45, 200, 45);
@@ -106,19 +106,19 @@ const VentaDetalle = () => {
       doc.setFontSize(12);
       doc.setFont('helvetica', 'bold');
       doc.text(`${paciente.apellido}, ${paciente.nombre}`, 40, 55);
-      
+
       doc.setFontSize(9);
       doc.setFont('helvetica', 'normal');
       doc.text('Documento:', 15, 62);
       doc.setFontSize(11);
       doc.setFont('helvetica', 'bold');
       doc.text(`${paciente.documento}`, 40, 62);
-      
+
       doc.setFontSize(9);
       doc.setFont('helvetica', 'normal');
       doc.text('Domicilio:', 15, 69);
       doc.text(`${paciente.calle} ${paciente.puerta}, ${paciente.localidad}`, 40, 69);
-      
+
       doc.text('Nota:', 15, 76);
       doc.text(`${venta.observaciones || ''}`, 40, 76);
 
@@ -157,8 +157,8 @@ const VentaDetalle = () => {
         head: [['CANT', 'DROGA', 'PRESENTACION', 'LOTE', 'VTO', 'UNIT', 'TOTAL']],
         body: tableBody,
         theme: 'plain',
-        headStyles: { 
-          fillColor: [255, 255, 255], 
+        headStyles: {
+          fillColor: [255, 255, 255],
           textColor: [0, 0, 0],
           fontSize: 8,
           fontStyle: 'bold',
@@ -172,7 +172,7 @@ const VentaDetalle = () => {
           2: { cellWidth: 40 },
           6: { halign: 'right' }
         },
-        didParseCell: function(data) {
+        didParseCell: function (data) {
           if (data.row.index % 2 !== 0 && items.length > 0) {
             data.cell.styles.fontStyle = 'italic';
             data.cell.styles.textColor = [100, 100, 100];
@@ -217,7 +217,7 @@ const VentaDetalle = () => {
     <div className="animate-fade-in max-w-5xl mx-auto pb-20">
       {/* Header Actions */}
       <div className="flex items-center justify-between mb-8 no-print">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
         >
@@ -225,14 +225,14 @@ const VentaDetalle = () => {
           <span>Volver al historial</span>
         </button>
         <div className="flex gap-3">
-          <button 
+          <button
             onClick={generateJSPDF}
             className="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-500 text-white rounded-2xl font-bold transition-all shadow-lg"
           >
             <Download size={18} />
             jsPDF
           </button>
-          <button 
+          <button
             onClick={handleShowFPDF}
             className="flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white rounded-2xl font-bold transition-all shadow-lg"
           >
@@ -258,7 +258,7 @@ const VentaDetalle = () => {
                   <p className="text-slate-500 text-xs uppercase tracking-widest font-bold">Entrega #{venta.nro_factura}</p>
                 </div>
               </div>
-              <button 
+              <button
                 onClick={() => setShowPDF(false)}
                 className="p-3 hover:bg-white/5 rounded-2xl text-slate-500 hover:text-white transition-all"
               >
@@ -266,9 +266,9 @@ const VentaDetalle = () => {
               </button>
             </div>
             <div className="flex-1 bg-white">
-              <iframe 
-                src={pdfUrl} 
-                className="w-full h-full border-none" 
+              <iframe
+                src={pdfUrl}
+                className="w-full h-full border-none"
                 title="PDF Preview"
               />
             </div>
@@ -410,11 +410,11 @@ const VentaDetalle = () => {
                       <p className="text-lg font-black text-slate-900">${(item.cantidad * item.precio_unitario).toLocaleString()}</p>
                     </div>
                   </div>
-                  
+
                   <div className="mb-4">
                     <p className="font-bold text-slate-900 text-lg leading-tight mb-1">{item.nombre_droga || item.descripcion}</p>
                     <p className="text-xs text-blue-500 font-bold uppercase tracking-widest mb-3">{item.nombre_comercial_mono || 'Genérico'}</p>
-                    
+
                     <div className="flex flex-wrap gap-2">
                       <span className="text-[10px] font-bold bg-white px-2 py-1 rounded-lg border border-slate-200 text-slate-500 uppercase">
                         GTIN: {item.gtin || 'N/A'}
@@ -472,7 +472,7 @@ const VentaDetalle = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Print styles */}
       <style>{`
         @media print {
