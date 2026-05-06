@@ -15,8 +15,8 @@ const Login = () => {
     setError('');
 
     try {
-      const apiUrl = 'http://192.168.2.166:8888/damsu-app/backend/api/login.php';
-      
+      // const apiUrl = 'http://192.168.2.166:8888/damsu-app/backend/api/login.php';
+      const apiUrl = 'http://82.25.78.98/damsu-app/backend/api/login.php';
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
