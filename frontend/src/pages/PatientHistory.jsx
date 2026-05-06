@@ -45,7 +45,8 @@ const PatientHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch(`http://localhost/damsu-app/backend/api/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
+        const apiBase = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiBase}/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
         const result = await response.json();
         if (result.status === 'success') {
           setData(result);

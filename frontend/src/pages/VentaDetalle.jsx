@@ -22,7 +22,8 @@ const VentaDetalle = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost/damsu-app/backend/api/venta_detalle.php?nro_factura=${nro_factura}`);
+        const apiBase = import.meta.env.VITE_API_URL;
+        const response = await fetch(`${apiBase}/venta_detalle.php?nro_factura=${nro_factura}`);
         const result = await response.json();
         if (result.status === 'success') {
           setData(result);
@@ -37,8 +38,9 @@ const VentaDetalle = () => {
   }, [nro_factura]);
 
   const handleShowFPDF = () => {
+    const apiBase = import.meta.env.VITE_API_URL;
     setPdfSource('fpdf');
-    setPdfUrl(`http://localhost/damsu-app/backend/api/pdf/venta_comprobante.php?nro_factura=${nro_factura}`);
+    setPdfUrl(`${apiBase}/pdf/venta_comprobante.php?nro_factura=${nro_factura}`);
     setShowPDF(true);
   };
 
