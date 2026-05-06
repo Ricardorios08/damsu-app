@@ -45,7 +45,7 @@ const PatientHistory = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch(`http://82.25.78.98/damsu-app/backend/api/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
+        const response = await fetch(`http://localhost/damsu-app/backend/api/paciente_entregas.php?q=${cod_paciente}&cod_paciente=${cod_paciente}`);
         const result = await response.json();
         if (result.status === 'success') {
           setData(result);
