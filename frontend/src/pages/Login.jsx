@@ -60,7 +60,7 @@ const Login = () => {
             <h1 className="text-4xl font-extrabold text-white tracking-tight mb-2">
               DAMSU <span className="text-blue-500">APP</span>
             </h1>
-            <p className="text-slate-400 font-medium">Sistema de Trazabilidad Oncológica</p>
+            <p className="text-slate-400 font-medium">Sistema de Trazabilidad Oncológica DAMSU</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
@@ -119,7 +119,7 @@ const Login = () => {
 
           <div className="mt-10 pt-6 border-t border-white/5 text-center">
             <p className="text-slate-500 text-sm">
-              © 2026 Programa Oncológico de Mendoza
+              © 2026 Damsu
             </p>
           </div>
         </div>

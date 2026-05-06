@@ -24,7 +24,8 @@ const PatientSearchModal = ({ isOpen, onClose }) => {
 
       setLoading(true);
       try {
-        const response = await fetch(`http://192.168.2.166:8888/damsu-app/backend/api/pacientes.php?q=${encodeURIComponent(query)}`);
+        //const response = await fetch(`http://192.168.2.166:8888/damsu-app/backend/api/pacientes.php?q=${encodeURIComponent(query)}`);
+        const response = await fetch(`http://82.25.78.98/damsu-app/backend/api/pacientes.php?q=${encodeURIComponent(query)}`);
         const data = await response.json();
         setResults(Array.isArray(data) ? data : []);
       } catch (error) {
@@ -48,7 +49,7 @@ const PatientSearchModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 p-4">
       <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm animate-fade-in" onClick={onClose}></div>
-      
+
       <div className="w-full max-w-2xl bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden relative z-10 animate-fade-in">
         {/* Search Header */}
         <div className="p-4 border-b border-white/5 flex items-center gap-4">
@@ -61,7 +62,7 @@ const PatientSearchModal = ({ isOpen, onClose }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button 
+          <button
             onClick={onClose}
             className="p-2 hover:bg-white/5 rounded-full text-slate-500 hover:text-white transition-colors"
           >
